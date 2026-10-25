@@ -2,23 +2,145 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Platmark</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="description" content="A map editor for iPhone, iPad and Mac. Mark places, draw property lines, measure distances and areas, and keep it all in an open GeoJSON file.">
+  <meta name="theme-color" content="#F5F3F9" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#17141F" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="images/icon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Overpass:wght@400;600;800&family=Source+Serif+4:ital,opsz,wght@1,8..60,400&display=swap">
+  <link rel="stylesheet" href="home.css">
 </head>
 <body>
-<main>
-  <header>
-    <h1>Platmark</h1>
-    <p class="muted">A map editor for iPhone, iPad and Mac.</p>
-  </header>
-  <p>Mark places, draw property lines, measure distances and areas, and keep it all in an open
-  GeoJSON file that any GIS tool can read.</p>
-  <ul>
-    <li><a href="support/">Support</a></li>
-    <li><a href="privacy/">Privacy Policy</a></li>
-  </ul>
-  <footer>© 2026 Ouroboros Technologies</footer>
+<div class="terrain" aria-hidden="true"></div>
+
+<main class="story">
+  <!-- The phone stays pinned while the chapters scroll past it. home.js shows the screenshot
+       named by the chapter at the reading line, and the place it shows in the caption. -->
+  <div class="stage">
+    <figure class="phone">
+      <div class="device">
+        <div class="screen">
+          <img data-shot="overview" class="is-active" src="images/overview-720.webp" srcset="images/overview-480.webp 480w, images/overview-720.webp 720w" sizes="(max-width: 759px) 50vw, 340px" alt="Platmark showing NASA landmarks at Cape Canaveral on satellite imagery, with the Markers list open.">
+          <img data-shot="drawing" aria-hidden="true" src="images/drawing-720.webp" srcset="images/drawing-480.webp 480w, images/drawing-720.webp 720w" sizes="(max-width: 759px) 50vw, 340px" alt="Drawing a path over a backyard plan, with Undo, Add, Cancel and Finish controls.">
+          <img data-shot="measure" aria-hidden="true" src="images/measure-720.webp" srcset="images/measure-480.webp 480w, images/measure-720.webp 720w" sizes="(max-width: 759px) 50vw, 340px" alt="A selected pool outline showing its perimeter of 100 feet and its area in acres.">
+          <img data-shot="inspector" aria-hidden="true" src="images/inspector-720.webp" srcset="images/inspector-480.webp 480w, images/inspector-720.webp 720w" sizes="(max-width: 759px) 50vw, 340px" alt="The Lincoln Memorial selected on a map of Washington, with its notes and measurements.">
+          <img data-shot="layers" aria-hidden="true" src="images/layers-720.webp" srcset="images/layers-480.webp 480w, images/layers-720.webp 720w" sizes="(max-width: 759px) 50vw, 340px" alt="The Layers tab over a hunting lease, offering Standard, Satellite and Hybrid base maps.">
+          <img data-shot="export" aria-hidden="true" src="images/export-720.webp" srcset="images/export-480.webp 480w, images/export-720.webp 720w" sizes="(max-width: 759px) 50vw, 340px" alt="The Document tab with Import and Export, over the Cape Canaveral map.">
+          <img data-shot="monuments" aria-hidden="true" src="images/monuments-720.webp" srcset="images/monuments-480.webp 480w, images/monuments-720.webp 720w" sizes="(max-width: 759px) 50vw, 340px" alt="Monuments of the National Mall marked on satellite imagery, with a walking route between them.">
+          <img data-shot="plot" aria-hidden="true" src="images/plot-720.webp" srcset="images/plot-480.webp 480w, images/plot-720.webp 720w" sizes="(max-width: 759px) 50vw, 340px" alt="An 80-acre lease in the Ozarks with food plots, stands, trails and a creek drawn over it.">
+          <span class="island"></span>
+        </div>
+        <span class="side-button"></span>
+      </div>
+      <figcaption class="caption">
+        <span class="place">Cape Canaveral, Florida</span>
+        <span class="coords">28°33′ N 80°38′ W</span>
+      </figcaption>
+    </figure>
+  </div>
+
+  <section class="chapter hero" data-shot="overview" data-place="Cape Canaveral, Florida" data-coords="28°33′ N 80°38′ W">
+    <div class="copy lead">
+      <p class="brand"><img src="images/icon.svg" alt="" width="52" height="52">Platmark</p>
+      <h1>Mark, measure and annotate maps.</h1>
+    </div>
+    <div class="copy">
+      <p>A map editor for iPhone, iPad and Mac. Draw property lines, measure distances and areas,
+      and keep it all in an open file that any GIS tool can read.</p>
+      <!-- Swap for Apple's official badge, linked to the listing, once the app is live. -->
+      <p class="store">Coming soon to the App Store</p>
+    </div>
+  </section>
+
+  <section class="chapter" data-side="right" data-shot="drawing" data-place="Bend, Oregon" data-coords="44°04′ N 121°19′ W">
+    <div class="copy">
+      <h2>Draw it the way you’d sketch it</h2>
+      <p>Drop a marker at the crosshair, at a typed coordinate, or where you’re standing. Draw paths
+      and areas point by point or freehand, add circles and regular polygons, or walk a boundary
+      and watch it appear as you go.</p>
+      <p>Drag any point to adjust a shape. Points snap to one another, so shared edges stay shared.</p>
+    </div>
+  </section>
+
+  <section class="chapter" data-shot="measure" data-place="Bend, Oregon" data-coords="44°04′ N 121°19′ W">
+    <div class="copy">
+      <h2>See the numbers as you draw</h2>
+      <p>Lengths, areas and perimeters update with every point. Each map keeps its own units:
+      metric, imperial or nautical.</p>
+      <p>Coordinates read in decimal degrees, degrees-minutes-seconds, UTM or MGRS, and you can
+      type or paste any of them.</p>
+    </div>
+  </section>
+
+  <section class="chapter" data-side="right" data-shot="inspector" data-place="Washington, D.C." data-coords="38°54′ N 77°02′ W">
+    <div class="copy">
+      <h2>Keep the details with the place</h2>
+      <p>Give every marker, path and area a colour, a symbol, a label and notes. Sort them into
+      groups, and hide a group when you don’t need it.</p>
+      <p>Attach photos to anything. A photo that knows where it was taken becomes a marker of its own.</p>
+    </div>
+  </section>
+
+  <section class="chapter" data-shot="layers" data-place="The Ozarks, Missouri" data-coords="37°57′ N 91°30′ W">
+    <div class="copy">
+      <h2>See what’s on the ground</h2>
+      <p>Switch between a street map, satellite imagery and a hybrid. Then add layers from US public
+      data: USGS topo maps and contours, rivers and wetlands, lake depth charts, geologic maps, and
+      county, public-land and parcel boundaries.</p>
+      <p>Have a site plan, survey or drone photo? Lay it over the map and line it up by hand.</p>
+    </div>
+  </section>
+
+  <section class="chapter" data-side="right" data-shot="export" data-place="Cape Canaveral, Florida" data-coords="28°33′ N 80°38′ W">
+    <div class="copy">
+      <h2>Send it in the format they use</h2>
+      <p>Import and export GeoJSON, KML, KMZ, GPX and CSV. Export a map as an image or a PDF to print
+      or send, or copy elements from one map and paste them into another.</p>
+    </div>
+  </section>
+
+  <section class="chapter" data-shot="monuments" data-place="Washington, D.C." data-coords="38°54′ N 77°02′ W">
+    <div class="copy">
+      <h2>Your map is a file you keep</h2>
+      <p>A Platmark map is plain GeoJSON, in a package beside its photos and overlays. Open it in
+      QGIS, geojson.io or anything else that reads GeoJSON, and keep it on your device or in
+      iCloud Drive.</p>
+      <pre><code>{
+  "type": "Feature",
+  "properties": {
+    "title": "Lincoln Memorial",
+    "stroke": "#FFD60A",
+    "fill-opacity": 0.35,
+    "platmark:symbol": "building.columns.fill"
+  },
+  "geometry": { "type": "Polygon", … }
+}</code></pre>
+      <p>There’s no account to create, and Platmark collects no data.</p>
+    </div>
+  </section>
+
+  <section class="chapter" data-side="right" data-shot="plot" data-place="The Ozarks, Missouri" data-coords="37°57′ N 91°30′ W">
+    <div class="copy">
+      <h2>Free for small maps</h2>
+      <p>Every feature works on maps of up to 10 elements. One purchase removes the limit on every
+      map, on all your devices. There’s no subscription.</p>
+      <p class="store">Coming soon to the App Store</p>
+    </div>
+  </section>
 </main>
+
+<footer class="colophon">
+  <p class="brand"><img src="images/icon.svg" alt="" width="32" height="32">Platmark</p>
+  <nav aria-label="Platmark pages">
+    <a href="support/">Support</a>
+    <a href="privacy/">Privacy policy</a>
+  </nav>
+  <p class="legal">© 2026 Ouroboros Technologies</p>
+</footer>
+
+<script src="home.js" defer></script>
 </body>
 </html>

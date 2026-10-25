@@ -1,0 +1,287 @@
+/* The product page. Colours are the app's: AccentColor and the AppIcon field, light and dark. */
+:root {
+  --paper: #F5F3F9;
+  --ink: #262035;
+  --muted: #5F5873;
+  --accent: #7B66AE;
+  --field: #A796C9;
+  --contour: rgb(123 102 174 / 0.24);
+  --rule: rgb(123 102 174 / 0.22);
+  --titanium: linear-gradient(135deg, #E4E0EA, #A9A3B4 45%, #D9D4DF 70%, #8F899B);
+  --titanium-solid: #B9B3C3;
+  --shadow: rgb(54 46 77 / 0.38);
+
+  --edge: clamp(20px, 4vw, 64px);
+  --gap: clamp(32px, 5vw, 88px);
+  /* Phone width. The device is about 2.1 widths tall; the rest of the height is the caption. */
+  --pw: min(340px, calc((100svh - 140px) / 2.1));
+  color-scheme: light dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #17141F;
+    --ink: #ECE8F4;
+    --muted: #A9A2BC;
+    --accent: #A796C9;
+    --field: #362E4D;
+    --contour: rgb(167 150 201 / 0.15);
+    --rule: rgb(167 150 201 / 0.2);
+    --titanium: linear-gradient(135deg, #5E586B, #34303D 45%, #4F4A5B 70%, #2A2632);
+    --titanium-solid: #45404F;
+    --shadow: rgb(0 0 0 / 0.55);
+  }
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 400 1.0625rem/1.6 "Overpass", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+a { color: var(--accent); text-underline-offset: 0.2em; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+/* The contour sheet the page sits on: the icon's own isolines, drifting slowly with the scroll. */
+.terrain {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  width: max(100vw, 140lvh);
+  aspect-ratio: 1;
+  translate: -50% 0;
+  background: var(--contour);
+  -webkit-mask: url("images/contours.svg") center / cover no-repeat;
+  mask: url("images/contours.svg") center / cover no-repeat;
+  pointer-events: none;
+  will-change: transform;
+}
+
+/* ---------- The pinned phone ---------- */
+
+.story { position: relative; }
+
+.stage {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  margin-bottom: -100svh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.phone { margin: 0; display: flex; flex-direction: column; align-items: center; }
+
+.device {
+  --ring: calc(var(--pw) * 0.012);
+  position: relative;
+  width: var(--pw);
+  padding: calc(var(--pw) * 0.032);
+  border-radius: calc(var(--pw) * 0.165);
+  background: #000;
+  box-shadow:
+    0 0 0 var(--ring) var(--titanium-solid),
+    0 calc(var(--pw) * 0.12) calc(var(--pw) * 0.24) calc(var(--pw) * -0.06) var(--shadow);
+}
+/* The titanium band, drawn as a border-box gradient behind the black glass. */
+.device::before {
+  content: "";
+  position: absolute;
+  inset: calc(var(--ring) * -1);
+  border-radius: calc(var(--pw) * 0.165 + var(--ring));
+  padding: var(--ring);
+  background: var(--titanium);
+  -webkit-mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+}
+/* Volume buttons on the left (the second one is a shadow copy), side button on the right. */
+.device::after {
+  content: "";
+  position: absolute;
+  left: calc(var(--ring) * -1 - 3px);
+  top: 24%;
+  width: 3px;
+  height: 7%;
+  border-radius: 2px 0 0 2px;
+  background: var(--titanium-solid);
+  box-shadow: 0 calc(var(--pw) * 0.2) 0 var(--titanium-solid);
+}
+.side-button {
+  position: absolute;
+  right: calc(var(--ring) * -1 - 3px);
+  top: 29%;
+  width: 3px;
+  height: 11%;
+  border-radius: 0 2px 2px 0;
+  background: var(--titanium-solid);
+}
+
+.screen {
+  --sw: calc(var(--pw) * 0.936);
+  position: relative;
+  aspect-ratio: 1320 / 2868;
+  border-radius: calc(var(--pw) * 0.135);
+  overflow: hidden;
+  background: #000;
+  isolation: isolate;
+}
+.screen img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+.screen img.is-active { opacity: 1; }
+.island {
+  position: absolute;
+  z-index: 1;
+  top: calc(var(--sw) * 0.026);
+  left: 50%;
+  translate: -50% 0;
+  width: calc(var(--sw) * 0.286);
+  height: calc(var(--sw) * 0.084);
+  border-radius: 999px;
+  background: #000;
+}
+
+/* Where the map on screen is, set the way a topo sheet labels a place. */
+.caption {
+  margin-top: 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  transition: opacity 0.25s ease;
+}
+.caption.is-changing { opacity: 0; }
+.place {
+  font: italic 400 1.0625rem/1.3 "Source Serif 4", Georgia, serif;
+  color: var(--ink);
+}
+.coords {
+  font-size: 0.875rem;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+}
+
+/* ---------- Chapters: centre phone, text on alternating sides ---------- */
+
+.chapter {
+  position: relative;
+  z-index: 1;
+  min-height: 100svh;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) calc(var(--pw) + 2 * var(--gap)) minmax(0, 1fr);
+  align-content: center;
+  padding: 0 var(--edge);
+}
+.copy { grid-column: 1; grid-row: 1; justify-self: end; width: 100%; max-width: 25rem; }
+.chapter[data-side="right"] .copy,
+.hero .copy:not(.lead) { grid-column: 3; justify-self: start; }
+
+h1, h2 { font-weight: 800; letter-spacing: -0.022em; margin: 0; text-wrap: balance; }
+h1 { font-size: clamp(2.5rem, 4.6vw, 4.25rem); line-height: 1.02; }
+h2 { font-size: clamp(1.75rem, 2.5vw, 2.375rem); line-height: 1.1; margin-bottom: 0.55em; }
+p { margin: 0 0 1em; text-wrap: pretty; }
+.copy p { color: var(--muted); }
+.copy > :last-child { margin-bottom: 0; }
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 0 0 28px;
+  font-weight: 800;
+  font-size: 1.375rem;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+.hero .copy:not(.lead) p:first-child { font-size: 1.1875rem; color: var(--ink); }
+
+.store {
+  display: inline-block;
+  margin-top: 0.75em;
+  padding: 0.7em 1.15em 0.6em;
+  border-radius: 12px;
+  background: var(--ink);
+  color: var(--paper) !important;
+  font-weight: 600;
+  font-size: 0.9375rem;
+}
+
+pre {
+  margin: 0 0 1.25em;
+  padding: 16px 18px;
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--paper) 80%, var(--field));
+  border: 1px solid var(--rule);
+  overflow-x: auto;
+  font: 0.8125rem/1.55 ui-monospace, "SF Mono", Menlo, monospace;
+  color: var(--ink);
+}
+
+.colophon {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 32px;
+  padding: 40px var(--edge) calc(40px + env(safe-area-inset-bottom));
+  border-top: 1px solid var(--rule);
+  background: var(--paper);
+}
+.colophon .brand { margin: 0; font-size: 1.125rem; gap: 10px; }
+.colophon nav { display: flex; gap: 24px; }
+.colophon .legal { margin: 0 0 0 auto; color: var(--muted); font-size: 0.9375rem; }
+
+/* ---------- Laptop: phone on the right, text on the left ---------- */
+
+@media (max-width: 1099px) {
+  .stage { justify-content: flex-end; padding-right: var(--edge); }
+  .chapter { grid-template-columns: minmax(0, 1fr) calc(var(--pw) + var(--gap)); }
+  .copy,
+  .chapter[data-side="right"] .copy,
+  .hero .copy:not(.lead) { grid-column: 1; grid-row: auto; justify-self: start; max-width: 30rem; }
+  .hero .copy.lead { margin-bottom: 28px; }
+}
+
+/* ---------- Phone: device pinned at the top, text scrolls up underneath ---------- */
+
+@media (max-width: 759px) {
+  :root { --pw: min(56vw, calc(54svh / 2.1)); }
+  .stage { justify-content: center; align-items: flex-start; padding: max(14px, env(safe-area-inset-top)) 0 0; }
+  .caption { display: none; }
+  .chapter {
+    display: block;
+    min-height: 0;
+    padding: 0 20px 30svh;
+    max-width: 34rem;
+    margin: 0 auto;
+  }
+  .hero { padding-top: calc(var(--pw) * 2.1 + max(14px, env(safe-area-inset-top)) + 32px); }
+  .chapter:last-child { padding-bottom: 10svh; }
+  .copy { max-width: none; }
+  .copy > * { will-change: opacity; }
+  .brand { margin-bottom: 16px; font-size: 1.25rem; }
+  .brand img { width: 40px; height: 40px; }
+  h1 { font-size: 2.25rem; }
+  h2 { font-size: 1.625rem; }
+  .hero .copy:not(.lead) p:first-child { font-size: 1.0625rem; }
+  .colophon { flex-direction: column; align-items: flex-start; }
+  .colophon .legal { margin: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .screen img, .caption { transition: none; }
+}
