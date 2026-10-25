@@ -1,0 +1,26 @@
+name: Release catalogue
+
+# Push a tag named catalogue-<anything> and every JSON file in catalogue/ is attached to a
+# release of that name. A tag on a commit that is not on main becomes a pre-release, which
+# releases/latest skips, so a branch's catalogue can be tested without reaching anyone's app.
+on:
+  push:
+    tags: ["catalogue-*"]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Publish
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          prerelease=""
+          git merge-base --is-ancestor "$GITHUB_SHA" origin/main || prerelease="--prerelease"
+          gh release create "$GITHUB_REF_NAME" catalogue/*.json --title "$GITHUB_REF_NAME" --notes "" $prerelease
