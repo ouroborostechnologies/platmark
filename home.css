@@ -219,15 +219,28 @@ p { margin: 0 0 1em; text-wrap: pretty; }
   font-size: 0.9375rem;
 }
 
-pre {
-  margin: 0 0 1.25em;
-  padding: 16px 18px;
-  border-radius: 14px;
-  background: color-mix(in srgb, var(--paper) 80%, var(--field));
-  border: 1px solid var(--rule);
-  overflow-x: auto;
-  font: 0.8125rem/1.55 ui-monospace, "SF Mono", Menlo, monospace;
+/* Platmark Pro's perks, ticked off in the accent ink. */
+.perks {
+  margin: 0 0 1em;
+  padding: 0;
+  list-style: none;
   color: var(--ink);
+}
+.perks li {
+  position: relative;
+  padding-left: 1.6em;
+  margin-bottom: 0.35em;
+}
+.perks li::before {
+  content: "";
+  position: absolute;
+  left: 0.1em;
+  top: 0.38em;
+  width: 0.7em;
+  height: 0.38em;
+  border: solid var(--accent);
+  border-width: 0 0 2.5px 2.5px;
+  rotate: -45deg;
 }
 
 .colophon {

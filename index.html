@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Platmark</title>
-  <meta name="description" content="A map editor for iPhone, iPad and Mac. Mark places, draw property lines, measure distances and areas, and keep it all in an open GeoJSON file.">
+  <meta name="description" content="Map tools for landowners, on iPhone, iPad and Mac. Mark points of interest, draw boundaries, measure acreage and distances, and overlay surveys on satellite, topo and parcel maps.">
   <meta name="theme-color" content="#F5F3F9" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#17141F" media="(prefers-color-scheme: dark)">
   <link rel="icon" href="images/icon.svg" type="image/svg+xml">
@@ -23,110 +23,116 @@
     <figure class="phone">
       <div class="device">
         <div class="screen">
-          <img data-shot="overview" class="is-active" src="images/overview-720.webp" srcset="images/overview-480.webp 480w, images/overview-720.webp 720w" sizes="(max-width: 759px) 50vw, 340px" alt="Platmark showing NASA landmarks at Cape Canaveral on satellite imagery, with the Markers list open.">
-          <img data-shot="drawing" aria-hidden="true" src="images/drawing-720.webp" srcset="images/drawing-480.webp 480w, images/drawing-720.webp 720w" sizes="(max-width: 759px) 50vw, 340px" alt="Drawing a path over a backyard plan, with Undo, Add, Cancel and Finish controls.">
-          <img data-shot="measure" aria-hidden="true" src="images/measure-720.webp" srcset="images/measure-480.webp 480w, images/measure-720.webp 720w" sizes="(max-width: 759px) 50vw, 340px" alt="A selected pool outline showing its perimeter of 100 feet and its area in acres.">
-          <img data-shot="inspector" aria-hidden="true" src="images/inspector-720.webp" srcset="images/inspector-480.webp 480w, images/inspector-720.webp 720w" sizes="(max-width: 759px) 50vw, 340px" alt="The Lincoln Memorial selected on a map of Washington, with its notes and measurements.">
-          <img data-shot="layers" aria-hidden="true" src="images/layers-720.webp" srcset="images/layers-480.webp 480w, images/layers-720.webp 720w" sizes="(max-width: 759px) 50vw, 340px" alt="The Layers tab over a hunting lease, offering Standard, Satellite and Hybrid base maps.">
-          <img data-shot="export" aria-hidden="true" src="images/export-720.webp" srcset="images/export-480.webp 480w, images/export-720.webp 720w" sizes="(max-width: 759px) 50vw, 340px" alt="The Document tab with Import and Export, over the Cape Canaveral map.">
-          <img data-shot="monuments" aria-hidden="true" src="images/monuments-720.webp" srcset="images/monuments-480.webp 480w, images/monuments-720.webp 720w" sizes="(max-width: 759px) 50vw, 340px" alt="Monuments of the National Mall marked on satellite imagery, with a walking route between them.">
-          <img data-shot="plot" aria-hidden="true" src="images/plot-720.webp" srcset="images/plot-480.webp 480w, images/plot-720.webp 720w" sizes="(max-width: 759px) 50vw, 340px" alt="An 80-acre lease in the Ozarks with food plots, stands, trails and a creek drawn over it.">
+          <img data-shot="overview" class="is-active" src="images/overview-720.webp" srcset="images/overview-480.webp 480w, images/overview-720.webp 720w" sizes="(max-width: 759px) 50vw, 340px" alt="Platmark showing Groom Lake, Nevada on satellite imagery, with marked sites, a drawn area and a 1968 aerial photograph laid over the map.">
+          <img data-shot="markers" aria-hidden="true" src="images/markers-720.webp" srcset="images/markers-480.webp 480w, images/markers-720.webp 720w" sizes="(max-width: 759px) 50vw, 340px" alt="The Markers list, with the map’s roads, sites and landmarks sorted into groups.">
+          <img data-shot="boundary" aria-hidden="true" src="images/boundary-720.webp" srcset="images/boundary-480.webp 480w, images/boundary-720.webp 720w" sizes="(max-width: 759px) 50vw, 340px" alt="Drawing an area around the Groom Lake lakebed, reading 11 miles of perimeter and 5,154 acres as it goes.">
+          <img data-shot="path" aria-hidden="true" src="images/path-720.webp" srcset="images/path-480.webp 480w, images/path-720.webp 720w" sizes="(max-width: 759px) 50vw, 340px" alt="Drawing a path along a runway, showing its length of 2.3 miles and a bearing of 184°.">
+          <img data-shot="details" aria-hidden="true" src="images/details-720.webp" srcset="images/details-480.webp 480w, images/details-720.webp 720w" sizes="(max-width: 759px) 50vw, 340px" alt="A selected marker with its notes, its group, and a place to attach photos.">
+          <img data-shot="layers" aria-hidden="true" src="images/layers-720.webp" srcset="images/layers-480.webp 480w, images/layers-720.webp 720w" sizes="(max-width: 759px) 50vw, 340px" alt="The Layers tab, offering Standard, Satellite and Hybrid base maps, a hillshade data layer and an image overlay.">
+          <img data-shot="overlay" aria-hidden="true" src="images/overlay-720.webp" srcset="images/overlay-480.webp 480w, images/overlay-720.webp 720w" sizes="(max-width: 759px) 50vw, 340px" alt="Placing a 1968 aerial photograph over the map, with its width, height and rotation.">
+          <img data-shot="export" aria-hidden="true" src="images/export-720.webp" srcset="images/export-480.webp 480w, images/export-720.webp 720w" sizes="(max-width: 759px) 50vw, 340px" alt="The Document tab, with the map’s name, its default units, and Import, Export Document and Export Map Image.">
           <span class="island"></span>
         </div>
         <span class="side-button"></span>
       </div>
       <figcaption class="caption">
-        <span class="place">Cape Canaveral, Florida</span>
-        <span class="coords">28°33′ N 80°38′ W</span>
+        <span class="place">Groom Lake, Nevada</span>
+        <span class="coords">37°14′ N 115°48′ W</span>
       </figcaption>
     </figure>
   </div>
 
-  <section class="chapter hero" data-shot="overview" data-place="Cape Canaveral, Florida" data-coords="28°33′ N 80°38′ W">
+  <section class="chapter hero" data-shot="overview" data-place="Groom Lake, Nevada" data-coords="37°14′ N 115°48′ W">
     <div class="copy lead">
       <p class="brand"><img src="images/icon.svg" alt="" width="52" height="52">Platmark</p>
-      <h1>Mark, measure and annotate maps.</h1>
+      <h1>Map tools for landowners.</h1>
     </div>
     <div class="copy">
-      <p>A map editor for iPhone, iPad and Mac. Draw property lines, measure distances and areas,
-      and keep it all in an open file that any GIS tool can read.</p>
+      <p>Plan a project, scout a lease or walk a property line. Draw and measure it over satellite
+      and topo, then share it as a PDF. On iPhone, iPad and Mac.</p>
       <!-- Swap for Apple's official badge, linked to the listing, once the app is live. -->
       <p class="store">Coming soon to the App Store</p>
     </div>
   </section>
 
-  <section class="chapter" data-side="right" data-shot="drawing" data-place="Bend, Oregon" data-coords="44°04′ N 121°19′ W">
+  <section class="chapter" data-side="right" data-shot="markers" data-place="Groom Lake, Nevada" data-coords="37°14′ N 115°48′ W">
     <div class="copy">
-      <h2>Draw it the way you’d sketch it</h2>
-      <p>Drop a marker at the crosshair, at a typed coordinate, or where you’re standing. Draw paths
-      and areas point by point or freehand, add circles and regular polygons, or walk a boundary
-      and watch it appear as you go.</p>
-      <p>Drag any point to adjust a shape. Points snap to one another, so shared edges stay shared.</p>
+      <h2>Mark everything on your land</h2>
+      <p>Drop a pin on the well, the gate, the septic tank or the corner stake: at the crosshair,
+      at a typed coordinate, or right where you’re standing.</p>
+      <p>Give each one a colour, a symbol and a label, and sort them into groups you can hide when
+      you don’t need them.</p>
     </div>
   </section>
 
-  <section class="chapter" data-shot="measure" data-place="Bend, Oregon" data-coords="44°04′ N 121°19′ W">
+  <section class="chapter" data-shot="boundary" data-place="Groom Lake, Nevada" data-coords="37°14′ N 115°48′ W">
     <div class="copy">
-      <h2>See the numbers as you draw</h2>
-      <p>Lengths, areas and perimeters update with every point. Each map keeps its own units:
-      metric, imperial or nautical.</p>
-      <p>Coordinates read in decimal degrees, degrees-minutes-seconds, UTM or MGRS, and you can
-      type or paste any of them.</p>
+      <h2>Know your acreage</h2>
+      <p>Trace a pasture, a timber stand or the whole property, and watch its area and perimeter
+      add up with every point. Or walk the line with your phone and let the boundary draw itself.</p>
+      <p>Drag any point to adjust it. Points snap to one another, so shared edges stay shared.</p>
     </div>
   </section>
 
-  <section class="chapter" data-side="right" data-shot="inspector" data-place="Washington, D.C." data-coords="38°54′ N 77°02′ W">
+  <section class="chapter" data-side="right" data-shot="path" data-place="Groom Lake, Nevada" data-coords="37°14′ N 115°48′ W">
+    <div class="copy">
+      <h2>Measure before you build</h2>
+      <p>Lay out a fence line, a driveway or a water line and see its length and bearing as you
+      draw. Each map keeps its own units: imperial, metric or nautical.</p>
+      <p>Coordinates read in decimal degrees, degrees-minutes-seconds, UTM or MGRS, and you can type
+      or paste any of them.</p>
+    </div>
+  </section>
+
+  <section class="chapter" data-shot="details" data-place="Groom Lake, Nevada" data-coords="37°14′ N 115°48′ W">
     <div class="copy">
       <h2>Keep the details with the place</h2>
-      <p>Give every marker, path and area a colour, a symbol, a label and notes. Sort them into
-      groups, and hide a group when you don’t need it.</p>
-      <p>Attach photos to anything. A photo that knows where it was taken becomes a marker of its own.</p>
+      <p>Add notes to anything you draw: when the culvert was replaced, which stand works in a north
+      wind, who holds the easement.</p>
+      <p>Attach photos too. A photo that knows where it was taken becomes a marker of its own.</p>
     </div>
   </section>
 
-  <section class="chapter" data-shot="layers" data-place="The Ozarks, Missouri" data-coords="37°57′ N 91°30′ W">
+  <section class="chapter" data-side="right" data-shot="layers" data-place="Groom Lake, Nevada" data-coords="37°14′ N 115°48′ W">
     <div class="copy">
-      <h2>See what’s on the ground</h2>
-      <p>Switch between a street map, satellite imagery and a hybrid. Then add layers from US public
-      data: USGS topo maps and contours, rivers and wetlands, lake depth charts, geologic maps, and
-      county, public-land and parcel boundaries.</p>
-      <p>Have a site plan, survey or drone photo? Lay it over the map and line it up by hand.</p>
+      <h2>See what the satellite can’t</h2>
+      <p>Switch between a street map, satellite imagery and a hybrid. Then add dozens of layers from
+      public data: parcel lines, public land, wetlands, USGS topo maps, contours and shaded relief,
+      lake depth charts, geology and more.</p>
+      <p>Data layers cover the United States; coverage elsewhere is limited.</p>
     </div>
   </section>
 
-  <section class="chapter" data-side="right" data-shot="export" data-place="Cape Canaveral, Florida" data-coords="28°33′ N 80°38′ W">
+  <section class="chapter" data-shot="overlay" data-place="Groom Lake, Nevada" data-coords="37°14′ N 115°48′ W">
     <div class="copy">
-      <h2>Send it in the format they use</h2>
-      <p>Import and export GeoJSON, KML, KMZ, GPX and CSV. Export a map as an image or a PDF to print
-      or send, or copy elements from one map and paste them into another.</p>
+      <h2>Lay your survey over the map</h2>
+      <p>Have a plat, a survey, a site plan or a drone photo? Put it on the map, then drag, pinch and
+      turn it until the fence lines meet.</p>
     </div>
   </section>
 
-  <section class="chapter" data-shot="monuments" data-place="Washington, D.C." data-coords="38°54′ N 77°02′ W">
+  <section class="chapter" data-side="right" data-shot="export" data-place="Groom Lake, Nevada" data-coords="37°14′ N 115°48′ W">
     <div class="copy">
-      <h2>Your map is a file you keep</h2>
-      <p>A Platmark map is plain GeoJSON, in a package beside its photos and overlays. Open it in
-      QGIS, geojson.io or anything else that reads GeoJSON, and keep it on your device or in
-      iCloud Drive.</p>
-      <pre><code>{
-  "type": "Feature",
-  "properties": {
-    "title": "Lincoln Memorial",
-    "stroke": "#FFD60A",
-    "fill-opacity": 0.35,
-    "platmark:symbol": "building.columns.fill"
-  },
-  "geometry": { "type": "Polygon", … }
-}</code></pre>
-      <p>There’s no account to create, and Platmark collects no data.</p>
+      <h2>Hand it to whoever needs it</h2>
+      <p>Save a map as an image or a PDF for the contractor, the forester or the county office. Bring
+      in and send out GeoJSON, KML, KMZ, GPX and CSV, so it opens in Google Earth or any GIS tool.</p>
+      <p>Your maps are files you keep, on your device or in iCloud Drive. There’s no account to
+      create, and Platmark collects no data.</p>
     </div>
   </section>
 
-  <section class="chapter" data-side="right" data-shot="plot" data-place="The Ozarks, Missouri" data-coords="37°57′ N 91°30′ W">
+  <section class="chapter" data-shot="overview" data-place="Groom Lake, Nevada" data-coords="37°14′ N 115°48′ W">
     <div class="copy">
-      <h2>Free for small maps</h2>
-      <p>Every feature works on maps of up to 10 elements. One purchase removes the limit on every
-      map, on all your devices. There’s no subscription.</p>
+      <h2>Free for small maps. Pro for the whole place.</h2>
+      <p>Every feature works on maps of up to 10 markers, paths and areas, and opening a map is
+      always free. Platmark Pro lifts the limit.</p>
+      <ul class="perks">
+        <li>Unlimited markers, paths and areas on every map</li>
+        <li>Every future Pro feature included</li>
+        <li>One purchase, no subscription</li>
+        <li>Yours on iPhone, iPad and Mac</li>
+        <li>Shared with your family</li>
+      </ul>
       <p class="store">Coming soon to the App Store</p>
     </div>
   </section>
