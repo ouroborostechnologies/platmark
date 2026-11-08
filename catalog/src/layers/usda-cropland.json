@@ -1,0 +1,335 @@
+{
+  "datasets": {
+    "usda.cdl": {
+      "name": "Cropland Data Layer",
+      "summary": "A yearly map of which crop was grown where, at 30 m. It reached the whole conterminous United States in 2008, and earlier years cover fewer states.",
+      "provider": "usda",
+      "officialURL": "https://www.nass.usda.gov/Research_and_Science/Cropland/SARS1a.php",
+      "serviceURL": "https://pdi.scinet.usda.gov/image/rest/services/CDL_WM/ImageServer",
+      "attribution": "USDA National Agricultural Statistics Service Cropland Data Layer",
+      "license": "usPublicDomain",
+      "coverage": "conterminousUS"
+    }
+  },
+  "layers": [
+    {
+      "id": "usda.cdl",
+      "name": "Crop History",
+      "summary": "Which crop was grown in each field, year by year. Complete from 2008; earlier years cover fewer states.",
+      "category": "historical",
+      "dataset": "usda.cdl",
+      "minimumZoom": 5,
+      "maximumZoom": 18,
+      "defaultOpacity": 0.8,
+      "time": {
+        "cadence": "yearly",
+        "discovery": {
+          "type": "fixed",
+          "editions": [
+            {
+              "id": "cdl-1997",
+              "date": "1997",
+              "detail": "Some states only",
+              "source": {
+                "type": "arcGISImageExport",
+                "serviceURL": "https://pdi.scinet.usda.gov/image/rest/services/CDL_WM/ImageServer",
+                "additionalQuery": {"time": "852076800000"},
+                "imageFormat": "png"
+              }
+            },
+            {
+              "id": "cdl-1998",
+              "date": "1998",
+              "detail": "Some states only",
+              "source": {
+                "type": "arcGISImageExport",
+                "serviceURL": "https://pdi.scinet.usda.gov/image/rest/services/CDL_WM/ImageServer",
+                "additionalQuery": {"time": "883612800000"},
+                "imageFormat": "png"
+              }
+            },
+            {
+              "id": "cdl-1999",
+              "date": "1999",
+              "detail": "Some states only",
+              "source": {
+                "type": "arcGISImageExport",
+                "serviceURL": "https://pdi.scinet.usda.gov/image/rest/services/CDL_WM/ImageServer",
+                "additionalQuery": {"time": "915148800000"},
+                "imageFormat": "png"
+              }
+            },
+            {
+              "id": "cdl-2000",
+              "date": "2000",
+              "detail": "Some states only",
+              "source": {
+                "type": "arcGISImageExport",
+                "serviceURL": "https://pdi.scinet.usda.gov/image/rest/services/CDL_WM/ImageServer",
+                "additionalQuery": {"time": "946684800000"},
+                "imageFormat": "png"
+              }
+            },
+            {
+              "id": "cdl-2001",
+              "date": "2001",
+              "detail": "Some states only",
+              "source": {
+                "type": "arcGISImageExport",
+                "serviceURL": "https://pdi.scinet.usda.gov/image/rest/services/CDL_WM/ImageServer",
+                "additionalQuery": {"time": "978307200000"},
+                "imageFormat": "png"
+              }
+            },
+            {
+              "id": "cdl-2002",
+              "date": "2002",
+              "detail": "Some states only",
+              "source": {
+                "type": "arcGISImageExport",
+                "serviceURL": "https://pdi.scinet.usda.gov/image/rest/services/CDL_WM/ImageServer",
+                "additionalQuery": {"time": "1009843200000"},
+                "imageFormat": "png"
+              }
+            },
+            {
+              "id": "cdl-2003",
+              "date": "2003",
+              "detail": "Some states only",
+              "source": {
+                "type": "arcGISImageExport",
+                "serviceURL": "https://pdi.scinet.usda.gov/image/rest/services/CDL_WM/ImageServer",
+                "additionalQuery": {"time": "1041379200000"},
+                "imageFormat": "png"
+              }
+            },
+            {
+              "id": "cdl-2004",
+              "date": "2004",
+              "detail": "Some states only",
+              "source": {
+                "type": "arcGISImageExport",
+                "serviceURL": "https://pdi.scinet.usda.gov/image/rest/services/CDL_WM/ImageServer",
+                "additionalQuery": {"time": "1072915200000"},
+                "imageFormat": "png"
+              }
+            },
+            {
+              "id": "cdl-2005",
+              "date": "2005",
+              "detail": "Some states only",
+              "source": {
+                "type": "arcGISImageExport",
+                "serviceURL": "https://pdi.scinet.usda.gov/image/rest/services/CDL_WM/ImageServer",
+                "additionalQuery": {"time": "1104537600000"},
+                "imageFormat": "png"
+              }
+            },
+            {
+              "id": "cdl-2006",
+              "date": "2006",
+              "detail": "Some states only",
+              "source": {
+                "type": "arcGISImageExport",
+                "serviceURL": "https://pdi.scinet.usda.gov/image/rest/services/CDL_WM/ImageServer",
+                "additionalQuery": {"time": "1136073600000"},
+                "imageFormat": "png"
+              }
+            },
+            {
+              "id": "cdl-2007",
+              "date": "2007",
+              "detail": "Some states only",
+              "source": {
+                "type": "arcGISImageExport",
+                "serviceURL": "https://pdi.scinet.usda.gov/image/rest/services/CDL_WM/ImageServer",
+                "additionalQuery": {"time": "1167609600000"},
+                "imageFormat": "png"
+              }
+            },
+            {
+              "id": "cdl-2008",
+              "date": "2008",
+              "source": {
+                "type": "arcGISImageExport",
+                "serviceURL": "https://pdi.scinet.usda.gov/image/rest/services/CDL_WM/ImageServer",
+                "additionalQuery": {"time": "1199145600000"},
+                "imageFormat": "png"
+              }
+            },
+            {
+              "id": "cdl-2009",
+              "date": "2009",
+              "source": {
+                "type": "arcGISImageExport",
+                "serviceURL": "https://pdi.scinet.usda.gov/image/rest/services/CDL_WM/ImageServer",
+                "additionalQuery": {"time": "1230768000000"},
+                "imageFormat": "png"
+              }
+            },
+            {
+              "id": "cdl-2010",
+              "date": "2010",
+              "source": {
+                "type": "arcGISImageExport",
+                "serviceURL": "https://pdi.scinet.usda.gov/image/rest/services/CDL_WM/ImageServer",
+                "additionalQuery": {"time": "1262304000000"},
+                "imageFormat": "png"
+              }
+            },
+            {
+              "id": "cdl-2011",
+              "date": "2011",
+              "source": {
+                "type": "arcGISImageExport",
+                "serviceURL": "https://pdi.scinet.usda.gov/image/rest/services/CDL_WM/ImageServer",
+                "additionalQuery": {"time": "1293840000000"},
+                "imageFormat": "png"
+              }
+            },
+            {
+              "id": "cdl-2012",
+              "date": "2012",
+              "source": {
+                "type": "arcGISImageExport",
+                "serviceURL": "https://pdi.scinet.usda.gov/image/rest/services/CDL_WM/ImageServer",
+                "additionalQuery": {"time": "1325376000000"},
+                "imageFormat": "png"
+              }
+            },
+            {
+              "id": "cdl-2013",
+              "date": "2013",
+              "source": {
+                "type": "arcGISImageExport",
+                "serviceURL": "https://pdi.scinet.usda.gov/image/rest/services/CDL_WM/ImageServer",
+                "additionalQuery": {"time": "1356998400000"},
+                "imageFormat": "png"
+              }
+            },
+            {
+              "id": "cdl-2014",
+              "date": "2014",
+              "source": {
+                "type": "arcGISImageExport",
+                "serviceURL": "https://pdi.scinet.usda.gov/image/rest/services/CDL_WM/ImageServer",
+                "additionalQuery": {"time": "1388534400000"},
+                "imageFormat": "png"
+              }
+            },
+            {
+              "id": "cdl-2015",
+              "date": "2015",
+              "source": {
+                "type": "arcGISImageExport",
+                "serviceURL": "https://pdi.scinet.usda.gov/image/rest/services/CDL_WM/ImageServer",
+                "additionalQuery": {"time": "1420070400000"},
+                "imageFormat": "png"
+              }
+            },
+            {
+              "id": "cdl-2016",
+              "date": "2016",
+              "source": {
+                "type": "arcGISImageExport",
+                "serviceURL": "https://pdi.scinet.usda.gov/image/rest/services/CDL_WM/ImageServer",
+                "additionalQuery": {"time": "1451606400000"},
+                "imageFormat": "png"
+              }
+            },
+            {
+              "id": "cdl-2017",
+              "date": "2017",
+              "source": {
+                "type": "arcGISImageExport",
+                "serviceURL": "https://pdi.scinet.usda.gov/image/rest/services/CDL_WM/ImageServer",
+                "additionalQuery": {"time": "1483228800000"},
+                "imageFormat": "png"
+              }
+            },
+            {
+              "id": "cdl-2018",
+              "date": "2018",
+              "source": {
+                "type": "arcGISImageExport",
+                "serviceURL": "https://pdi.scinet.usda.gov/image/rest/services/CDL_WM/ImageServer",
+                "additionalQuery": {"time": "1514764800000"},
+                "imageFormat": "png"
+              }
+            },
+            {
+              "id": "cdl-2019",
+              "date": "2019",
+              "source": {
+                "type": "arcGISImageExport",
+                "serviceURL": "https://pdi.scinet.usda.gov/image/rest/services/CDL_WM/ImageServer",
+                "additionalQuery": {"time": "1546300800000"},
+                "imageFormat": "png"
+              }
+            },
+            {
+              "id": "cdl-2020",
+              "date": "2020",
+              "source": {
+                "type": "arcGISImageExport",
+                "serviceURL": "https://pdi.scinet.usda.gov/image/rest/services/CDL_WM/ImageServer",
+                "additionalQuery": {"time": "1577836800000"},
+                "imageFormat": "png"
+              }
+            },
+            {
+              "id": "cdl-2021",
+              "date": "2021",
+              "source": {
+                "type": "arcGISImageExport",
+                "serviceURL": "https://pdi.scinet.usda.gov/image/rest/services/CDL_WM/ImageServer",
+                "additionalQuery": {"time": "1609459200000"},
+                "imageFormat": "png"
+              }
+            },
+            {
+              "id": "cdl-2022",
+              "date": "2022",
+              "source": {
+                "type": "arcGISImageExport",
+                "serviceURL": "https://pdi.scinet.usda.gov/image/rest/services/CDL_WM/ImageServer",
+                "additionalQuery": {"time": "1640995200000"},
+                "imageFormat": "png"
+              }
+            },
+            {
+              "id": "cdl-2023",
+              "date": "2023",
+              "source": {
+                "type": "arcGISImageExport",
+                "serviceURL": "https://pdi.scinet.usda.gov/image/rest/services/CDL_WM/ImageServer",
+                "additionalQuery": {"time": "1672531200000"},
+                "imageFormat": "png"
+              }
+            },
+            {
+              "id": "cdl-2024",
+              "date": "2024",
+              "source": {
+                "type": "arcGISImageExport",
+                "serviceURL": "https://pdi.scinet.usda.gov/image/rest/services/CDL_WM/ImageServer",
+                "additionalQuery": {"time": "1704067200000"},
+                "imageFormat": "png"
+              }
+            },
+            {
+              "id": "cdl-2025",
+              "date": "2025",
+              "source": {
+                "type": "arcGISImageExport",
+                "serviceURL": "https://pdi.scinet.usda.gov/image/rest/services/CDL_WM/ImageServer",
+                "additionalQuery": {"time": "1735689600000"},
+                "imageFormat": "png"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

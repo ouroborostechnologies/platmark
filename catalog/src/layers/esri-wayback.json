@@ -1,0 +1,42 @@
+{
+  "datasets": {
+    "esri.wayback": {
+      "name": "World Imagery Wayback",
+      "summary": "Every published version of Esri's World Imagery basemap since 2014. Dates are the day each picture was captured, which differ from place to place.",
+      "provider": "esri",
+      "officialURL": "https://livingatlas.arcgis.com/wayback",
+      "serviceURL": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/MapServer",
+      "attribution": "Esri, Vantor, Earthstar Geographics, and the GIS User Community",
+      "license": "esriHosted",
+      "coverage": "global",
+      "useStatus": {
+        "restricted": "Esri's terms for Wayback and Living Atlas content appear to bar a paid app that is not an Esri customer. Needs Esri's written confirmation."
+      }
+    }
+  },
+  "layers": [
+    {
+      "id": "esri.wayback",
+      "name": "Satellite History",
+      "summary": "Past satellite imagery of this place, by the date each picture was taken. Worldwide, back to about 2010, with the dates that actually exist here.",
+      "category": "historical",
+      "dataset": "esri.wayback",
+      "source": {
+        "type": "wmts",
+        "urlTemplate": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/43291/{z}/{y}/{x}"
+      },
+      "maximumZoom": 19,
+      "time": {
+        "range": ["2010", "2026"],
+        "cadence": "byPlace",
+        "discovery": {
+          "type": "wayback",
+          "configURL": "https://s3-us-west-2.amazonaws.com/config.maptiles.arcgis.com/waybackconfig.json",
+          "tileRoot": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile",
+          "tilemapURL": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/MapServer/tilemap"
+        },
+        "preloadAllowance": 6
+      }
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "datasets": {
+    "usgs.htmc": {
+      "name": "USGS Historical Topographic Map Collection",
+      "summary": "Scanned USGS topographic maps up to 2006, roughly 180,000 sheets. Which years exist depends entirely on where you are.",
+      "provider": "usgs",
+      "officialURL": "https://www.usgs.gov/programs/national-geospatial-program/topographic-maps",
+      "serviceURL": "https://historical1.arcgis.com/arcgis/rest/services/USGS_Historical_Topographic_Maps/ImageServer",
+      "attribution": "Historical topographic maps courtesy of the U.S. Geological Survey",
+      "license": "esriHosted",
+      "coverage": "unitedStates",
+      "useStatus": {
+        "restricted": "Esri's terms for Wayback and Living Atlas content appear to bar a paid app that is not an Esri customer. Needs Esri's written confirmation."
+      }
+    }
+  },
+  "layers": [
+    {
+      "id": "usgs.htmc",
+      "name": "Historical Topo Maps",
+      "summary": "Scanned USGS topographic maps back to the 1880s. Which years exist depends on where you are.",
+      "category": "historical",
+      "dataset": "usgs.htmc",
+      "source": {
+        "type": "arcGISImageExport",
+        "serviceURL": "https://historical1.arcgis.com/arcgis/rest/services/USGS_Historical_Topographic_Maps/ImageServer",
+        "imageFormat": "png"
+      },
+      "minimumZoom": 7,
+      "maximumZoom": 18,
+      "time": {
+        "range": ["1879", "2006"],
+        "cadence": "byPlace",
+        "discovery": {
+          "type": "imageCatalog",
+          "serviceURL": "https://historical1.arcgis.com/arcgis/rest/services/USGS_Historical_Topographic_Maps/ImageServer",
+          "nameField": "Map_Name",
+          "yearField": "Year"
+        }
+      }
+    }
+  ]
+}

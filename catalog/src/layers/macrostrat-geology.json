@@ -1,0 +1,52 @@
+{
+  "datasets": {
+    "macrostrat.carto": {
+      "name": "Macrostrat Geologic Map",
+      "summary": "A harmonised global geologic map assembled from national, state and regional surveys, carrying formation names, lithology and interval ages for each mapped unit.",
+      "provider": "macrostrat",
+      "officialURL": "https://macrostrat.org/map",
+      "serviceURL": "https://tiles.macrostrat.org/carto/{z}/{x}/{y}",
+      "attribution": "Geologic map data from Macrostrat (CC BY 4.0), compiled from national and regional geological surveys",
+      "license": "ccBy40",
+      "coverage": "global"
+    }
+  },
+  "layers": [
+    {
+      "id": "macrostrat.units",
+      "name": "Surface Geology",
+      "summary": "Mapped geological units drawn in their published colours.",
+      "category": "geology",
+      "dataset": "macrostrat.carto",
+      "source": {
+        "type": "vectorTiles",
+        "urlTemplate": "https://tiles.macrostrat.org/carto/{z}/{x}/{y}",
+        "sourceLayer": "units"
+      },
+      "render": {
+        "type": "dataDrivenFill",
+        "colorAttribute": "color",
+        "fallbackColor": "#9E9E9E",
+        "outlineColor": "#000000",
+        "outlineOpacity": 0.2
+      },
+      "maximumZoom": 16,
+      "defaultOpacity": 0.6
+    },
+    {
+      "id": "macrostrat.lines",
+      "name": "Faults & Contacts",
+      "summary": "Structural lines from the geologic map — faults, thrusts and the contacts between mapped units.",
+      "category": "geology",
+      "dataset": "macrostrat.carto",
+      "source": {
+        "type": "vectorTiles",
+        "urlTemplate": "https://tiles.macrostrat.org/carto/{z}/{x}/{y}",
+        "sourceLayer": "lines"
+      },
+      "render": {"type": "line", "color": "#2B2B2B", "width": 1.1},
+      "maximumZoom": 16,
+      "defaultOpacity": 0.9
+    }
+  ]
+}

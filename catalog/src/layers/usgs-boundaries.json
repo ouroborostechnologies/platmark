@@ -1,0 +1,81 @@
+{
+  "datasets": {
+    "usgs.nbd": {
+      "name": "National Boundaries Dataset",
+      "summary": "The National Map's governmental unit boundaries: states, counties, incorporated places, minor civil divisions, tribal areas and federally administered lands.",
+      "provider": "usgs",
+      "officialURL": "https://www.usgs.gov/national-boundary-dataset",
+      "serviceURL": "https://carto.nationalmap.gov/arcgis/rest/services/govunits/MapServer",
+      "attribution": "National Boundaries Dataset courtesy of the U.S. Geological Survey",
+      "license": "usPublicDomain",
+      "coverage": "unitedStates"
+    }
+  },
+  "layers": [
+    {
+      "id": "usgs.boundaries.states",
+      "name": "States",
+      "summary": "State and territory boundaries.",
+      "category": "boundaries",
+      "dataset": "usgs.nbd",
+      "source": {
+        "type": "arcGISMapExport",
+        "serviceURL": "https://carto.nationalmap.gov/arcgis/rest/services/govunits/MapServer",
+        "visibleLayers": "show:21,22"
+      }
+    },
+    {
+      "id": "usgs.boundaries.counties",
+      "name": "Counties",
+      "summary": "County and county-equivalent boundaries, including parishes, boroughs and independent cities.",
+      "category": "boundaries",
+      "dataset": "usgs.nbd",
+      "source": {
+        "type": "arcGISMapExport",
+        "serviceURL": "https://carto.nationalmap.gov/arcgis/rest/services/govunits/MapServer",
+        "visibleLayers": "show:23"
+      },
+      "minimumZoom": 7
+    },
+    {
+      "id": "usgs.boundaries.municipalities",
+      "name": "Cities & Towns",
+      "summary": "Limits of incorporated cities, towns, villages and boroughs.",
+      "category": "boundaries",
+      "dataset": "usgs.nbd",
+      "source": {
+        "type": "arcGISMapExport",
+        "serviceURL": "https://carto.nationalmap.gov/arcgis/rest/services/govunits/MapServer",
+        "visibleLayers": "show:24"
+      },
+      "minimumZoom": 8
+    },
+    {
+      "id": "usgs.boundaries.townships",
+      "name": "Townships",
+      "summary": "Minor civil divisions — townships, towns and similar county subdivisions that act as local government in the Northeast and Midwest.",
+      "category": "boundaries",
+      "dataset": "usgs.nbd",
+      "source": {
+        "type": "arcGISMapExport",
+        "serviceURL": "https://carto.nationalmap.gov/arcgis/rest/services/govunits/MapServer",
+        "visibleLayers": "show:26"
+      },
+      "minimumZoom": 8
+    },
+    {
+      "id": "usgs.boundaries.federal-lands",
+      "name": "Federal Lands",
+      "summary": "Land administered by federal agencies — the Park Service, Forest Service, BLM, Fish and Wildlife Service and the military — coloured by agency.",
+      "category": "boundaries",
+      "dataset": "usgs.nbd",
+      "source": {
+        "type": "arcGISMapExport",
+        "serviceURL": "https://carto.nationalmap.gov/arcgis/rest/services/govunits/MapServer",
+        "visibleLayers": "show:29,30,31,32,33,34,35,36,37,38"
+      },
+      "minimumZoom": 4,
+      "defaultOpacity": 0.6
+    }
+  ]
+}

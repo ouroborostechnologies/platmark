@@ -1,0 +1,29 @@
+{
+  "datasets": {
+    "usfws.nwi": {
+      "name": "National Wetlands Inventory",
+      "summary": "Classified wetland and deepwater habitats across the United States, following the Cowardin classification system.",
+      "provider": "usfws",
+      "officialURL": "https://www.fws.gov/program/national-wetlands-inventory",
+      "serviceURL": "https://fwspublicservices.wim.usgs.gov/wetlandsmapservice/rest/services/Wetlands/MapServer",
+      "attribution": "National Wetlands Inventory, U.S. Fish and Wildlife Service",
+      "license": "usPublicDomain",
+      "coverage": "unitedStates"
+    }
+  },
+  "layers": [
+    {
+      "id": "usfws.wetlands",
+      "name": "Wetlands",
+      "summary": "Classified wetland and deepwater habitats from the National Wetlands Inventory.",
+      "category": "hydrology",
+      "dataset": "usfws.nwi",
+      "source": {
+        "type": "arcGISMapExport",
+        "serviceURL": "https://fwspublicservices.wim.usgs.gov/wetlandsmapservice/rest/services/Wetlands/MapServer"
+      },
+      "minimumZoom": 10,
+      "defaultOpacity": 0.75
+    }
+  ]
+}

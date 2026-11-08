@@ -1,0 +1,38 @@
+{
+  "licenses": {
+    "cc0": {"name": "CC0 1.0", "url": "https://creativecommons.org/publicdomain/zero/1.0/"},
+    "ccBy40": {"name": "CC BY 4.0", "url": "https://creativecommons.org/licenses/by/4.0/"},
+    "esriHosted": {
+      "name": "Esri-hosted USGS content — see service terms",
+      "url": "https://www.esri.com/en-us/legal/terms/full-master-agreement"
+    },
+    "gebcoTerms": {
+      "name": "GEBCO Grid terms of use",
+      "url": "https://www.gebco.net/data_and_products/gridded_bathymetry_data/"
+    },
+    "isgsTerms": {
+      "name": "ISGS terms of use — copyright University of Illinois, licence may be required",
+      "url": "https://clearinghouse.isgs.illinois.edu/about/terms-of-use/"
+    },
+    "massgisNoRestrictions": {
+      "name": "MassGIS — no restrictions",
+      "url": "https://www.arcgis.com/home/item.html?id=6c7009c789354573a42af7251fb768a4"
+    },
+    "nasaOpenData": {
+      "name": "NASA Earth science data — no restrictions on use",
+      "url": "https://www.earthdata.nasa.gov/engage/open-data-services-software-policies/data-use-guidance"
+    },
+    "ncOneMap": {"name": "NC OneMap free and unrestricted use", "url": "https://www.nconemap.gov/pages/terms"},
+    "noUseConstraintsStated": {
+      "name": "No use constraints stated by the publisher",
+      "url": "https://ndgishub.nd.gov/arcgis/rest/services/Imagery/AerialImage_ND_2024/ImageServer/info/iteminfo?f=json"
+    },
+    "noneStated": {"name": "No licence stated by the publisher"},
+    "odbl": {"name": "Open Database License (ODbL) 1.0", "url": "https://opendatacommons.org/licenses/odbl/1-0/"},
+    "regridDataUse": {"name": "Regrid data use license", "url": "https://app.regrid.com/store/license"},
+    "usPublicDomain": {
+      "name": "U.S. Government public domain",
+      "url": "https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits"
+    }
+  }
+}

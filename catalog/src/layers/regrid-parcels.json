@@ -1,0 +1,30 @@
+{
+  "datasets": {
+    "regrid.parcels": {
+      "name": "Regrid Nationwide Parcel Boundaries",
+      "summary": "Tax parcel outlines for every U.S. county, normalised by Regrid from county assessor data. Boundaries only; ownership and assessment attributes are not included.",
+      "provider": "regrid",
+      "officialURL": "https://www.arcgis.com/home/item.html?id=a2050b09baff493aa4ad7848ba2fac00",
+      "serviceURL": "https://tiles.arcgis.com/tiles/KzeiCaQsMoeCfoCq/arcgis/rest/services/Regrid_Nationwide_Parcel_Boundaries_v1/MapServer",
+      "attribution": "Parcel boundaries © Regrid (regrid.com)",
+      "license": "regridDataUse",
+      "coverage": "unitedStates",
+      "cachePolicy": "memoryOnly"
+    }
+  },
+  "layers": [
+    {
+      "id": "regrid.parcels",
+      "name": "Parcels",
+      "summary": "Property lines from county tax maps. An approximation for orientation, not a survey.",
+      "category": "boundaries",
+      "dataset": "regrid.parcels",
+      "source": {
+        "type": "arcGISTiled",
+        "serviceURL": "https://tiles.arcgis.com/tiles/KzeiCaQsMoeCfoCq/arcgis/rest/services/Regrid_Nationwide_Parcel_Boundaries_v1/MapServer",
+        "maximumLevel": 17
+      },
+      "minimumZoom": 15
+    }
+  ]
+}

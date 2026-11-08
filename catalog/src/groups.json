@@ -1,0 +1,10 @@
+{
+  "groups": [
+    {
+      "id": "stateArchives",
+      "title": "State-specific aerial photos",
+      "explanation": "Deeper history than the nationwide archive, but only within one state each.",
+      "systemImage": "building.columns"
+    }
+  ]
+}

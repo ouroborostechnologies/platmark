@@ -1,0 +1,139 @@
+name: Probe catalog
+
+# Every night, request one tile from every source in the published catalog. A layer with a
+# failing source gets one open issue (labelled catalog-probe, titled "Probe failing: <layer id>"),
+# which is updated while it keeps failing and closed once it passes again. Services shut down on
+# their own schedule; this is how we hear about it.
+on:
+  schedule:
+    - cron: "17 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: probe-catalog
+  cancel-in-progress: false
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Download the published catalog
+        id: download
+        run: |
+          mkdir -p published
+          status=$(curl -sSL -A "PlatmarkCatalogProbe/1" -o published/catalog-v1.json -w "%{http_code}" \
+            https://github.com/ouroborostechnologies/platmark/releases/latest/download/catalog-v1.json)
+          if [ "$status" = "404" ]; then
+            echo "::notice::No catalog has been released yet; nothing to probe."
+            echo "released=false" >> "$GITHUB_OUTPUT"
+          elif [ "$status" = "200" ]; then
+            echo "released=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "::error::Downloading the published catalog answered HTTP $status"
+            exit 1
+          fi
+      - name: Probe
+        if: steps.download.outputs.released == 'true'
+        # Failures are reported as issues below rather than by failing the run.
+        continue-on-error: true
+        run: python3 tools/check.py probe --file published/catalog-v1.json --json probe-results.json
+      - name: Open, update and close issues
+        if: steps.download.outputs.released == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            if (!fs.existsSync('probe-results.json')) {
+              core.setFailed('The probe wrote no results; see the Probe step.');
+              return;
+            }
+            const results = JSON.parse(fs.readFileSync('probe-results.json', 'utf8'));
+            const catalog = JSON.parse(fs.readFileSync('published/catalog-v1.json', 'utf8'));
+            const label = 'catalog-probe';
+            const prefix = 'Probe failing: ';
+            const runURL = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            const today = new Date().toISOString().slice(0, 10);
+
+            try {
+              await github.rest.issues.createLabel({ ...context.repo, name: label, color: 'd93f0b',
+                description: 'A catalog source failed the nightly tile probe' });
+            } catch (error) {
+              if (error.status !== 422) throw error;  // 422: the label already exists
+            }
+
+            // Per layer: the failing sources, and whether anything of it was actually probed.
+            const layers = new Map();
+            for (const r of results) {
+              const entry = layers.get(r.layer) ?? { failures: [], probed: false };
+              if (!r.skipped) entry.probed = true;
+              if (!r.ok && !r.skipped) entry.failures.push(r);
+              layers.set(r.layer, entry);
+            }
+
+            const open = await github.paginate(github.rest.issues.listForRepo,
+              { ...context.repo, labels: label, state: 'open', per_page: 100 });
+            const openByLayer = new Map();
+            for (const issue of open) {
+              if (!issue.pull_request && issue.title.startsWith(prefix)) openByLayer.set(issue.title.slice(prefix.length), issue);
+            }
+
+            const describe = (failures) => failures.map((f) => {
+              const member = f.member === null ? '' : ` (composite member ${f.member})`;
+              const status = f.status === null ? 'no response' : `HTTP ${f.status}`;
+              return `- **${status}**${member}: ${f.error ?? ''}\n  \`${f.url ?? 'no URL'}\``;
+            }).join('\n');
+            const signature = (failures) => failures
+              .map((f) => `${f.member}:${f.status}:${(f.error ?? '').split(':')[0]}`).sort().join('|');
+
+            for (const [layer, entry] of layers) {
+              const issue = openByLayer.get(layer);
+              if (entry.failures.length > 0) {
+                const sig = signature(entry.failures);
+                const body = [
+                  `The nightly probe of the published catalog could not fetch a tile for \`${layer}\`.`,
+                  '',
+                  describe(entry.failures),
+                  '',
+                  `Last checked ${today} ([run](${runURL})). This issue closes itself once the layer passes again.`,
+                  `If the service has moved, fix the source in \`catalog/src/\`; if it has gone, remove the layer (its ID is never reused).`,
+                  '',
+                  `<!-- probe-signature: ${sig} -->`,
+                ].join('\n');
+                if (!issue) {
+                  await github.rest.issues.create({ ...context.repo, title: prefix + layer, body, labels: [label] });
+                  core.info(`opened an issue for ${layer}`);
+                } else {
+                  const previous = (issue.body ?? '').match(/<!-- probe-signature: (.*) -->/)?.[1];
+                  await github.rest.issues.update({ ...context.repo, issue_number: issue.number, body });
+                  if (previous !== sig) {
+                    await github.rest.issues.createComment({ ...context.repo, issue_number: issue.number,
+                      body: `Still failing on ${today}, differently now:\n\n${describe(entry.failures)}\n\n[Run](${runURL})` });
+                  }
+                  core.info(`updated the issue for ${layer}`);
+                }
+              } else if (issue && entry.probed) {
+                await github.rest.issues.createComment({ ...context.repo, issue_number: issue.number,
+                  body: `Passing again on ${today}. [Run](${runURL})` });
+                await github.rest.issues.update({ ...context.repo, issue_number: issue.number, state: 'closed', state_reason: 'completed' });
+                core.info(`closed the issue for ${layer}`);
+              }
+            }
+
+            // A layer that has left the published catalog can't fail any more.
+            const ids = new Set(catalog.layers.map((l) => l.id));
+            for (const base of catalog.baseMaps ?? []) for (const l of base.layers ?? []) ids.add(l.id);
+            for (const [layer, issue] of openByLayer) {
+              if (!ids.has(layer)) {
+                await github.rest.issues.createComment({ ...context.repo, issue_number: issue.number,
+                  body: `\`${layer}\` is no longer in the published catalog. [Run](${runURL})` });
+                await github.rest.issues.update({ ...context.repo, issue_number: issue.number, state: 'closed', state_reason: 'not_planned' });
+              }
+            }

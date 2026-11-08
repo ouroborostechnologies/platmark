@@ -1,0 +1,65 @@
+{
+  "datasets": {
+    "usgs.nhd": {
+      "name": "National Hydrography Dataset",
+      "summary": "The authoritative surface-water record for the United States: rivers, streams, canals, lakes, ponds, reservoirs and coastlines, with names and flow relationships.",
+      "provider": "usgs",
+      "officialURL": "https://www.usgs.gov/national-hydrography/national-hydrography-dataset",
+      "serviceURL": "https://hydro.nationalmap.gov/arcgis/rest/services/nhd/MapServer",
+      "attribution": "National Hydrography Dataset courtesy of the U.S. Geological Survey",
+      "license": "usPublicDomain",
+      "coverage": "unitedStates"
+    },
+    "usgs.wbd": {
+      "name": "Watershed Boundary Dataset",
+      "summary": "Hydrologic unit boundaries from region down to subwatershed, describing how the land drains.",
+      "provider": "usgs",
+      "officialURL": "https://www.usgs.gov/national-hydrography/watershed-boundary-dataset",
+      "serviceURL": "https://hydro.nationalmap.gov/arcgis/rest/services/wbd/MapServer",
+      "attribution": "Watershed Boundary Dataset courtesy of the U.S. Geological Survey",
+      "license": "usPublicDomain",
+      "coverage": "unitedStates"
+    }
+  },
+  "layers": [
+    {
+      "id": "usgs.nhd.flowlines",
+      "name": "Rivers & Streams",
+      "summary": "Flowlines from the National Hydrography Dataset — rivers, streams, canals and artificial paths.",
+      "category": "hydrology",
+      "dataset": "usgs.nhd",
+      "source": {
+        "type": "arcGISMapExport",
+        "serviceURL": "https://hydro.nationalmap.gov/arcgis/rest/services/nhd/MapServer",
+        "visibleLayers": "show:2,4,5,6"
+      },
+      "minimumZoom": 5
+    },
+    {
+      "id": "usgs.nhd.waterbodies",
+      "name": "Lakes & Reservoirs",
+      "summary": "Waterbody and area features from the National Hydrography Dataset — lakes, ponds, reservoirs, swamps and wide river channels.",
+      "category": "hydrology",
+      "dataset": "usgs.nhd",
+      "source": {
+        "type": "arcGISMapExport",
+        "serviceURL": "https://hydro.nationalmap.gov/arcgis/rest/services/nhd/MapServer",
+        "visibleLayers": "show:7,8,9,10,11,12"
+      },
+      "minimumZoom": 5
+    },
+    {
+      "id": "usgs.wbd.watersheds",
+      "name": "Watersheds",
+      "summary": "Hydrologic unit boundaries showing how land drains, from whole regions down to individual subwatersheds.",
+      "category": "hydrology",
+      "dataset": "usgs.wbd",
+      "source": {
+        "type": "arcGISMapExport",
+        "serviceURL": "https://hydro.nationalmap.gov/arcgis/rest/services/wbd/MapServer"
+      },
+      "minimumZoom": 3,
+      "defaultOpacity": 0.85
+    }
+  ]
+}

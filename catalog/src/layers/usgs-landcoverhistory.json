@@ -1,0 +1,485 @@
+{
+  "datasets": {
+    "usgs.nlcd.annual": {
+      "name": "Annual National Land Cover Database",
+      "summary": "A yearly map of what covers the ground across the conterminous United States at 30 m, from forest and cropland to developed land.",
+      "provider": "usgs",
+      "officialURL": "https://www.mrlc.gov/data-services-page",
+      "serviceURL": "https://dmsdata.cr.usgs.gov/geoserver/mrlc_Land-Cover-Native_conus_year_data/wms",
+      "attribution": "Credit: U.S. Geological Survey",
+      "license": "usPublicDomain",
+      "coverage": "conterminousUS"
+    }
+  },
+  "layers": [
+    {
+      "id": "usgs.nlcd.annual",
+      "name": "Land Cover History",
+      "summary": "What covered the ground each year since 1985: forest, cropland, wetland, developed land. Good for seeing when a place changed.",
+      "category": "historical",
+      "dataset": "usgs.nlcd.annual",
+      "minimumZoom": 4,
+      "maximumZoom": 18,
+      "defaultOpacity": 0.8,
+      "time": {
+        "cadence": "yearly",
+        "discovery": {
+          "type": "fixed",
+          "editions": [
+            {
+              "id": "nlcd-1985",
+              "date": "1985",
+              "source": {
+                "type": "wms",
+                "endpoint": "https://dmsdata.cr.usgs.gov/geoserver/mrlc_Land-Cover-Native_conus_year_data/wms",
+                "layers": "Land-Cover-Native_conus_year_data",
+                "additionalQuery": {"TIME": "1985-01-01"},
+                "version": "1.1.1"
+              }
+            },
+            {
+              "id": "nlcd-1986",
+              "date": "1986",
+              "source": {
+                "type": "wms",
+                "endpoint": "https://dmsdata.cr.usgs.gov/geoserver/mrlc_Land-Cover-Native_conus_year_data/wms",
+                "layers": "Land-Cover-Native_conus_year_data",
+                "additionalQuery": {"TIME": "1986-01-01"},
+                "version": "1.1.1"
+              }
+            },
+            {
+              "id": "nlcd-1987",
+              "date": "1987",
+              "source": {
+                "type": "wms",
+                "endpoint": "https://dmsdata.cr.usgs.gov/geoserver/mrlc_Land-Cover-Native_conus_year_data/wms",
+                "layers": "Land-Cover-Native_conus_year_data",
+                "additionalQuery": {"TIME": "1987-01-01"},
+                "version": "1.1.1"
+              }
+            },
+            {
+              "id": "nlcd-1988",
+              "date": "1988",
+              "source": {
+                "type": "wms",
+                "endpoint": "https://dmsdata.cr.usgs.gov/geoserver/mrlc_Land-Cover-Native_conus_year_data/wms",
+                "layers": "Land-Cover-Native_conus_year_data",
+                "additionalQuery": {"TIME": "1988-01-01"},
+                "version": "1.1.1"
+              }
+            },
+            {
+              "id": "nlcd-1989",
+              "date": "1989",
+              "source": {
+                "type": "wms",
+                "endpoint": "https://dmsdata.cr.usgs.gov/geoserver/mrlc_Land-Cover-Native_conus_year_data/wms",
+                "layers": "Land-Cover-Native_conus_year_data",
+                "additionalQuery": {"TIME": "1989-01-01"},
+                "version": "1.1.1"
+              }
+            },
+            {
+              "id": "nlcd-1990",
+              "date": "1990",
+              "source": {
+                "type": "wms",
+                "endpoint": "https://dmsdata.cr.usgs.gov/geoserver/mrlc_Land-Cover-Native_conus_year_data/wms",
+                "layers": "Land-Cover-Native_conus_year_data",
+                "additionalQuery": {"TIME": "1990-01-01"},
+                "version": "1.1.1"
+              }
+            },
+            {
+              "id": "nlcd-1991",
+              "date": "1991",
+              "source": {
+                "type": "wms",
+                "endpoint": "https://dmsdata.cr.usgs.gov/geoserver/mrlc_Land-Cover-Native_conus_year_data/wms",
+                "layers": "Land-Cover-Native_conus_year_data",
+                "additionalQuery": {"TIME": "1991-01-01"},
+                "version": "1.1.1"
+              }
+            },
+            {
+              "id": "nlcd-1992",
+              "date": "1992",
+              "source": {
+                "type": "wms",
+                "endpoint": "https://dmsdata.cr.usgs.gov/geoserver/mrlc_Land-Cover-Native_conus_year_data/wms",
+                "layers": "Land-Cover-Native_conus_year_data",
+                "additionalQuery": {"TIME": "1992-01-01"},
+                "version": "1.1.1"
+              }
+            },
+            {
+              "id": "nlcd-1993",
+              "date": "1993",
+              "source": {
+                "type": "wms",
+                "endpoint": "https://dmsdata.cr.usgs.gov/geoserver/mrlc_Land-Cover-Native_conus_year_data/wms",
+                "layers": "Land-Cover-Native_conus_year_data",
+                "additionalQuery": {"TIME": "1993-01-01"},
+                "version": "1.1.1"
+              }
+            },
+            {
+              "id": "nlcd-1994",
+              "date": "1994",
+              "source": {
+                "type": "wms",
+                "endpoint": "https://dmsdata.cr.usgs.gov/geoserver/mrlc_Land-Cover-Native_conus_year_data/wms",
+                "layers": "Land-Cover-Native_conus_year_data",
+                "additionalQuery": {"TIME": "1994-01-01"},
+                "version": "1.1.1"
+              }
+            },
+            {
+              "id": "nlcd-1995",
+              "date": "1995",
+              "source": {
+                "type": "wms",
+                "endpoint": "https://dmsdata.cr.usgs.gov/geoserver/mrlc_Land-Cover-Native_conus_year_data/wms",
+                "layers": "Land-Cover-Native_conus_year_data",
+                "additionalQuery": {"TIME": "1995-01-01"},
+                "version": "1.1.1"
+              }
+            },
+            {
+              "id": "nlcd-1996",
+              "date": "1996",
+              "source": {
+                "type": "wms",
+                "endpoint": "https://dmsdata.cr.usgs.gov/geoserver/mrlc_Land-Cover-Native_conus_year_data/wms",
+                "layers": "Land-Cover-Native_conus_year_data",
+                "additionalQuery": {"TIME": "1996-01-01"},
+                "version": "1.1.1"
+              }
+            },
+            {
+              "id": "nlcd-1997",
+              "date": "1997",
+              "source": {
+                "type": "wms",
+                "endpoint": "https://dmsdata.cr.usgs.gov/geoserver/mrlc_Land-Cover-Native_conus_year_data/wms",
+                "layers": "Land-Cover-Native_conus_year_data",
+                "additionalQuery": {"TIME": "1997-01-01"},
+                "version": "1.1.1"
+              }
+            },
+            {
+              "id": "nlcd-1998",
+              "date": "1998",
+              "source": {
+                "type": "wms",
+                "endpoint": "https://dmsdata.cr.usgs.gov/geoserver/mrlc_Land-Cover-Native_conus_year_data/wms",
+                "layers": "Land-Cover-Native_conus_year_data",
+                "additionalQuery": {"TIME": "1998-01-01"},
+                "version": "1.1.1"
+              }
+            },
+            {
+              "id": "nlcd-1999",
+              "date": "1999",
+              "source": {
+                "type": "wms",
+                "endpoint": "https://dmsdata.cr.usgs.gov/geoserver/mrlc_Land-Cover-Native_conus_year_data/wms",
+                "layers": "Land-Cover-Native_conus_year_data",
+                "additionalQuery": {"TIME": "1999-01-01"},
+                "version": "1.1.1"
+              }
+            },
+            {
+              "id": "nlcd-2000",
+              "date": "2000",
+              "source": {
+                "type": "wms",
+                "endpoint": "https://dmsdata.cr.usgs.gov/geoserver/mrlc_Land-Cover-Native_conus_year_data/wms",
+                "layers": "Land-Cover-Native_conus_year_data",
+                "additionalQuery": {"TIME": "2000-01-01"},
+                "version": "1.1.1"
+              }
+            },
+            {
+              "id": "nlcd-2001",
+              "date": "2001",
+              "source": {
+                "type": "wms",
+                "endpoint": "https://dmsdata.cr.usgs.gov/geoserver/mrlc_Land-Cover-Native_conus_year_data/wms",
+                "layers": "Land-Cover-Native_conus_year_data",
+                "additionalQuery": {"TIME": "2001-01-01"},
+                "version": "1.1.1"
+              }
+            },
+            {
+              "id": "nlcd-2002",
+              "date": "2002",
+              "source": {
+                "type": "wms",
+                "endpoint": "https://dmsdata.cr.usgs.gov/geoserver/mrlc_Land-Cover-Native_conus_year_data/wms",
+                "layers": "Land-Cover-Native_conus_year_data",
+                "additionalQuery": {"TIME": "2002-01-01"},
+                "version": "1.1.1"
+              }
+            },
+            {
+              "id": "nlcd-2003",
+              "date": "2003",
+              "source": {
+                "type": "wms",
+                "endpoint": "https://dmsdata.cr.usgs.gov/geoserver/mrlc_Land-Cover-Native_conus_year_data/wms",
+                "layers": "Land-Cover-Native_conus_year_data",
+                "additionalQuery": {"TIME": "2003-01-01"},
+                "version": "1.1.1"
+              }
+            },
+            {
+              "id": "nlcd-2004",
+              "date": "2004",
+              "source": {
+                "type": "wms",
+                "endpoint": "https://dmsdata.cr.usgs.gov/geoserver/mrlc_Land-Cover-Native_conus_year_data/wms",
+                "layers": "Land-Cover-Native_conus_year_data",
+                "additionalQuery": {"TIME": "2004-01-01"},
+                "version": "1.1.1"
+              }
+            },
+            {
+              "id": "nlcd-2005",
+              "date": "2005",
+              "source": {
+                "type": "wms",
+                "endpoint": "https://dmsdata.cr.usgs.gov/geoserver/mrlc_Land-Cover-Native_conus_year_data/wms",
+                "layers": "Land-Cover-Native_conus_year_data",
+                "additionalQuery": {"TIME": "2005-01-01"},
+                "version": "1.1.1"
+              }
+            },
+            {
+              "id": "nlcd-2006",
+              "date": "2006",
+              "source": {
+                "type": "wms",
+                "endpoint": "https://dmsdata.cr.usgs.gov/geoserver/mrlc_Land-Cover-Native_conus_year_data/wms",
+                "layers": "Land-Cover-Native_conus_year_data",
+                "additionalQuery": {"TIME": "2006-01-01"},
+                "version": "1.1.1"
+              }
+            },
+            {
+              "id": "nlcd-2007",
+              "date": "2007",
+              "source": {
+                "type": "wms",
+                "endpoint": "https://dmsdata.cr.usgs.gov/geoserver/mrlc_Land-Cover-Native_conus_year_data/wms",
+                "layers": "Land-Cover-Native_conus_year_data",
+                "additionalQuery": {"TIME": "2007-01-01"},
+                "version": "1.1.1"
+              }
+            },
+            {
+              "id": "nlcd-2008",
+              "date": "2008",
+              "source": {
+                "type": "wms",
+                "endpoint": "https://dmsdata.cr.usgs.gov/geoserver/mrlc_Land-Cover-Native_conus_year_data/wms",
+                "layers": "Land-Cover-Native_conus_year_data",
+                "additionalQuery": {"TIME": "2008-01-01"},
+                "version": "1.1.1"
+              }
+            },
+            {
+              "id": "nlcd-2009",
+              "date": "2009",
+              "source": {
+                "type": "wms",
+                "endpoint": "https://dmsdata.cr.usgs.gov/geoserver/mrlc_Land-Cover-Native_conus_year_data/wms",
+                "layers": "Land-Cover-Native_conus_year_data",
+                "additionalQuery": {"TIME": "2009-01-01"},
+                "version": "1.1.1"
+              }
+            },
+            {
+              "id": "nlcd-2010",
+              "date": "2010",
+              "source": {
+                "type": "wms",
+                "endpoint": "https://dmsdata.cr.usgs.gov/geoserver/mrlc_Land-Cover-Native_conus_year_data/wms",
+                "layers": "Land-Cover-Native_conus_year_data",
+                "additionalQuery": {"TIME": "2010-01-01"},
+                "version": "1.1.1"
+              }
+            },
+            {
+              "id": "nlcd-2011",
+              "date": "2011",
+              "source": {
+                "type": "wms",
+                "endpoint": "https://dmsdata.cr.usgs.gov/geoserver/mrlc_Land-Cover-Native_conus_year_data/wms",
+                "layers": "Land-Cover-Native_conus_year_data",
+                "additionalQuery": {"TIME": "2011-01-01"},
+                "version": "1.1.1"
+              }
+            },
+            {
+              "id": "nlcd-2012",
+              "date": "2012",
+              "source": {
+                "type": "wms",
+                "endpoint": "https://dmsdata.cr.usgs.gov/geoserver/mrlc_Land-Cover-Native_conus_year_data/wms",
+                "layers": "Land-Cover-Native_conus_year_data",
+                "additionalQuery": {"TIME": "2012-01-01"},
+                "version": "1.1.1"
+              }
+            },
+            {
+              "id": "nlcd-2013",
+              "date": "2013",
+              "source": {
+                "type": "wms",
+                "endpoint": "https://dmsdata.cr.usgs.gov/geoserver/mrlc_Land-Cover-Native_conus_year_data/wms",
+                "layers": "Land-Cover-Native_conus_year_data",
+                "additionalQuery": {"TIME": "2013-01-01"},
+                "version": "1.1.1"
+              }
+            },
+            {
+              "id": "nlcd-2014",
+              "date": "2014",
+              "source": {
+                "type": "wms",
+                "endpoint": "https://dmsdata.cr.usgs.gov/geoserver/mrlc_Land-Cover-Native_conus_year_data/wms",
+                "layers": "Land-Cover-Native_conus_year_data",
+                "additionalQuery": {"TIME": "2014-01-01"},
+                "version": "1.1.1"
+              }
+            },
+            {
+              "id": "nlcd-2015",
+              "date": "2015",
+              "source": {
+                "type": "wms",
+                "endpoint": "https://dmsdata.cr.usgs.gov/geoserver/mrlc_Land-Cover-Native_conus_year_data/wms",
+                "layers": "Land-Cover-Native_conus_year_data",
+                "additionalQuery": {"TIME": "2015-01-01"},
+                "version": "1.1.1"
+              }
+            },
+            {
+              "id": "nlcd-2016",
+              "date": "2016",
+              "source": {
+                "type": "wms",
+                "endpoint": "https://dmsdata.cr.usgs.gov/geoserver/mrlc_Land-Cover-Native_conus_year_data/wms",
+                "layers": "Land-Cover-Native_conus_year_data",
+                "additionalQuery": {"TIME": "2016-01-01"},
+                "version": "1.1.1"
+              }
+            },
+            {
+              "id": "nlcd-2017",
+              "date": "2017",
+              "source": {
+                "type": "wms",
+                "endpoint": "https://dmsdata.cr.usgs.gov/geoserver/mrlc_Land-Cover-Native_conus_year_data/wms",
+                "layers": "Land-Cover-Native_conus_year_data",
+                "additionalQuery": {"TIME": "2017-01-01"},
+                "version": "1.1.1"
+              }
+            },
+            {
+              "id": "nlcd-2018",
+              "date": "2018",
+              "source": {
+                "type": "wms",
+                "endpoint": "https://dmsdata.cr.usgs.gov/geoserver/mrlc_Land-Cover-Native_conus_year_data/wms",
+                "layers": "Land-Cover-Native_conus_year_data",
+                "additionalQuery": {"TIME": "2018-01-01"},
+                "version": "1.1.1"
+              }
+            },
+            {
+              "id": "nlcd-2019",
+              "date": "2019",
+              "source": {
+                "type": "wms",
+                "endpoint": "https://dmsdata.cr.usgs.gov/geoserver/mrlc_Land-Cover-Native_conus_year_data/wms",
+                "layers": "Land-Cover-Native_conus_year_data",
+                "additionalQuery": {"TIME": "2019-01-01"},
+                "version": "1.1.1"
+              }
+            },
+            {
+              "id": "nlcd-2020",
+              "date": "2020",
+              "source": {
+                "type": "wms",
+                "endpoint": "https://dmsdata.cr.usgs.gov/geoserver/mrlc_Land-Cover-Native_conus_year_data/wms",
+                "layers": "Land-Cover-Native_conus_year_data",
+                "additionalQuery": {"TIME": "2020-01-01"},
+                "version": "1.1.1"
+              }
+            },
+            {
+              "id": "nlcd-2021",
+              "date": "2021",
+              "source": {
+                "type": "wms",
+                "endpoint": "https://dmsdata.cr.usgs.gov/geoserver/mrlc_Land-Cover-Native_conus_year_data/wms",
+                "layers": "Land-Cover-Native_conus_year_data",
+                "additionalQuery": {"TIME": "2021-01-01"},
+                "version": "1.1.1"
+              }
+            },
+            {
+              "id": "nlcd-2022",
+              "date": "2022",
+              "source": {
+                "type": "wms",
+                "endpoint": "https://dmsdata.cr.usgs.gov/geoserver/mrlc_Land-Cover-Native_conus_year_data/wms",
+                "layers": "Land-Cover-Native_conus_year_data",
+                "additionalQuery": {"TIME": "2022-01-01"},
+                "version": "1.1.1"
+              }
+            },
+            {
+              "id": "nlcd-2023",
+              "date": "2023",
+              "source": {
+                "type": "wms",
+                "endpoint": "https://dmsdata.cr.usgs.gov/geoserver/mrlc_Land-Cover-Native_conus_year_data/wms",
+                "layers": "Land-Cover-Native_conus_year_data",
+                "additionalQuery": {"TIME": "2023-01-01"},
+                "version": "1.1.1"
+              }
+            },
+            {
+              "id": "nlcd-2024",
+              "date": "2024",
+              "source": {
+                "type": "wms",
+                "endpoint": "https://dmsdata.cr.usgs.gov/geoserver/mrlc_Land-Cover-Native_conus_year_data/wms",
+                "layers": "Land-Cover-Native_conus_year_data",
+                "additionalQuery": {"TIME": "2024-01-01"},
+                "version": "1.1.1"
+              }
+            },
+            {
+              "id": "nlcd-2025",
+              "date": "2025",
+              "source": {
+                "type": "wms",
+                "endpoint": "https://dmsdata.cr.usgs.gov/geoserver/mrlc_Land-Cover-Native_conus_year_data/wms",
+                "layers": "Land-Cover-Native_conus_year_data",
+                "additionalQuery": {"TIME": "2025-01-01"},
+                "version": "1.1.1"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

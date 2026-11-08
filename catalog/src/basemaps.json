@@ -1,0 +1,119 @@
+{
+  "datasets": {
+    "eox.s2cloudless": {
+      "name": "Sentinel-2 cloudless",
+      "summary": "A cloud-free global satellite mosaic assembled from ESA Copernicus Sentinel-2 imagery.",
+      "provider": "eox",
+      "officialURL": "https://s2maps.eu",
+      "serviceURL": "https://tiles.maps.eox.at/wmts/1.0.0/s2cloudless-2024_3857/default/g/{z}/{y}/{x}.jpg",
+      "attribution": "Sentinel-2 cloudless by EOX IT Services GmbH, contains modified Copernicus Sentinel data",
+      "license": "ccBy40",
+      "coverage": "global",
+      "cachePolicy": "memoryOnly"
+    },
+    "openfreemap.liberty": {
+      "name": "OpenFreeMap Liberty",
+      "summary": "A global vector basemap built from OpenStreetMap data, served without an API key or usage limit.",
+      "provider": "openfreemap",
+      "officialURL": "https://openfreemap.org",
+      "serviceURL": "https://tiles.openfreemap.org/styles/liberty",
+      "attribution": "© OpenStreetMap contributors, © OpenFreeMap",
+      "license": "odbl",
+      "coverage": "global",
+      "cachePolicy": "memoryOnly"
+    },
+    "usgs.imagery": {
+      "name": "USGS Imagery Only",
+      "summary": "High-resolution orthoimagery for the United States from The National Map.",
+      "provider": "usgs",
+      "officialURL": "https://www.usgs.gov/programs/national-geospatial-program/national-map",
+      "serviceURL": "https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryOnly/MapServer",
+      "attribution": "Imagery courtesy of the U.S. Geological Survey, The National Map",
+      "license": "usPublicDomain",
+      "coverage": "unitedStates"
+    }
+  },
+  "baseMaps": [
+    {
+      "id": "basemap.standard",
+      "name": "Standard",
+      "summary": "A general-purpose reference map with roads, boundaries, water and place names.",
+      "systemImage": "map",
+      "style": {"type": "remote", "url": "https://tiles.openfreemap.org/styles/liberty"},
+      "datasets": ["openfreemap.liberty"]
+    },
+    {
+      "id": "basemap.satellite",
+      "name": "Satellite",
+      "summary": "Global cloud-free satellite imagery, overlaid with higher-resolution USGS orthoimagery across the United States.",
+      "systemImage": "globe.americas",
+      "style": {"type": "bundled", "name": "blank"},
+      "datasets": ["eox.s2cloudless", "usgs.imagery"],
+      "layers": [
+        {
+          "id": "basemap.satellite.global",
+          "name": "Sentinel-2 cloudless",
+          "summary": "Global cloud-free satellite mosaic.",
+          "category": "baseMap",
+          "dataset": "eox.s2cloudless",
+          "source": {
+            "type": "wmts",
+            "urlTemplate": "https://tiles.maps.eox.at/wmts/1.0.0/s2cloudless-2024_3857/default/g/{z}/{y}/{x}.jpg"
+          },
+          "render": {"type": "raster", "fadeDuration": 0.15},
+          "maximumZoom": 14
+        },
+        {
+          "id": "basemap.satellite.usgs",
+          "name": "USGS Imagery",
+          "summary": "High-resolution U.S. orthoimagery from The National Map.",
+          "category": "baseMap",
+          "dataset": "usgs.imagery",
+          "source": {
+            "type": "arcGISTiled",
+            "serviceURL": "https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryOnly/MapServer"
+          },
+          "render": {"type": "raster", "fadeDuration": 0.15},
+          "maximumZoom": 16
+        }
+      ]
+    },
+    {
+      "id": "basemap.hybrid",
+      "name": "Hybrid",
+      "summary": "Satellite imagery with roads, boundaries and place names drawn over it.",
+      "systemImage": "globe.americas.fill",
+      "style": {"type": "remote", "url": "https://tiles.openfreemap.org/styles/liberty"},
+      "placement": "belowStyleLabels",
+      "datasets": ["eox.s2cloudless", "usgs.imagery", "openfreemap.liberty"],
+      "layers": [
+        {
+          "id": "basemap.satellite.global",
+          "name": "Sentinel-2 cloudless",
+          "summary": "Global cloud-free satellite mosaic.",
+          "category": "baseMap",
+          "dataset": "eox.s2cloudless",
+          "source": {
+            "type": "wmts",
+            "urlTemplate": "https://tiles.maps.eox.at/wmts/1.0.0/s2cloudless-2024_3857/default/g/{z}/{y}/{x}.jpg"
+          },
+          "render": {"type": "raster", "fadeDuration": 0.15},
+          "maximumZoom": 14
+        },
+        {
+          "id": "basemap.satellite.usgs",
+          "name": "USGS Imagery",
+          "summary": "High-resolution U.S. orthoimagery from The National Map.",
+          "category": "baseMap",
+          "dataset": "usgs.imagery",
+          "source": {
+            "type": "arcGISTiled",
+            "serviceURL": "https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryOnly/MapServer"
+          },
+          "render": {"type": "raster", "fadeDuration": 0.15},
+          "maximumZoom": 16
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "datasets": {
+    "usgs.higeol": {
+      "name": "Hawaii Geology",
+      "summary": "Geologic map units for the Hawaiian Islands.",
+      "provider": "usgs",
+      "officialURL": "https://mrdata.usgs.gov/geology/state/",
+      "serviceURL": "https://mrdata.usgs.gov/mapcache/wms",
+      "attribution": "Geologic mapping courtesy of the U.S. Geological Survey",
+      "license": "usPublicDomain",
+      "coverage": "hawaii"
+    },
+    "usgs.prgeol": {
+      "name": "Puerto Rico Geology",
+      "summary": "Geologic map units for Puerto Rico.",
+      "provider": "usgs",
+      "officialURL": "https://mrdata.usgs.gov/geology/state/",
+      "serviceURL": "https://mrdata.usgs.gov/mapcache/wms",
+      "attribution": "Geologic mapping courtesy of the U.S. Geological Survey",
+      "license": "usPublicDomain",
+      "coverage": "puertoRico"
+    },
+    "usgs.sgmc": {
+      "name": "State Geologic Map Compilation",
+      "summary": "The USGS compilation of state geologic maps for the conterminous United States, showing surface geologic units, contacts and structures as published.",
+      "provider": "usgs",
+      "officialURL": "https://mrdata.usgs.gov/geology/state/",
+      "serviceURL": "https://mrdata.usgs.gov/mapcache/wms",
+      "attribution": "State Geologic Map Compilation courtesy of the U.S. Geological Survey",
+      "license": "usPublicDomain",
+      "coverage": "conterminousUS"
+    }
+  },
+  "layers": [
+    {
+      "id": "usgs.sgmc.units",
+      "name": "USGS State Geology",
+      "summary": "Surface geologic units from the USGS State Geologic Map Compilation, as published.",
+      "category": "geology",
+      "dataset": "usgs.sgmc",
+      "source": {
+        "type": "wms",
+        "endpoint": "https://mrdata.usgs.gov/mapcache/wms",
+        "layers": "sgmc2",
+        "version": "1.1.1"
+      },
+      "minimumZoom": 4,
+      "maximumZoom": 16,
+      "defaultOpacity": 0.65
+    },
+    {
+      "id": "usgs.sgmc.contacts",
+      "name": "Geological Contacts",
+      "summary": "Boundaries between mapped geologic units.",
+      "category": "geology",
+      "dataset": "usgs.sgmc",
+      "source": {
+        "type": "wms",
+        "endpoint": "https://mrdata.usgs.gov/mapcache/wms",
+        "layers": "sgmc2contact",
+        "version": "1.1.1"
+      },
+      "minimumZoom": 4,
+      "maximumZoom": 16,
+      "defaultOpacity": 0.9
+    },
+    {
+      "id": "usgs.prgeol",
+      "name": "Puerto Rico Geology",
+      "summary": "Geologic map units for Puerto Rico.",
+      "category": "geology",
+      "dataset": "usgs.prgeol",
+      "source": {
+        "type": "wms",
+        "endpoint": "https://mrdata.usgs.gov/mapcache/wms",
+        "layers": "prgeol",
+        "version": "1.1.1"
+      },
+      "minimumZoom": 4,
+      "maximumZoom": 16,
+      "defaultOpacity": 0.65
+    },
+    {
+      "id": "usgs.higeol",
+      "name": "Hawaii Geology",
+      "summary": "Geologic map units for the Hawaiian Islands.",
+      "category": "geology",
+      "dataset": "usgs.higeol",
+      "source": {
+        "type": "wms",
+        "endpoint": "https://mrdata.usgs.gov/mapcache/wms",
+        "layers": "higeol",
+        "version": "1.1.1"
+      },
+      "minimumZoom": 4,
+      "maximumZoom": 16,
+      "defaultOpacity": 0.65
+    }
+  ]
+}

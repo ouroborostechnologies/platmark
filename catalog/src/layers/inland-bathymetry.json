@@ -1,0 +1,136 @@
+{
+  "datasets": {
+    "inland.bathymetry.aggregate": {
+      "name": "Inland Water Depth (combined surveys)",
+      "summary": "Surveyed depth of inland water, assembled from every public agency that publishes it as a map service: the Minnesota DNR, the Ohio DNR, MassWildlife and MassGIS, the North Dakota GIS Hub and Game and Fish Department, the Great Lakes Commission, and NOAA's National Centers for Coastal Ocean Science. No single agency surveys the nation's lakes, so coverage is the union of what these programmes have measured — dense in the states that run lake survey programmes, absent in those that do not.",
+      "provider": "usgs",
+      "officialURL": "https://www.usgs.gov/3d-elevation-program/inland-bathymetry",
+      "serviceURL": "https://enterprise.gisdata.mn.gov/aghost/rest/services/us_mn_state_dnr/water_lake_bathymetry/MapServer",
+      "attribution": "Inland depth surveys courtesy of the Minnesota DNR, Ohio DNR, MassWildlife/MassGIS, North Dakota GIS Hub, the Great Lakes Commission and NOAA NCCOS",
+      "license": "usPublicDomain",
+      "coverage": "inlandLakeSurveys"
+    },
+    "mndnr.lakebathy.relief": {
+      "name": "Minnesota Lake Bathymetric Shaded Relief",
+      "summary": "Minnesota's lake-bed elevation model rendered as colour-shaded relief, from pale shallows through to deep blue basins.",
+      "provider": "mn-dnr",
+      "officialURL": "https://www.dnr.state.mn.us/lakefind/index.html",
+      "serviceURL": "https://enterprise.gisdata.mn.gov/aghost/rest/services/us_mn_state_dnr/water_lake_bathy_shaded_relief/ImageServer",
+      "attribution": "Lake bathymetry courtesy of the Minnesota Department of Natural Resources",
+      "license": "usPublicDomain",
+      "coverage": "minnesota"
+    }
+  },
+  "layers": [
+    {
+      "id": "inland.depth.contours",
+      "name": "Inland Water Depth",
+      "summary": "Surveyed depth contours for lakes, reservoirs and the Great Lakes, combined from every agency that publishes them.",
+      "category": "hydrology",
+      "dataset": "inland.bathymetry.aggregate",
+      "source": {
+        "type": "composite",
+        "members": [
+          {
+            "attribution": "Great Lakes bathymetric contours courtesy of the Great Lakes Commission",
+            "coverage": "greatLakes",
+            "source": {
+              "type": "arcGISMapExport",
+              "serviceURL": "https://gis.glc.org/server/rest/services/hydrology/Lake_Bathymetry/MapServer",
+              "visibleLayers": "show:0,1,2,3,4,5"
+            }
+          },
+          {
+            "attribution": "Lake Erie bathymetry courtesy of the Ohio Department of Natural Resources",
+            "coverage": "lakeErie",
+            "source": {
+              "type": "arcGISMapExport",
+              "serviceURL": "https://gis.ohiodnr.gov/arcgis/rest/services/OCM_Services/LakeErie_Bathymetry/MapServer",
+              "visibleLayers": "show:0"
+            }
+          },
+          {
+            "attribution": "Lake bathymetry courtesy of the Minnesota Department of Natural Resources",
+            "coverage": "minnesota",
+            "source": {
+              "type": "arcGISMapExport",
+              "serviceURL": "https://enterprise.gisdata.mn.gov/aghost/rest/services/us_mn_state_dnr/water_lake_bathymetry/MapServer",
+              "visibleLayers": "show:0"
+            }
+          },
+          {
+            "attribution": "Inland lake bathymetry courtesy of the Ohio Department of Natural Resources",
+            "coverage": "ohio",
+            "source": {
+              "type": "arcGISMapExport",
+              "serviceURL": "https://gis.ohiodnr.gov/arcgis/rest/services/DOW_Services/DOW_Lakes_Bathymetry/MapServer",
+              "visibleLayers": "show:0"
+            }
+          },
+          {
+            "attribution": "Lake contours courtesy of the North Dakota GIS Hub and Game and Fish Department",
+            "coverage": "northDakota",
+            "source": {
+              "type": "arcGISTiled",
+              "serviceURL": "https://ndgishub.nd.gov/arcgis/rest/services/Applications/GNF_LakeContoursCached/MapServer"
+            }
+          },
+          {
+            "attribution": "Inland bathymetry courtesy of MassWildlife and MassGIS",
+            "coverage": "massachusetts",
+            "source": {
+              "type": "arcGISMapExport",
+              "serviceURL": "https://arcgisserver.digital.mass.gov/arcgisserver/rest/services/AGOL/MassWildlife_Inland_Bathymetry/MapServer",
+              "visibleLayers": "show:0"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "inland.depth.shading",
+      "name": "Inland Depth Shading",
+      "summary": "Lake beds as continuously shaded depth rather than lines — pale in the shallows, deep in the basins.",
+      "category": "hydrology",
+      "dataset": "mndnr.lakebathy.relief",
+      "source": {
+        "type": "composite",
+        "members": [
+          {
+            "attribution": "Lake bathymetry courtesy of the Minnesota Department of Natural Resources",
+            "coverage": "minnesota",
+            "source": {
+              "type": "arcGISImageExport",
+              "serviceURL": "https://enterprise.gisdata.mn.gov/aghost/rest/services/us_mn_state_dnr/water_lake_bathy_shaded_relief/ImageServer"
+            }
+          },
+          {
+            "attribution": "Lake Superior bathymetry courtesy of NOAA National Centers for Coastal Ocean Science",
+            "coverage": "wisconsinLakeSuperior",
+            "source": {
+              "type": "arcGISTiled",
+              "serviceURL": "https://tiles.arcgis.com/tiles/C8EMgrsFcRFL6LrL/arcgis/rest/services/LakeSuperiorRegionalBathymetryModelDepth/MapServer"
+            }
+          },
+          {
+            "attribution": "Lake Superior multibeam survey courtesy of NOAA National Centers for Coastal Ocean Science",
+            "coverage": "lakeSuperiorApostleIslands",
+            "source": {
+              "type": "arcGISTiled",
+              "serviceURL": "https://tiles.arcgis.com/tiles/C8EMgrsFcRFL6LrL/arcgis/rest/services/LakeSuperiorMBESDepth/MapServer"
+            }
+          },
+          {
+            "attribution": "Lake Michigan nearshore bathymetry courtesy of NOAA National Centers for Coastal Ocean Science",
+            "coverage": "lakeMichiganWisconsinShore",
+            "source": {
+              "type": "arcGISTiled",
+              "serviceURL": "https://tiles.arcgis.com/tiles/C8EMgrsFcRFL6LrL/arcgis/rest/services/NearshoreLiDARimageryBathymetry/MapServer"
+            }
+          }
+        ]
+      },
+      "defaultOpacity": 0.8
+    }
+  ]
+}
