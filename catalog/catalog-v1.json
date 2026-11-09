@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "catalogRevision": 2026110801,
+  "catalogRevision": 2026110901,
   "datasets": {
     "ar.imagery": {
       "name": "Arkansas Imagery Archive",
@@ -138,6 +138,46 @@
       "useStatus": {
         "restricted": "Esri's terms for Wayback and Living Atlas content appear to bar a paid app that is not an Esri customer. Needs Esri's written confirmation."
       }
+    },
+    "faa.ifr.high": {
+      "name": "FAA IFR Enroute High Altitude Charts",
+      "summary": "The FAA's charts for instrument flight at 18,000 ft and above: jet routes, navaids, waypoints and air route traffic control centre boundaries. Reissued every 56 days.",
+      "provider": "faa",
+      "officialURL": "https://www.faa.gov/air_traffic/flight_info/aeronav/digital_products/ifr/",
+      "serviceURL": "https://tiles.arcgis.com/tiles/ssFJjBXIUyZDrSYZ/arcgis/rest/services/IFR_High/MapServer",
+      "attribution": "Federal Aviation Administration, Aeronautical Information Services",
+      "license": "usPublicDomain",
+      "coverage": "unitedStates"
+    },
+    "faa.ifr.low": {
+      "name": "FAA IFR Enroute Low Altitude and Area Charts",
+      "summary": "The FAA's charts for instrument flight below 18,000 ft: Victor airways, minimum altitudes, navaids, waypoints and airports with instrument approaches, with larger-scale area charts around busy terminals. Reissued every 56 days.",
+      "provider": "faa",
+      "officialURL": "https://www.faa.gov/air_traffic/flight_info/aeronav/digital_products/ifr/",
+      "serviceURL": "https://tiles.arcgis.com/tiles/ssFJjBXIUyZDrSYZ/arcgis/rest/services/IFR_AreaLow/MapServer",
+      "attribution": "Federal Aviation Administration, Aeronautical Information Services",
+      "license": "usPublicDomain",
+      "coverage": "unitedStates"
+    },
+    "faa.vfr.sectional": {
+      "name": "FAA VFR Sectional Charts",
+      "summary": "The FAA's 1:500,000 charts for visual flight: airports, airspace, navaids, obstacles, terrain and visual landmarks, seamlessly mosaicked across the United States. Reissued every 56 days.",
+      "provider": "faa",
+      "officialURL": "https://www.faa.gov/air_traffic/flight_info/aeronav/digital_products/vfr/",
+      "serviceURL": "https://tiles.arcgis.com/tiles/ssFJjBXIUyZDrSYZ/arcgis/rest/services/VFR_Sectional/MapServer",
+      "attribution": "Federal Aviation Administration, Aeronautical Information Services",
+      "license": "usPublicDomain",
+      "coverage": "unitedStates"
+    },
+    "faa.vfr.terminal": {
+      "name": "FAA VFR Terminal Area Charts",
+      "summary": "The FAA's 1:250,000 charts of the airspace around the busiest U.S. airports, with the same symbols as the sectionals at twice the scale. Reissued every 56 days.",
+      "provider": "faa",
+      "officialURL": "https://www.faa.gov/air_traffic/flight_info/aeronav/digital_products/vfr/",
+      "serviceURL": "https://tiles.arcgis.com/tiles/ssFJjBXIUyZDrSYZ/arcgis/rest/services/VFR_Terminal/MapServer",
+      "attribution": "Federal Aviation Administration, Aeronautical Information Services",
+      "license": "usPublicDomain",
+      "coverage": "faaTerminalAreas"
     },
     "fl.imagery": {
       "name": "Florida DEP Aerial Imagery",
@@ -467,6 +507,19 @@
       "attribution": "© City of New York (NYC OTI)",
       "license": "ccBy40",
       "coverage": "newYorkCity"
+    },
+    "ofm.aero": {
+      "name": "open flightmaps VFR Charts",
+      "summary": "VFR charts rendered from the open flightmaps database: airspace, aerodromes, navaids, reporting points and obstacles, kept by volunteers for each covered country and updated each AIRAC cycle. Complementary information, not certified for navigation.",
+      "provider": "ofma",
+      "officialURL": "https://www.openflightmaps.org",
+      "serviceURL": "https://nwy-tiles-api.prod.newaydata.com/tiles/{z}/{x}/{y}.png?path=latest/aero/latest",
+      "attribution": "© open flightmaps contributors",
+      "license": "ofmaGeneralUsers",
+      "coverage": "openFlightmapsEurope",
+      "useStatus": {
+        "restricted": "The OFMA licence allows commercial use of the data, but this tile server is undocumented; confirm with info@openflightmaps.org before shipping."
+      }
     },
     "oh.imagery": {
       "name": "Ohio Imagery Archive",
@@ -9834,6 +9887,72 @@
           ]
         }
       }
+    },
+    {
+      "id": "faa.vfr.sectional",
+      "name": "VFR Sectional Charts",
+      "summary": "The FAA's charts for flying by sight: airspace, airports, navaids, obstacles and landmarks. Updated every 56 days. Not for navigation.",
+      "category": "aviation",
+      "dataset": "faa.vfr.sectional",
+      "source": {
+        "type": "arcGISTiled",
+        "serviceURL": "https://tiles.arcgis.com/tiles/ssFJjBXIUyZDrSYZ/arcgis/rest/services/VFR_Sectional/MapServer",
+        "maximumLevel": 12
+      },
+      "minimumZoom": 8
+    },
+    {
+      "id": "faa.vfr.terminal",
+      "name": "VFR Terminal Area Charts",
+      "summary": "Close-up FAA charts of the airspace around the busiest airports, at twice the sectional scale. Updated every 56 days. Not for navigation.",
+      "category": "aviation",
+      "dataset": "faa.vfr.terminal",
+      "source": {
+        "type": "arcGISTiled",
+        "serviceURL": "https://tiles.arcgis.com/tiles/ssFJjBXIUyZDrSYZ/arcgis/rest/services/VFR_Terminal/MapServer",
+        "maximumLevel": 12
+      },
+      "minimumZoom": 10
+    },
+    {
+      "id": "faa.ifr.low",
+      "name": "IFR Low Altitude Charts",
+      "summary": "The FAA's instrument charts below 18,000 ft: airways, minimum altitudes, navaids and waypoints. Updated every 56 days. Not for navigation.",
+      "category": "aviation",
+      "dataset": "faa.ifr.low",
+      "source": {
+        "type": "arcGISTiled",
+        "serviceURL": "https://tiles.arcgis.com/tiles/ssFJjBXIUyZDrSYZ/arcgis/rest/services/IFR_AreaLow/MapServer",
+        "maximumLevel": 12
+      },
+      "minimumZoom": 7
+    },
+    {
+      "id": "faa.ifr.high",
+      "name": "IFR High Altitude Charts",
+      "summary": "The FAA's instrument charts from 18,000 ft up: jet routes, navaids and control centre boundaries. Updated every 56 days. Not for navigation.",
+      "category": "aviation",
+      "dataset": "faa.ifr.high",
+      "source": {
+        "type": "arcGISTiled",
+        "serviceURL": "https://tiles.arcgis.com/tiles/ssFJjBXIUyZDrSYZ/arcgis/rest/services/IFR_High/MapServer",
+        "maximumLevel": 9
+      },
+      "minimumZoom": 5
+    },
+    {
+      "id": "ofm.aero",
+      "name": "European VFR Charts",
+      "summary": "Community-made VFR charts for much of Europe: airspace, aerodromes, navaids and reporting points. Updated each AIRAC cycle. Not for navigation.",
+      "category": "aviation",
+      "dataset": "ofm.aero",
+      "source": {
+        "type": "xyzRaster",
+        "urlTemplate": "https://nwy-tiles-api.prod.newaydata.com/tiles/{z}/{x}/{y}.png?path=latest/aero/latest",
+        "maximumLevel": 12,
+        "tileSize": 512
+      },
+      "minimumZoom": 7
     }
   ],
   "providers": {
@@ -9884,6 +10003,12 @@
       "abbreviation": "Esri",
       "summary": "Hosts the USGS Historical Topographic Map Collection as a publicly readable image service, and publishes World Imagery Wayback, the archive of past versions of its satellite basemap.",
       "officialURL": "https://www.esri.com"
+    },
+    "faa": {
+      "name": "Federal Aviation Administration",
+      "abbreviation": "FAA",
+      "summary": "The U.S. aviation regulator. Its Aeronautical Information Services office publishes the official VFR and IFR charts and the national airspace, airport and navaid data, renewed every 56 days.",
+      "officialURL": "https://www.faa.gov/air_traffic/flight_info/aeronav"
     },
     "fl-dep": {
       "name": "Florida Department of Environmental Protection",
@@ -10053,6 +10178,12 @@
       "summary": "Publishes the city's aerial photographs, from a 1924 mosaic to the current flight, under CC BY 4.0.",
       "officialURL": "https://maps.nyc.gov/tiles/"
     },
+    "ofma": {
+      "name": "open flightmaps association",
+      "abbreviation": "open flightmaps",
+      "summary": "A non-profit association in Austria whose volunteers keep an open database of aeronautical data for the European regions they cover, and render it as VFR charts.",
+      "officialURL": "https://www.openflightmaps.org"
+    },
     "oh-dnr": {
       "name": "Ohio Department of Natural Resources",
       "abbreviation": "Ohio DNR",
@@ -10186,6 +10317,7 @@
     },
     "noneStated": {"name": "No licence stated by the publisher"},
     "odbl": {"name": "Open Database License (ODbL) 1.0", "url": "https://opendatacommons.org/licenses/odbl/1-0/"},
+    "ofmaGeneralUsers": {"name": "OFMA General Users' License", "url": "https://www.openflightmaps.org"},
     "regridDataUse": {"name": "Regrid data use license", "url": "https://app.regrid.com/store/license"},
     "usPublicDomain": {
       "name": "U.S. Government public domain",
@@ -10197,6 +10329,36 @@
     "connecticut": {"label": "Connecticut", "rects": [[-73.73, 40.98, -71.78, 42.05]]},
     "conterminousUS": {"label": "Conterminous United States", "rects": [[-125.1, 24.4, -66.9, 49.4]]},
     "delaware": {"label": "Delaware", "rects": [[-75.79, 38.45, -75.05, 39.84]]},
+    "faaTerminalAreas": {
+      "label": "The busiest U.S. airports, where the FAA publishes terminal area charts",
+      "rects": [
+        [-78.75, 37.72, -68.91, 43.07],
+        [-149.77, 63.86, -145.55, 65.37],
+        [-151.88, 60.24, -147.66, 61.94],
+        [-123.75, 45.09, -120.94, 48.46],
+        [-106.17, 37.72, -103.36, 40.98],
+        [-84.38, 39.91, -79.45, 43.07],
+        [-119.53, 31.95, -116.02, 34.89],
+        [-83.67, 27.06, -79.45, 29.54],
+        [-68.2, 17.31, -63.98, 19.31],
+        [-85.78, 32.55, -82.97, 34.89],
+        [-81.56, 24.53, -78.75, 27.06],
+        [-96.33, 38.27, -93.52, 40.45],
+        [-98.44, 31.95, -95.62, 33.72],
+        [-82.27, 34.31, -79.45, 36.03],
+        [-85.78, 38.27, -83.67, 40.45],
+        [-123.75, 36.6, -120.94, 38.27],
+        [-113.2, 39.91, -110.39, 41.51],
+        [-91.41, 34.31, -88.59, 36.03],
+        [-116.02, 35.46, -113.2, 37.16],
+        [-89.3, 40.98, -87.19, 42.55],
+        [-91.41, 37.72, -89.3, 39.37],
+        [-113.2, 32.55, -111.09, 34.31],
+        [-96.33, 28.92, -94.22, 30.75],
+        [-94.22, 44.09, -92.11, 45.58],
+        [-91.41, 29.54, -89.3, 30.75]
+      ]
+    },
     "florida": {"label": "Florida", "rects": [[-87.64, 24.53, -80.01, 31.05]]},
     "georgia": {"label": "Georgia", "rects": [[-85.63, 30.19, -80.75, 35.06]]},
     "greatLakes": {"label": "Great Lakes", "rects": [[-92.2, 41.2, -76, 49.1]]},
@@ -10241,6 +10403,10 @@
     "northDakota": {"label": "North Dakota", "rects": [[-104.05, 45.93, -96.55, 49]]},
     "ohio": {"label": "Ohio", "rects": [[-84.83, 38.4, -80.51, 42.33]]},
     "oklahoma": {"label": "Oklahoma", "rects": [[-103.01, 33.61, -94.43, 37.01]]},
+    "openFlightmapsEurope": {
+      "label": "The European countries open flightmaps covers",
+      "rects": [[-5.2, 35.8, 24.2, 55.1], [8.0, 54.5, 31.6, 70.1], [19.4, 34.8, 29.7, 48.3]]
+    },
     "oregon": {"label": "Oregon", "rects": [[-124.6, 41.99, -116.46, 46.3]]},
     "pennsylvania": {"label": "Pennsylvania", "rects": [[-80.53, 39.71, -74.68, 42.27]]},
     "puertoRico": {"label": "Puerto Rico", "rects": [[-67.4, 17.8, -65.2, 18.6]]},

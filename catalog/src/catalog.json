@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "catalogRevision": 2026110801,
+  "catalogRevision": 2026110901,
   "include": [
     "providers.json",
     "licenses.json",
@@ -29,6 +29,7 @@
     "layers/nasa-weld.json",
     "layers/noaa-eri.json",
     "layers/state-archives.json",
+    "layers/aviation.json",
     "basemaps.json"
   ]
 }

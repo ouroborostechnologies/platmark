@@ -29,6 +29,7 @@
     },
     "noneStated": {"name": "No licence stated by the publisher"},
     "odbl": {"name": "Open Database License (ODbL) 1.0", "url": "https://opendatacommons.org/licenses/odbl/1-0/"},
+    "ofmaGeneralUsers": {"name": "OFMA General Users' License", "url": "https://www.openflightmaps.org"},
     "regridDataUse": {"name": "Regrid data use license", "url": "https://app.regrid.com/store/license"},
     "usPublicDomain": {
       "name": "U.S. Government public domain",

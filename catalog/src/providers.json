@@ -48,6 +48,12 @@
       "summary": "Hosts the USGS Historical Topographic Map Collection as a publicly readable image service, and publishes World Imagery Wayback, the archive of past versions of its satellite basemap.",
       "officialURL": "https://www.esri.com"
     },
+    "faa": {
+      "name": "Federal Aviation Administration",
+      "abbreviation": "FAA",
+      "summary": "The U.S. aviation regulator. Its Aeronautical Information Services office publishes the official VFR and IFR charts and the national airspace, airport and navaid data, renewed every 56 days.",
+      "officialURL": "https://www.faa.gov/air_traffic/flight_info/aeronav"
+    },
     "fl-dep": {
       "name": "Florida Department of Environmental Protection",
       "abbreviation": "Florida DEP",
@@ -215,6 +221,12 @@
       "abbreviation": "NYC OTI",
       "summary": "Publishes the city's aerial photographs, from a 1924 mosaic to the current flight, under CC BY 4.0.",
       "officialURL": "https://maps.nyc.gov/tiles/"
+    },
+    "ofma": {
+      "name": "open flightmaps association",
+      "abbreviation": "open flightmaps",
+      "summary": "A non-profit association in Austria whose volunteers keep an open database of aeronautical data for the European regions they cover, and render it as VFR charts.",
+      "officialURL": "https://www.openflightmaps.org"
     },
     "oh-dnr": {
       "name": "Ohio Department of Natural Resources",
