@@ -1,0 +1,30 @@
+{
+  "datasets": {
+    "usgs.padus": {
+      "name": "Protected Areas Database of the United States (PAD-US) 4.1",
+      "summary": "The national inventory of public and protected land: federal, state, local and tribal holdings and land owned by nonprofit conservation organisations, coloured by managing agency.",
+      "provider": "usgs",
+      "officialURL": "https://www.usgs.gov/programs/gap-analysis-project/science/pad-us-data-overview",
+      "serviceURL": "https://edits.nationalmap.gov/arcgis/rest/services/PAD-US/PAD_US_4_1/MapServer",
+      "attribution": "PAD-US 4.1, U.S. Geological Survey Gap Analysis Project",
+      "license": "usPublicDomain",
+      "coverage": "unitedStates"
+    }
+  },
+  "layers": [
+    {
+      "id": "usgs.padus.public-lands",
+      "name": "Public & Protected Lands",
+      "summary": "Land owned by federal, state, local and tribal governments and by nonprofit conservation organisations, coloured by manager.",
+      "category": "boundaries",
+      "dataset": "usgs.padus",
+      "source": {
+        "type": "arcGISMapExport",
+        "serviceURL": "https://edits.nationalmap.gov/arcgis/rest/services/PAD-US/PAD_US_4_1/MapServer",
+        "visibleLayers": "show:0"
+      },
+      "minimumZoom": 4,
+      "defaultOpacity": 0.6
+    }
+  ]
+}

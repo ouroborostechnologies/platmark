@@ -1,0 +1,48 @@
+name: Release catalog
+
+# Push a tag named catalog-<anything> and the assembled catalog, its schema and every layer
+# thumbnail are attached to a release of that name. A tag on a commit that is not on main becomes a
+# pre-release, which releases/latest skips, so a branch's catalog can be tested without reaching
+# anyone's app. Nothing is published unless the catalog passes its checks.
+on:
+  push:
+    tags: ["catalog-*"]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Sources formatted and assembled
+        run: python3 tools/catalog.py verify
+      - name: Install jsonschema
+        run: pip install jsonschema
+      - name: Schema and rules
+        run: python3 tools/check.py rules
+      - name: Revision and layer IDs against the latest release
+        run: python3 tools/check.py revision
+      - name: Collect assets
+        # Release assets are flat, so catalog/thumbnails/<stem>.png is attached as thumb-<stem>.png.
+        run: |
+          shopt -s nullglob
+          mkdir dist
+          cp catalog/catalog-v*.json dist/
+          for thumbnail in catalog/thumbnails/*.png; do
+            cp "$thumbnail" "dist/thumb-$(basename "$thumbnail")"
+          done
+          ls -l dist
+      - name: Publish
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          prerelease=""
+          git merge-base --is-ancestor "$GITHUB_SHA" origin/main || prerelease="--prerelease"
+          gh release create "$GITHUB_REF_NAME" dist/* --verify-tag --title "$GITHUB_REF_NAME" --notes "" $prerelease

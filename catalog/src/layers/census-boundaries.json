@@ -1,0 +1,125 @@
+{
+  "datasets": {
+    "census.tigerweb.aiannha": {
+      "name": "TIGERweb American Indian, Alaska Native and Native Hawaiian Areas",
+      "summary": "Federal and state reservations, off-reservation trust lands, Alaska Native Regional Corporations and Hawaiian Home Lands.",
+      "provider": "census",
+      "officialURL": "https://tigerweb.geo.census.gov",
+      "serviceURL": "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/AIANNHA/MapServer",
+      "attribution": "American Indian, Alaska Native and Native Hawaiian areas courtesy of the U.S. Census Bureau",
+      "license": "usPublicDomain",
+      "coverage": "unitedStates"
+    },
+    "census.tigerweb.legislative": {
+      "name": "TIGERweb Legislative Districts",
+      "summary": "Current congressional districts and upper and lower state legislative districts from the Census Bureau's TIGER database.",
+      "provider": "census",
+      "officialURL": "https://tigerweb.geo.census.gov",
+      "serviceURL": "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Legislative/MapServer",
+      "attribution": "Legislative districts courtesy of the U.S. Census Bureau TIGER/Line database",
+      "license": "usPublicDomain",
+      "coverage": "unitedStates"
+    },
+    "census.tigerweb.school": {
+      "name": "TIGERweb School Districts",
+      "summary": "Unified, elementary and secondary school district boundaries as reported to the Census Bureau by state education officials.",
+      "provider": "census",
+      "officialURL": "https://tigerweb.geo.census.gov",
+      "serviceURL": "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/School/MapServer",
+      "attribution": "School districts courtesy of the U.S. Census Bureau TIGER/Line database",
+      "license": "usPublicDomain",
+      "coverage": "unitedStates"
+    },
+    "census.tigerweb.zcta": {
+      "name": "TIGERweb ZIP Code Tabulation Areas",
+      "summary": "The Census Bureau's areal approximations of USPS ZIP Code service areas. ZIP Codes themselves are mail routes rather than areas, so these are the nearest thing to ZIP boundaries that is published nationally.",
+      "provider": "census",
+      "officialURL": "https://www.census.gov/programs-surveys/geography/guidance/geo-areas/zctas.html",
+      "serviceURL": "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/PUMA_TAD_TAZ_UGA_ZCTA/MapServer",
+      "attribution": "ZIP Code Tabulation Areas courtesy of the U.S. Census Bureau",
+      "license": "usPublicDomain",
+      "coverage": "unitedStates"
+    }
+  },
+  "layers": [
+    {
+      "id": "census.congressional-districts",
+      "name": "Congressional Districts",
+      "summary": "U.S. House districts for the current Congress.",
+      "category": "boundaries",
+      "dataset": "census.tigerweb.legislative",
+      "source": {
+        "type": "arcGISMapExport",
+        "serviceURL": "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Legislative/MapServer",
+        "visibleLayers": "show:0"
+      },
+      "minimumZoom": 6
+    },
+    {
+      "id": "census.state-upper-districts",
+      "name": "State Senate Districts",
+      "summary": "Upper-chamber state legislative districts. Nebraska's unicameral legislature appears here.",
+      "category": "boundaries",
+      "dataset": "census.tigerweb.legislative",
+      "source": {
+        "type": "arcGISMapExport",
+        "serviceURL": "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Legislative/MapServer",
+        "visibleLayers": "show:1"
+      },
+      "minimumZoom": 8
+    },
+    {
+      "id": "census.state-lower-districts",
+      "name": "State House Districts",
+      "summary": "Lower-chamber state legislative districts — the state house or assembly.",
+      "category": "boundaries",
+      "dataset": "census.tigerweb.legislative",
+      "source": {
+        "type": "arcGISMapExport",
+        "serviceURL": "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Legislative/MapServer",
+        "visibleLayers": "show:2"
+      },
+      "minimumZoom": 8
+    },
+    {
+      "id": "census.school-districts",
+      "name": "School Districts",
+      "summary": "Unified, elementary and secondary public school district boundaries.",
+      "category": "boundaries",
+      "dataset": "census.tigerweb.school",
+      "source": {
+        "type": "arcGISMapExport",
+        "serviceURL": "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/School/MapServer",
+        "visibleLayers": "show:0,1,2"
+      },
+      "minimumZoom": 7
+    },
+    {
+      "id": "census.zip-codes",
+      "name": "ZIP Codes",
+      "summary": "ZIP Code Tabulation Areas — the Census Bureau's area approximations of ZIP Code delivery areas.",
+      "category": "boundaries",
+      "dataset": "census.tigerweb.zcta",
+      "source": {
+        "type": "arcGISMapExport",
+        "serviceURL": "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/PUMA_TAD_TAZ_UGA_ZCTA/MapServer",
+        "visibleLayers": "show:1"
+      },
+      "minimumZoom": 8
+    },
+    {
+      "id": "census.tribal-lands",
+      "name": "Tribal Lands",
+      "summary": "Reservations, off-reservation trust land, Alaska Native Regional Corporations and Hawaiian Home Lands.",
+      "category": "boundaries",
+      "dataset": "census.tigerweb.aiannha",
+      "source": {
+        "type": "arcGISMapExport",
+        "serviceURL": "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/AIANNHA/MapServer",
+        "visibleLayers": "show:0,2,3,4,5"
+      },
+      "minimumZoom": 5,
+      "defaultOpacity": 0.6
+    }
+  ]
+}

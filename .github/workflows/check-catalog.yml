@@ -1,0 +1,40 @@
+name: Check catalog
+
+# Runs on every change to the catalog or its tools. The probe here requests tiles only for layers
+# added or changed since the latest release, so a PR fails for a source it touched, not for a
+# server that went down elsewhere; the nightly probe-catalog workflow watches everything else.
+on:
+  pull_request:
+    paths: ["catalog/**", "tools/**", ".github/workflows/check-catalog.yml"]
+  push:
+    branches: [main]
+    paths: ["catalog/**", "tools/**", ".github/workflows/check-catalog.yml"]
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Sources formatted and assembled
+        run: python3 tools/catalog.py verify
+      - name: Install jsonschema
+        run: pip install jsonschema
+      - name: Schema and rules
+        run: python3 tools/check.py rules
+      - name: Revision and layer IDs against the latest release
+        run: python3 tools/check.py revision
+      - name: Probe layers changed since the latest release
+        run: python3 tools/check.py probe --changed-since https://github.com/ouroborostechnologies/platmark/releases/latest/download/catalog-v1.json --json probe-results.json
+      - name: Keep probe results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: probe-results
+          path: probe-results.json
+          if-no-files-found: ignore

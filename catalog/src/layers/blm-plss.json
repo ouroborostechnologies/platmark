@@ -1,0 +1,44 @@
+{
+  "datasets": {
+    "blm.cadnsdi.plss": {
+      "name": "Public Land Survey System (CadNSDI)",
+      "summary": "The township, range and section grid of the Public Land Survey System, with quarter-quarter sections and government lots, compiled from BLM cadastral survey records for the thirty public-land states.",
+      "provider": "blm",
+      "officialURL": "https://www.blm.gov/services/geospatial/GISData",
+      "serviceURL": "https://gis.blm.gov/natlplss/rest/services/Cadastral/BLM_Natl_PLSS_CadNSDI/MapServer",
+      "attribution": "PLSS courtesy of the Bureau of Land Management, CadNSDI",
+      "license": "usPublicDomain",
+      "coverage": "unitedStates"
+    }
+  },
+  "layers": [
+    {
+      "id": "blm.plss.townships-sections",
+      "name": "Townships & Sections",
+      "summary": "The PLSS township and range grid, filling in with one-mile sections as you zoom in.",
+      "category": "boundaries",
+      "dataset": "blm.cadnsdi.plss",
+      "source": {
+        "type": "arcGISMapExport",
+        "serviceURL": "https://gis.blm.gov/natlplss/rest/services/Cadastral/BLM_Natl_PLSS_CadNSDI/MapServer",
+        "additionalQuery": {
+          "dynamicLayers": "[{\"id\":1,\"source\":{\"type\":\"mapLayer\",\"mapLayerId\":1},\"drawingInfo\":{\"showLabels\":false}},{\"id\":2,\"source\":{\"type\":\"mapLayer\",\"mapLayerId\":2},\"drawingInfo\":{\"showLabels\":false}}]"
+        }
+      },
+      "minimumZoom": 8
+    },
+    {
+      "id": "blm.plss.quarter-quarters",
+      "name": "Quarter-Quarter Sections & Lots",
+      "summary": "Sections divided into forty-acre quarter-quarters and the government lots surveyed along rivers, lakes and irregular township edges.",
+      "category": "boundaries",
+      "dataset": "blm.cadnsdi.plss",
+      "source": {
+        "type": "arcGISMapExport",
+        "serviceURL": "https://gis.blm.gov/natlplss/rest/services/Cadastral/BLM_Natl_PLSS_CadNSDI/MapServer",
+        "visibleLayers": "show:3"
+      },
+      "minimumZoom": 12
+    }
+  ]
+}

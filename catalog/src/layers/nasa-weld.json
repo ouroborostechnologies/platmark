@@ -1,0 +1,124 @@
+{
+  "datasets": {
+    "nasa.gibs.landsat-weld": {
+      "name": "Landsat Web-Enabled Landsat Data (WELD) annual mosaics",
+      "summary": "Cloud-free yearly mosaics of Landsat imagery at 30 m for the years around 1985, 1990 and 2000. Served by NASA's Global Imagery Browse Services.",
+      "provider": "nasa",
+      "officialURL": "https://www.earthdata.nasa.gov/data/projects/weld",
+      "serviceURL": "https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual/default/{date}/GoogleMapsCompatible_Level12/{z}/{y}/{x}.jpg",
+      "attribution": "Landsat WELD imagery from NASA's Global Imagery Browse Services (GIBS)",
+      "license": "nasaOpenData",
+      "coverage": "unitedStates"
+    }
+  },
+  "layers": [
+    {
+      "id": "nasa.gibs.landsat-weld",
+      "name": "Landsat 1984–2001",
+      "summary": "Cloud-free satellite mosaics at 30 m from the mid-1980s, around 1990 and around 2000. Enough to see farmland, forest and the edge of a town as they were.",
+      "category": "historical",
+      "dataset": "nasa.gibs.landsat-weld",
+      "minimumZoom": 4,
+      "maximumZoom": 15,
+      "time": {
+        "cadence": "irregular",
+        "discovery": {
+          "type": "fixed",
+          "editions": [
+            {
+              "id": "weld-1984",
+              "date": "1984",
+              "detail": "Dec 1983 – Nov 1984",
+              "source": {
+                "type": "wmts",
+                "urlTemplate": "https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual/default/1983-12-01/GoogleMapsCompatible_Level12/{z}/{y}/{x}.jpg",
+                "maximumLevel": 12
+              }
+            },
+            {
+              "id": "weld-1985",
+              "date": "1985",
+              "detail": "Dec 1984 – Nov 1985",
+              "source": {
+                "type": "wmts",
+                "urlTemplate": "https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual/default/1984-12-01/GoogleMapsCompatible_Level12/{z}/{y}/{x}.jpg",
+                "maximumLevel": 12
+              }
+            },
+            {
+              "id": "weld-1986",
+              "date": "1986",
+              "detail": "Dec 1985 – Nov 1986",
+              "source": {
+                "type": "wmts",
+                "urlTemplate": "https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual/default/1985-12-01/GoogleMapsCompatible_Level12/{z}/{y}/{x}.jpg",
+                "maximumLevel": 12
+              }
+            },
+            {
+              "id": "weld-1989",
+              "date": "1989",
+              "detail": "Dec 1988 – Nov 1989",
+              "source": {
+                "type": "wmts",
+                "urlTemplate": "https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual/default/1988-12-01/GoogleMapsCompatible_Level12/{z}/{y}/{x}.jpg",
+                "maximumLevel": 12
+              }
+            },
+            {
+              "id": "weld-1990",
+              "date": "1990",
+              "detail": "Dec 1989 – Nov 1990",
+              "source": {
+                "type": "wmts",
+                "urlTemplate": "https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual/default/1989-12-01/GoogleMapsCompatible_Level12/{z}/{y}/{x}.jpg",
+                "maximumLevel": 12
+              }
+            },
+            {
+              "id": "weld-1991",
+              "date": "1991",
+              "detail": "Dec 1990 – Nov 1991",
+              "source": {
+                "type": "wmts",
+                "urlTemplate": "https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual/default/1990-12-01/GoogleMapsCompatible_Level12/{z}/{y}/{x}.jpg",
+                "maximumLevel": 12
+              }
+            },
+            {
+              "id": "weld-1999",
+              "date": "1999",
+              "detail": "Dec 1998 – Nov 1999",
+              "source": {
+                "type": "wmts",
+                "urlTemplate": "https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual/default/1998-12-01/GoogleMapsCompatible_Level12/{z}/{y}/{x}.jpg",
+                "maximumLevel": 12
+              }
+            },
+            {
+              "id": "weld-2000",
+              "date": "2000",
+              "detail": "Dec 1999 – Nov 2000",
+              "source": {
+                "type": "wmts",
+                "urlTemplate": "https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual/default/1999-12-01/GoogleMapsCompatible_Level12/{z}/{y}/{x}.jpg",
+                "maximumLevel": 12
+              }
+            },
+            {
+              "id": "weld-2001",
+              "date": "2001",
+              "detail": "Dec 2000 – Nov 2001",
+              "source": {
+                "type": "wmts",
+                "urlTemplate": "https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual/default/2000-12-01/GoogleMapsCompatible_Level12/{z}/{y}/{x}.jpg",
+                "maximumLevel": 12
+              }
+            }
+          ]
+        },
+        "preloadAllowance": 6
+      }
+    }
+  ]
+}

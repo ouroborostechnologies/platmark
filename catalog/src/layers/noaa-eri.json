@@ -1,0 +1,1481 @@
+{
+  "datasets": {
+    "noaa.ngs.eri": {
+      "name": "Emergency Response Imagery",
+      "summary": "Aerial photographs NOAA's National Geodetic Survey flies over the coast and inland in the days after a hurricane or other disaster. Not for use in litigation.",
+      "provider": "noaa",
+      "officialURL": "https://storms.ngs.noaa.gov",
+      "serviceURL": "https://stormscdn.ngs.noaa.gov/{flight}-rgb/{z}/{x}/{y}",
+      "attribution": "NOAA National Geodetic Survey",
+      "license": "usPublicDomain",
+      "coverage": "unitedStates"
+    }
+  },
+  "layers": [
+    {
+      "id": "noaa.ngs.eri",
+      "name": "Storm Damage Photos",
+      "summary": "Aerial photographs taken by NOAA in the days after hurricanes, floods and fires since 2018. Sharp enough to see individual roofs. Only flights over the place in view appear.",
+      "category": "historical",
+      "dataset": "noaa.ngs.eri",
+      "source": {
+        "type": "xyzRaster",
+        "urlTemplate": "https://stormscdn.ngs.noaa.gov/20261013a-rgb/{z}/{x}/{y}",
+        "maximumLevel": 19
+      },
+      "minimumZoom": 9,
+      "maximumZoom": 21,
+      "time": {
+        "range": ["2018-10-11", "2026-10-13"],
+        "cadence": "byPlace",
+        "discovery": {
+          "type": "regional",
+          "editions": [
+            {
+              "id": "20181011a",
+              "date": "2018-10-11",
+              "detail": "Hurricane Michael",
+              "extent": [-88.0501, 29.5749, -84.6999, 30.4751],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20181011a-rgb/{z}/{x}/{y}",
+                "maximumLevel": 19
+              }
+            },
+            {
+              "id": "20181012a",
+              "date": "2018-10-12",
+              "detail": "Hurricane Michael",
+              "extent": [-85.5501, 29.8249, -84.7999, 30.8501],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20181012a-rgb/{z}/{x}/{y}",
+                "maximumLevel": 19
+              }
+            },
+            {
+              "id": "20181012b",
+              "date": "2018-10-12",
+              "detail": "Hurricane Michael",
+              "extent": [-85.4001, 30.3499, -84.1499, 31.2251],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20181012b-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20181013a",
+              "date": "2018-10-13",
+              "detail": "Hurricane Michael",
+              "extent": [-86.1501, 29.0749, -82.9999, 30.8251],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20181013a-rgb/{z}/{x}/{y}",
+                "maximumLevel": 19
+              }
+            },
+            {
+              "id": "20181014a",
+              "date": "2018-10-14",
+              "detail": "Hurricane Michael",
+              "extent": [-86.5501, 29.7249, -84.3499, 30.9001],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20181014a-rgb/{z}/{x}/{y}",
+                "maximumLevel": 19
+              }
+            },
+            {
+              "id": "20201029a",
+              "date": "2020-10-29",
+              "detail": "Hurricane Zeta",
+              "extent": [-90.3751, 29.0249, -88.0499, 30.4501],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20201029a-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20201029b",
+              "date": "2020-10-29",
+              "detail": "Hurricane Zeta",
+              "extent": [-88.9001, 30.1999, -88.0499, 30.4751],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20201029b-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20201029c",
+              "date": "2020-10-29",
+              "detail": "Hurricane Zeta",
+              "extent": [-91.0251, 28.8499, -88.3999, 30.4751],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20201029c-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20201030a",
+              "date": "2020-10-30",
+              "detail": "Hurricane Zeta",
+              "extent": [-90.3001, 28.9249, -88.8999, 30.0251],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20201030a-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20201030b",
+              "date": "2020-10-30",
+              "detail": "Hurricane Zeta",
+              "extent": [-89.5001, 30.1749, -87.3249, 30.7001],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20201030b-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20210823a",
+              "date": "2021-08-23",
+              "detail": "Hurricane Henri",
+              "extent": [-72.1376, 40.9124, -69.9124, 41.4376],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20210823a-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20210823b",
+              "date": "2021-08-23",
+              "detail": "Hurricane Henri",
+              "extent": [-71.5751, 41.1749, -71.5499, 41.2376],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20210823b-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20210824a",
+              "date": "2021-08-24",
+              "detail": "Hurricane Henri",
+              "extent": [-72.1751, 41.2124, -69.9249, 41.6751],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20210824a-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20210824b",
+              "date": "2021-08-24",
+              "detail": "Hurricane Henri",
+              "extent": [-71.0001, 41.3624, -70.0124, 41.6751],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20210824b-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20210830a",
+              "date": "2021-08-30",
+              "detail": "Hurricane Ida",
+              "extent": [-93.4001, 29.1999, -89.9749, 29.9251],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20210830a-rgb/{z}/{x}/{y}",
+                "maximumLevel": 19
+              }
+            },
+            {
+              "id": "20210830b",
+              "date": "2021-08-30",
+              "detail": "Hurricane Ida",
+              "extent": [-90.5751, 29.4249, -89.9749, 29.9251],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20210830b-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20210831a",
+              "date": "2021-08-31",
+              "detail": "Hurricane Ida",
+              "extent": [-91.1001, 29.0124, -88.7749, 30.4126],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20210831a-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20210831b",
+              "date": "2021-08-31",
+              "detail": "Hurricane Ida",
+              "extent": [-89.4251, 30.2249, -88.7749, 30.4251],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20210831b-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20210901a",
+              "date": "2021-09-01",
+              "detail": "Hurricane Ida",
+              "extent": [-90.6001, 29.0124, -89.6124, 30.4501],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20210901a-rgb/{z}/{x}/{y}",
+                "maximumLevel": 21
+              }
+            },
+            {
+              "id": "20210901b",
+              "date": "2021-09-01",
+              "detail": "Hurricane Ida",
+              "extent": [-90.6001, 29.0124, -89.7749, 30.4376],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20210901b-rgb/{z}/{x}/{y}",
+                "maximumLevel": 21
+              }
+            },
+            {
+              "id": "20210902a",
+              "date": "2021-09-02",
+              "detail": "Hurricane Ida",
+              "extent": [-90.8501, 29.5249, -89.3499, 30.5001],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20210902a-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20210902b",
+              "date": "2021-09-02",
+              "detail": "Hurricane Ida",
+              "extent": [-90.6751, 29.5249, -88.6124, 30.4501],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20210902b-rgb/{z}/{x}/{y}",
+                "maximumLevel": 21
+              }
+            },
+            {
+              "id": "20220929a",
+              "date": "2022-09-29",
+              "detail": "Hurricane Ian",
+              "extent": [-82.2751, 26.3999, -81.7874, 26.9876],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20220929a-rgb/{z}/{x}/{y}",
+                "maximumLevel": 19
+              }
+            },
+            {
+              "id": "20220930a",
+              "date": "2022-09-30",
+              "detail": "Hurricane Ian",
+              "extent": [-82.5001, 26.3874, -81.9249, 27.1626],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20220930a-rgb/{z}/{x}/{y}",
+                "maximumLevel": 19
+              }
+            },
+            {
+              "id": "20220930c",
+              "date": "2022-09-30",
+              "detail": "Hurricane Ian",
+              "extent": [-82.2001, 25.7499, -81.2999, 26.7876],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20220930c-rgb/{z}/{x}/{y}",
+                "maximumLevel": 19
+              }
+            },
+            {
+              "id": "20220930d",
+              "date": "2022-09-30",
+              "detail": "Hurricane Ian",
+              "extent": [-82.3001, 25.8749, -81.6249, 27.0376],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20220930d-rgb/{z}/{x}/{y}",
+                "maximumLevel": 19
+              }
+            },
+            {
+              "id": "20221001a",
+              "date": "2022-10-01",
+              "detail": "Hurricane Ian",
+              "extent": [-83.0126, 24.4999, -80.3999, 25.1001],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20221001a-rgb/{z}/{x}/{y}",
+                "maximumLevel": 19
+              }
+            },
+            {
+              "id": "20221001b",
+              "date": "2022-10-01",
+              "detail": "Hurricane Ian",
+              "extent": [-82.8376, 26.7124, -82.0624, 27.6751],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20221001b-rgb/{z}/{x}/{y}",
+                "maximumLevel": 19
+              }
+            },
+            {
+              "id": "20221001c",
+              "date": "2022-10-01",
+              "detail": "Hurricane Ian",
+              "extent": [-81.3001, 28.3999, -80.4999, 29.7751],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20221001c-rgb/{z}/{x}/{y}",
+                "maximumLevel": 19
+              }
+            },
+            {
+              "id": "20221002a",
+              "date": "2022-10-02",
+              "detail": "Hurricane Ian",
+              "extent": [-81.4626, 29.0874, -79.8124, 32.9876],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20221002a-rgb/{z}/{x}/{y}",
+                "maximumLevel": 19
+              }
+            },
+            {
+              "id": "20221002b",
+              "date": "2022-10-02",
+              "detail": "Hurricane Ian",
+              "extent": [-81.5501, 30.1124, -78.4624, 33.9626],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20221002b-rgb/{z}/{x}/{y}",
+                "maximumLevel": 19
+              }
+            },
+            {
+              "id": "20221002c",
+              "date": "2022-10-02",
+              "detail": "Hurricane Ian",
+              "extent": [-80.9751, 31.9999, -79.7874, 32.7876],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20221002c-rgb/{z}/{x}/{y}",
+                "maximumLevel": 19
+              }
+            },
+            {
+              "id": "20221002d",
+              "date": "2022-10-02",
+              "detail": "Hurricane Ian",
+              "extent": [-79.9251, 32.7249, -79.1374, 33.5001],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20221002d-rgb/{z}/{x}/{y}",
+                "maximumLevel": 19
+              }
+            },
+            {
+              "id": "20221003a",
+              "date": "2022-10-03",
+              "detail": "Hurricane Ian",
+              "extent": [-79.2626, 33.0999, -79.0874, 33.4876],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20221003a-rgb/{z}/{x}/{y}",
+                "maximumLevel": 19
+              }
+            },
+            {
+              "id": "20221112a",
+              "date": "2022-11-12",
+              "detail": "Hurricane Nicole",
+              "extent": [-81.2876, 28.8999, -80.7999, 29.7001],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20221112a-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20221113a",
+              "date": "2022-11-13",
+              "detail": "Hurricane Nicole",
+              "extent": [-80.1751, 26.7499, -80.0124, 27.0876],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20221113a-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20221114a",
+              "date": "2022-11-14",
+              "detail": "Hurricane Nicole",
+              "extent": [-81.3751, 27.0624, -80.1124, 30.1876],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20221114a-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20221115a",
+              "date": "2022-11-15",
+              "detail": "Hurricane Nicole",
+              "extent": [-80.7751, 26.4374, -80.0249, 28.3626],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20221115a-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20230831a",
+              "date": "2023-08-31",
+              "detail": "Hurricane Idalia",
+              "extent": [-83.7126, 29.0624, -82.8999, 30.0126],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20230831a-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20230831b",
+              "date": "2023-08-31",
+              "detail": "Hurricane Idalia",
+              "extent": [-82.9376, 27.5749, -82.4999, 29.1001],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20230831b-rgb/{z}/{x}/{y}",
+                "maximumLevel": 19
+              }
+            },
+            {
+              "id": "20230901a",
+              "date": "2023-09-01",
+              "detail": "Hurricane Idalia",
+              "extent": [-82.8751, 26.3999, -81.9499, 28.6001],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20230901a-rgb/{z}/{x}/{y}",
+                "maximumLevel": 19
+              }
+            },
+            {
+              "id": "20230901b",
+              "date": "2023-09-01",
+              "detail": "Hurricane Idalia",
+              "extent": [-81.5126, 30.6999, -81.2999, 31.2376],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20230901b-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20230902a",
+              "date": "2023-09-02",
+              "detail": "Hurricane Idalia",
+              "extent": [-83.6251, 29.0124, -82.6374, 29.8126],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20230902a-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20230917a",
+              "date": "2023-09-17",
+              "detail": "Hurricane Lee",
+              "extent": [-68.5251, 44.0624, -66.9124, 44.8501],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20230917a-rgb/{z}/{x}/{y}",
+                "maximumLevel": 19
+              }
+            },
+            {
+              "id": "20230917b",
+              "date": "2023-09-17",
+              "detail": "Hurricane Lee",
+              "extent": [-69.1626, 43.9874, -67.4749, 44.6751],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20230917b-rgb/{z}/{x}/{y}",
+                "maximumLevel": 19
+              }
+            },
+            {
+              "id": "20240807a",
+              "date": "2024-08-07",
+              "detail": "Hurricane Debby",
+              "extent": [-83.2876, 28.7999, -82.5374, 29.4751],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20240807a-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20240808a",
+              "date": "2024-08-08",
+              "detail": "Hurricane Debby",
+              "extent": [-83.7251, 29.3624, -82.5499, 30.4251],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20240808a-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20240812a",
+              "date": "2024-08-12",
+              "detail": "Hurricane Debby",
+              "extent": [-82.6501, 28.4999, -82.4999, 28.9001],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20240812a-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20240913a",
+              "date": "2024-09-13",
+              "detail": "Hurricane Francine",
+              "extent": [-90.6876, 29.0624, -89.9374, 29.2751],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20240913a-rgb/{z}/{x}/{y}",
+                "maximumLevel": 21
+              }
+            },
+            {
+              "id": "20240916a",
+              "date": "2024-09-16",
+              "detail": "Hurricane Francine",
+              "extent": [-91.6251, 29.3374, -90.6124, 29.8001],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20240916a-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20240917a",
+              "date": "2024-09-17",
+              "detail": "Hurricane Francine",
+              "extent": [-91.0876, 29.4499, -90.7249, 29.6501],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20240917a-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20240917b",
+              "date": "2024-09-17",
+              "detail": "Hurricane Francine",
+              "extent": [-90.8751, 29.1999, -90.6374, 29.5751],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20240917b-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20240927a",
+              "date": "2024-09-27",
+              "detail": "Hurricane Helene",
+              "extent": [-85.7501, 29.5749, -85.0124, 30.1751],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20240927a-rgb/{z}/{x}/{y}",
+                "maximumLevel": 21
+              }
+            },
+            {
+              "id": "20240927b",
+              "date": "2024-09-27",
+              "detail": "Hurricane Helene",
+              "extent": [-85.2126, 29.5624, -84.1624, 30.2001],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20240927b-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20240928a",
+              "date": "2024-09-28",
+              "detail": "Hurricane Helene",
+              "extent": [-83.7126, 29.4499, -83.3374, 29.9751],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20240928a-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20240928b",
+              "date": "2024-09-28",
+              "detail": "Hurricane Helene",
+              "extent": [-83.4376, 27.8874, -82.4374, 29.7126],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20240928b-rgb/{z}/{x}/{y}",
+                "maximumLevel": 21
+              }
+            },
+            {
+              "id": "20240929a",
+              "date": "2024-09-29",
+              "detail": "Hurricane Helene",
+              "extent": [-83.1001, 27.8999, -82.5749, 29.2251],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20240929a-rgb/{z}/{x}/{y}",
+                "maximumLevel": 21
+              }
+            },
+            {
+              "id": "20240929b",
+              "date": "2024-09-29",
+              "detail": "Hurricane Helene",
+              "extent": [-82.7876, 27.1999, -82.4749, 27.8501],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20240929b-rgb/{z}/{x}/{y}",
+                "maximumLevel": 21
+              }
+            },
+            {
+              "id": "20240930a",
+              "date": "2024-09-30",
+              "detail": "Hurricane Helene",
+              "extent": [-82.5751, 27.5874, -82.3249, 27.9876],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20240930a-rgb/{z}/{x}/{y}",
+                "maximumLevel": 21
+              }
+            },
+            {
+              "id": "20240930b",
+              "date": "2024-09-30",
+              "detail": "Hurricane Helene",
+              "extent": [-82.8751, 27.6874, -82.6874, 28.2376],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20240930b-rgb/{z}/{x}/{y}",
+                "maximumLevel": 21
+              }
+            },
+            {
+              "id": "20240930c",
+              "date": "2024-09-30",
+              "detail": "Hurricane Helene",
+              "extent": [-82.6001, 26.8999, -82.3124, 27.3251],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20240930c-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20241001a",
+              "date": "2024-10-01",
+              "detail": "Hurricane Helene",
+              "extent": [-82.8501, 27.8249, -82.3374, 28.1501],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20241001a-rgb/{z}/{x}/{y}",
+                "maximumLevel": 21
+              }
+            },
+            {
+              "id": "20241001b",
+              "date": "2024-10-01",
+              "detail": "Hurricane Helene",
+              "extent": [-82.8626, 27.8499, -82.8124, 27.9376],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20241001b-rgb/{z}/{x}/{y}",
+                "maximumLevel": 21
+              }
+            },
+            {
+              "id": "20241002a",
+              "date": "2024-10-02",
+              "detail": "Hurricane Helene",
+              "extent": [-82.7626, 27.6874, -82.4624, 28.0876],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20241002a-rgb/{z}/{x}/{y}",
+                "maximumLevel": 19
+              }
+            },
+            {
+              "id": "20241002b",
+              "date": "2024-10-02",
+              "detail": "Hurricane Helene",
+              "extent": [-82.7876, 28.1999, -82.5874, 28.5501],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20241002b-rgb/{z}/{x}/{y}",
+                "maximumLevel": 21
+              }
+            },
+            {
+              "id": "20241002c",
+              "date": "2024-10-02",
+              "detail": "Hurricane Helene",
+              "extent": [-83.4626, 28.4999, -82.5124, 29.7126],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20241002c-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20241005a",
+              "date": "2024-10-05",
+              "detail": "Hurricane Helene",
+              "extent": [-83.4876, 35.3249, -81.6249, 36.2376],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20241005a-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20241005b",
+              "date": "2024-10-05",
+              "detail": "Hurricane Helene",
+              "extent": [-82.6251, 35.3624, -82.4249, 35.7501],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20241005b-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20241006a",
+              "date": "2024-10-06",
+              "detail": "Hurricane Helene",
+              "extent": [-83.4251, 35.0874, -81.6874, 35.8251],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20241006a-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20241006b",
+              "date": "2024-10-06",
+              "detail": "Hurricane Helene",
+              "extent": [-82.9376, 35.6499, -82.5624, 35.9876],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20241006b-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20241007a",
+              "date": "2024-10-07",
+              "detail": "Hurricane Helene",
+              "extent": [-82.8626, 35.2249, -81.6624, 36.1376],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20241007a-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20241008a",
+              "date": "2024-10-08",
+              "detail": "Hurricane Helene",
+              "extent": [-82.4376, 35.6624, -80.3624, 36.3001],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20241008a-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20241011a",
+              "date": "2024-10-11",
+              "detail": "Hurricane Milton",
+              "extent": [-82.8126, 27.1499, -82.4124, 27.6626],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20241011a-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20241011b",
+              "date": "2024-10-11",
+              "detail": "Hurricane Milton",
+              "extent": [-82.5126, 26.6499, -82.1499, 27.2001],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20241011b-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20241011c",
+              "date": "2024-10-11",
+              "detail": "Hurricane Milton",
+              "extent": [-82.7251, 27.1499, -82.4499, 27.4876],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20241011c-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20241011d",
+              "date": "2024-10-11",
+              "detail": "Hurricane Milton",
+              "extent": [-82.8876, 27.6249, -82.6124, 28.2626],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20241011d-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20241012a",
+              "date": "2024-10-12",
+              "detail": "Hurricane Milton",
+              "extent": [-82.3001, 26.0624, -81.7124, 26.7876],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20241012a-rgb/{z}/{x}/{y}",
+                "maximumLevel": 19
+              }
+            },
+            {
+              "id": "20241012b",
+              "date": "2024-10-12",
+              "detail": "Hurricane Milton",
+              "extent": [-82.1001, 26.3374, -81.8124, 26.9251],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20241012b-rgb/{z}/{x}/{y}",
+                "maximumLevel": 21
+              }
+            },
+            {
+              "id": "20241012c",
+              "date": "2024-10-12",
+              "detail": "Hurricane Milton",
+              "extent": [-82.8001, 27.6749, -82.5499, 28.0876],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20241012c-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20241013a",
+              "date": "2024-10-13",
+              "detail": "Hurricane Milton",
+              "extent": [-82.2876, 26.4624, -81.7874, 27.0501],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20241013a-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20241013b",
+              "date": "2024-10-13",
+              "detail": "Hurricane Milton",
+              "extent": [-82.3501, 26.8499, -82.1249, 27.1126],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20241013b-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20241013c",
+              "date": "2024-10-13",
+              "detail": "Hurricane Milton",
+              "extent": [-81.3001, 29.2249, -81.0124, 29.6876],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20241013c-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20241013d",
+              "date": "2024-10-13",
+              "detail": "Hurricane Milton",
+              "extent": [-81.1251, 28.5249, -80.5374, 29.3001],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20241013d-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20241014a",
+              "date": "2024-10-14",
+              "detail": "Hurricane Milton",
+              "extent": [-82.9126, 27.4874, -82.3499, 28.1126],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20241014a-rgb/{z}/{x}/{y}",
+                "maximumLevel": 19
+              }
+            },
+            {
+              "id": "20241014b",
+              "date": "2024-10-14",
+              "detail": "Hurricane Milton",
+              "extent": [-82.4001, 27.8374, -80.4999, 28.6126],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20241014b-rgb/{z}/{x}/{y}",
+                "maximumLevel": 19
+              }
+            },
+            {
+              "id": "20250128a",
+              "date": "2025-01-28",
+              "detail": "California Fire",
+              "extent": [-118.7626, 34.0124, -117.9749, 34.2251],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20250128a-rgb/{z}/{x}/{y}",
+                "maximumLevel": 21
+              }
+            },
+            {
+              "id": "20250410a",
+              "date": "2025-04-10",
+              "detail": "Midwest Flooding",
+              "extent": [-86.0251, 36.7749, -85.6874, 37.0751],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20250410a-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20250412a",
+              "date": "2025-04-12",
+              "detail": "Midwest Flooding",
+              "extent": [-85.9126, 37.6124, -84.5249, 38.3876],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20250412a-rgb/{z}/{x}/{y}",
+                "maximumLevel": 19
+              }
+            },
+            {
+              "id": "20250412b",
+              "date": "2025-04-12",
+              "detail": "Midwest Flooding",
+              "extent": [-85.9751, 37.1874, -85.6374, 37.3626],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20250412b-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20250412c",
+              "date": "2025-04-12",
+              "detail": "Midwest Flooding",
+              "extent": [-86.1251, 37.4874, -85.4249, 37.8876],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20250412c-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20250412d",
+              "date": "2025-04-12",
+              "detail": "Midwest Flooding",
+              "extent": [-86.5626, 36.7999, -85.7374, 37.1376],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20250412d-rgb/{z}/{x}/{y}",
+                "maximumLevel": 19
+              }
+            },
+            {
+              "id": "20250413a",
+              "date": "2025-04-13",
+              "detail": "Midwest Flooding",
+              "extent": [-87.6501, 36.5999, -87.2999, 37.0876],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20250413a-rgb/{z}/{x}/{y}",
+                "maximumLevel": 19
+              }
+            },
+            {
+              "id": "20250710a",
+              "date": "2025-07-10",
+              "detail": "Texas Flooding",
+              "extent": [-98.3251, 30.5124, -98.1499, 30.8876],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20250710a-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20250711a",
+              "date": "2025-07-11",
+              "detail": "Texas Flooding",
+              "extent": [-98.8501, 30.3499, -97.8374, 31.2376],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20250711a-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20250711b",
+              "date": "2025-07-11",
+              "detail": "Texas Flooding",
+              "extent": [-99.4501, 29.9624, -98.9749, 30.1251],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20250711b-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20250712a",
+              "date": "2025-07-12",
+              "detail": "Texas Flooding",
+              "extent": [-99.1751, 29.8249, -98.8999, 30.0751],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20250712a-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20250712b",
+              "date": "2025-07-12",
+              "detail": "Texas Flooding",
+              "extent": [-98.0376, 30.4124, -97.4624, 30.7376],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20250712b-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20250714a",
+              "date": "2025-07-14",
+              "detail": "Texas Flooding",
+              "extent": [-100.5751, 30.8624, -99.7499, 31.6001],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20250714a-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20250716a",
+              "date": "2025-07-16",
+              "detail": "Texas Flooding",
+              "extent": [-98.3001, 30.3374, -97.8874, 30.7751],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20250716a-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20250717a",
+              "date": "2025-07-17",
+              "detail": "Texas Flooding",
+              "extent": [-98.3001, 30.3374, -97.6999, 31.0001],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20250717a-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20250719a",
+              "date": "2025-07-19",
+              "detail": "Texas Flooding",
+              "extent": [-98.0501, 30.5749, -96.9499, 31.0126],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20250719a-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20250719b",
+              "date": "2025-07-19",
+              "detail": "Texas Flooding",
+              "extent": [-100.0751, 29.3749, -99.6999, 30.0251],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20250719b-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20250720a",
+              "date": "2025-07-20",
+              "detail": "Texas Flooding",
+              "extent": [-99.4501, 29.9499, -99.0374, 30.2251],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20250720a-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20250721a",
+              "date": "2025-07-21",
+              "detail": "Texas Flooding",
+              "extent": [-97.7126, 30.5499, -96.9124, 30.8251],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20250721a-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20250721b",
+              "date": "2025-07-21",
+              "detail": "Texas Flooding",
+              "extent": [-98.9751, 29.9124, -98.5999, 30.0376],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20250721b-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20250722a",
+              "date": "2025-07-22",
+              "detail": "Texas Flooding",
+              "extent": [-99.1876, 29.8624, -98.8499, 30.1626],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20250722a-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20250822a",
+              "date": "2025-08-22",
+              "detail": "Hurricane Erin",
+              "extent": [-76.3376, 35.1999, -75.4374, 36.9876],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20250822a-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20250823a",
+              "date": "2025-08-23",
+              "detail": "Hurricane Erin",
+              "extent": [-75.8126, 35.1374, -75.6999, 35.2626],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20250823a-rgb/{z}/{x}/{y}",
+                "maximumLevel": 21
+              }
+            },
+            {
+              "id": "20250823b",
+              "date": "2025-08-23",
+              "detail": "Hurricane Erin",
+              "extent": [-76.6001, 34.5249, -75.4999, 35.2626],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20250823b-rgb/{z}/{x}/{y}",
+                "maximumLevel": 21
+              }
+            },
+            {
+              "id": "20251031a",
+              "date": "2025-10-31",
+              "detail": "Hurricane Melissa",
+              "extent": [-78.0626, 17.8124, -77.6874, 18.4751],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20251031a-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20251031b",
+              "date": "2025-10-31",
+              "detail": "Hurricane Melissa",
+              "extent": [-78.0501, 18.4374, -77.5874, 18.5626],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20251031b-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20251101a",
+              "date": "2025-11-01",
+              "detail": "Hurricane Melissa",
+              "extent": [-78.3501, 17.9374, -77.4874, 18.2751],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20251101a-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20251102a",
+              "date": "2025-11-02",
+              "detail": "Hurricane Melissa",
+              "extent": [-78.1001, 18.0874, -77.9124, 18.3251],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20251102a-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20251102b",
+              "date": "2025-11-02",
+              "detail": "Hurricane Melissa",
+              "extent": [-77.8251, 17.9749, -76.3874, 18.2751],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20251102b-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20251103a",
+              "date": "2025-11-03",
+              "detail": "Hurricane Melissa",
+              "extent": [-77.8501, 18.0749, -77.3124, 18.5126],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20251103a-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20251104a",
+              "date": "2025-11-04",
+              "detail": "Hurricane Melissa",
+              "extent": [-76.8501, 17.8124, -76.3874, 18.2501],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20251104a-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20251104b",
+              "date": "2025-11-04",
+              "detail": "Hurricane Melissa",
+              "extent": [-78.3876, 18.2249, -78.0499, 18.3251],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20251104b-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20251105a",
+              "date": "2025-11-05",
+              "detail": "Hurricane Melissa",
+              "extent": [-78.0001, 18.3249, -77.4499, 18.5001],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20251105a-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20251105b",
+              "date": "2025-11-05",
+              "detail": "Hurricane Melissa",
+              "extent": [-78.0251, 17.8374, -77.6624, 18.3876],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20251105b-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20251106a",
+              "date": "2025-11-06",
+              "detail": "Hurricane Melissa",
+              "extent": [-77.3751, 17.9124, -77.0374, 18.2376],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20251106a-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20251106b",
+              "date": "2025-11-06",
+              "detail": "Hurricane Melissa",
+              "extent": [-77.9626, 18.0624, -76.7749, 18.5126],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20251106b-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20260129a",
+              "date": "2026-01-29",
+              "detail": "Winter Storm",
+              "extent": [-89.0876, 34.9749, -87.5999, 35.4626],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20260129a-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20260129b",
+              "date": "2026-01-29",
+              "detail": "Winter Storm",
+              "extent": [-89.1501, 35.0499, -88.6999, 35.3626],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20260129b-rgb/{z}/{x}/{y}",
+                "maximumLevel": 19
+              }
+            },
+            {
+              "id": "20260130a",
+              "date": "2026-01-30",
+              "detail": "Winter Storm",
+              "extent": [-90.0126, 33.6124, -89.4874, 34.4001],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20260130a-rgb/{z}/{x}/{y}",
+                "maximumLevel": 19
+              }
+            },
+            {
+              "id": "20260201a",
+              "date": "2026-02-01",
+              "detail": "Winter Storm",
+              "extent": [-91.1001, 33.3124, -87.5749, 35.3001],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20260201a-rgb/{z}/{x}/{y}",
+                "maximumLevel": 19
+              }
+            },
+            {
+              "id": "20261010a",
+              "date": "2026-10-10",
+              "detail": "Hurricane Isaias",
+              "extent": [-85.3626, 29.6374, -85.2624, 29.8501],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20261010a-rgb/{z}/{x}/{y}",
+                "maximumLevel": 20
+              }
+            },
+            {
+              "id": "20261011a",
+              "date": "2026-10-11",
+              "detail": "Hurricane Isaias",
+              "extent": [-88.0626, 29.9749, -85.4749, 30.4876],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20261011a-rgb/{z}/{x}/{y}",
+                "maximumLevel": 19
+              }
+            },
+            {
+              "id": "20261011b",
+              "date": "2026-10-11",
+              "detail": "Hurricane Isaias",
+              "extent": [-87.3876, 30.3249, -86.7999, 30.6001],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20261011b-rgb/{z}/{x}/{y}",
+                "maximumLevel": 19
+              }
+            },
+            {
+              "id": "20261012a",
+              "date": "2026-10-12",
+              "detail": "Hurricane Isaias",
+              "extent": [-89.2001, 30.1124, -86.8624, 30.8126],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20261012a-rgb/{z}/{x}/{y}",
+                "maximumLevel": 19
+              }
+            },
+            {
+              "id": "20261012b",
+              "date": "2026-10-12",
+              "detail": "Hurricane Isaias",
+              "extent": [-89.6626, 29.4249, -88.0624, 30.4751],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20261012b-rgb/{z}/{x}/{y}",
+                "maximumLevel": 19
+              }
+            },
+            {
+              "id": "20261013a",
+              "date": "2026-10-13",
+              "detail": "Hurricane Isaias",
+              "extent": [-85.5751, 29.6249, -85.2249, 30.0501],
+              "source": {
+                "type": "xyzRaster",
+                "urlTemplate": "https://stormscdn.ngs.noaa.gov/20261013a-rgb/{z}/{x}/{y}",
+                "maximumLevel": 19
+              }
+            }
+          ]
+        },
+        "preloadAllowance": 6
+      }
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "datasets": {
+    "usgs.3dep": {
+      "name": "3DEP Bare Earth DEM",
+      "summary": "The USGS 3D Elevation Program bare-earth digital elevation model, served dynamically from multi-resolution sources down to 1 metre.",
+      "provider": "usgs",
+      "officialURL": "https://www.usgs.gov/3d-elevation-program",
+      "serviceURL": "https://elevation.nationalmap.gov/arcgis/rest/services/3DEPElevation/ImageServer",
+      "attribution": "Elevation data courtesy of the U.S. Geological Survey 3D Elevation Program",
+      "license": "usPublicDomain",
+      "coverage": "unitedStates"
+    }
+  },
+  "layers": [
+    {
+      "id": "usgs.3dep.elevation",
+      "name": "Elevation",
+      "summary": "3DEP bare-earth elevation, shaded and tinted by height.",
+      "category": "topography",
+      "dataset": "usgs.3dep",
+      "source": {
+        "type": "arcGISImageExport",
+        "serviceURL": "https://elevation.nationalmap.gov/arcgis/rest/services/3DEPElevation/ImageServer",
+        "renderingRule": "{\"rasterFunction\":\"Hillshade Elevation Tinted\"}"
+      },
+      "render": {"type": "raster", "fadeDuration": 0.15},
+      "maximumZoom": 18,
+      "defaultOpacity": 0.85
+    },
+    {
+      "id": "usgs.3dep.slope",
+      "name": "Slope",
+      "summary": "Steepness of the terrain derived from 3DEP elevation.",
+      "category": "topography",
+      "dataset": "usgs.3dep",
+      "source": {
+        "type": "arcGISImageExport",
+        "serviceURL": "https://elevation.nationalmap.gov/arcgis/rest/services/3DEPElevation/ImageServer",
+        "renderingRule": "{\"rasterFunction\":\"Slope Map\"}"
+      },
+      "minimumZoom": 8,
+      "maximumZoom": 18,
+      "defaultOpacity": 0.75
+    }
+  ]
+}

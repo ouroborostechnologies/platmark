@@ -1,0 +1,316 @@
+{
+  "datasets": {
+    "usda.naip.history": {
+      "name": "National Agriculture Imagery Program, by year",
+      "summary": "Leaf-on aerial photography of the conterminous United States, flown state by state every two or three years since 2003, with the 1996–2003 National Aerial Photography Program where it has been published. Served by the U.S. Forest Service for the Geospatial Platform.",
+      "provider": "usda",
+      "officialURL": "https://www.fpacbc.usda.gov/geo/imagery/naip",
+      "serviceURL": "https://imagery.geoplatform.gov/iipp/rest/services/NAIP",
+      "attribution": "USDA Farm Production and Conservation, NAIP; served by USFS GTAC for the Geospatial Platform",
+      "license": "usPublicDomain",
+      "coverage": "naip"
+    }
+  },
+  "layers": [
+    {
+      "id": "usda.naip.history",
+      "name": "Farm Aerial Photos (NAIP)",
+      "summary": "Aerial photographs of every state, flown each summer in rotation since 2004, at 1 m or better. Only the years flown here appear on the slider.",
+      "category": "historical",
+      "dataset": "usda.naip.history",
+      "source": {
+        "type": "arcGISImageExport",
+        "serviceURL": "https://imagery.geoplatform.gov/iipp/rest/services/NAIP/NAIP2023_CONUS/ImageServer",
+        "imageFormat": "jpgpng"
+      },
+      "minimumZoom": 10,
+      "maximumZoom": 19,
+      "time": {
+        "range": ["1996", "2023"],
+        "cadence": "byPlace",
+        "discovery": {
+          "type": "serviceSet",
+          "members": [
+            {
+              "id": "napp",
+              "date": "1996",
+              "detail": "National Aerial Photography Program, black and white or colour infrared",
+              "serviceURL": "https://imagery.geoplatform.gov/iipp/rest/services/NAIP/NAPP_1996_2003_CONUS/ImageServer",
+              "source": {
+                "type": "arcGISImageExport",
+                "serviceURL": "https://imagery.geoplatform.gov/iipp/rest/services/NAIP/NAPP_1996_2003_CONUS/ImageServer",
+                "imageFormat": "jpgpng"
+              },
+              "filter": "category=1",
+              "yearField": "beginyear"
+            },
+            {
+              "id": "naip-2004",
+              "date": "2004",
+              "detail": "NAIP",
+              "serviceURL": "https://imagery.geoplatform.gov/iipp/rest/services/NAIP/NAIP2004_CONUS/ImageServer",
+              "source": {
+                "type": "arcGISImageExport",
+                "serviceURL": "https://imagery.geoplatform.gov/iipp/rest/services/NAIP/NAIP2004_CONUS/ImageServer",
+                "imageFormat": "jpgpng"
+              },
+              "filter": "category=1"
+            },
+            {
+              "id": "naip-2005",
+              "date": "2005",
+              "detail": "NAIP",
+              "serviceURL": "https://imagery.geoplatform.gov/iipp/rest/services/NAIP/NAIP2005_CONUS/ImageServer",
+              "source": {
+                "type": "arcGISImageExport",
+                "serviceURL": "https://imagery.geoplatform.gov/iipp/rest/services/NAIP/NAIP2005_CONUS/ImageServer",
+                "imageFormat": "jpgpng"
+              },
+              "filter": "category=1"
+            },
+            {
+              "id": "naip-2006",
+              "date": "2006",
+              "detail": "NAIP",
+              "serviceURL": "https://imagery.geoplatform.gov/iipp/rest/services/NAIP/NAIP2006_CONUS/ImageServer",
+              "source": {
+                "type": "arcGISImageExport",
+                "serviceURL": "https://imagery.geoplatform.gov/iipp/rest/services/NAIP/NAIP2006_CONUS/ImageServer",
+                "imageFormat": "jpgpng"
+              },
+              "filter": "category=1"
+            },
+            {
+              "id": "naip-2007",
+              "date": "2007",
+              "detail": "NAIP",
+              "serviceURL": "https://imagery.geoplatform.gov/iipp/rest/services/NAIP/NAIP2007_CONUS/ImageServer",
+              "source": {
+                "type": "arcGISImageExport",
+                "serviceURL": "https://imagery.geoplatform.gov/iipp/rest/services/NAIP/NAIP2007_CONUS/ImageServer",
+                "imageFormat": "jpgpng"
+              },
+              "filter": "category=1"
+            },
+            {
+              "id": "naip-2008",
+              "date": "2008",
+              "detail": "NAIP",
+              "serviceURL": "https://imagery.geoplatform.gov/iipp/rest/services/NAIP/NAIP2008_CONUS/ImageServer",
+              "source": {
+                "type": "arcGISImageExport",
+                "serviceURL": "https://imagery.geoplatform.gov/iipp/rest/services/NAIP/NAIP2008_CONUS/ImageServer",
+                "imageFormat": "jpgpng"
+              },
+              "filter": "category=1"
+            },
+            {
+              "id": "naip-2009",
+              "date": "2009",
+              "detail": "NAIP",
+              "serviceURL": "https://imagery.geoplatform.gov/iipp/rest/services/NAIP/NAIP2009_CONUS/ImageServer",
+              "source": {
+                "type": "arcGISImageExport",
+                "serviceURL": "https://imagery.geoplatform.gov/iipp/rest/services/NAIP/NAIP2009_CONUS/ImageServer",
+                "imageFormat": "jpgpng"
+              },
+              "filter": "category=1"
+            },
+            {
+              "id": "naip-2010",
+              "date": "2010",
+              "detail": "NAIP",
+              "serviceURL": "https://imagery.geoplatform.gov/iipp/rest/services/NAIP/NAIP2010_CONUS/ImageServer",
+              "source": {
+                "type": "arcGISImageExport",
+                "serviceURL": "https://imagery.geoplatform.gov/iipp/rest/services/NAIP/NAIP2010_CONUS/ImageServer",
+                "imageFormat": "jpgpng"
+              },
+              "filter": "category=1"
+            },
+            {
+              "id": "naip-2011",
+              "date": "2011",
+              "detail": "NAIP",
+              "serviceURL": "https://imagery.geoplatform.gov/iipp/rest/services/NAIP/NAIP2011_CONUS/ImageServer",
+              "source": {
+                "type": "arcGISImageExport",
+                "serviceURL": "https://imagery.geoplatform.gov/iipp/rest/services/NAIP/NAIP2011_CONUS/ImageServer",
+                "imageFormat": "jpgpng"
+              },
+              "filter": "category=1"
+            },
+            {
+              "id": "naip-2012",
+              "date": "2012",
+              "detail": "NAIP",
+              "serviceURL": "https://imagery.geoplatform.gov/iipp/rest/services/NAIP/NAIP2012_CONUS/ImageServer",
+              "source": {
+                "type": "arcGISImageExport",
+                "serviceURL": "https://imagery.geoplatform.gov/iipp/rest/services/NAIP/NAIP2012_CONUS/ImageServer",
+                "imageFormat": "jpgpng"
+              },
+              "filter": "category=1"
+            },
+            {
+              "id": "naip-2013",
+              "date": "2013",
+              "detail": "NAIP",
+              "serviceURL": "https://imagery.geoplatform.gov/iipp/rest/services/NAIP/NAIP2013_CONUS/ImageServer",
+              "source": {
+                "type": "arcGISImageExport",
+                "serviceURL": "https://imagery.geoplatform.gov/iipp/rest/services/NAIP/NAIP2013_CONUS/ImageServer",
+                "imageFormat": "jpgpng"
+              },
+              "filter": "category=1"
+            },
+            {
+              "id": "naip-2014",
+              "date": "2014",
+              "detail": "NAIP",
+              "serviceURL": "https://imagery.geoplatform.gov/iipp/rest/services/NAIP/NAIP2014_CONUS/ImageServer",
+              "source": {
+                "type": "arcGISImageExport",
+                "serviceURL": "https://imagery.geoplatform.gov/iipp/rest/services/NAIP/NAIP2014_CONUS/ImageServer",
+                "imageFormat": "jpgpng"
+              },
+              "filter": "category=1"
+            },
+            {
+              "id": "naip-2015",
+              "date": "2015",
+              "detail": "NAIP",
+              "serviceURL": "https://imagery.geoplatform.gov/iipp/rest/services/NAIP/NAIP2015_CONUS/ImageServer",
+              "source": {
+                "type": "arcGISImageExport",
+                "serviceURL": "https://imagery.geoplatform.gov/iipp/rest/services/NAIP/NAIP2015_CONUS/ImageServer",
+                "imageFormat": "jpgpng"
+              },
+              "filter": "category=1"
+            },
+            {
+              "id": "naip-2016",
+              "date": "2016",
+              "detail": "NAIP",
+              "serviceURL": "https://imagery.geoplatform.gov/iipp/rest/services/NAIP/NAIP2016_CONUS/ImageServer",
+              "source": {
+                "type": "arcGISImageExport",
+                "serviceURL": "https://imagery.geoplatform.gov/iipp/rest/services/NAIP/NAIP2016_CONUS/ImageServer",
+                "imageFormat": "jpgpng"
+              },
+              "filter": "category=1"
+            },
+            {
+              "id": "naip-2017",
+              "date": "2017",
+              "detail": "NAIP",
+              "serviceURL": "https://imagery.geoplatform.gov/iipp/rest/services/NAIP/NAIP2017_CONUS/ImageServer",
+              "source": {
+                "type": "arcGISImageExport",
+                "serviceURL": "https://imagery.geoplatform.gov/iipp/rest/services/NAIP/NAIP2017_CONUS/ImageServer",
+                "imageFormat": "jpgpng"
+              },
+              "filter": "category=1"
+            },
+            {
+              "id": "naip-2018",
+              "date": "2018",
+              "detail": "NAIP",
+              "serviceURL": "https://imagery.geoplatform.gov/iipp/rest/services/NAIP/NAIP2018_CONUS/ImageServer",
+              "source": {
+                "type": "arcGISImageExport",
+                "serviceURL": "https://imagery.geoplatform.gov/iipp/rest/services/NAIP/NAIP2018_CONUS/ImageServer",
+                "imageFormat": "jpgpng"
+              },
+              "filter": "category=1"
+            },
+            {
+              "id": "naip-2019",
+              "date": "2019",
+              "detail": "NAIP",
+              "serviceURL": "https://imagery.geoplatform.gov/iipp/rest/services/NAIP/NAIP2019_CONUS/ImageServer",
+              "source": {
+                "type": "arcGISImageExport",
+                "serviceURL": "https://imagery.geoplatform.gov/iipp/rest/services/NAIP/NAIP2019_CONUS/ImageServer",
+                "imageFormat": "jpgpng"
+              },
+              "filter": "category=1"
+            },
+            {
+              "id": "naip-2020",
+              "date": "2020",
+              "detail": "NAIP",
+              "serviceURL": "https://imagery.geoplatform.gov/iipp/rest/services/NAIP/NAIP2020_CONUS/ImageServer",
+              "source": {
+                "type": "arcGISImageExport",
+                "serviceURL": "https://imagery.geoplatform.gov/iipp/rest/services/NAIP/NAIP2020_CONUS/ImageServer",
+                "imageFormat": "jpgpng"
+              },
+              "filter": "category=1"
+            },
+            {
+              "id": "naip-2021",
+              "date": "2021",
+              "detail": "NAIP",
+              "serviceURL": "https://imagery.geoplatform.gov/iipp/rest/services/NAIP/NAIP2021_CONUS/ImageServer",
+              "source": {
+                "type": "arcGISImageExport",
+                "serviceURL": "https://imagery.geoplatform.gov/iipp/rest/services/NAIP/NAIP2021_CONUS/ImageServer",
+                "imageFormat": "jpgpng"
+              },
+              "filter": "category=1"
+            },
+            {
+              "id": "naip-2022",
+              "date": "2022",
+              "detail": "NAIP",
+              "serviceURL": "https://imagery.geoplatform.gov/iipp/rest/services/NAIP/NAIP2022_CONUS/ImageServer",
+              "source": {
+                "type": "arcGISImageExport",
+                "serviceURL": "https://imagery.geoplatform.gov/iipp/rest/services/NAIP/NAIP2022_CONUS/ImageServer",
+                "imageFormat": "jpgpng"
+              },
+              "filter": "category=1"
+            },
+            {
+              "id": "naip-2023",
+              "date": "2023",
+              "detail": "NAIP",
+              "serviceURL": "https://imagery.geoplatform.gov/iipp/rest/services/NAIP/NAIP2023_CONUS/ImageServer",
+              "source": {
+                "type": "arcGISImageExport",
+                "serviceURL": "https://imagery.geoplatform.gov/iipp/rest/services/NAIP/NAIP2023_CONUS/ImageServer",
+                "imageFormat": "jpgpng"
+              },
+              "filter": "category=1"
+            },
+            {
+              "id": "naip-2021-hi",
+              "date": "2021",
+              "detail": "NAIP",
+              "serviceURL": "https://imagery.geoplatform.gov/iipp/rest/services/NAIP/NAIP2021_Hawaii/ImageServer",
+              "source": {
+                "type": "arcGISImageExport",
+                "serviceURL": "https://imagery.geoplatform.gov/iipp/rest/services/NAIP/NAIP2021_Hawaii/ImageServer",
+                "imageFormat": "jpgpng"
+              },
+              "filter": "category=1"
+            },
+            {
+              "id": "naip-2021-pr",
+              "date": "2021",
+              "detail": "NAIP",
+              "serviceURL": "https://imagery.geoplatform.gov/iipp/rest/services/NAIP/NAIP2021_PuertoRico/ImageServer",
+              "source": {
+                "type": "arcGISImageExport",
+                "serviceURL": "https://imagery.geoplatform.gov/iipp/rest/services/NAIP/NAIP2021_PuertoRico/ImageServer",
+                "imageFormat": "jpgpng"
+              },
+              "filter": "category=1"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

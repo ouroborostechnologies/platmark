@@ -1,0 +1,53 @@
+{
+  "datasets": {
+    "census.tigerweb.tracts.history": {
+      "name": "TIGERweb census tracts, by decennial census",
+      "summary": "Census tract boundaries as drawn for the 2010 and 2020 censuses. Tracts are redrawn every ten years to hold around four thousand people each, so the change shows where population grew or fell.",
+      "provider": "census",
+      "officialURL": "https://tigerweb.geo.census.gov",
+      "serviceURL": "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb",
+      "attribution": "U.S. Census Bureau, TIGERweb",
+      "license": "usPublicDomain",
+      "coverage": "unitedStates"
+    }
+  },
+  "layers": [
+    {
+      "id": "census.tracts.history",
+      "name": "Census Tracts by Census",
+      "summary": "Census tract boundaries from the 2010 and 2020 censuses. A tract that split in two gained people; two that merged lost them.",
+      "category": "boundaries",
+      "dataset": "census.tigerweb.tracts.history",
+      "minimumZoom": 9,
+      "maximumZoom": 18,
+      "time": {
+        "cadence": "irregular",
+        "discovery": {
+          "type": "fixed",
+          "editions": [
+            {
+              "id": "tracts-2010",
+              "date": "2010",
+              "detail": "2010 Census",
+              "source": {
+                "type": "arcGISMapExport",
+                "serviceURL": "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/tigerWMS_Census2010/MapServer",
+                "visibleLayers": "show:14"
+              }
+            },
+            {
+              "id": "tracts-2020",
+              "date": "2020",
+              "detail": "2020 Census",
+              "source": {
+                "type": "arcGISMapExport",
+                "serviceURL": "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/tigerWMS_Census2020/MapServer",
+                "visibleLayers": "show:6"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

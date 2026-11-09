@@ -1,0 +1,322 @@
+{
+  "providers": {
+    "ar-gis": {
+      "name": "Arkansas GIS Office",
+      "abbreviation": "Arkansas GIS",
+      "summary": "The state agency that publishes Arkansas's aerial imagery archive, one statewide service per flight.",
+      "officialURL": "https://gis.arkansas.gov"
+    },
+    "blm": {
+      "name": "Bureau of Land Management",
+      "abbreviation": "BLM",
+      "summary": "The Department of the Interior agency that keeps the cadastral survey records of the Public Land Survey System and publishes them as the national CadNSDI dataset.",
+      "officialURL": "https://www.blm.gov"
+    },
+    "census": {
+      "name": "United States Census Bureau",
+      "abbreviation": "Census",
+      "summary": "Maintains the TIGER geographic database, the national record of legal and statistical boundaries from states down to school and legislative districts.",
+      "officialURL": "https://www.census.gov"
+    },
+    "ct-eco": {
+      "name": "Connecticut Environmental Conditions Online",
+      "abbreviation": "CT ECO",
+      "summary": "A partnership of the Connecticut Department of Energy and Environmental Protection and the University of Connecticut, publishing the state's aerial imagery.",
+      "officialURL": "https://cteco.uconn.edu"
+    },
+    "dc-gis": {
+      "name": "District of Columbia Office of the Chief Technology Officer",
+      "abbreviation": "DC GIS",
+      "summary": "Publishes the District's orthophotography, from 1927 to the current flight.",
+      "officialURL": "https://opendata.dc.gov"
+    },
+    "de-firstmap": {
+      "name": "Delaware FirstMap",
+      "abbreviation": "FirstMap",
+      "summary": "Delaware's state geospatial data exchange, which serves statewide imagery of Delaware from 1926 on.",
+      "officialURL": "https://firstmap.delaware.gov"
+    },
+    "eox": {
+      "name": "EOX IT Services GmbH",
+      "abbreviation": "EOX",
+      "summary": "Publisher of Sentinel-2 cloudless, a global cloud-free satellite mosaic derived from ESA Copernicus imagery.",
+      "officialURL": "https://eox.at"
+    },
+    "esri": {
+      "name": "Esri",
+      "abbreviation": "Esri",
+      "summary": "Hosts the USGS Historical Topographic Map Collection as a publicly readable image service, and publishes World Imagery Wayback, the archive of past versions of its satellite basemap.",
+      "officialURL": "https://www.esri.com"
+    },
+    "fl-dep": {
+      "name": "Florida Department of Environmental Protection",
+      "abbreviation": "Florida DEP",
+      "summary": "Serves the Florida Department of Transportation's aerial photography and older countywide photographs through MapDirect.",
+      "officialURL": "https://ca.dep.state.fl.us"
+    },
+    "ga-clearinghouse": {
+      "name": "Georgia GIS Clearinghouse",
+      "abbreviation": "Georgia GIS",
+      "summary": "The state's geospatial clearinghouse, run by the University of Georgia's ITOS, which serves Georgia's imagery from 1993 to 2010.",
+      "officialURL": "https://data.georgiaspatial.org"
+    },
+    "gebco": {
+      "name": "General Bathymetric Chart of the Oceans",
+      "abbreviation": "GEBCO",
+      "summary": "An international programme, operating under IHO and IOC, that publishes the authoritative global bathymetric grid.",
+      "officialURL": "https://www.gebco.net"
+    },
+    "il-isgs": {
+      "name": "Illinois State Geological Survey",
+      "abbreviation": "ISGS",
+      "summary": "Runs the Illinois Geospatial Data Clearinghouse, which serves the state's orthophotography from 1993 on.",
+      "officialURL": "https://clearinghouse.isgs.illinois.edu"
+    },
+    "in-gio": {
+      "name": "Indiana Geographic Information Office",
+      "abbreviation": "IGIO",
+      "summary": "The state office that publishes Indiana's orthoimagery under a CC0 dedication.",
+      "officialURL": "https://www.in.gov/gis"
+    },
+    "inside-idaho": {
+      "name": "INSIDE Idaho, University of Idaho Library",
+      "abbreviation": "INSIDE Idaho",
+      "summary": "Idaho's geospatial data clearinghouse, run by the University of Idaho Library, which serves the state's NAIP archive.",
+      "officialURL": "https://insideidaho.org"
+    },
+    "iowa-state-gis": {
+      "name": "Iowa State University Geographic Information Systems Facility",
+      "abbreviation": "Iowa State GIS",
+      "summary": "Hosts Iowa's statewide orthoimagery archive, including scanned aerial photography from the 1930s onward.",
+      "officialURL": "https://www.gis.iastate.edu"
+    },
+    "ks-dasc": {
+      "name": "Kansas Data Access and Support Center",
+      "abbreviation": "DASC",
+      "summary": "Kansas's state geospatial data centre, whose imagery is served by the Kansas Geological Survey.",
+      "officialURL": "https://www.kansasgis.org"
+    },
+    "ky-dgi": {
+      "name": "Kentucky Division of Geographic Information",
+      "abbreviation": "Kentucky DGI",
+      "summary": "Runs KyFromAbove, which publishes Kentucky's imagery in the public domain.",
+      "officialURL": "https://kyfromabove.ky.gov"
+    },
+    "lsu-atlas": {
+      "name": "LSU Atlas, Louisiana State University",
+      "abbreviation": "LSU Atlas",
+      "summary": "Louisiana State University's statewide GIS archive, publishing the state's orthophotography from 1998 on.",
+      "officialURL": "https://atlas.ga.lsu.edu"
+    },
+    "macrostrat": {
+      "name": "Macrostrat",
+      "abbreviation": "Macrostrat",
+      "summary": "A geological data platform maintained at the University of Wisconsin–Madison that harmonises regional geologic maps into a single queryable stratigraphic model.",
+      "officialURL": "https://macrostrat.org"
+    },
+    "mapzen-terrain": {
+      "name": "Mapzen / AWS Open Data",
+      "abbreviation": "Terrain Tiles",
+      "summary": "A global terrain-RGB elevation tile set aggregated from SRTM, 3DEP, GMTED and other public sources, hosted on the AWS Open Data registry.",
+      "officialURL": "https://registry.opendata.aws/terrain-tiles/"
+    },
+    "massgis": {
+      "name": "Massachusetts Bureau of Geographic Information",
+      "abbreviation": "MassGIS",
+      "summary": "Massachusetts' statewide GIS agency, publishing historical black-and-white orthophotography and a modern imagery series.",
+      "officialURL": "https://www.mass.gov/orgs/massgis-bureau-of-geographic-information"
+    },
+    "md-imap": {
+      "name": "Maryland Department of Information Technology, MD iMAP",
+      "abbreviation": "MD iMAP",
+      "summary": "Maryland's state geospatial portal, which serves the state's six-inch imagery and its NAIP archive.",
+      "officialURL": "https://imap.maryland.gov"
+    },
+    "mi-dtmb": {
+      "name": "State of Michigan Department of Technology, Management and Budget",
+      "abbreviation": "Michigan DTMB",
+      "summary": "Runs the Michigan Imagery Solution, which serves the state's aerial imagery from 1998 on.",
+      "officialURL": "https://imagery.michigan.gov"
+    },
+    "mn-dnr": {
+      "name": "Minnesota Department of Natural Resources",
+      "abbreviation": "MN DNR",
+      "summary": "Runs the most extensive inland lake bathymetric survey programme in the United States, publishing measured depth contours and lake-bed elevation models for thousands of Minnesota lakes.",
+      "officialURL": "https://www.dnr.state.mn.us"
+    },
+    "mngeo": {
+      "name": "Minnesota IT Services Geospatial Information Office",
+      "abbreviation": "MnGeo",
+      "summary": "Minnesota's state geospatial office, which serves the state's aerial imagery archive.",
+      "officialURL": "https://www.mngeo.state.mn.us"
+    },
+    "mo-msdis": {
+      "name": "Missouri Spatial Data Information Service",
+      "abbreviation": "MSDIS",
+      "summary": "The University of Missouri's state geospatial service, publishing Missouri's imagery from 1990 on.",
+      "officialURL": "https://msdis.missouri.edu"
+    },
+    "ms-maris": {
+      "name": "MARIS Technical Center",
+      "abbreviation": "MARIS",
+      "summary": "Mississippi's state geospatial clearinghouse, run for the state's universities.",
+      "officialURL": "https://maris.mississippi.edu"
+    },
+    "mt-msl": {
+      "name": "Montana State Library",
+      "abbreviation": "MSL",
+      "summary": "Coordinates the Montana Spatial Data Infrastructure and serves the state's aerial imagery.",
+      "officialURL": "https://msl.mt.gov/geoinfo"
+    },
+    "nasa": {
+      "name": "National Aeronautics and Space Administration",
+      "abbreviation": "NASA",
+      "summary": "Publishes daily satellite imagery of the whole Earth since 2000 through its Global Imagery Browse Services (GIBS).",
+      "officialURL": "https://www.earthdata.nasa.gov"
+    },
+    "nc-onemap": {
+      "name": "North Carolina Center for Geographic Information and Analysis",
+      "abbreviation": "NC OneMap",
+      "summary": "North Carolina's statewide GIS clearinghouse, publishing a near-continuous annual orthoimagery series.",
+      "officialURL": "https://www.nconemap.gov"
+    },
+    "nd-gis": {
+      "name": "North Dakota GIS Hub",
+      "abbreviation": "ND GIS",
+      "summary": "North Dakota's statewide geospatial clearinghouse, publishing the state's aerial imagery archive from the late 1950s and lake depth contours surveyed by the state Game and Fish Department.",
+      "officialURL": "https://www.gis.nd.gov"
+    },
+    "nh-granit": {
+      "name": "NH GRANIT, University of New Hampshire",
+      "abbreviation": "NH GRANIT",
+      "summary": "New Hampshire's statewide GIS clearinghouse, run by the University of New Hampshire's Earth Systems Research Center.",
+      "officialURL": "https://granit.unh.edu"
+    },
+    "nj-ogis": {
+      "name": "New Jersey Office of Information Technology, Office of GIS",
+      "abbreviation": "NJOGIS",
+      "summary": "Publishes New Jersey's imagery archive, from a 1920 survey of the Atlantic coast to the current statewide flight.",
+      "officialURL": "https://www.nj.gov/njgin/edata/imagery/"
+    },
+    "noaa": {
+      "name": "National Oceanic and Atmospheric Administration",
+      "abbreviation": "NOAA",
+      "summary": "U.S. agency for oceanic and atmospheric science. Its National Centers for Environmental Information publish multibeam bathymetry and global relief models, and its National Geodetic Survey flies the coast after major storms.",
+      "officialURL": "https://www.noaa.gov"
+    },
+    "ny-its": {
+      "name": "New York State Office of Information Technology Services, Geospatial Services",
+      "abbreviation": "NYS ITS",
+      "summary": "Runs New York's orthoimagery programme, which flies a block of the state each year.",
+      "officialURL": "https://gis.ny.gov/orthoimagery"
+    },
+    "nyc-oti": {
+      "name": "New York City Office of Technology and Innovation",
+      "abbreviation": "NYC OTI",
+      "summary": "Publishes the city's aerial photographs, from a 1924 mosaic to the current flight, under CC BY 4.0.",
+      "officialURL": "https://maps.nyc.gov/tiles/"
+    },
+    "oh-dnr": {
+      "name": "Ohio Department of Natural Resources",
+      "abbreviation": "Ohio DNR",
+      "summary": "Publishes surveyed depth contours for Ohio's inland lakes and reservoirs through its Division of Wildlife, and a separate bathymetric survey of Lake Erie.",
+      "officialURL": "https://ohiodnr.gov"
+    },
+    "ok-ogi": {
+      "name": "Oklahoma Office of Geographic Information",
+      "abbreviation": "OKMaps",
+      "summary": "Oklahoma's state geospatial office, serving every NAIP flight over the state since 2008.",
+      "officialURL": "https://okmaps.org"
+    },
+    "openfreemap": {
+      "name": "OpenFreeMap",
+      "abbreviation": "OpenFreeMap",
+      "summary": "Free hosting of OpenStreetMap-derived vector tiles with no API key or usage limits.",
+      "officialURL": "https://openfreemap.org"
+    },
+    "oregon-explorer": {
+      "name": "Oregon Explorer / Oregon State University",
+      "abbreviation": "Oregon Explorer",
+      "summary": "Publishes Oregon's statewide imagery archive including historical NAIP acquisitions.",
+      "officialURL": "https://oregonexplorer.info"
+    },
+    "pasda": {
+      "name": "Pennsylvania Spatial Data Access",
+      "abbreviation": "PASDA",
+      "summary": "Pennsylvania's official public geospatial information clearinghouse, hosted at Penn State.",
+      "officialURL": "https://www.pasda.psu.edu"
+    },
+    "regrid": {
+      "name": "Regrid",
+      "abbreviation": "Regrid",
+      "summary": "A commercial aggregator that normalises county tax-parcel data into a nationwide layer, and publishes its parcel outlines as a free tile service through ArcGIS Living Atlas.",
+      "officialURL": "https://regrid.com"
+    },
+    "ri-rigis": {
+      "name": "RIGIS, University of Rhode Island Environmental Data Center",
+      "abbreviation": "RIGIS",
+      "summary": "Rhode Island's geographic information system, run with the University of Rhode Island, publishing statewide imagery from 1939 on.",
+      "officialURL": "https://www.rigis.org"
+    },
+    "tx-gio": {
+      "name": "Texas Geographic Information Office",
+      "abbreviation": "TxGIO",
+      "summary": "The state office (formerly TNRIS) that serves Texas's aerial imagery archive, from 1981 high-altitude photography on.",
+      "officialURL": "https://geographic.texas.gov"
+    },
+    "usda": {
+      "name": "United States Department of Agriculture",
+      "abbreviation": "USDA",
+      "summary": "Publisher of the National Agriculture Imagery Program (NAIP) and, through the National Agricultural Statistics Service, the Cropland Data Layer.",
+      "officialURL": "https://www.usda.gov"
+    },
+    "usfws": {
+      "name": "U.S. Fish and Wildlife Service",
+      "abbreviation": "USFWS",
+      "summary": "Publisher of the National Wetlands Inventory.",
+      "officialURL": "https://www.fws.gov"
+    },
+    "usgs": {
+      "name": "United States Geological Survey",
+      "abbreviation": "USGS",
+      "summary": "The science bureau of the U.S. Department of the Interior and the publisher of The National Map, 3DEP elevation, the National Hydrography Dataset and the Historical Topographic Map Collection.",
+      "officialURL": "https://www.usgs.gov"
+    },
+    "va-vgin": {
+      "name": "Virginia Geographic Information Network",
+      "abbreviation": "VGIN",
+      "summary": "Runs the Virginia Base Mapping Program, which has flown part of the Commonwealth almost every year since 2002.",
+      "officialURL": "https://vgin.vdem.virginia.gov"
+    },
+    "vt-vcgi": {
+      "name": "Vermont Center for Geographic Information",
+      "abbreviation": "VCGI",
+      "summary": "Vermont's state geospatial office, which serves the state's orthophotography from the 1970s Vermont Mapping Program on.",
+      "officialURL": "https://vcgi.vermont.gov"
+    },
+    "wa-tech": {
+      "name": "Washington Technology Solutions, Geospatial Program",
+      "abbreviation": "WaTech",
+      "summary": "Washington's state geospatial programme, which serves statewide aerial imagery from 1989 on.",
+      "officialURL": "https://geo.wa.gov"
+    },
+    "wi-dnr": {
+      "name": "Wisconsin Department of Natural Resources",
+      "abbreviation": "WI DNR",
+      "summary": "Publishes Wisconsin's statewide imagery programme, including scanned 1930s aerial photography georeferenced from State Cartographer's Office originals.",
+      "officialURL": "https://dnr.wisconsin.gov"
+    },
+    "wv-gistc": {
+      "name": "West Virginia GIS Technical Center",
+      "abbreviation": "WVGISTC",
+      "summary": "West Virginia University's state GIS centre, which serves the statewide 2003 orthophotography and every NAIP flight since.",
+      "officialURL": "https://wvgis.wvu.edu"
+    },
+    "wy-deq": {
+      "name": "Wyoming Department of Environmental Quality",
+      "abbreviation": "Wyoming DEQ",
+      "summary": "Serves statewide aerial imagery of Wyoming from 1994 to 2015.",
+      "officialURL": "https://deq.wyoming.gov"
+    }
+  }
+}
