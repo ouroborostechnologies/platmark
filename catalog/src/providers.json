@@ -138,6 +138,12 @@
       "summary": "Maryland's state geospatial portal, which serves the state's six-inch imagery and its NAIP archive.",
       "officialURL": "https://imap.maryland.gov"
     },
+    "meteoritical-society": {
+      "name": "The Meteoritical Society",
+      "abbreviation": "Meteoritical Society",
+      "summary": "The international society for meteoritics and planetary science, which approves the names of new meteorites and keeps the official list of them in the Meteoritical Bulletin.",
+      "officialURL": "https://meteoritical.org"
+    },
     "mi-dtmb": {
       "name": "State of Michigan Department of Technology, Management and Budget",
       "abbreviation": "Michigan DTMB",
@@ -258,6 +264,12 @@
       "summary": "Pennsylvania's official public geospatial information clearinghouse, hosted at Penn State.",
       "officialURL": "https://www.pasda.psu.edu"
     },
+    "pbdb": {
+      "name": "The Paleobiology Database",
+      "abbreviation": "PBDB",
+      "summary": "A database of fossil occurrences entered from the published literature by paleontologists worldwide, run as a non-profit with support from the U.S. National Science Foundation.",
+      "officialURL": "https://paleobiodb.org"
+    },
     "regrid": {
       "name": "Regrid",
       "abbreviation": "Regrid",
@@ -275,6 +287,12 @@
       "abbreviation": "TxGIO",
       "summary": "The state office (formerly TNRIS) that serves Texas's aerial imagery archive, from 1981 high-altitude photography on.",
       "officialURL": "https://geographic.texas.gov"
+    },
+    "unep-wcmc": {
+      "name": "UN Environment Programme World Conservation Monitoring Centre",
+      "abbreviation": "UNEP-WCMC",
+      "summary": "UNEP's biodiversity centre in Cambridge, which manages the World Database on Protected Areas with IUCN and publishes it monthly through Protected Planet.",
+      "officialURL": "https://www.unep-wcmc.org"
     },
     "usda": {
       "name": "United States Department of Agriculture",

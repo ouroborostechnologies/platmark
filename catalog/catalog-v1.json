@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "catalogRevision": 2026110901,
+  "catalogRevision": 2026110903,
   "datasets": {
     "ar.imagery": {
       "name": "Arkansas Imagery Archive",
@@ -330,6 +330,17 @@
       "coverage": "maryland",
       "useStatus": "termsUnstated"
     },
+    "meteoritical-society.landings": {
+      "name": "Meteorite Landings",
+      "summary": "Every meteorite on the Meteoritical Society's list with a recorded location — some 32,000 — with its classification, mass, year, and whether its fall was seen or it was found later. NASA's copy of the list, converted to GeoJSON for Platmark.",
+      "provider": "meteoritical-society",
+      "officialURL": "https://www.lpi.usra.edu/meteor/",
+      "serviceURL": "https://ouroborostechnologies.github.io/platmark/catalog/data/meteorite-landings.geojson",
+      "attribution": "Meteorite Landings, The Meteoritical Society, via NASA's Open Data Portal",
+      "license": "noneStated",
+      "coverage": "global",
+      "useStatus": "termsUnstated"
+    },
     "mi.imagery": {
       "name": "Michigan Imagery Solution",
       "summary": "NAPP and NAIP over Michigan, and the state's own 2024 flight of the Lower Peninsula.",
@@ -576,6 +587,16 @@
       "coverage": "pennsylvania",
       "useStatus": "termsUnstated"
     },
+    "pbdb.collections": {
+      "name": "Paleobiology Database Fossil Collections",
+      "summary": "Places where fossils have been collected and published, each with the rock formation and the geological interval it dates from, entered from the scientific literature by paleontologists. Locations are as precise as the publications give them, which is often only to the nearest few kilometres.",
+      "provider": "pbdb",
+      "officialURL": "https://paleobiodb.org/navigator/",
+      "serviceURL": "https://paleobiodb.org/data1.2/colls/list.json?lngmin={west}&lngmax={east}&latmin={south}&latmax={north}&limit=3000",
+      "attribution": "Fossil collections from the Paleobiology Database (paleobiodb.org)",
+      "license": "ccBy40",
+      "coverage": "global"
+    },
     "regrid.parcels": {
       "name": "Regrid Nationwide Parcel Boundaries",
       "summary": "Tax parcel outlines for every U.S. county, normalised by Regrid from county assessor data. Boundaries only; ownership and assessment attributes are not included.",
@@ -607,6 +628,19 @@
       "license": "noneStated",
       "coverage": "texas",
       "useStatus": "termsUnstated"
+    },
+    "unep-wcmc.wdpa": {
+      "name": "World Database on Protected and Conserved Areas",
+      "summary": "The global inventory of protected areas and other effective conservation measures — national parks, nature reserves, marine protected areas, World Heritage sites and more — reported by governments and compiled by UNEP-WCMC and IUCN. Updated monthly.",
+      "provider": "unep-wcmc",
+      "officialURL": "https://www.protectedplanet.net",
+      "serviceURL": "https://data-gis.unep-wcmc.org/server/rest/services/ProtectedSites/The_World_Database_of_Protected_Areas/MapServer",
+      "attribution": "UNEP-WCMC and IUCN, Protected Planet: The World Database on Protected and Conserved Areas, Cambridge, UK. Available at www.protectedplanet.net",
+      "license": "protectedPlanetTerms",
+      "coverage": "global",
+      "useStatus": {
+        "restricted": "Protected Planet's terms bar commercial use, including revenue generation, without UNEP-WCMC's written permission; licence through IBAT before shipping."
+      }
     },
     "usda.cdl": {
       "name": "Cropland Data Layer",
@@ -658,6 +692,16 @@
       "license": "usPublicDomain",
       "coverage": "unitedStates"
     },
+    "usgs.gnis.historical": {
+      "name": "GNIS Historical Features",
+      "summary": "Places in the Geographic Names Information System that no longer exist: former towns and settlements, mines, forts, post offices, springs and other features recorded from historical maps and documents.",
+      "provider": "usgs",
+      "officialURL": "https://www.usgs.gov/tools/geographic-names-information-system-gnis",
+      "serviceURL": "https://carto.nationalmap.gov/arcgis/rest/services/geonames/MapServer",
+      "attribution": "Geographic Names Information System courtesy of the U.S. Geological Survey, The National Map",
+      "license": "usPublicDomain",
+      "coverage": "unitedStates"
+    },
     "usgs.higeol": {
       "name": "Hawaii Geology",
       "summary": "Geologic map units for the Hawaiian Islands.",
@@ -690,6 +734,16 @@
       "attribution": "Imagery courtesy of the U.S. Geological Survey, The National Map",
       "license": "usPublicDomain",
       "coverage": "unitedStates"
+    },
+    "usgs.mrds": {
+      "name": "Mineral Resources Data System",
+      "summary": "The USGS database of metallic and nonmetallic mineral sites — mines, prospects, occurrences and deposits — worldwide, with most records in the United States. No longer systematically updated; many sites are on private land or are closed, dangerous mine workings.",
+      "provider": "usgs",
+      "officialURL": "https://mrdata.usgs.gov/mrds/",
+      "serviceURL": "https://mrdata.usgs.gov/services/mrds",
+      "attribution": "Mineral Resources Data System courtesy of the U.S. Geological Survey",
+      "license": "usPublicDomain",
+      "coverage": "global"
     },
     "usgs.nbd": {
       "name": "National Boundaries Dataset",
@@ -1288,6 +1342,47 @@
       "defaultOpacity": 0.65
     },
     {
+      "id": "usgs.mrds",
+      "name": "Mineral Sites",
+      "summary": "Mines, prospects and mineral occurrences recorded by the USGS, coloured by development status. Many are on private land or are hazardous old workings.",
+      "category": "geology",
+      "dataset": "usgs.mrds",
+      "source": {
+        "type": "wms",
+        "endpoint": "https://mrdata.usgs.gov/services/mrds",
+        "layers": "mrds",
+        "version": "1.1.1"
+      },
+      "minimumZoom": 7
+    },
+    {
+      "id": "pbdb.collections",
+      "name": "Fossil Sites",
+      "summary": "Places where fossils have been found and published, named for the collection. Positions are often approximate, and many sites are on private or protected land, where collecting is not allowed.",
+      "category": "geology",
+      "dataset": "pbdb.collections",
+      "source": {
+        "type": "geoJSON",
+        "url": "https://paleobiodb.org/data1.2/colls/list.json?lngmin={west}&lngmax={east}&latmin={south}&latmax={north}&limit=3000",
+        "records": {"latitude": "lat", "longitude": "lng", "path": "records"}
+      },
+      "render": {"type": "points", "color": "#8A5A2B", "labelField": "nam", "labelMinimumZoom": 11},
+      "minimumZoom": 8
+    },
+    {
+      "id": "meteoritical-society.landings",
+      "name": "Meteorite Falls & Finds",
+      "summary": "Where recognised meteorites fell or were found, named once you zoom in. Most of the dense clusters are Antarctic ice fields and deserts, where they are easiest to spot.",
+      "category": "geology",
+      "dataset": "meteoritical-society.landings",
+      "source": {
+        "type": "geoJSON",
+        "url": "https://ouroborostechnologies.github.io/platmark/catalog/data/meteorite-landings.geojson"
+      },
+      "render": {"type": "points", "color": "#3B3F8C", "labelField": "name", "labelMinimumZoom": 8},
+      "minimumZoom": 2
+    },
+    {
       "id": "usgs.boundaries.states",
       "name": "States",
       "summary": "State and territory boundaries.",
@@ -1480,6 +1575,18 @@
         "visibleLayers": "show:0"
       },
       "minimumZoom": 4,
+      "defaultOpacity": 0.6
+    },
+    {
+      "id": "unep-wcmc.wdpa",
+      "name": "Protected Areas (World)",
+      "summary": "National parks, nature reserves and marine protected areas in every country. In the United States, Public & Protected Lands is more detailed.",
+      "category": "boundaries",
+      "dataset": "unep-wcmc.wdpa",
+      "source": {
+        "type": "arcGISTiled",
+        "serviceURL": "https://data-gis.unep-wcmc.org/server/rest/services/ProtectedSites/The_World_Database_of_Protected_Areas/MapServer"
+      },
       "defaultOpacity": 0.6
     },
     {
@@ -2357,6 +2464,19 @@
           "yearField": "Year"
         }
       }
+    },
+    {
+      "id": "usgs.gnis.historical",
+      "name": "Vanished Places",
+      "summary": "Named places that no longer exist — ghost towns, old mines, forts and post offices — from the federal place-name register.",
+      "category": "historical",
+      "dataset": "usgs.gnis.historical",
+      "source": {
+        "type": "arcGISMapExport",
+        "serviceURL": "https://carto.nationalmap.gov/arcgis/rest/services/geonames/MapServer",
+        "visibleLayers": "show:12,13,14"
+      },
+      "minimumZoom": 10
     },
     {
       "id": "usda.naip.history",
@@ -10094,6 +10214,12 @@
       "summary": "Maryland's state geospatial portal, which serves the state's six-inch imagery and its NAIP archive.",
       "officialURL": "https://imap.maryland.gov"
     },
+    "meteoritical-society": {
+      "name": "The Meteoritical Society",
+      "abbreviation": "Meteoritical Society",
+      "summary": "The international society for meteoritics and planetary science, which approves the names of new meteorites and keeps the official list of them in the Meteoritical Bulletin.",
+      "officialURL": "https://meteoritical.org"
+    },
     "mi-dtmb": {
       "name": "State of Michigan Department of Technology, Management and Budget",
       "abbreviation": "Michigan DTMB",
@@ -10214,6 +10340,12 @@
       "summary": "Pennsylvania's official public geospatial information clearinghouse, hosted at Penn State.",
       "officialURL": "https://www.pasda.psu.edu"
     },
+    "pbdb": {
+      "name": "The Paleobiology Database",
+      "abbreviation": "PBDB",
+      "summary": "A database of fossil occurrences entered from the published literature by paleontologists worldwide, run as a non-profit with support from the U.S. National Science Foundation.",
+      "officialURL": "https://paleobiodb.org"
+    },
     "regrid": {
       "name": "Regrid",
       "abbreviation": "Regrid",
@@ -10231,6 +10363,12 @@
       "abbreviation": "TxGIO",
       "summary": "The state office (formerly TNRIS) that serves Texas's aerial imagery archive, from 1981 high-altitude photography on.",
       "officialURL": "https://geographic.texas.gov"
+    },
+    "unep-wcmc": {
+      "name": "UN Environment Programme World Conservation Monitoring Centre",
+      "abbreviation": "UNEP-WCMC",
+      "summary": "UNEP's biodiversity centre in Cambridge, which manages the World Database on Protected Areas with IUCN and publishes it monthly through Protected Planet.",
+      "officialURL": "https://www.unep-wcmc.org"
     },
     "usda": {
       "name": "United States Department of Agriculture",
@@ -10318,6 +10456,10 @@
     "noneStated": {"name": "No licence stated by the publisher"},
     "odbl": {"name": "Open Database License (ODbL) 1.0", "url": "https://opendatacommons.org/licenses/odbl/1-0/"},
     "ofmaGeneralUsers": {"name": "OFMA General Users' License", "url": "https://www.openflightmaps.org"},
+    "protectedPlanetTerms": {
+      "name": "Protected Planet terms — commercial use needs UNEP-WCMC permission",
+      "url": "https://www.protectedplanet.net/en/legal"
+    },
     "regridDataUse": {"name": "Regrid data use license", "url": "https://app.regrid.com/store/license"},
     "usPublicDomain": {
       "name": "U.S. Government public domain",

@@ -1,0 +1,30 @@
+{
+  "datasets": {
+    "meteoritical-society.landings": {
+      "name": "Meteorite Landings",
+      "summary": "Every meteorite on the Meteoritical Society's list with a recorded location — some 32,000 — with its classification, mass, year, and whether its fall was seen or it was found later. NASA's copy of the list, converted to GeoJSON for Platmark.",
+      "provider": "meteoritical-society",
+      "officialURL": "https://www.lpi.usra.edu/meteor/",
+      "serviceURL": "https://ouroborostechnologies.github.io/platmark/catalog/data/meteorite-landings.geojson",
+      "attribution": "Meteorite Landings, The Meteoritical Society, via NASA's Open Data Portal",
+      "license": "noneStated",
+      "coverage": "global",
+      "useStatus": "termsUnstated"
+    }
+  },
+  "layers": [
+    {
+      "id": "meteoritical-society.landings",
+      "name": "Meteorite Falls & Finds",
+      "summary": "Where recognised meteorites fell or were found, named once you zoom in. Most of the dense clusters are Antarctic ice fields and deserts, where they are easiest to spot.",
+      "category": "geology",
+      "dataset": "meteoritical-society.landings",
+      "source": {
+        "type": "geoJSON",
+        "url": "https://ouroborostechnologies.github.io/platmark/catalog/data/meteorite-landings.geojson"
+      },
+      "render": {"type": "points", "color": "#3B3F8C", "labelField": "name", "labelMinimumZoom": 8},
+      "minimumZoom": 2
+    }
+  ]
+}

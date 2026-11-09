@@ -4,8 +4,8 @@
   "title": "Platmark layer catalog, schema version 1",
   "description": "The assembled catalog-v1.json. Entries refer to each other by key: a dataset names a provider, licence and coverage; a layer names a dataset and a group. Values with more than one kind carry a \"type\". Fields left out take the app's defaults.",
   "x-platmark-kinds": {
-    "source": ["xyzRaster", "arcGISTiled", "arcGISMapExport", "arcGISImageExport", "wms", "wmts", "vectorTiles", "rasterDEM", "composite"],
-    "render": ["raster", "hillshade", "fill", "line", "dataDrivenFill"],
+    "source": ["xyzRaster", "arcGISTiled", "arcGISMapExport", "arcGISImageExport", "wms", "wmts", "vectorTiles", "rasterDEM", "geoJSON", "composite"],
+    "render": ["raster", "hillshade", "fill", "line", "dataDrivenFill", "points"],
     "discovery": ["fixed", "monthlyClock", "wayback", "imageCatalog", "regional", "serviceSet"],
     "category": ["baseMap", "topography", "hydrology", "geology", "historical", "boundaries", "aviation"],
     "cadence": ["monthly", "yearly", "irregular", "byPlace"],
@@ -54,8 +54,8 @@
     "level": {"type": "integer", "minimum": 0, "maximum": 30},
     "query": {"type": "object", "additionalProperties": {"type": "string"}},
 
-    "sourceKind": {"enum": ["xyzRaster", "arcGISTiled", "arcGISMapExport", "arcGISImageExport", "wms", "wmts", "vectorTiles", "rasterDEM", "composite"]},
-    "renderKind": {"enum": ["raster", "hillshade", "fill", "line", "dataDrivenFill"]},
+    "sourceKind": {"enum": ["xyzRaster", "arcGISTiled", "arcGISMapExport", "arcGISImageExport", "wms", "wmts", "vectorTiles", "rasterDEM", "geoJSON", "composite"]},
+    "renderKind": {"enum": ["raster", "hillshade", "fill", "line", "dataDrivenFill", "points"]},
     "discoveryKind": {"enum": ["fixed", "monthlyClock", "wayback", "imageCatalog", "regional", "serviceSet"]},
     "styleKind": {"enum": ["remote", "bundled"]},
     "category": {"enum": ["baseMap", "topography", "hydrology", "geology", "historical", "boundaries", "aviation"]},
@@ -157,6 +157,7 @@
         {"if": {"properties": {"type": {"const": "wmts"}}}, "then": {"$ref": "#/$defs/wmtsSource"}},
         {"if": {"properties": {"type": {"const": "vectorTiles"}}}, "then": {"$ref": "#/$defs/vectorTilesSource"}},
         {"if": {"properties": {"type": {"const": "rasterDEM"}}}, "then": {"$ref": "#/$defs/rasterDEMSource"}},
+        {"if": {"properties": {"type": {"const": "geoJSON"}}}, "then": {"$ref": "#/$defs/geoJSONSource"}},
         {"if": {"properties": {"type": {"const": "composite"}}}, "then": {"$ref": "#/$defs/compositeSource"}}
       ]
     },
@@ -252,6 +253,27 @@
         "tileSize": {"$ref": "#/$defs/tileSize", "default": 256}
       }
     },
+    "geoJSONSource": {
+      "description": "Point features the app reads itself rather than as tiles: a GeoJSON file, or a query whose URL holds {west}, {south}, {east} and {north}, filled with the area in view in degrees.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "url"],
+      "properties": {
+        "type": {"const": "geoJSON"},
+        "url": {"$ref": "#/$defs/url"},
+        "records": {
+          "description": "For a response that isn't GeoJSON: where its list of flat records is, and which fields hold each record's coordinates. Every other plain field becomes a property.",
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["longitude", "latitude"],
+          "properties": {
+            "path": {"type": "string", "default": "", "description": "Dotted path to the list; empty when the response is the list."},
+            "longitude": {"type": "string"},
+            "latitude": {"type": "string"}
+          }
+        }
+      }
+    },
     "compositeSource": {
       "type": "object",
       "additionalProperties": false,
@@ -284,7 +306,8 @@
         {"if": {"properties": {"type": {"const": "hillshade"}}}, "then": {"$ref": "#/$defs/hillshadeRender"}},
         {"if": {"properties": {"type": {"const": "fill"}}}, "then": {"$ref": "#/$defs/fillRender"}},
         {"if": {"properties": {"type": {"const": "line"}}}, "then": {"$ref": "#/$defs/lineRender"}},
-        {"if": {"properties": {"type": {"const": "dataDrivenFill"}}}, "then": {"$ref": "#/$defs/dataDrivenFillRender"}}
+        {"if": {"properties": {"type": {"const": "dataDrivenFill"}}}, "then": {"$ref": "#/$defs/dataDrivenFillRender"}},
+        {"if": {"properties": {"type": {"const": "points"}}}, "then": {"$ref": "#/$defs/pointsRender"}}
       ]
     },
     "rasterRender": {
@@ -330,6 +353,20 @@
         "type": {"const": "line"},
         "color": {"$ref": "#/$defs/color"},
         "width": {"type": "number", "minimum": 0, "default": 1}
+      }
+    },
+    "pointsRender": {
+      "description": "A dot at each point, and the labelField property written beside it from labelMinimumZoom.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "color"],
+      "properties": {
+        "type": {"const": "points"},
+        "color": {"$ref": "#/$defs/color"},
+        "radius": {"type": "number", "exclusiveMinimum": 0, "default": 4},
+        "outlineColor": {"oneOf": [{"$ref": "#/$defs/color"}, {"type": "null"}], "default": "#FFFFFF", "description": "null draws no outline."},
+        "labelField": {"type": "string"},
+        "labelMinimumZoom": {"$ref": "#/$defs/zoom", "default": 11}
       }
     },
     "dataDrivenFillRender": {

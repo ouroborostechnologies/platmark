@@ -35,6 +35,9 @@ REQUIRED_BASE_MAPS = ("basemap.standard", "basemap.satellite", "basemap.hybrid")
 
 # A point in the conterminous US, for probing a source that covers the whole world.
 CONUS_POINT = (-98.58, 39.83)
+# Where GitHub Pages publishes this repository. A file under it is probed from the checkout, so a pull
+# request adding one passes before Pages has deployed it.
+PAGES_ROOT = "https://ouroborostechnologies.github.io/platmark/"
 
 # Each set of closed values in x-platmark-kinds, and the $defs entry in the schema that lists it.
 KIND_ENUMS = {
@@ -733,6 +736,8 @@ def probe_one(target, timeout, retries, gate):
     kind = target["source"]["type"]
     if kind == "vectorTiles":
         return {**result, "skipped": True, "note": "vector tiles are not probed"}
+    if kind == "geoJSON":
+        return probe_points(target, result, timeout, retries, gate)
     try:
         result["url"], result["zoom"] = plan(target)
     except (ValueError, KeyError, TypeError) as error:
@@ -759,6 +764,63 @@ def probe_one(target, timeout, retries, gate):
         snippet = body[:160].decode("utf-8", "replace").replace("\n", " ").strip()
         result["error"] = f"content type {media or 'missing'} is not an image: {snippet}"
     return result
+
+
+def probe_point(target):
+    """The place a point source is asked about: as `plan` chooses for tiles."""
+    coverage = target["coverage"]
+    contains = lambda r, p: r[0] <= p[0] <= r[2] and r[1] <= p[1] <= r[3]
+    if coverage == "global" or not coverage or any(contains(rect, CONUS_POINT) for rect in coverage):
+        return CONUS_POINT
+    min_lon, min_lat, max_lon, max_lat = coverage[0]
+    return (min_lon + max_lon) / 2, (min_lat + max_lat) / 2
+
+
+def probe_points(target, result, timeout, retries, gate):
+    """Asks a geoJSON source about a degree-wide box at the probe point, and checks the answer is
+    the shape the app reads: a FeatureCollection, or a list of records at the mapped path."""
+    source = target["source"]
+    lon, lat = probe_point(target)
+    box = {"{west}": lon - 0.5, "{south}": lat - 0.5, "{east}": lon + 0.5, "{north}": lat + 0.5}
+    url = source["url"]
+    for token, value in box.items():
+        url = url.replace(token, f"{value:.4f}")
+    result["url"] = url
+    if url.startswith(PAGES_ROOT):
+        path = ROOT / url[len(PAGES_ROOT):]
+        if not path.is_file():
+            return {**result, "error": f"published from this repository, but {path.relative_to(ROOT)} is missing"}
+        status, content_type, body, error = 200, "application/geo+json", path.read_bytes(), None
+        result["note"] = f"read from {path.relative_to(ROOT)}"
+    else:
+        for attempt in range(retries + 1):
+            status, content_type, body, error = fetch(url, timeout, gate)
+            if not (status is None or status >= 500 or status == 429) or attempt == retries:
+                break
+            time.sleep(2)
+    result.update(status=status, contentType=(content_type or None))
+    if error or status != 200:
+        return {**result, "error": error or f"HTTP {status}"}
+    try:
+        answer = json.loads(body)
+    except ValueError:
+        snippet = body[:160].decode("utf-8", "replace").replace("\n", " ").strip()
+        return {**result, "error": f"not JSON: {snippet}"}
+    mapping = source.get("records")
+    if mapping is None:
+        features = answer.get("features") if isinstance(answer, dict) else None
+        if answer.get("type") != "FeatureCollection" or not isinstance(features, list):
+            return {**result, "error": "not a GeoJSON FeatureCollection"}
+        count = len(features)
+    else:
+        node = answer
+        for key in [k for k in mapping.get("path", "").split(".") if k]:
+            node = node.get(key) if isinstance(node, dict) else None
+        if not isinstance(node, list):
+            return {**result, "error": f"no list of records at \"{mapping.get('path', '')}\": {str(answer)[:160]}"}
+        count = sum(1 for r in node if isinstance(r, dict) and mapping["longitude"] in r and mapping["latitude"] in r)
+    result["note"] = ((result["note"] + "; ") if result["note"] else "") + f"{count} points"
+    return {**result, "ok": True}
 
 
 def command_probe(args):
@@ -796,7 +858,8 @@ def command_probe(args):
         if result["skipped"]:
             print(f"skip  {label}: {result['note']}")
         elif result["ok"]:
-            print(f"ok    {label}: {result['status']} {result['contentType']} z{result['zoom']}"
+            where = "" if result["zoom"] is None else f" z{result['zoom']}"
+            print(f"ok    {label}: {result['status']} {result['contentType']}{where}"
                   + (f" ({result['note']})" if result["note"] else ""))
         else:
             print(f"FAIL  {label}: {result['error']}\n      {result['url']}")

@@ -1,0 +1,30 @@
+{
+  "datasets": {
+    "pbdb.collections": {
+      "name": "Paleobiology Database Fossil Collections",
+      "summary": "Places where fossils have been collected and published, each with the rock formation and the geological interval it dates from, entered from the scientific literature by paleontologists. Locations are as precise as the publications give them, which is often only to the nearest few kilometres.",
+      "provider": "pbdb",
+      "officialURL": "https://paleobiodb.org/navigator/",
+      "serviceURL": "https://paleobiodb.org/data1.2/colls/list.json?lngmin={west}&lngmax={east}&latmin={south}&latmax={north}&limit=3000",
+      "attribution": "Fossil collections from the Paleobiology Database (paleobiodb.org)",
+      "license": "ccBy40",
+      "coverage": "global"
+    }
+  },
+  "layers": [
+    {
+      "id": "pbdb.collections",
+      "name": "Fossil Sites",
+      "summary": "Places where fossils have been found and published, named for the collection. Positions are often approximate, and many sites are on private or protected land, where collecting is not allowed.",
+      "category": "geology",
+      "dataset": "pbdb.collections",
+      "source": {
+        "type": "geoJSON",
+        "url": "https://paleobiodb.org/data1.2/colls/list.json?lngmin={west}&lngmax={east}&latmin={south}&latmax={north}&limit=3000",
+        "records": {"latitude": "lat", "longitude": "lng", "path": "records"}
+      },
+      "render": {"type": "points", "color": "#8A5A2B", "labelField": "nam", "labelMinimumZoom": 11},
+      "minimumZoom": 8
+    }
+  ]
+}

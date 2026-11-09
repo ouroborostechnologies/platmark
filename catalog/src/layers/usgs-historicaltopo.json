@@ -1,5 +1,15 @@
 {
   "datasets": {
+    "usgs.gnis.historical": {
+      "name": "GNIS Historical Features",
+      "summary": "Places in the Geographic Names Information System that no longer exist: former towns and settlements, mines, forts, post offices, springs and other features recorded from historical maps and documents.",
+      "provider": "usgs",
+      "officialURL": "https://www.usgs.gov/tools/geographic-names-information-system-gnis",
+      "serviceURL": "https://carto.nationalmap.gov/arcgis/rest/services/geonames/MapServer",
+      "attribution": "Geographic Names Information System courtesy of the U.S. Geological Survey, The National Map",
+      "license": "usPublicDomain",
+      "coverage": "unitedStates"
+    },
     "usgs.htmc": {
       "name": "USGS Historical Topographic Map Collection",
       "summary": "Scanned USGS topographic maps up to 2006, roughly 180,000 sheets. Which years exist depends entirely on where you are.",
@@ -38,6 +48,19 @@
           "yearField": "Year"
         }
       }
+    },
+    {
+      "id": "usgs.gnis.historical",
+      "name": "Vanished Places",
+      "summary": "Named places that no longer exist — ghost towns, old mines, forts and post offices — from the federal place-name register.",
+      "category": "historical",
+      "dataset": "usgs.gnis.historical",
+      "source": {
+        "type": "arcGISMapExport",
+        "serviceURL": "https://carto.nationalmap.gov/arcgis/rest/services/geonames/MapServer",
+        "visibleLayers": "show:12,13,14"
+      },
+      "minimumZoom": 10
     }
   ]
 }
