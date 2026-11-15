@@ -11,6 +11,16 @@ Published with GitHub Pages from the root of `main`:
 
 These URLs are compiled into the app (`Constants.swift`) and listed on the App Store, so keep the paths stable.
 
+### Running locally
+
+The site is plain HTML, CSS and JavaScript with no build step. Serve the repository root:
+
+```sh
+python3 -m http.server 8000
+```
+
+Then open http://localhost:8000/. Reload the page to see edits.
+
 ## Layer catalog
 
 The app reads its map layers from `catalog/catalog-v1.json`, published as a release asset here. The app has the code that draws each kind of source; this repository says which layers exist and where their tiles come from.

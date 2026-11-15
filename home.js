@@ -1,90 +1,90 @@
-// Keeps the pinned phone in step with the scroll: the chapter at the reading line picks the
-// screenshot and the caption, and on narrow screens text fades as it slides under the phone.
+// Shows the screenshot of whichever scene is across the middle of the window, fading it in over
+// the others so the screen never dims to black partway through, and enlarges it when tapped.
 (() => {
-  const chapters = [...document.querySelectorAll(".chapter")];
-  const shots = [...document.querySelectorAll(".screen img")];
-  const device = document.querySelector(".device");
-  const caption = document.querySelector(".caption");
-  const place = caption.querySelector(".place");
-  const coords = caption.querySelector(".coords");
-  const terrain = document.querySelector(".terrain");
-  const fading = [...document.querySelectorAll(".copy > *")];
+  const screen = document.querySelector(".screen");
+  const screens = new Map([...screen.querySelectorAll("img")].map((img) => [img.dataset.scene, img]));
+  let active = screen.querySelector(".is-shown");
+  let topLayer = 0;
 
-  const narrow = matchMedia("(max-width: 759px)");
-  const still = matchMedia("(prefers-reduced-motion: reduce)");
-  const fadeDistance = 72;
+  const layer = (img) => Number(img.style.zIndex);
 
-  let active = chapters[0];
-  let captionTimer;
-
-  function show(chapter) {
-    if (chapter === active) return;
-    active = chapter;
-    for (const img of shots) {
-      const on = img.dataset.shot === chapter.dataset.shot;
-      img.classList.toggle("is-active", on);
-      img.toggleAttribute("aria-hidden", !on);
+  // A hidden screenshot rises to the top and fades in. One still showing underneath, because a
+  // fade was reversed partway, stays put and the screenshots above it fade away instead.
+  function show(scene) {
+    const next = screens.get(scene);
+    if (next === active) return;
+    active = next;
+    if (getComputedStyle(next).opacity === "0") next.style.zIndex = ++topLayer;
+    for (const img of screens.values()) {
+      if (layer(img) > layer(next)) img.classList.remove("is-shown");
     }
-    if (place.textContent === chapter.dataset.place) return;
-    clearTimeout(captionTimer);
-    const swap = () => {
-      place.textContent = chapter.dataset.place;
-      coords.textContent = chapter.dataset.coords;
-      caption.classList.remove("is-changing");
-    };
-    if (still.matches) return swap();
-    caption.classList.add("is-changing");
-    captionTimer = setTimeout(swap, 250);
+    next.classList.add("is-shown");
   }
 
-  function update() {
-    const vh = window.innerHeight;
-    const phoneBottom = device.getBoundingClientRect().bottom;
-
-    // The reading line: the middle of the window beside the phone, or low in the
-    // strip below it when the phone sits on top, so a heading swaps the screen as it arrives.
-    const line = narrow.matches ? phoneBottom + (vh - phoneBottom) * 0.7 : vh * 0.5;
-    let current = chapters[0];
-    for (const chapter of chapters) {
-      if (chapter.getBoundingClientRect().top <= line) current = chapter;
+  // Once the active screenshot is fully in, the ones it covers are hidden.
+  screen.addEventListener("transitionend", (event) => {
+    if (event.target !== active) return;
+    for (const img of screens.values()) {
+      if (img !== active) img.classList.remove("is-shown");
     }
-    show(current);
+  });
 
-    if (narrow.matches) {
-      for (const el of fading) {
-        const top = el.getBoundingClientRect().top;
-        const opacity = Math.min(Math.max((top - phoneBottom) / fadeDistance, 0), 1);
-        el.style.opacity = opacity;
+  const middle = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) show(entry.target.dataset.scene);
       }
-    }
+    },
+    { rootMargin: "-50% 0px -50% 0px" },
+  );
+  for (const scene of document.querySelectorAll(".scene")) middle.observe(scene);
 
-    if (!still.matches) {
-      const range = document.documentElement.scrollHeight - vh;
-      const travel = terrain.offsetHeight - vh;
-      const progress = range > 0 ? window.scrollY / range : 0;
-      terrain.style.transform = `translateY(${-Math.max(travel, 0) * progress}px)`;
-    }
+  // Tapping the device lifts its screenshot out of the bezel into a dialog over the darkened page.
+  const device = document.querySelector(".device");
+  const viewer = document.querySelector(".viewer");
+  const enlarged = viewer.querySelector("img");
+  const motion = {
+    duration: matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 400,
+    easing: "cubic-bezier(0.2, 0, 0, 1)",
+    fill: "forwards",
+  };
+  let closing = false;
+
+  // The enlarged screenshot, scaled and moved back onto the device's screen.
+  function onScreen() {
+    const from = screen.getBoundingClientRect();
+    const to = enlarged.getBoundingClientRect();
+    return `translate(${from.left - to.left}px, ${from.top - to.top}px) scale(${from.width / to.width}, ${from.height / to.height})`;
   }
 
-  let queued = false;
-  function schedule() {
-    if (queued) return;
-    queued = true;
-    requestAnimationFrame(() => {
-      queued = false;
-      update();
-    });
+  device.querySelector(".enlarge").addEventListener("click", async () => {
+    enlarged.src = active.src;
+    enlarged.alt = active.alt;
+    await enlarged.decode();
+    viewer.showModal();
+    device.classList.add("is-enlarged");
+    enlarged.animate([{ transform: onScreen() }, { transform: "none" }], motion);
+    viewer.animate([{ backgroundColor: "transparent" }, {}], motion);
+  });
+
+  async function close() {
+    if (closing) return;
+    closing = true;
+    for (const animation of [...enlarged.getAnimations(), ...viewer.getAnimations()]) animation.cancel();
+    device.classList.remove("is-enlarged");
+    const animations = [
+      enlarged.animate([{ transform: "none" }, { transform: onScreen() }], motion),
+      viewer.animate([{}, { backgroundColor: "transparent" }], motion),
+    ];
+    await Promise.all(animations.map((animation) => animation.finished));
+    viewer.close();
+    for (const animation of animations) animation.cancel();
+    closing = false;
   }
 
-  narrow.addEventListener("change", () => {
-    for (const el of fading) el.style.opacity = "";
-    schedule();
+  viewer.addEventListener("click", close);
+  viewer.addEventListener("cancel", (event) => {
+    event.preventDefault();
+    close();
   });
-  still.addEventListener("change", () => {
-    terrain.style.transform = "";
-    schedule();
-  });
-  addEventListener("scroll", schedule, { passive: true });
-  addEventListener("resize", schedule);
-  update();
 })();

@@ -4,148 +4,168 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Platmark</title>
-  <meta name="description" content="Map tools for landowners, on iPhone, iPad and Mac. Mark points of interest, draw boundaries, measure acreage and distances, and overlay surveys on satellite, topo and parcel maps.">
-  <meta name="theme-color" content="#F5F3F9" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#17141F" media="(prefers-color-scheme: dark)">
+  <meta name="description" content="A map app for iPhone, iPad and Mac. Explore historical imagery, overlay data layers, draw and measure paths and areas, align old maps, and import and export GIS files.">
   <link rel="icon" href="images/icon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Overpass:wght@400;600;800&family=Source+Serif+4:ital,opsz,wght@1,8..60,400&display=swap">
   <link rel="stylesheet" href="home.css">
 </head>
 <body>
-<div class="terrain" aria-hidden="true"></div>
 
-<main class="story">
-  <!-- The phone stays pinned while the chapters scroll past it. home.js shows the screenshot
-       named by the chapter at the reading line, and the place it shows in the caption. -->
-  <div class="stage">
-    <figure class="phone">
-      <div class="device">
-        <div class="screen">
-          <img data-shot="overview" class="is-active" src="images/overview-720.webp" srcset="images/overview-480.webp 480w, images/overview-720.webp 720w" sizes="(max-width: 759px) 50vw, 340px" alt="Platmark showing Groom Lake, Nevada on satellite imagery, with marked sites, a drawn area and a 1968 aerial photograph laid over the map.">
-          <img data-shot="markers" aria-hidden="true" src="images/markers-720.webp" srcset="images/markers-480.webp 480w, images/markers-720.webp 720w" sizes="(max-width: 759px) 50vw, 340px" alt="The Markers list, with the map’s roads, sites and landmarks sorted into groups.">
-          <img data-shot="boundary" aria-hidden="true" src="images/boundary-720.webp" srcset="images/boundary-480.webp 480w, images/boundary-720.webp 720w" sizes="(max-width: 759px) 50vw, 340px" alt="Drawing an area around the Groom Lake lakebed, reading 11 miles of perimeter and 5,154 acres as it goes.">
-          <img data-shot="path" aria-hidden="true" src="images/path-720.webp" srcset="images/path-480.webp 480w, images/path-720.webp 720w" sizes="(max-width: 759px) 50vw, 340px" alt="Drawing a path along a runway, showing its length of 2.3 miles and a bearing of 184°.">
-          <img data-shot="details" aria-hidden="true" src="images/details-720.webp" srcset="images/details-480.webp 480w, images/details-720.webp 720w" sizes="(max-width: 759px) 50vw, 340px" alt="A selected marker with its notes, its group, and a place to attach photos.">
-          <img data-shot="layers" aria-hidden="true" src="images/layers-720.webp" srcset="images/layers-480.webp 480w, images/layers-720.webp 720w" sizes="(max-width: 759px) 50vw, 340px" alt="The Layers tab, offering Standard, Satellite and Hybrid base maps, a hillshade data layer and an image overlay.">
-          <img data-shot="overlay" aria-hidden="true" src="images/overlay-720.webp" srcset="images/overlay-480.webp 480w, images/overlay-720.webp 720w" sizes="(max-width: 759px) 50vw, 340px" alt="Placing a 1968 aerial photograph over the map, with its width, height and rotation.">
-          <img data-shot="export" aria-hidden="true" src="images/export-720.webp" srcset="images/export-480.webp 480w, images/export-720.webp 720w" sizes="(max-width: 759px) 50vw, 340px" alt="The Document tab, with the map’s name, its default units, and Import, Export Document and Export Map Image.">
-          <span class="island"></span>
+<main>
+  <div class="story">
+    <div class="pin">
+      <div class="stage">
+        <div class="device">
+          <img class="bezel-shadow" alt="" aria-hidden="true">
+          <div class="screen">
+            <img class="is-shown" data-scene="canyonlands" alt="A route to the Grand Detour in Canyonlands over 2022 satellite imagery and an old topographic map, with a lookout's notes and photo open.">
+            <img data-scene="area-51" alt="Platmark showing Groom Lake, Nevada in 2024 satellite imagery, with labelled sites, a drawn area and a timeline of satellite history.">
+            <img data-scene="kennedy-space-center" alt="A 1979 USGS topographic map of Cape Canaveral laid over the map, with the Layers panel open.">
+            <img data-scene="bikini-atoll" alt="Drawing an area across Bikini Atoll, reading its perimeter, area and bearing as each point is added.">
+            <img data-scene="glidden" alt="Placing an old hand-drawn survey of a Wisconsin forest over satellite imagery, ready to auto-align.">
+            <img data-scene="badlands" alt="A dig site in the Montana badlands over a geology layer, with notes on a Triceratops find.">
+            <img data-scene="kilauea" alt="The 2018 Kīlauea lava flows mapped as areas, with Import, Export Document and Export Map Image.">
+          </div>
+          <img class="bezel" alt="" aria-hidden="true">
+          <button class="enlarge" aria-label="Enlarge screenshot"></button>
         </div>
-        <span class="side-button"></span>
+        <!-- Shows the visitor's own kind of device, iPhone unless it's an iPad, a Mac or an iPhone
+             Duo. Inline and right here so the screenshots load at once and the device never changes
+             shape on screen, except when a Duo is folded or unfolded.
+             iPadOS asks for the desktop site and reports itself as a Mac; touch gives it away.
+             A Duo's agent is any iPhone's; only its 669 × 951 pt inner screen sets it apart. Folded,
+             it shows as any iPhone. -->
+        <script>
+          (() => {
+            const iphone = /iPhone/.test(navigator.userAgent);
+            const mac = /Macintosh/.test(navigator.userAgent);
+            const ipad = /iPad/.test(navigator.userAgent) || (mac && navigator.maxTouchPoints > 1);
+
+            function kind() {
+              if (ipad) return "ipad";
+              if (mac) return "mac";
+              const shortSide = Math.min(screen.width, screen.height);
+              if (iphone && shortSide === 669) return "iphone-duo-open";
+              return "iphone";
+            }
+
+            function show(device) {
+              if (document.documentElement.dataset.device === device) return;
+              document.documentElement.dataset.device = device;
+              for (const img of document.querySelectorAll(".screen img")) {
+                img.src = `images/${device}/${img.dataset.scene}.webp`;
+              }
+              if (device === "mac") return;
+              for (const img of document.querySelectorAll(".bezel, .bezel-shadow")) {
+                img.src = `images/bezels/${device}.webp`;
+              }
+            }
+
+            show(kind());
+            addEventListener("resize", () => show(kind()));
+          })();
+        </script>
       </div>
-      <figcaption class="caption">
-        <span class="place">Groom Lake, Nevada</span>
-        <span class="coords">37°14′ N 115°48′ W</span>
-      </figcaption>
-    </figure>
+    </div>
+
+    <section class="scene hero" data-scene="canyonlands" style="--ink: #3B241C">
+      <img class="background" src="images/backgrounds/canyonlands.webp" alt="">
+      <div class="band">
+        <img class="hero-icon" src="images/icon.svg" alt="Platmark">
+        <h1>The map app for explorers</h1>
+        <a class="app-store" href="https://apps.apple.com/app/id6809805604">
+          <img src="images/app-store-badge.svg" alt="Download on the App Store" width="120" height="40">
+        </a>
+      </div>
+    </section>
+    <section class="scene" data-scene="area-51" style="--ink: #2E2A33; --subtitle-ink: #8C8892">
+      <img class="background" src="images/backgrounds/area-51.webp" alt="">
+      <div class="band">
+        <h2>Explore decades of aerial imagery</h2>
+        <p>from public sources including USGS, USDA, NASA, and NOAA.</p>
+      </div>
+    </section>
+    <section class="scene" data-scene="kennedy-space-center" style="--ink: #2A2A1C; --subtitle-ink: #8C8B7E">
+      <img class="background" src="images/backgrounds/kennedy-space-center.webp" alt="">
+      <div class="band">
+        <h2>Render dozens of data layers</h2>
+        <p>including geology, hydrology, topography, boundaries, and more.</p>
+      </div>
+    </section>
+    <section class="scene" data-scene="bikini-atoll" style="--ink: #1F3A45; --subtitle-ink: #7E929B">
+      <img class="background" src="images/backgrounds/bikini-atoll.webp" alt="">
+      <div class="band">
+        <h2>Plot and measure paths and polygons</h2>
+        <p>Distance, area, and perimeter in metric or imperial.</p>
+      </div>
+    </section>
+    <section class="scene" data-scene="glidden" style="--ink: #1E2F36; --subtitle-ink: #808F95">
+      <img class="background" src="images/backgrounds/glidden.webp" alt="">
+      <div class="band">
+        <h2>Add custom overlay images</h2>
+        <p>and snap them into place with auto-alignment tools.</p>
+      </div>
+    </section>
+    <section class="scene" data-scene="badlands" style="--ink: #3A2E24; --subtitle-ink: #94897E">
+      <img class="background" src="images/backgrounds/badlands.webp" alt="">
+      <div class="band">
+        <h2>Mark and label points of interest</h2>
+        <p>Attach photos, notes, and files.</p>
+      </div>
+    </section>
+    <section class="scene" data-scene="kilauea" style="--ink: #1A1E21; --subtitle-ink: #83898D">
+      <img class="background" src="images/backgrounds/kilauea.webp" alt="">
+      <div class="band">
+        <h2>Import and export common GIS file formats</h2>
+        <p>including GeoJSON, KML, GPX, CSV, and more.</p>
+      </div>
+    </section>
   </div>
 
-  <section class="chapter hero" data-shot="overview" data-place="Groom Lake, Nevada" data-coords="37°14′ N 115°48′ W">
-    <div class="copy lead">
-      <p class="brand"><img src="images/icon.svg" alt="" width="52" height="52">Platmark</p>
-      <h1>Map tools for landowners.</h1>
-    </div>
-    <div class="copy">
-      <p>Plan a project, scout a lease or walk a property line. Draw and measure it over satellite
-      and topo, then share it as a PDF. On iPhone, iPad and Mac.</p>
-      <!-- Swap for Apple's official badge, linked to the listing, once the app is live. -->
-      <p class="store">Coming soon to the App Store</p>
-    </div>
-  </section>
-
-  <section class="chapter" data-side="right" data-shot="markers" data-place="Groom Lake, Nevada" data-coords="37°14′ N 115°48′ W">
-    <div class="copy">
-      <h2>Mark everything on your land</h2>
-      <p>Drop a pin on the well, the gate, the septic tank or the corner stake: at the crosshair,
-      at a typed coordinate, or right where you’re standing.</p>
-      <p>Give each one a colour, a symbol and a label, and sort them into groups you can hide when
-      you don’t need them.</p>
-    </div>
-  </section>
-
-  <section class="chapter" data-shot="boundary" data-place="Groom Lake, Nevada" data-coords="37°14′ N 115°48′ W">
-    <div class="copy">
-      <h2>Know your acreage</h2>
-      <p>Trace a pasture, a timber stand or the whole property, and watch its area and perimeter
-      add up with every point. Or walk the line with your phone and let the boundary draw itself.</p>
-      <p>Drag any point to adjust it. Points snap to one another, so shared edges stay shared.</p>
-    </div>
-  </section>
-
-  <section class="chapter" data-side="right" data-shot="path" data-place="Groom Lake, Nevada" data-coords="37°14′ N 115°48′ W">
-    <div class="copy">
-      <h2>Measure before you build</h2>
-      <p>Lay out a fence line, a driveway or a water line and see its length and bearing as you
-      draw. Each map keeps its own units: imperial, metric or nautical.</p>
-      <p>Coordinates read in decimal degrees, degrees-minutes-seconds, UTM or MGRS, and you can type
-      or paste any of them.</p>
-    </div>
-  </section>
-
-  <section class="chapter" data-shot="details" data-place="Groom Lake, Nevada" data-coords="37°14′ N 115°48′ W">
-    <div class="copy">
-      <h2>Keep the details with the place</h2>
-      <p>Add notes to anything you draw: when the culvert was replaced, which stand works in a north
-      wind, who holds the easement.</p>
-      <p>Attach photos too. A photo that knows where it was taken becomes a marker of its own.</p>
-    </div>
-  </section>
-
-  <section class="chapter" data-side="right" data-shot="layers" data-place="Groom Lake, Nevada" data-coords="37°14′ N 115°48′ W">
-    <div class="copy">
-      <h2>See what the satellite can’t</h2>
-      <p>Switch between a street map, satellite imagery and a hybrid. Then add dozens of layers from
-      public data: parcel lines, public land, wetlands, USGS topo maps, contours and shaded relief,
-      lake depth charts, geology and more.</p>
-      <p>Data layers cover the United States; coverage elsewhere is limited.</p>
-    </div>
-  </section>
-
-  <section class="chapter" data-shot="overlay" data-place="Groom Lake, Nevada" data-coords="37°14′ N 115°48′ W">
-    <div class="copy">
-      <h2>Lay your survey over the map</h2>
-      <p>Have a plat, a survey, a site plan or a drone photo? Put it on the map, then drag, pinch and
-      turn it until the fence lines meet.</p>
-    </div>
-  </section>
-
-  <section class="chapter" data-side="right" data-shot="export" data-place="Groom Lake, Nevada" data-coords="37°14′ N 115°48′ W">
-    <div class="copy">
-      <h2>Hand it to whoever needs it</h2>
-      <p>Save a map as an image or a PDF for the contractor, the forester or the county office. Bring
-      in and send out GeoJSON, KML, KMZ, GPX and CSV, so it opens in Google Earth or any GIS tool.</p>
-      <p>Your maps are files you keep, on your device or in iCloud Drive. There’s no account to
-      create, and Platmark collects no data.</p>
-    </div>
-  </section>
-
-  <section class="chapter" data-shot="overview" data-place="Groom Lake, Nevada" data-coords="37°14′ N 115°48′ W">
-    <div class="copy">
-      <h2>Free for small maps. Pro for the whole place.</h2>
-      <p>Every feature works on maps of up to 10 markers, paths and areas, and opening a map is
-      always free. Platmark Pro lifts the limit.</p>
-      <ul class="perks">
-        <li>Unlimited markers, paths and areas on every map</li>
-        <li>Every future Pro feature included</li>
-        <li>One purchase, no subscription</li>
-        <li>Yours on iPhone, iPad and Mac</li>
-        <li>Shared with your family</li>
-      </ul>
-      <p class="store">Coming soon to the App Store</p>
-    </div>
+  <section class="more">
+    <h2>And so much more</h2>
+    <ul>
+      <li>
+        <svg viewBox="0 0 136 109.1" aria-hidden="true"><path d="M5.5 91.8L91.3 91.8C89.9 89.6 89.2 87.1 89.1 84C89.1 82.9 89 81.8 89 80.7L5.5 80.7C2.5 80.7 0 83.2 0 86.3C0 89.4 2.5 91.8 5.5 91.8ZM16.2 84.3L24.1 84.3L24.1 25C24.1 21.8 25.6 20.3 28.8 20.3L124.1 20.3C123.8 15.1 120.6 12.4 115.2 12.4L26.7 12.4C20.2 12.4 16.2 15.9 16.2 22.8ZM104.2 92.5L126.5 92.5C132.5 92.5 136 89.2 136 83.3L136 34.7C136 28.9 132.5 25.5 126.5 25.5L104.2 25.5C98.1 25.5 94.7 28.9 94.7 34.7L94.7 83.3C94.7 89.2 98.1 92.5 104.2 92.5ZM104.3 86.1C102.1 86.1 101.1 84.9 101.1 82.7L101.1 35.4C101.1 33.1 102.1 31.9 104.3 31.9L126.3 31.9C128.5 31.9 129.6 33.1 129.6 35.4L129.6 82.7C129.6 84.9 128.5 86.1 126.3 86.1ZM108.6 83.6L121.9 83.6C122.9 83.6 123.6 82.9 123.6 81.9C123.6 80.9 122.9 80.2 121.9 80.2L108.6 80.2C107.7 80.2 107 80.9 107 81.9C107 83 107.6 83.6 108.6 83.6ZM111.4 38.9L119.1 38.9C120.4 38.9 121.3 37.9 121.3 36.6C121.3 35.4 120.4 34.4 119.1 34.4L111.4 34.4C110.1 34.4 109.2 35.4 109.2 36.6C109.2 37.9 110.1 38.9 111.4 38.9Z"/></svg>
+        <h3>iPhone, iPad and Mac</h3>
+        <p>Native on each, in light and dark.</p>
+      </li>
+      <li>
+        <svg viewBox="0 0 110.9 109.1" aria-hidden="true"><path d="M15.3 96.4L97 96.4C105.8 96.4 110.9 91.4 110.9 81.3L110.9 31.2C110.9 21.1 105.7 16 95.6 16L48.7 16C45.4 16 43.4 15.2 40.9 13.1L37.9 10.7C34.7 8 32.2 7.1 27.4 7.1L13.5 7.1C4.9 7.1 0 12 0 21.8L0 81.3C0 91.4 5.1 96.4 15.3 96.4ZM15.4 88.6C10.5 88.6 7.9 86 7.9 80.9L7.9 22.2C7.9 17.4 10.4 14.9 15.1 14.9L25.4 14.9C28.6 14.9 30.6 15.7 33.1 17.8L36 20.3C39.2 22.9 41.8 23.9 46.6 23.9L95.4 23.9C100.2 23.9 103 26.5 103 31.6L103 81C103 86 100.2 88.6 95.4 88.6ZM13.9 38.9L96.9 38.9L96.9 35.9C96.9 32.8 95.4 31.3 92.1 31.3L18.8 31.3C15.5 31.3 13.9 32.8 13.9 35.9Z"/></svg>
+        <h3>Maps are files you keep</h3>
+        <p>Store them in iCloud Drive or on your device.</p>
+      </li>
+      <li>
+        <svg viewBox="0 0 66.7 109.1" aria-hidden="true"><path d="M11 98.7L55.7 98.7C62.8 98.7 66.7 94.8 66.7 87.1L66.7 53.4C66.7 45.8 62.8 41.8 55.7 41.8L11 41.8C3.8 41.8 0 45.8 0 53.4L0 87.1C0 94.8 3.8 98.7 11 98.7ZM11.2 91.3C9.1 91.3 7.9 90 7.9 87.6L7.9 52.9C7.9 50.5 9.1 49.2 11.2 49.2L55.4 49.2C57.6 49.2 58.7 50.5 58.7 52.9L58.7 87.6C58.7 90 57.6 91.3 55.4 91.3ZM8.5 45.6L16.3 45.6L16.3 29.2C16.3 16.8 24.2 10.3 33.3 10.3C42.4 10.3 50.4 16.8 50.4 29.2L50.4 45.6L58.1 45.6L58.1 30.2C58.1 11.8 46.1 2.9 33.3 2.9C20.6 2.9 8.5 11.8 8.5 30.2Z"/></svg>
+        <h3>Private</h3>
+        <p>No account to create, and no data collected.</p>
+      </li>
+      <li>
+        <svg viewBox="0 0 110.3 109.1" aria-hidden="true"><path d="M14.6 91L24.2 91L24.2 83.6L14.5 83.6C10.1 83.6 7.9 81.3 7.9 77.1L7.9 30.6C7.9 26.3 10.1 24 14.5 24L95.9 24C100.2 24 102.4 26.3 102.4 30.6L102.4 77.1C102.4 81.3 100.2 83.6 95.9 83.6L86.8 83.6L86.8 91L95.8 91C105.3 91 110.3 86.2 110.3 76.7L110.3 31C110.3 21.5 105.3 16.7 95.8 16.7L14.6 16.7C5.5 16.7 0 21.5 0 31L0 76.7C0 86.2 5 91 14.6 91ZM19.3 21L26.9 21L26.9 13.5C26.9 9.4 29 7.4 33.1 7.4L77.2 7.4C81.3 7.4 83.4 9.4 83.4 13.5L83.4 20.9L91 20.9L91 14.1C91 4.5 86.2 0.3 77.1 0.3L33.2 0.3C24.6 0.3 19.3 4.5 19.3 14.1ZM29 105.5L81.3 105.5C87.5 105.5 90.6 102.6 90.6 96.1L90.6 56.3C90.6 49.8 87.5 47 81.3 47L29 47C23.1 47 19.7 49.8 19.7 56.3L19.7 96.1C19.7 102.6 22.8 105.5 29 105.5ZM37.3 69.6C35.4 69.6 34 68.2 34 66.5C34 64.6 35.4 63.3 37.3 63.3L73.2 63.3C75 63.3 76.3 64.6 76.3 66.5C76.3 68.2 75 69.6 73.2 69.6ZM37.3 89.1C35.4 89.1 34 87.7 34 86C34 84.2 35.4 82.9 37.3 82.9L73.2 82.9C75 82.9 76.3 84.2 76.3 86C76.3 87.7 75 89.1 73.2 89.1ZM78.8 35.6C78.8 39 81.6 41.7 85 41.7C88.2 41.7 91 39 91 35.6C91 32.4 88.2 29.5 85 29.5C81.6 29.5 78.8 32.4 78.8 35.6Z"/></svg>
+        <h3>Print and share</h3>
+        <p>Save a map with its annotations as an image or PDF.</p>
+      </li>
+      <li>
+        <svg viewBox="0 0 109.1 109.1" aria-hidden="true"><path d="M57.6 103.8L105.2 56.1C108.8 52.4 109.1 50.3 109.1 45.2L109.1 26.7C109.1 21.5 107.9 19.9 104.1 16.2L92.9 4.9C89.3 1.3 87.6 0 82.5 0L63.9 0C58.7 0 56.7 0.2 53 3.9L5.3 51.6C-1.7 58.5 -1.8 65.8 5.3 72.9L36.2 103.8C43.4 110.9 50.6 110.8 57.6 103.8ZM52.3 97.9C48.8 101.4 45.1 101.5 41.5 97.9L11.2 67.6C7.6 64 7.7 60.3 11.1 56.8L58.5 9.5C59.6 8.5 60.5 7.9 62.2 7.9L82.8 7.9C84.3 7.9 85.3 8.4 86.4 9.5L99.7 22.8C100.7 23.8 101.2 24.8 101.2 26.3L101.2 46.9C101.2 48.5 100.6 49.6 99.7 50.5ZM76.8 39.1C80.6 39.1 83.4 36.1 83.4 32.4C83.4 28.6 80.6 25.7 76.8 25.7C72.9 25.7 70.1 28.6 70.1 32.4C70.1 36.1 72.9 39.1 76.8 39.1Z"/></svg>
+        <h3>No subscription</h3>
+        <p>Free for maps of up to 10 markers, paths and areas. Platmark Pro is one purchase that lifts the limit.</p>
+      </li>
+    </ul>
+    <p class="footnote">Map layer coverage outside North America is limited.</p>
   </section>
 </main>
 
 <footer class="colophon">
-  <p class="brand"><img src="images/icon.svg" alt="" width="32" height="32">Platmark</p>
+  <p class="brand"><img src="images/icon.svg" alt="" width="28" height="28">Platmark</p>
   <nav aria-label="Platmark pages">
     <a href="support/">Support</a>
     <a href="privacy/">Privacy policy</a>
   </nav>
   <p class="legal">© 2026 Ouroboros Technologies</p>
 </footer>
+
+<dialog class="viewer" aria-label="Screenshot">
+  <img alt="">
+</dialog>
 
 <script src="home.js" defer></script>
 </body>
