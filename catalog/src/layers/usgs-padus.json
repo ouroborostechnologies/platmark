@@ -1,5 +1,18 @@
 {
   "datasets": {
+    "unep-wcmc.wdpa": {
+      "name": "World Database on Protected and Conserved Areas",
+      "summary": "The global inventory of protected areas and other effective conservation measures — national parks, nature reserves, marine protected areas, World Heritage sites and more — reported by governments and compiled by UNEP-WCMC and IUCN. Updated monthly.",
+      "provider": "unep-wcmc",
+      "officialURL": "https://www.protectedplanet.net",
+      "serviceURL": "https://data-gis.unep-wcmc.org/server/rest/services/ProtectedSites/The_World_Database_of_Protected_Areas/MapServer",
+      "attribution": "UNEP-WCMC and IUCN, Protected Planet: The World Database on Protected and Conserved Areas, Cambridge, UK. Available at www.protectedplanet.net",
+      "license": "protectedPlanetTerms",
+      "coverage": "global",
+      "useStatus": {
+        "restricted": "Protected Planet's terms bar commercial use, including revenue generation, without UNEP-WCMC's written permission; licence through IBAT before shipping."
+      }
+    },
     "usgs.padus": {
       "name": "Protected Areas Database of the United States (PAD-US) 4.1",
       "summary": "The national inventory of public and protected land: federal, state, local and tribal holdings and land owned by nonprofit conservation organisations, coloured by managing agency.",
@@ -24,6 +37,18 @@
         "visibleLayers": "show:0"
       },
       "minimumZoom": 4,
+      "defaultOpacity": 0.6
+    },
+    {
+      "id": "unep-wcmc.wdpa",
+      "name": "Protected Areas (World)",
+      "summary": "National parks, nature reserves and marine protected areas in every country. In the United States, Public & Protected Lands is more detailed.",
+      "category": "boundaries",
+      "dataset": "unep-wcmc.wdpa",
+      "source": {
+        "type": "arcGISTiled",
+        "serviceURL": "https://data-gis.unep-wcmc.org/server/rest/services/ProtectedSites/The_World_Database_of_Protected_Areas/MapServer"
+      },
       "defaultOpacity": 0.6
     }
   ]

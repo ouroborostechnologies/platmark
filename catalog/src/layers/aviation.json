@@ -1,0 +1,125 @@
+{
+  "datasets": {
+    "faa.ifr.high": {
+      "name": "FAA IFR Enroute High Altitude Charts",
+      "summary": "The FAA's charts for instrument flight at 18,000 ft and above: jet routes, navaids, waypoints and air route traffic control centre boundaries. Reissued every 56 days.",
+      "provider": "faa",
+      "officialURL": "https://www.faa.gov/air_traffic/flight_info/aeronav/digital_products/ifr/",
+      "serviceURL": "https://tiles.arcgis.com/tiles/ssFJjBXIUyZDrSYZ/arcgis/rest/services/IFR_High/MapServer",
+      "attribution": "Federal Aviation Administration, Aeronautical Information Services",
+      "license": "usPublicDomain",
+      "coverage": "unitedStates"
+    },
+    "faa.ifr.low": {
+      "name": "FAA IFR Enroute Low Altitude and Area Charts",
+      "summary": "The FAA's charts for instrument flight below 18,000 ft: Victor airways, minimum altitudes, navaids, waypoints and airports with instrument approaches, with larger-scale area charts around busy terminals. Reissued every 56 days.",
+      "provider": "faa",
+      "officialURL": "https://www.faa.gov/air_traffic/flight_info/aeronav/digital_products/ifr/",
+      "serviceURL": "https://tiles.arcgis.com/tiles/ssFJjBXIUyZDrSYZ/arcgis/rest/services/IFR_AreaLow/MapServer",
+      "attribution": "Federal Aviation Administration, Aeronautical Information Services",
+      "license": "usPublicDomain",
+      "coverage": "unitedStates"
+    },
+    "faa.vfr.sectional": {
+      "name": "FAA VFR Sectional Charts",
+      "summary": "The FAA's 1:500,000 charts for visual flight: airports, airspace, navaids, obstacles, terrain and visual landmarks, seamlessly mosaicked across the United States. Reissued every 56 days.",
+      "provider": "faa",
+      "officialURL": "https://www.faa.gov/air_traffic/flight_info/aeronav/digital_products/vfr/",
+      "serviceURL": "https://tiles.arcgis.com/tiles/ssFJjBXIUyZDrSYZ/arcgis/rest/services/VFR_Sectional/MapServer",
+      "attribution": "Federal Aviation Administration, Aeronautical Information Services",
+      "license": "usPublicDomain",
+      "coverage": "unitedStates"
+    },
+    "faa.vfr.terminal": {
+      "name": "FAA VFR Terminal Area Charts",
+      "summary": "The FAA's 1:250,000 charts of the airspace around the busiest U.S. airports, with the same symbols as the sectionals at twice the scale. Reissued every 56 days.",
+      "provider": "faa",
+      "officialURL": "https://www.faa.gov/air_traffic/flight_info/aeronav/digital_products/vfr/",
+      "serviceURL": "https://tiles.arcgis.com/tiles/ssFJjBXIUyZDrSYZ/arcgis/rest/services/VFR_Terminal/MapServer",
+      "attribution": "Federal Aviation Administration, Aeronautical Information Services",
+      "license": "usPublicDomain",
+      "coverage": "faaTerminalAreas"
+    },
+    "ofm.aero": {
+      "name": "open flightmaps VFR Charts",
+      "summary": "VFR charts rendered from the open flightmaps database: airspace, aerodromes, navaids, reporting points and obstacles, kept by volunteers for each covered country and updated each AIRAC cycle. Complementary information, not certified for navigation.",
+      "provider": "ofma",
+      "officialURL": "https://www.openflightmaps.org",
+      "serviceURL": "https://nwy-tiles-api.prod.newaydata.com/tiles/{z}/{x}/{y}.png?path=latest/aero/latest",
+      "attribution": "© open flightmaps contributors",
+      "license": "ofmaGeneralUsers",
+      "coverage": "openFlightmapsEurope",
+      "useStatus": {
+        "restricted": "The OFMA licence allows commercial use of the data, but this tile server is undocumented; confirm with info@openflightmaps.org before shipping."
+      }
+    }
+  },
+  "layers": [
+    {
+      "id": "faa.vfr.sectional",
+      "name": "VFR Sectional Charts",
+      "summary": "The FAA's charts for flying by sight: airspace, airports, navaids, obstacles and landmarks. Updated every 56 days. Not for navigation.",
+      "category": "aviation",
+      "dataset": "faa.vfr.sectional",
+      "source": {
+        "type": "arcGISTiled",
+        "serviceURL": "https://tiles.arcgis.com/tiles/ssFJjBXIUyZDrSYZ/arcgis/rest/services/VFR_Sectional/MapServer",
+        "maximumLevel": 12
+      },
+      "minimumZoom": 8
+    },
+    {
+      "id": "faa.vfr.terminal",
+      "name": "VFR Terminal Area Charts",
+      "summary": "Close-up FAA charts of the airspace around the busiest airports, at twice the sectional scale. Updated every 56 days. Not for navigation.",
+      "category": "aviation",
+      "dataset": "faa.vfr.terminal",
+      "source": {
+        "type": "arcGISTiled",
+        "serviceURL": "https://tiles.arcgis.com/tiles/ssFJjBXIUyZDrSYZ/arcgis/rest/services/VFR_Terminal/MapServer",
+        "maximumLevel": 12
+      },
+      "minimumZoom": 10
+    },
+    {
+      "id": "faa.ifr.low",
+      "name": "IFR Low Altitude Charts",
+      "summary": "The FAA's instrument charts below 18,000 ft: airways, minimum altitudes, navaids and waypoints. Updated every 56 days. Not for navigation.",
+      "category": "aviation",
+      "dataset": "faa.ifr.low",
+      "source": {
+        "type": "arcGISTiled",
+        "serviceURL": "https://tiles.arcgis.com/tiles/ssFJjBXIUyZDrSYZ/arcgis/rest/services/IFR_AreaLow/MapServer",
+        "maximumLevel": 12
+      },
+      "minimumZoom": 7
+    },
+    {
+      "id": "faa.ifr.high",
+      "name": "IFR High Altitude Charts",
+      "summary": "The FAA's instrument charts from 18,000 ft up: jet routes, navaids and control centre boundaries. Updated every 56 days. Not for navigation.",
+      "category": "aviation",
+      "dataset": "faa.ifr.high",
+      "source": {
+        "type": "arcGISTiled",
+        "serviceURL": "https://tiles.arcgis.com/tiles/ssFJjBXIUyZDrSYZ/arcgis/rest/services/IFR_High/MapServer",
+        "maximumLevel": 9
+      },
+      "minimumZoom": 5
+    },
+    {
+      "id": "ofm.aero",
+      "name": "European VFR Charts",
+      "summary": "Community-made VFR charts for much of Europe: airspace, aerodromes, navaids and reporting points. Updated each AIRAC cycle. Not for navigation.",
+      "category": "aviation",
+      "dataset": "ofm.aero",
+      "source": {
+        "type": "xyzRaster",
+        "urlTemplate": "https://nwy-tiles-api.prod.newaydata.com/tiles/{z}/{x}/{y}.png?path=latest/aero/latest",
+        "maximumLevel": 12,
+        "tileSize": 512
+      },
+      "minimumZoom": 7
+    }
+  ]
+}

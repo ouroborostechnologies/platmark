@@ -10,6 +10,16 @@
       "license": "usPublicDomain",
       "coverage": "hawaii"
     },
+    "usgs.mrds": {
+      "name": "Mineral Resources Data System",
+      "summary": "The USGS database of metallic and nonmetallic mineral sites — mines, prospects, occurrences and deposits — worldwide, with most records in the United States. No longer systematically updated; many sites are on private land or are closed, dangerous mine workings.",
+      "provider": "usgs",
+      "officialURL": "https://mrdata.usgs.gov/mrds/",
+      "serviceURL": "https://mrdata.usgs.gov/services/mrds",
+      "attribution": "Mineral Resources Data System courtesy of the U.S. Geological Survey",
+      "license": "usPublicDomain",
+      "coverage": "global"
+    },
     "usgs.prgeol": {
       "name": "Puerto Rico Geology",
       "summary": "Geologic map units for Puerto Rico.",
@@ -95,6 +105,20 @@
       "minimumZoom": 4,
       "maximumZoom": 16,
       "defaultOpacity": 0.65
+    },
+    {
+      "id": "usgs.mrds",
+      "name": "Mineral Sites",
+      "summary": "Mines, prospects and mineral occurrences recorded by the USGS, coloured by development status. Many are on private land or are hazardous old workings.",
+      "category": "geology",
+      "dataset": "usgs.mrds",
+      "source": {
+        "type": "wms",
+        "endpoint": "https://mrdata.usgs.gov/services/mrds",
+        "layers": "mrds",
+        "version": "1.1.1"
+      },
+      "minimumZoom": 7
     }
   ]
 }

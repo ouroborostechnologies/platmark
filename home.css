@@ -1,35 +1,14 @@
-/* The product page. Colours are the app's: AccentColor and the AppIcon field, light and dark. */
+/* The product page: the App Store screenshots from platmark-internal's compose.swift, rebuilt
+   full-screen. Lengths in the stage follow its Layout, as fractions of the stage (cqh, cqmin). */
 :root {
-  --paper: #F5F3F9;
-  --ink: #262035;
-  --muted: #5F5873;
+  --paper: #E9E6EF;
+  --ink: #2E2A33;
+  --muted: #6B6676;
   --accent: #7B66AE;
-  --field: #A796C9;
-  --contour: rgb(123 102 174 / 0.24);
-  --rule: rgb(123 102 174 / 0.22);
-  --titanium: linear-gradient(135deg, #E4E0EA, #A9A3B4 45%, #D9D4DF 70%, #8F899B);
-  --titanium-solid: #B9B3C3;
-  --shadow: rgb(54 46 77 / 0.38);
-
-  --edge: clamp(20px, 4vw, 64px);
-  --gap: clamp(32px, 5vw, 88px);
-  /* Phone width. The device is about 2.1 widths tall; the rest of the height is the caption. */
-  --pw: min(340px, calc((100svh - 140px) / 2.1));
-  color-scheme: light dark;
-}
-@media (prefers-color-scheme: dark) {
-  :root {
-    --paper: #17141F;
-    --ink: #ECE8F4;
-    --muted: #A9A2BC;
-    --accent: #A796C9;
-    --field: #362E4D;
-    --contour: rgb(167 150 201 / 0.15);
-    --rule: rgb(167 150 201 / 0.2);
-    --titanium: linear-gradient(135deg, #5E586B, #34303D 45%, #4F4A5B 70%, #2A2632);
-    --titanium-solid: #45404F;
-    --shadow: rgb(0 0 0 / 0.55);
-  }
+  --rule: rgb(46 42 51 / 0.12);
+  --screen-radius: 10.4545% / 4.8117%;
+  --edge: clamp(20px, 6vw, 88px);
+  --system: -apple-system, BlinkMacSystemFont, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 * { box-sizing: border-box; }
@@ -38,263 +17,307 @@ body {
   margin: 0;
   background: var(--paper);
   color: var(--ink);
-  font: 400 1.0625rem/1.6 "Overpass", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  font: 400 1.0625rem/1.6 var(--system);
   -webkit-font-smoothing: antialiased;
   overflow-x: clip;
 }
 a { color: var(--accent); text-underline-offset: 0.2em; }
 a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+h1, h2, p { margin: 0; }
 
-/* The contour sheet the page sits on: the icon's own isolines, drifting slowly with the scroll. */
-.terrain {
-  position: fixed;
-  top: 0;
-  left: 50%;
-  width: max(100vw, 140lvh);
-  aspect-ratio: 1;
-  translate: -50% 0;
-  background: var(--contour);
-  -webkit-mask: url("images/contours.svg") center / cover no-repeat;
-  mask: url("images/contours.svg") center / cover no-repeat;
-  pointer-events: none;
-  will-change: transform;
-}
+/* ---------- The story: six scenes scroll past one pinned device ---------- */
 
-/* ---------- The pinned phone ---------- */
-
+/* The pin lies over the scenes and spans exactly as far, so the stage leaves with the last one. */
 .story { position: relative; }
-
+.pin {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
 .stage {
   position: sticky;
   top: 0;
   height: 100svh;
-  margin-bottom: -100svh;
+  container-type: size;
+}
+
+.scene {
+  --fade: 14svh;
+  --slack: 8svh;
+  position: relative;
+  height: 100svh;
+  container-type: size;
+}
+.scene + .scene { margin-top: calc(var(--fade) + var(--slack)); }
+/* Each background reaches past its scene by half the slack and the whole fade, and fades in over
+   the one above in plain document order. That leaves every image unmixed for a viewport plus the
+   slack, so no scroll position is stuck straddling two scenes. */
+.background {
+  --reach: calc(var(--slack) / 2 + var(--fade));
+  position: absolute;
+  top: calc(-1 * var(--reach));
+  left: 0;
+  width: 100%;
+  height: calc(100% + 2 * var(--reach));
+  object-fit: cover;
+  mask: linear-gradient(transparent, #000 var(--fade));
+}
+[data-scene="kilauea"] .background {
+  mask: linear-gradient(transparent, #000 var(--fade) calc(100% - var(--fade)), transparent);
+}
+
+.band {
+  position: absolute;
+  top: 0;
+  left: 6cqmin;
+  right: 6cqmin;
+  height: 18cqh;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: 1.4cqmin;
+  text-align: center;
+  text-wrap: balance;
+}
+.band h2 {
+  font: 600 4.6cqmin/1.2 var(--system);
+  color: var(--ink);
+}
+/* 40% of the heading, but never below 12px, where small phones would take it. */
+.band p {
+  font: 400 max(12px, 1.84cqmin)/1.35 var(--system);
+  color: var(--subtitle-ink);
+}
+
+.brand {
   display: flex;
-  justify-content: center;
   align-items: center;
-  pointer-events: none;
-  z-index: 2;
+  gap: 0.5em;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.brand img { width: 1.6em; height: 1.6em; }
+
+/* Above the device the band is only 18% tall, so each size is also capped by the height. */
+.hero .band { gap: min(2.4cqmin, 1cqh); }
+.hero-icon {
+  width: max(40px, min(10cqmin, 4.5cqh));
+  height: max(40px, min(10cqmin, 4.5cqh));
+}
+.hero h1 {
+  font: 700 min(7cqmin, 3.8cqh)/1.1 var(--system);
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+/* Apple asks for the badge at least 40pt tall on screen. */
+.app-store img {
+  display: block;
+  width: auto;
+  height: max(40px, min(5cqmin, 4cqh));
 }
 
-.phone { margin: 0; display: flex; flex-direction: column; align-items: center; }
-
+/* The device fits inside this area: below the band, and resting on its bottom edge. */
 .device {
-  --ring: calc(var(--pw) * 0.012);
-  position: relative;
-  width: var(--pw);
-  padding: calc(var(--pw) * 0.032);
-  border-radius: calc(var(--pw) * 0.165);
-  background: #000;
-  box-shadow:
-    0 0 0 var(--ring) var(--titanium-solid),
-    0 calc(var(--pw) * 0.12) calc(var(--pw) * 0.24) calc(var(--pw) * -0.06) var(--shadow);
-}
-/* The titanium band, drawn as a border-box gradient behind the black glass. */
-.device::before {
-  content: "";
+  --aspect: 0.49;
+  --area-left: 6cqmin;
+  --area-top: 18cqh;
+  --area-width: calc(100cqw - 12cqmin);
+  --area-height: calc(82cqh - 4.2cqmin);
   position: absolute;
-  inset: calc(var(--ring) * -1);
-  border-radius: calc(var(--pw) * 0.165 + var(--ring));
-  padding: var(--ring);
-  background: var(--titanium);
-  -webkit-mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
-  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  left: calc(var(--area-left) + var(--area-width) / 2);
+  top: calc(var(--area-top) + var(--area-height));
+  translate: -50% -100%;
+  width: min(var(--area-width), var(--area-height) * var(--aspect));
+  aspect-ratio: var(--aspect);
+  transition: opacity 0.4s ease;
 }
-/* Volume buttons on the left (the second one is a shadow copy), side button on the right. */
-.device::after {
-  content: "";
+.device.is-enlarged { opacity: 0; }
+.enlarge {
   position: absolute;
-  left: calc(var(--ring) * -1 - 3px);
-  top: 24%;
-  width: 3px;
-  height: 7%;
-  border-radius: 2px 0 0 2px;
-  background: var(--titanium-solid);
-  box-shadow: 0 calc(var(--pw) * 0.2) 0 var(--titanium-solid);
+  inset: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  pointer-events: auto;
+  cursor: zoom-in;
 }
-.side-button {
-  position: absolute;
-  right: calc(var(--ring) * -1 - 3px);
-  top: 29%;
-  width: 3px;
-  height: 11%;
-  border-radius: 0 2px 2px 0;
-  background: var(--titanium-solid);
-}
+.enlarge:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
 
+/* Wide screens: the text high in the left 40%, clear of the horizon, and the device centred in
+   the right 60%. */
+@container (min-aspect-ratio: 3 / 2) {
+  .band {
+    right: calc(60cqw + 3cqmin);
+    height: 42cqh;
+    justify-items: start;
+    text-align: left;
+  }
+  .hero .band { gap: 2.4cqmin; }
+  .hero-icon {
+    width: max(40px, 10cqmin);
+    height: max(40px, 10cqmin);
+  }
+  .hero h1 { font-size: 7cqmin; }
+  .app-store img { height: max(40px, 5cqmin); }
+  .device {
+    --area-left: 40cqw;
+    --area-top: 6cqmin;
+    --area-width: calc(60cqw - 6cqmin);
+    --area-height: calc(100cqh - 12cqmin);
+    top: calc(var(--area-top) + var(--area-height) / 2);
+    translate: -50% -50%;
+  }
+}
+.bezel,
+.bezel-shadow {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+/* The shadow is cast by a copy under the screen: on the bezel itself it would fall inward
+   across the screenshot through the bezel's open screen. */
+.bezel-shadow { filter: drop-shadow(0 0 3cqmin rgb(0 0 0 / 0.5)); }
 .screen {
-  --sw: calc(var(--pw) * 0.936);
-  position: relative;
-  aspect-ratio: 1320 / 2868;
-  border-radius: calc(var(--pw) * 0.135);
+  position: absolute;
+  left: 5.102%;
+  top: 2.2%;
+  width: 89.796%;
+  height: 95.6%;
+  border-radius: var(--screen-radius);
   overflow: hidden;
   background: #000;
-  isolation: isolate;
 }
 .screen img {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
   opacity: 0;
-  transition: opacity 0.45s ease;
+  transition: opacity 1.2s ease-in-out;
 }
-.screen img.is-active { opacity: 1; }
-.island {
-  position: absolute;
-  z-index: 1;
-  top: calc(var(--sw) * 0.026);
-  left: 50%;
-  translate: -50% 0;
-  width: calc(var(--sw) * 0.286);
-  height: calc(var(--sw) * 0.084);
-  border-radius: 999px;
-  background: #000;
+.screen img.is-shown { opacity: 1; }
+
+/* Screen openings and corners from media/bezels/bezels.json, as fractions of each image. */
+[data-device="ipad"] { --screen-radius: 1.2355% / 1.6473%; }
+[data-device="ipad"] .device { --aspect: 1.3043; }
+[data-device="ipad"] .screen {
+  left: 4.1333%;
+  top: 5.1304%;
+  width: 91.7333%;
+  height: 89.7391%;
 }
 
-/* Where the map on screen is, set the way a topo sheet labels a place. */
-.caption {
-  margin-top: 28px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2px;
-  transition: opacity 0.25s ease;
-}
-.caption.is-changing { opacity: 0; }
-.place {
-  font: italic 400 1.0625rem/1.3 "Source Serif 4", Georgia, serif;
-  color: var(--ink);
-}
-.coords {
-  font-size: 0.875rem;
-  font-variant-numeric: tabular-nums;
-  letter-spacing: 0.02em;
-  color: var(--muted);
+[data-device="iphone-duo-open"] { --screen-radius: 3.8569% / 5.4835%; }
+[data-device="iphone-duo-open"] .device { --aspect: 1.3765; }
+[data-device="iphone-duo-open"] .screen {
+  left: 3.8959%;
+  top: 5.3627%;
+  width: 92.2082%;
+  height: 89.2746%;
 }
 
-/* ---------- Chapters: centre phone, text on alternating sides ---------- */
+/* A Mac capture is the window's content; compose.swift rounds it to a window's corner. */
+[data-device="mac"] { --screen-radius: 1.8056% / 2.8889%; }
+[data-device="mac"] .device { --aspect: 1.6; }
+[data-device="mac"] .bezel,
+[data-device="mac"] .bezel-shadow { display: none; }
+[data-device="mac"] .screen {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 0 3cqmin rgb(0 0 0 / 0.5);
+}
 
-.chapter {
-  position: relative;
-  z-index: 1;
-  min-height: 100svh;
+/* ---------- The screenshot, enlarged out of the device ---------- */
+
+:root:has(.viewer[open]) { overflow: hidden; }
+.viewer {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: rgb(14 12 18 / 0.82);
+  cursor: zoom-out;
+}
+.viewer[open] {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) calc(var(--pw) + 2 * var(--gap)) minmax(0, 1fr);
-  align-content: center;
-  padding: 0 var(--edge);
+  place-items: center;
 }
-.copy { grid-column: 1; grid-row: 1; justify-self: end; width: 100%; max-width: 25rem; }
-.chapter[data-side="right"] .copy,
-.hero .copy:not(.lead) { grid-column: 3; justify-self: start; }
+.viewer::backdrop { background: none; }
+.viewer img {
+  max-width: 94%;
+  max-height: 92%;
+  border-radius: var(--screen-radius);
+  transform-origin: top left;
+}
 
-h1, h2 { font-weight: 800; letter-spacing: -0.022em; margin: 0; text-wrap: balance; }
-h1 { font-size: clamp(2.5rem, 4.6vw, 4.25rem); line-height: 1.02; }
-h2 { font-size: clamp(1.75rem, 2.5vw, 2.375rem); line-height: 1.1; margin-bottom: 0.55em; }
-p { margin: 0 0 1em; text-wrap: pretty; }
-.copy p { color: var(--muted); }
-.copy > :last-child { margin-bottom: 0; }
+/* ---------- After the story: five more features, on the page's colour ---------- */
 
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin: 0 0 28px;
-  font-weight: 800;
-  font-size: 1.375rem;
+.more {
+  max-width: calc(76rem + 2 * var(--edge));
+  margin: 0 auto;
+  padding: 28svh var(--edge) 14svh;
+}
+.more h2 {
+  font: 600 clamp(1.75rem, 3.4vw, 2.75rem)/1.15 var(--system);
   letter-spacing: -0.01em;
-  color: var(--ink);
+  margin-bottom: 1.4em;
 }
-.hero .copy:not(.lead) p:first-child { font-size: 1.1875rem; color: var(--ink); }
-
-.store {
-  display: inline-block;
-  margin-top: 0.75em;
-  padding: 0.7em 1.15em 0.6em;
-  border-radius: 12px;
-  background: var(--ink);
-  color: var(--paper) !important;
-  font-weight: 600;
-  font-size: 0.9375rem;
-}
-
-/* Platmark Pro's perks, ticked off in the accent ink. */
-.perks {
-  margin: 0 0 1em;
+.more ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12.5rem, 1fr));
+  gap: 16px;
+  margin: 0;
   padding: 0;
   list-style: none;
-  color: var(--ink);
 }
-.perks li {
-  position: relative;
-  padding-left: 1.6em;
-  margin-bottom: 0.35em;
+.more li {
+  padding: 24px 22px 26px;
+  border-radius: 22px;
+  background: rgb(255 255 255 / 0.6);
+  box-shadow: 0 1px 2px rgb(46 42 51 / 0.06), 0 12px 32px -12px rgb(46 42 51 / 0.18);
 }
-.perks li::before {
-  content: "";
-  position: absolute;
-  left: 0.1em;
-  top: 0.38em;
-  width: 0.7em;
-  height: 0.38em;
-  border: solid var(--accent);
-  border-width: 0 0 2.5px 2.5px;
-  rotate: -45deg;
+.more svg {
+  display: block;
+  width: auto;
+  height: 28px;
+  margin-bottom: 18px;
+  fill: var(--accent);
+}
+.more h3 {
+  margin: 0 0 0.35em;
+  font: 600 1.0625rem/1.3 var(--system);
+}
+.more li p {
+  color: var(--muted);
+  font-size: 0.9375rem;
+  line-height: 1.45;
+  text-wrap: pretty;
+}
+.more .footnote {
+  margin-top: 2rem;
+  color: var(--muted);
+  font-size: 0.8125rem;
 }
 
 .colophon {
-  position: relative;
-  z-index: 1;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 12px 32px;
-  padding: 40px var(--edge) calc(40px + env(safe-area-inset-bottom));
+  padding: 32px var(--edge) calc(32px + env(safe-area-inset-bottom));
   border-top: 1px solid var(--rule);
-  background: var(--paper);
 }
-.colophon .brand { margin: 0; font-size: 1.125rem; gap: 10px; }
+.colophon .brand { font-size: 1.0625rem; }
 .colophon nav { display: flex; gap: 24px; }
-.colophon .legal { margin: 0 0 0 auto; color: var(--muted); font-size: 0.9375rem; }
+.colophon .legal { margin-left: auto; color: var(--muted); font-size: 0.9375rem; }
 
-/* ---------- Laptop: phone on the right, text on the left ---------- */
-
-@media (max-width: 1099px) {
-  .stage { justify-content: flex-end; padding-right: var(--edge); }
-  .chapter { grid-template-columns: minmax(0, 1fr) calc(var(--pw) + var(--gap)); }
-  .copy,
-  .chapter[data-side="right"] .copy,
-  .hero .copy:not(.lead) { grid-column: 1; grid-row: auto; justify-self: start; max-width: 30rem; }
-  .hero .copy.lead { margin-bottom: 28px; }
-}
-
-/* ---------- Phone: device pinned at the top, text scrolls up underneath ---------- */
-
-@media (max-width: 759px) {
-  :root { --pw: min(56vw, calc(54svh / 2.1)); }
-  .stage { justify-content: center; align-items: flex-start; padding: max(14px, env(safe-area-inset-top)) 0 0; }
-  .caption { display: none; }
-  .chapter {
-    display: block;
-    min-height: 0;
-    padding: 0 20px 30svh;
-    max-width: 34rem;
-    margin: 0 auto;
-  }
-  .hero { padding-top: calc(var(--pw) * 2.1 + max(14px, env(safe-area-inset-top)) + 32px); }
-  .chapter:last-child { padding-bottom: 10svh; }
-  .copy { max-width: none; }
-  .copy > * { will-change: opacity; }
-  .brand { margin-bottom: 16px; font-size: 1.25rem; }
-  .brand img { width: 40px; height: 40px; }
-  h1 { font-size: 2.25rem; }
-  h2 { font-size: 1.625rem; }
-  .hero .copy:not(.lead) p:first-child { font-size: 1.0625rem; }
+@media (max-width: 600px) {
   .colophon { flex-direction: column; align-items: flex-start; }
-  .colophon .legal { margin: 0; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .screen img, .caption { transition: none; }
+  .colophon .legal { margin-left: 0; }
 }
