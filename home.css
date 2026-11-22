@@ -7,6 +7,7 @@
   --accent: #7B66AE;
   --rule: rgb(46 42 51 / 0.12);
   --screen-radius: 10.4545% / 4.8117%;
+  --aspect: 0.49;
   --edge: clamp(20px, 6vw, 88px);
   --system: -apple-system, BlinkMacSystemFont, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
@@ -100,30 +101,45 @@ h1, h2, p { margin: 0; }
 .brand img { width: 1.6em; height: 1.6em; }
 
 /* Above the device the band is only 18% tall, so each size is also capped by the height. */
-.hero .band { gap: min(2.4cqmin, 1cqh); }
-.hero-icon {
-  width: max(40px, min(10cqmin, 4.5cqh));
-  height: max(40px, min(10cqmin, 4.5cqh));
-}
+.hero .band { gap: min(0.6cqmin, 0.25cqh); }
 .hero h1 {
   font: 700 min(7cqmin, 3.8cqh)/1.1 var(--system);
   letter-spacing: -0.02em;
   color: var(--ink);
 }
+.hero h2 {
+  font-size: min(4.6cqmin, 2.4cqh);
+  color: var(--subtitle-ink);
+}
+.download {
+  display: flex;
+  align-items: center;
+  gap: min(4cqmin, 2cqh);
+  margin-top: min(1.8cqmin, 0.75cqh);
+}
 /* Apple asks for the badge at least 40pt tall on screen. */
-.app-store img {
+.download img {
   display: block;
   width: auto;
   height: max(40px, min(5cqmin, 4cqh));
 }
 
-/* The device fits inside this area: below the band, and resting on its bottom edge. */
+/* The device fits inside this area: below the band, and resting on its bottom edge, which leaves
+   room underneath for the plate. The hero's text measures it too: on wide screens it starts level
+   with the device. */
+.hero .band,
 .device {
-  --aspect: 0.49;
+  --place-size: max(7px, 1.5cqmin);
+  --coordinates-size: max(5.25px, 1.05cqmin);
+  --plate-gap: 1.6cqmin;
+  --plate-line-gap: 0.4cqmin;
+  --plate-height: calc(1.2 * var(--place-size) + var(--plate-line-gap) + 1.2 * var(--coordinates-size));
   --area-left: 6cqmin;
   --area-top: 18cqh;
   --area-width: calc(100cqw - 12cqmin);
-  --area-height: calc(82cqh - 4.2cqmin);
+  --area-height: calc(100cqh - var(--area-top) - var(--plate-gap) - var(--plate-height) - 2.4cqmin);
+}
+.device {
   position: absolute;
   left: calc(var(--area-left) + var(--area-width) / 2);
   top: calc(var(--area-top) + var(--area-height));
@@ -153,18 +169,29 @@ h1, h2, p { margin: 0; }
     justify-items: start;
     text-align: left;
   }
-  .hero .band { gap: 2.4cqmin; }
-  .hero-icon {
-    width: max(40px, 10cqmin);
-    height: max(40px, 10cqmin);
-  }
-  .hero h1 { font-size: 7cqmin; }
-  .app-store img { height: max(40px, 5cqmin); }
+  .hero .band,
   .device {
     --area-left: 40cqw;
-    --area-top: 6cqmin;
+    --area-top: 3cqmin;
     --area-width: calc(60cqw - 6cqmin);
-    --area-height: calc(100cqh - 12cqmin);
+  }
+  .hero .band {
+    top: calc(var(--area-top) + (var(--area-height) - min(var(--area-width) / var(--aspect), var(--area-height))) / 2);
+    height: auto;
+    align-content: start;
+    gap: 0.6cqmin;
+  }
+  .hero h1 {
+    font-size: 7cqmin;
+    text-box: trim-start cap alphabetic;
+  }
+  .hero h2 { font-size: 4.6cqmin; }
+  .download {
+    gap: 4cqmin;
+    margin-top: 1.8cqmin;
+  }
+  .download img { height: max(40px, 5cqmin); }
+  .device {
     top: calc(var(--area-top) + var(--area-height) / 2);
     translate: -50% -50%;
   }
@@ -199,9 +226,46 @@ h1, h2, p { margin: 0; }
 }
 .screen img.is-shown { opacity: 1; }
 
+/* The place the screenshot shows, over its coordinates. It lies on the foot of the background,
+   dark on some scenes and pale on others, so it is light with a shadow of its own. Each place
+   fades out before the next fades in. */
+.plate {
+  position: absolute;
+  top: calc(100% + var(--plate-gap));
+  left: 50%;
+  translate: -50% 0;
+  display: grid;
+  justify-items: center;
+  white-space: nowrap;
+  color: rgb(255 255 255 / 0.96);
+  text-shadow: 0 0 1.2cqmin rgb(0 0 0 / 0.75);
+}
+.plate p {
+  grid-area: 1 / 1;
+  display: grid;
+  justify-items: center;
+  gap: var(--plate-line-gap);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s;
+}
+.plate p.is-shown {
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0.4s;
+}
+.place { font: italic 400 var(--place-size)/1.2 ui-serif, "New York", Georgia, serif; }
+.coordinates {
+  font: 400 var(--coordinates-size)/1.2 var(--system);
+  letter-spacing: 0.06em;
+  color: rgb(255 255 255 / 0.88);
+}
+
 /* Screen openings and corners from media/bezels/bezels.json, as fractions of each image. */
-[data-device="ipad"] { --screen-radius: 1.2355% / 1.6473%; }
-[data-device="ipad"] .device { --aspect: 1.3043; }
+[data-device="ipad"] {
+  --screen-radius: 1.2355% / 1.6473%;
+  --aspect: 1.3043;
+}
 [data-device="ipad"] .screen {
   left: 4.1333%;
   top: 5.1304%;
@@ -209,18 +273,26 @@ h1, h2, p { margin: 0; }
   height: 89.7391%;
 }
 
-[data-device="iphone-duo-open"] { --screen-radius: 3.8569% / 5.4835%; }
-[data-device="iphone-duo-open"] .device { --aspect: 1.3765; }
+/* The Duo bezel draws a 9px black ring inside its frame. The screen sits over the bezel, 9px
+   past the opening in bezels.json and rounded to the ring's measured 173px outer corner, so the
+   screenshot meets the frame. */
+[data-device="iphone-duo-open"] {
+  --screen-radius: 6.0258% / 8.5432%;
+  --aspect: 1.3765;
+}
 [data-device="iphone-duo-open"] .screen {
-  left: 3.8959%;
-  top: 5.3627%;
-  width: 92.2082%;
-  height: 89.2746%;
+  left: 3.5888%;
+  top: 4.9399%;
+  width: 92.8225%;
+  height: 90.1202%;
+  z-index: 1;
 }
 
 /* A Mac capture is the window's content; compose.swift rounds it to a window's corner. */
-[data-device="mac"] { --screen-radius: 1.8056% / 2.8889%; }
-[data-device="mac"] .device { --aspect: 1.6; }
+[data-device="mac"] {
+  --screen-radius: 1.8056% / 2.8889%;
+  --aspect: 1.6;
+}
 [data-device="mac"] .bezel,
 [data-device="mac"] .bezel-shadow { display: none; }
 [data-device="mac"] .screen {

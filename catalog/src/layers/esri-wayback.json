@@ -31,8 +31,11 @@
         "cadence": "byPlace",
         "discovery": {
           "type": "wayback",
+          "source": {
+            "type": "wmts",
+            "urlTemplate": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile/{release}/{z}/{y}/{x}"
+          },
           "configURL": "https://s3-us-west-2.amazonaws.com/config.maptiles.arcgis.com/waybackconfig.json",
-          "tileRoot": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/WMTS/1.0.0/default028mm/MapServer/tile",
           "tilemapURL": "https://wayback.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/MapServer/tilemap"
         },
         "preloadAllowance": 6

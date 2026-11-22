@@ -45,7 +45,7 @@
     "esri": {
       "name": "Esri",
       "abbreviation": "Esri",
-      "summary": "Hosts the USGS Historical Topographic Map Collection as a publicly readable image service, and publishes World Imagery Wayback, the archive of past versions of its satellite basemap.",
+      "summary": "Publishes World Imagery Wayback, the archive of past versions of its satellite basemap.",
       "officialURL": "https://www.esri.com"
     },
     "faa": {
@@ -71,6 +71,12 @@
       "abbreviation": "GEBCO",
       "summary": "An international programme, operating under IHO and IOC, that publishes the authoritative global bathymetric grid.",
       "officialURL": "https://www.gebco.net"
+    },
+    "glc": {
+      "name": "Great Lakes Commission",
+      "abbreviation": "GLC",
+      "summary": "An interstate compact agency of the eight Great Lakes states. It publishes bathymetric contours for the five lakes as a map service.",
+      "officialURL": "https://www.glc.org"
     },
     "il-isgs": {
       "name": "Illinois State Geological Survey",

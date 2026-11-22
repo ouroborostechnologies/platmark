@@ -1,6 +1,6 @@
 name: Release catalog
 
-# Push a tag named catalog-<anything> and the assembled catalog, its schema and every layer
+# Push a tag named catalog-<anything> and the catalog database, built from the sources, and every layer
 # thumbnail are attached to a release of that name. A tag on a commit that is not on main becomes a
 # pre-release, which releases/latest skips, so a branch's catalog can be tested without reaching
 # anyone's app. Nothing is published unless the catalog passes its checks.
@@ -23,6 +23,8 @@ jobs:
           python-version: "3.12"
       - name: Sources formatted and assembled
         run: python3 tools/catalog.py verify
+      - name: Build the catalog database
+        run: python3 tools/catalog.py assemble
       - name: Install jsonschema
         run: pip install jsonschema
       - name: Schema and rules
@@ -34,7 +36,7 @@ jobs:
         run: |
           shopt -s nullglob
           mkdir dist
-          cp catalog/catalog-v*.json dist/
+          cp catalog/catalog-v*.sqlite dist/
           for thumbnail in catalog/thumbnails/*.png; do
             cp "$thumbnail" "dist/thumb-$(basename "$thumbnail")"
           done
