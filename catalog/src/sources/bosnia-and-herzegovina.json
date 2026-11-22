@@ -1,0 +1,52 @@
+{
+  "datasets": {
+    "bosnia-and-herzegovina.fgu-geoportal": {
+      "name": "Federal Administration for Geodetic and Property Affairs",
+      "summary": "Cadastre, orthophoto and topographic services for the Federation of Bosnia and Herzegovina.",
+      "provider": "fgu-federation-of-bih",
+      "officialURL": "https://www.fgu.com.ba/",
+      "serviceURL": "https://www.fgu.com.ba/",
+      "attribution": "FGU (Federation of BiH)",
+      "license": "seePublisherTerms",
+      "coverage": "country.ba.federation-of-bosnia-and-herzegovina",
+      "themes": ["cadastre", "imagery", "boundaries"],
+      "formats": ["WMS"],
+      "access": "portal",
+      "cost": "mixed",
+      "useStatus": {"restricted": "Terms not reviewed for use in a paid app: See publisher terms"}
+    },
+    "bosnia-and-herzegovina.rgurs": {
+      "name": "Republic Administration for Geodetic and Property Affairs",
+      "summary": "Cadastre, orthophoto and geoportal services for Republika Srpska.",
+      "provider": "rgurs-republika-srpska",
+      "officialURL": "https://www.rgurs.org/",
+      "serviceURL": "https://geoportal.rgurs.org/geoserver/ortofoto/wms",
+      "attribution": "© RGURS",
+      "license": "noneStated",
+      "coverage": "country.ba",
+      "themes": ["cadastre", "imagery", "boundaries"],
+      "formats": ["WMS"],
+      "access": "portal",
+      "cost": "free",
+      "useStatus": {
+        "restricted": "Commercial use is not clearly allowed: Not stated (capabilities: Fees none, AccessConstraints none; site footer 'All rights reserved')"
+      }
+    }
+  },
+  "layers": [
+    {
+      "id": "bosnia-and-herzegovina.rgurs",
+      "name": "Bosnia and Herzegovina: Republic Administration for Geodetic and Property Affairs",
+      "summary": "Ortofoto 2012 (Republika Srpska).",
+      "category": "historical",
+      "group": "nationalImagery",
+      "dataset": "bosnia-and-herzegovina.rgurs",
+      "source": {
+        "type": "wms",
+        "endpoint": "https://geoportal.rgurs.org/geoserver/ortofoto/wms",
+        "layers": "Ortofoto2012",
+        "version": "1.1.1"
+      }
+    }
+  ]
+}

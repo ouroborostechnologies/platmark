@@ -1,0 +1,18 @@
+{
+  "datasets": {
+    "seychelles.seychelles-webgis": {
+      "name": "Seychelles WebGIS",
+      "summary": "Free public web map of land parcels, planning, aerial imagery, topography, environment, tourism and maritime boundaries.",
+      "provider": "centre-for-gis-ministry-of-lands-and-housing",
+      "officialURL": "https://www.webgis.gov.sc/",
+      "serviceURL": "https://www.webgis.gov.sc/",
+      "attribution": "Centre for GIS, Ministry of Lands and Housing",
+      "license": "seeProviderTerms",
+      "coverage": "country.sc",
+      "themes": ["cadastre", "imagery", "boundaries"],
+      "access": "viewer",
+      "cost": "free",
+      "useStatus": {"restricted": "Terms not reviewed for use in a paid app: See provider terms"}
+    }
+  }
+}

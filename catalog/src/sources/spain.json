@@ -1,0 +1,377 @@
+{
+  "datasets": {
+    "spain.centro-de-descargas-cnig": {
+      "name": "Centro de Descargas CNIG",
+      "summary": "MDT elevation, PNOA orthophotos and LiDAR, BTN topography.",
+      "provider": "centro-nacional-de-informacion-geografica",
+      "officialURL": "https://centrodedescargas.cnig.es/",
+      "serviceURL": "https://www.ign.es/wmts/pnoa-ma?service=WMTS&request=GetTile&version=1.0.0&layer=OI.OrthoimageCoverage&style=default&format=image/jpeg&TileMatrixSet=GoogleMapsCompatible&TileMatrix={z}&TileRow={y}&TileCol={x}",
+      "attribution": "PNOA CC BY 4.0 scne.es (Instituto Geográfico Nacional de España)",
+      "license": "ccBy40IgnCnigLicenceScneEs",
+      "coverage": "country.es",
+      "themes": ["boundaries", "elevation", "imagery", "land-cover", "transport"],
+      "formats": ["GeoTIFF", "Shapefile", "LAZ"],
+      "access": "download",
+      "cost": "free"
+    },
+    "spain.geoeuskadi": {
+      "name": "geoEuskadi",
+      "summary": "The Basque Country's spatial data infrastructure: LiDAR, orthophotos, topographic mapping, land use and environmental layers, with free downloads.",
+      "provider": "basque-government",
+      "officialURL": "https://www.geo.euskadi.eus/hasiera/",
+      "serviceURL": "https://www.geo.euskadi.eus/WMS_ORTOARGAZKIAK",
+      "attribution": "Eusko Jaurlaritza / Gobierno Vasco. geoEuskadi",
+      "license": "serviceAccessConstraintAttributionPortalDataCcBy40",
+      "coverage": "country.es.basque-country",
+      "themes": ["portal", "elevation", "imagery", "cadastre"],
+      "formats": ["WMS", "WFS", "Shapefile", "GeoTIFF", "LAZ"],
+      "access": "portal",
+      "cost": "free"
+    },
+    "spain.geoportal-madrid": {
+      "name": "GeoPortal Comunidad de Madrid",
+      "summary": "The Madrid region's geoportal, with regional cartography, orthophotos, planning and environmental layers.",
+      "provider": "comunidad-de-madrid",
+      "officialURL": "https://www.comunidad.madrid/geoportal",
+      "serviceURL": "https://idem.comunidad.madrid/srvimagenes2/ogc/wmts/visorcartografia2?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=fotosAereas_2025-CT-25cm-ov-mos-rgb&STYLE=default&FORMAT=image/jpeg&TILEMATRIXSET=EPSG3857&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}",
+      "attribution": "Comunidad de Madrid",
+      "license": "ccBy40",
+      "coverage": "country.es.community-of-madrid",
+      "themes": ["portal", "imagery", "land-cover", "boundaries"],
+      "formats": ["WMS", "WFS", "Shapefile"],
+      "access": "portal",
+      "cost": "free"
+    },
+    "spain.icgc": {
+      "name": "Institut Cartogràfic i Geològic de Catalunya",
+      "summary": "Catalonia's mapping and geological agency: orthophotos, LiDAR, terrain models, topographic and geological maps and land cover, mostly free to download.",
+      "provider": "institut-cartografic-i-geologic-de-catalunya",
+      "officialURL": "https://www.icgc.cat/ca",
+      "serviceURL": "https://geoserveis.icgc.cat/servei/catalunya/mapa-base/wmts/orto/MON3857NW/{z}/{x}/{y}.png",
+      "attribution": "Institut Cartogràfic i Geològic de Catalunya",
+      "license": "ccBy40",
+      "coverage": "country.es.catalonia",
+      "themes": ["elevation", "imagery", "geology", "land-cover"],
+      "formats": ["GeoTIFF", "LAZ", "Shapefile", "WMS"],
+      "access": "download",
+      "cost": "free"
+    },
+    "spain.icv": {
+      "name": "Institut Cartogràfic Valencià",
+      "summary": "The Valencian Community's mapping institute: regional topographic mapping, orthophotos and terrain models, with a download centre.",
+      "provider": "generalitat-valenciana",
+      "officialURL": "https://icv.gva.es/va/",
+      "serviceURL": "https://terramapas.icv.gva.es/0202_2024CVAL0025_3857/wmts/1.0.0/01_8bits_01_RGB_05_PNG/default/GMEPSG3857/{z}/{y}/{x}.png",
+      "attribution": "© Institut Cartogràfic Valencià, Generalitat",
+      "license": "ccBy40",
+      "coverage": "country.es.valencian-community",
+      "themes": ["elevation", "imagery", "boundaries"],
+      "formats": ["WMS", "WFS", "Shapefile", "GeoTIFF"],
+      "access": "portal",
+      "cost": "free"
+    },
+    "spain.ideandalucia": {
+      "name": "IDEAndalucía",
+      "summary": "Andalusia's spatial data infrastructure, with the regional topographic database, orthophotos, terrain models and boundaries, plus a download centre.",
+      "provider": "instituto-de-estadistica-y-cartografia-de-andalucia",
+      "officialURL": "https://www.ideandalucia.es/portal/",
+      "serviceURL": "https://www.ideandalucia.es/wms/ortofoto_2022",
+      "attribution": "Instituto de Estadística y Cartografía de Andalucía / IGN (origin and ownership must be credited)",
+      "license": "licenceCompatibleWithCcBy40",
+      "coverage": "country.es.andalusia",
+      "themes": ["portal", "elevation", "imagery", "boundaries"],
+      "formats": ["WMS", "WFS", "Shapefile", "GeoTIFF"],
+      "access": "portal",
+      "cost": "free"
+    },
+    "spain.idearagon": {
+      "name": "IDEAragón",
+      "summary": "Aragon's spatial data infrastructure, with regional mapping, orthophotos, terrain models and administrative and thematic layers.",
+      "provider": "instituto-geografico-de-aragon",
+      "officialURL": "https://idearagon.aragon.es/portal/",
+      "serviceURL": "https://idearagon.aragon.es/portal/",
+      "attribution": "Instituto Geográfico de Aragón",
+      "license": "variesByDataset",
+      "coverage": "country.es",
+      "themes": ["portal", "elevation", "imagery", "boundaries"],
+      "formats": ["WMS", "WFS", "Shapefile", "GeoTIFF"],
+      "access": "portal",
+      "cost": "free",
+      "useStatus": {"restricted": "Terms not reviewed for use in a paid app: Varies by dataset"}
+    },
+    "spain.idecanarias": {
+      "name": "IDE Canarias",
+      "summary": "The Canary Islands' spatial data infrastructure, run by GRAFCAN: high-resolution orthophotos, terrain models, land cover and topographic data for every island.",
+      "provider": "grafcan-government-of-the-canary-islands",
+      "officialURL": "https://www.idecanarias.es/",
+      "serviceURL": "https://idecan1.grafcan.es/ServicioWMS/OrtoExpress",
+      "attribution": "GRAFCAN / Gobierno de Canarias",
+      "license": "wmsAccessConstraintGrafcan",
+      "coverage": "country.es.canary-islands",
+      "themes": ["portal", "elevation", "imagery", "land-cover"],
+      "formats": ["WMS", "WFS", "Shapefile", "GeoTIFF"],
+      "access": "portal",
+      "cost": "free",
+      "useStatus": {"restricted": "The publisher's terms bar commercial use: WMS access constraint (GRAFCAN)"}
+    },
+    "spain.idecyl": {
+      "name": "IDECyL",
+      "summary": "Castile and León's spatial data infrastructure and map viewer, with regional base mapping, land use and environmental layers.",
+      "provider": "junta-de-castilla-y-leon",
+      "officialURL": "https://idecyl.jcyl.es/",
+      "serviceURL": "https://orto.wms.itacyl.es/WMS",
+      "attribution": "ITACyL - Junta de Castilla y León",
+      "license": "wmsServiceAbstractItacylJuntaDeCastillaYLeon",
+      "coverage": "country.es.castile-and-leon",
+      "themes": ["portal", "imagery", "environment", "land-cover"],
+      "formats": ["WMS", "WFS", "Shapefile"],
+      "access": "portal",
+      "cost": "free",
+      "useStatus": {
+        "restricted": "The publisher's terms bar commercial use: WMS service abstract (ITACyL, Junta de Castilla y León)"
+      }
+    },
+    "spain.ideib": {
+      "name": "IDEIB",
+      "summary": "The Balearic Islands' spatial data infrastructure, with orthophotos, regional mapping and land-use and environmental layers.",
+      "provider": "government-of-the-balearic-islands",
+      "officialURL": "https://www.caib.es/sites/ideib/ca/inici/",
+      "serviceURL": "https://ideib.caib.es/geoserveis/rest/services/imatges/GOIB_Orto_IB/MapServer",
+      "attribution": "Mapa de fons: Orto 2024 - www.scne.es (service copyrightText); IDEIB's own examples credit 'SITIBSA-GOIB'",
+      "license": "notFoundPerLayerPoliciesInTheIdeibCatalogue",
+      "coverage": "country.es.balearic-islands",
+      "themes": ["portal", "imagery", "land-cover", "environment"],
+      "formats": ["WMS", "WFS", "Shapefile"],
+      "access": "portal",
+      "cost": "free",
+      "useStatus": {
+        "restricted": "Commercial use is not clearly allowed: Not found (per-layer policies in the IDEIB catalogue)"
+      }
+    },
+    "spain.idena": {
+      "name": "IDENA",
+      "summary": "Navarre's spatial data infrastructure, with regional cadastre, orthophotos, LiDAR-derived models and thematic maps.",
+      "provider": "government-of-navarre",
+      "officialURL": "https://geoportal.navarra.es/es/idena",
+      "serviceURL": "https://idena.navarra.es/ogc/wms",
+      "attribution": "Gobierno de Navarra (source must be named)",
+      "license": "ccBy40",
+      "coverage": "country.es.navarre",
+      "themes": ["portal", "elevation", "imagery", "cadastre"],
+      "formats": ["WMS", "WFS", "Shapefile", "GeoTIFF"],
+      "access": "portal",
+      "cost": "free"
+    },
+    "spain.mapas-cantabria": {
+      "name": "Mapas Cantabria",
+      "summary": "Cantabria's regional map portal, with orthophotos, regional mapping and planning and environmental layers.",
+      "provider": "government-of-cantabria",
+      "officialURL": "https://mapas.cantabria.es/",
+      "serviceURL": "https://geoservicios.cantabria.es/inspire/rest/services/Ortofoto_2025_WebMercator/MapServer",
+      "attribution": "Gobierno de Cantabria e IGN-CNIG. Capa SPOT perteneciente a CNES 2009 Spot IMAGE y obtenida a través del PNT.",
+      "license": "decretoDeCantabria872013LicencesNonCommercialCommercial",
+      "coverage": "country.es.cantabria",
+      "themes": ["portal", "imagery", "land-cover"],
+      "formats": ["WMS", "WFS", "Shapefile"],
+      "access": "portal",
+      "cost": "free",
+      "useStatus": {
+        "restricted": "Commercial use is not clearly allowed: Decreto de Cantabria 87/2013 licences (non-commercial / commercial)"
+      }
+    },
+    "spain.pnoa": {
+      "name": "PNOA aerial imagery and LiDAR",
+      "summary": "National aerial orthophoto plan and LiDAR coverage.",
+      "provider": "ign-spain",
+      "officialURL": "https://pnoa.ign.es/",
+      "serviceURL": "https://pnoa.ign.es/",
+      "attribution": "IGN Spain",
+      "license": "ccBy40",
+      "coverage": "country.es",
+      "themes": ["imagery", "elevation"],
+      "formats": ["GeoTIFF", "LAZ"],
+      "access": "download",
+      "cost": "free"
+    },
+    "spain.xunta-mapas": {
+      "name": "Mapas da Xunta de Galicia",
+      "summary": "Galicia's map and geodata portal, with regional base mapping, orthophotos, terrain models and planning and environmental layers.",
+      "provider": "xunta-de-galicia",
+      "officialURL": "https://mapas.xunta.gal/gl",
+      "serviceURL": "https://ideg.xunta.gal/servizos/rest/services/Raster/PNOA_2023/ImageServer",
+      "attribution": "Xunta de Galicia (Instituto de Estudos do Territorio) / PNOA - IGN",
+      "license": "notFoundForThisServiceXuntaIetGeographicInformationLicenceDe",
+      "coverage": "country.es.galicia",
+      "themes": ["portal", "elevation", "imagery", "land-cover"],
+      "formats": ["WMS", "WFS", "Shapefile", "GeoTIFF"],
+      "access": "portal",
+      "cost": "free",
+      "useStatus": {
+        "restricted": "Commercial use is not clearly allowed: Not found for this service (Xunta/IET geographic-information licence, described elsewhere as CC BY 4.0 compatible)"
+      }
+    }
+  },
+  "layers": [
+    {
+      "id": "spain.centro-de-descargas-cnig",
+      "name": "Spain: Centro de Descargas CNIG",
+      "summary": "PNOA orthophoto, most recent (Sentinel-2 at small scales), most recent per region (rolling 2-3 year cycle).",
+      "category": "historical",
+      "group": "nationalImagery",
+      "dataset": "spain.centro-de-descargas-cnig",
+      "source": {
+        "type": "wmts",
+        "urlTemplate": "https://www.ign.es/wmts/pnoa-ma?service=WMTS&request=GetTile&version=1.0.0&layer=OI.OrthoimageCoverage&style=default&format=image/jpeg&TileMatrixSet=GoogleMapsCompatible&TileMatrix={z}&TileRow={y}&TileCol={x}",
+        "maximumLevel": 20
+      }
+    },
+    {
+      "id": "spain.geoeuskadi",
+      "name": "Basque Country, Spain: geoEuskadi",
+      "summary": "Basque Country orthophoto, most recent, 2025 (latest annual layer listed).",
+      "category": "historical",
+      "group": "nationalImagery",
+      "dataset": "spain.geoeuskadi",
+      "source": {
+        "type": "wms",
+        "endpoint": "https://www.geo.euskadi.eus/WMS_ORTOARGAZKIAK",
+        "layers": "ORTO_EGUNERATUENA_MAS_ACTUALIZADA",
+        "version": "1.3.0"
+      }
+    },
+    {
+      "id": "spain.geoportal-madrid",
+      "name": "Community of Madrid, Spain: GeoPortal Comunidad de Madrid",
+      "summary": "2025 - Ortofoto 25 cm.",
+      "category": "historical",
+      "group": "nationalImagery",
+      "dataset": "spain.geoportal-madrid",
+      "source": {
+        "type": "wmts",
+        "urlTemplate": "https://idem.comunidad.madrid/srvimagenes2/ogc/wmts/visorcartografia2?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=fotosAereas_2025-CT-25cm-ov-mos-rgb&STYLE=default&FORMAT=image/jpeg&TILEMATRIXSET=EPSG3857&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}"
+      }
+    },
+    {
+      "id": "spain.icgc",
+      "name": "Catalonia, Spain: Institut Cartogràfic i Geològic de Catalunya",
+      "summary": "ICGC orthophoto base map (Capa ortofoto rasteritzada), current (year not stated in capabilities).",
+      "category": "historical",
+      "group": "nationalImagery",
+      "dataset": "spain.icgc",
+      "source": {
+        "type": "xyzRaster",
+        "urlTemplate": "https://geoserveis.icgc.cat/servei/catalunya/mapa-base/wmts/orto/MON3857NW/{z}/{x}/{y}.png",
+        "maximumLevel": 20
+      }
+    },
+    {
+      "id": "spain.icv",
+      "name": "Valencian Community, Spain: Institut Cartogràfic Valencià",
+      "summary": "Ortofoto 2024 Comunitat Valenciana 25 cm (RGB).",
+      "category": "historical",
+      "group": "nationalImagery",
+      "dataset": "spain.icv",
+      "source": {
+        "type": "wmts",
+        "urlTemplate": "https://terramapas.icv.gva.es/0202_2024CVAL0025_3857/wmts/1.0.0/01_8bits_01_RGB_05_PNG/default/GMEPSG3857/{z}/{y}/{x}.png",
+        "maximumLevel": 20
+      }
+    },
+    {
+      "id": "spain.ideandalucia",
+      "name": "Andalusia, Spain: IDEAndalucía",
+      "summary": "Ortofotografía de Andalucía 2022 (RGB, 0.25 m).",
+      "category": "historical",
+      "group": "nationalImagery",
+      "dataset": "spain.ideandalucia",
+      "source": {
+        "type": "wms",
+        "endpoint": "https://www.ideandalucia.es/wms/ortofoto_2022",
+        "layers": "ortofotografia_2022_rgb",
+        "version": "1.3.0"
+      }
+    },
+    {
+      "id": "spain.idecanarias",
+      "name": "Canary Islands, Spain: IDE Canarias",
+      "summary": "IDECanarias Ortofoto Territorial vigente (2024-2026).",
+      "category": "historical",
+      "group": "nationalImagery",
+      "dataset": "spain.idecanarias",
+      "source": {
+        "type": "wms",
+        "endpoint": "https://idecan1.grafcan.es/ServicioWMS/OrtoExpress",
+        "layers": "ortoexpress",
+        "imageFormat": "image/jpeg",
+        "transparent": false,
+        "version": "1.3.0"
+      }
+    },
+    {
+      "id": "spain.idecyl",
+      "name": "Castile and León, Spain: IDECyL",
+      "summary": "Ortofoto Castilla y León (PNOA 2025, 25 cm).",
+      "category": "historical",
+      "group": "nationalImagery",
+      "dataset": "spain.idecyl",
+      "source": {
+        "type": "wms",
+        "endpoint": "https://orto.wms.itacyl.es/WMS",
+        "layers": "Ortofoto_CyL",
+        "version": "1.3.0"
+      }
+    },
+    {
+      "id": "spain.ideib",
+      "name": "Balearic Islands, Spain: IDEIB",
+      "summary": "Balearic Islands orthophoto, most current, 2024 (per service copyright text 'Orto 2024').",
+      "category": "historical",
+      "group": "nationalImagery",
+      "dataset": "spain.ideib",
+      "source": {
+        "type": "arcGISMapExport",
+        "serviceURL": "https://ideib.caib.es/geoserveis/rest/services/imatges/GOIB_Orto_IB/MapServer",
+        "visibleLayers": "show:0"
+      }
+    },
+    {
+      "id": "spain.idena",
+      "name": "Navarre, Spain: IDENA",
+      "summary": "Navarre orthophoto, most recent, 2025 (latest annual layer listed).",
+      "category": "historical",
+      "group": "nationalImagery",
+      "dataset": "spain.idena",
+      "source": {
+        "type": "wms",
+        "endpoint": "https://idena.navarra.es/ogc/wms",
+        "layers": "ortofoto_maxima_actualidad",
+        "version": "1.3.0"
+      }
+    },
+    {
+      "id": "spain.mapas-cantabria",
+      "name": "Cantabria, Spain: Mapas Cantabria",
+      "summary": "Ortofoto de 2025 (Cantabria).",
+      "category": "historical",
+      "group": "nationalImagery",
+      "dataset": "spain.mapas-cantabria",
+      "source": {
+        "type": "arcGISTiled",
+        "serviceURL": "https://geoservicios.cantabria.es/inspire/rest/services/Ortofoto_2025_WebMercator/MapServer",
+        "maximumLevel": 19
+      }
+    },
+    {
+      "id": "spain.xunta-mapas",
+      "name": "Galicia, Spain: Mapas da Xunta de Galicia",
+      "summary": "PNOA 2023 orthophoto of Galicia.",
+      "category": "historical",
+      "group": "nationalImagery",
+      "dataset": "spain.xunta-mapas",
+      "source": {
+        "type": "arcGISImageExport",
+        "serviceURL": "https://ideg.xunta.gal/servizos/rest/services/Raster/PNOA_2023/ImageServer"
+      }
+    }
+  ]
+}

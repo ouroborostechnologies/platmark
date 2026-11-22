@@ -1,0 +1,19 @@
+{
+  "datasets": {
+    "philippines.lipad": {
+      "name": "LiPAD – LiDAR Portal for Archiving and Distribution",
+      "summary": "LiDAR point clouds, 1 m DTM/DSM, orthophotos and flood hazard maps for river basins; free registration.",
+      "provider": "university-of-the-philippines-dream-phil-lidar",
+      "officialURL": "https://lipad.dream.upd.edu.ph/",
+      "serviceURL": "https://lipad.dream.upd.edu.ph/",
+      "attribution": "University of the Philippines DREAM/Phil-LiDAR",
+      "license": "freeWithRegistrationSeeTerms",
+      "coverage": "country.ph",
+      "themes": ["elevation", "hazards"],
+      "formats": ["LAZ", "GeoTIFF", "Shapefile"],
+      "access": "download",
+      "cost": "free-registration",
+      "useStatus": {"restricted": "Terms not reviewed for use in a paid app: Free with registration; see terms"}
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "datasets": {
+    "kosovo.akk-cadastre": {
+      "name": "Kosovo Cadastral Agency",
+      "summary": "Cadastre, address register, orthophoto and elevation data; operates the Kosovo Geoportal.",
+      "provider": "kosovo-cadastral-agency",
+      "officialURL": "https://akk.rks-gov.net/",
+      "serviceURL": "https://akk.rks-gov.net/",
+      "attribution": "Kosovo Cadastral Agency",
+      "license": "seePublisherTerms",
+      "coverage": "country.xk",
+      "themes": ["cadastre", "boundaries", "imagery", "elevation"],
+      "formats": ["WMS"],
+      "access": "portal",
+      "cost": "free",
+      "useStatus": {"restricted": "Terms not reviewed for use in a paid app: See publisher terms"}
+    },
+    "kosovo.kosovo-geoportal": {
+      "name": "Kosovo Geoportal",
+      "summary": "",
+      "provider": "kosovo-cadastral-agency",
+      "officialURL": "https://geoportal.rks-gov.net/",
+      "serviceURL": "https://geoportal.rks-gov.net/",
+      "attribution": "Kosovo Cadastral Agency",
+      "license": "seePublisherTerms",
+      "coverage": "country.xk",
+      "themes": ["cadastre", "imagery", "boundaries"],
+      "formats": ["WMS"],
+      "access": "viewer",
+      "cost": "free",
+      "useStatus": {"restricted": "Terms not reviewed for use in a paid app: See publisher terms"}
+    }
+  }
+}

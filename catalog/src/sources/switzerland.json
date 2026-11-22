@@ -1,0 +1,47 @@
+{
+  "datasets": {
+    "switzerland.swissimage-10": {
+      "name": "SWISSIMAGE 10 cm",
+      "summary": "10 cm national orthophoto mosaic.",
+      "provider": "swisstopo",
+      "officialURL": "https://www.swisstopo.admin.ch/en/orthoimage-swissimage-10",
+      "serviceURL": "https://wmts.geo.admin.ch/1.0.0/ch.swisstopo.swissimage/default/current/3857/{z}/{x}/{y}.jpeg",
+      "attribution": "© swisstopo (\"A reference to the source is mandatory.\")",
+      "license": "termsOfUseForFreeGeodataAndGeoservicesOgdOfSwisstopo",
+      "coverage": "country.ch",
+      "themes": ["imagery"],
+      "formats": ["GeoTIFF"],
+      "access": "download",
+      "cost": "free"
+    },
+    "switzerland.swisstopo": {
+      "name": "swisstopo",
+      "summary": "swissALTI3D, SWISSIMAGE, swissBOUNDARIES3D and geological maps.",
+      "provider": "federal-office-of-topography",
+      "officialURL": "https://www.swisstopo.admin.ch/",
+      "serviceURL": "https://www.swisstopo.admin.ch/",
+      "attribution": "Federal Office of Topography",
+      "license": "openSwisstopoTerms",
+      "coverage": "country.ch",
+      "themes": ["elevation", "imagery", "boundaries", "geology"],
+      "formats": ["GeoTIFF", "GeoPackage", "LAZ"],
+      "access": "download",
+      "cost": "free"
+    }
+  },
+  "layers": [
+    {
+      "id": "switzerland.swissimage-10",
+      "name": "Switzerland: SWISSIMAGE 10 cm",
+      "summary": "SWISSIMAGE (current mosaic), 2019-2025 (rolling 3-year cycle).",
+      "category": "historical",
+      "group": "nationalImagery",
+      "dataset": "switzerland.swissimage-10",
+      "source": {
+        "type": "wmts",
+        "urlTemplate": "https://wmts.geo.admin.ch/1.0.0/ch.swisstopo.swissimage/default/current/3857/{z}/{x}/{y}.jpeg",
+        "maximumLevel": 20
+      }
+    }
+  ]
+}

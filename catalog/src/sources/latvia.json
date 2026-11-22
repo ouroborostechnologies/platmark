@@ -1,0 +1,32 @@
+{
+  "datasets": {
+    "latvia.latvian-geospatial-information-agency": {
+      "name": "Latvian Geospatial Information Agency",
+      "summary": "",
+      "provider": "lgia",
+      "officialURL": "https://www.lgia.gov.lv/",
+      "serviceURL": "https://www.lgia.gov.lv/",
+      "attribution": "LĢIA",
+      "license": "seePublisherTerms",
+      "coverage": "country.lv",
+      "themes": ["elevation", "imagery", "boundaries"],
+      "access": "portal",
+      "cost": "mixed",
+      "useStatus": {"restricted": "Terms not reviewed for use in a paid app: See publisher terms"}
+    },
+    "latvia.lgia-open-data": {
+      "name": "LĢIA open data",
+      "summary": "Free LiDAR point clouds, DTM, orthophotos and topographic vector data.",
+      "provider": "latvian-geospatial-information-agency",
+      "officialURL": "https://www.lgia.gov.lv/lv/atvertie-dati",
+      "serviceURL": "https://www.lgia.gov.lv/lv/atvertie-dati",
+      "attribution": "Latvian Geospatial Information Agency",
+      "license": "ccBy40",
+      "coverage": "country.lv",
+      "themes": ["elevation", "imagery", "transport", "hydrology", "buildings"],
+      "formats": ["LAZ", "GeoTIFF", "Shapefile"],
+      "access": "download",
+      "cost": "free"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "datasets": {
+    "greenland.asiaq-kortforsyning": {
+      "name": "Asiaq Kortforsyning",
+      "summary": "Free base map data, orthophotos and terrain for Greenland's towns and settlements.",
+      "provider": "asiaq-greenland-survey",
+      "officialURL": "https://kortforsyning.asiaq.gl/",
+      "serviceURL": "https://kort.nunagis.gl/refserver/rest/services/Ortofoto/Byortofotos/ImageServer",
+      "attribution": "Contains data from Asiaq, Greenland Survey, [dataset name], [year]",
+      "license": "termsOfUseForAsiaqGeodata",
+      "coverage": "country.gl",
+      "themes": ["buildings", "transport", "imagery", "elevation"],
+      "formats": ["Shapefile", "GeoTIFF", "PDF"],
+      "access": "download",
+      "cost": "free"
+    }
+  },
+  "layers": [
+    {
+      "id": "greenland.asiaq-kortforsyning",
+      "name": "Greenland: Asiaq Kortforsyning",
+      "summary": "Asiaq town and settlement orthophotos (Byortofotos).",
+      "category": "historical",
+      "group": "nationalImagery",
+      "dataset": "greenland.asiaq-kortforsyning",
+      "source": {
+        "type": "arcGISImageExport",
+        "serviceURL": "https://kort.nunagis.gl/refserver/rest/services/Ortofoto/Byortofotos/ImageServer"
+      }
+    }
+  ]
+}

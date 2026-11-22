@@ -1,0 +1,19 @@
+{
+  "datasets": {
+    "ireland.geohive": {
+      "name": "GeoHive",
+      "summary": "National mapping agency hub with open boundary and prime2 data.",
+      "provider": "tailte-eireann",
+      "officialURL": "https://www.geohive.ie/",
+      "serviceURL": "https://www.geohive.ie/",
+      "attribution": "Tailte Éireann",
+      "license": "variesByDataset",
+      "coverage": "country.ie",
+      "themes": ["boundaries", "imagery"],
+      "formats": ["ArcGIS REST", "WMS"],
+      "access": "portal",
+      "cost": "free",
+      "useStatus": {"restricted": "Terms not reviewed for use in a paid app: Varies by dataset"}
+    }
+  }
+}

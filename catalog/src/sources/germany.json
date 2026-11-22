@@ -1,0 +1,360 @@
+{
+  "datasets": {
+    "germany.geodaten-online-hessen": {
+      "name": "Geodaten online Hessen",
+      "summary": "Hesse's geodata shop for terrain models, orthophotos, cadastre and topographic data; many base products are now free to download.",
+      "provider": "hessische-verwaltung-fur-bodenmanagement-und-geoinformation",
+      "officialURL": "https://gds.hessen.de/",
+      "serviceURL": "https://www.gds-srv.hessen.de/cgi-bin/lika-services/ogc-free-images.ows",
+      "attribution": "Geobasisdaten © Hessische Verwaltung für Bodenmanagement und Geoinformation (optional; if a source note is given)",
+      "license": "freeUseUnder24HvggHessischesVermessungsUndGeoinformationsges",
+      "coverage": "country.de.hesse",
+      "themes": ["elevation", "imagery", "cadastre"],
+      "formats": ["GeoTIFF", "LAS", "Shapefile"],
+      "access": "download",
+      "cost": "mixed"
+    },
+    "germany.geodatenportal-sachsen-anhalt": {
+      "name": "Geodatenportal Sachsen-Anhalt",
+      "summary": "Saxony-Anhalt's geodata portal: terrain models, orthophotos, cadastre and administrative boundaries, with viewer and download services.",
+      "provider": "landesamt-fur-vermessung-und-geoinformation-sachsen-anhalt",
+      "officialURL": "https://www.lvermgeo.sachsen-anhalt.de/de/geodatenportal.html",
+      "serviceURL": "https://www.geodatenportal.sachsen-anhalt.de/wss/service/ST_LVermGeo_DOP_WMS_OpenData/guest",
+      "attribution": "© GeoBasis-DE / LVermGeo ST (wording not confirmed on the publisher page)",
+      "license": "datenlizenzDeutschlandNamensnennungVersion20DlDeBy20",
+      "coverage": "country.de.saxony-anhalt",
+      "themes": ["elevation", "imagery", "cadastre", "boundaries"],
+      "formats": ["GeoTIFF", "Shapefile", "WMS"],
+      "access": "portal",
+      "cost": "free"
+    },
+    "germany.geoportal-berlin": {
+      "name": "Geoportal Berlin",
+      "summary": "Berlin's spatial data infrastructure (formerly FIS-Broker): ALKIS cadastre, 3D buildings, orthophotos, the Environmental Atlas, noise and land-use maps, as services and downloads.",
+      "provider": "senate-department-for-urban-development-berlin",
+      "officialURL": "https://gdi.berlin.de/",
+      "serviceURL": "https://gdi.berlin.de/services/wms/truedop_2024",
+      "attribution": "Geoportal Berlin / Digitale farbige TrueOrthophotos 2024 (not required by the licence)",
+      "license": "datenlizenzDeutschlandZeroVersion20DlDeZero20",
+      "coverage": "country.de.berlin",
+      "themes": ["portal", "cadastre", "environment", "buildings"],
+      "formats": ["WMS", "WFS", "Shapefile", "GeoTIFF"],
+      "access": "portal",
+      "cost": "free"
+    },
+    "germany.geoportal-hamburg": {
+      "name": "Geoportal Hamburg",
+      "summary": "Hamburg's map portal with cadastre, orthophotos, 3D city model, flood and noise layers; the datasets themselves are published openly through the Hamburg Transparency Portal.",
+      "provider": "landesbetrieb-geoinformation-und-vermessung-hamburg",
+      "officialURL": "https://geoportal-hamburg.de/",
+      "serviceURL": "https://geodienste.hamburg.de/wms_dop_zeitreihe_belaubt",
+      "attribution": "Freie und Hansestadt Hamburg, Landesbetrieb Geoinformation und Vermessung (LGV)",
+      "license": "datenlizenzDeutschlandNamensnennungVersion20DlDeBy20The2022E",
+      "coverage": "country.de.hamburg",
+      "themes": ["portal", "cadastre", "imagery", "buildings"],
+      "formats": ["WMS", "WFS", "Viewer"],
+      "access": "viewer",
+      "cost": "free"
+    },
+    "germany.geoportal-mv": {
+      "name": "GeoPortal.MV",
+      "summary": "The central geodata platform for Mecklenburg-Western Pomerania, with base geodata, terrain models, orthophotos and coastal and environmental layers.",
+      "provider": "landesamt-fur-innere-verwaltung-mecklenburg-vorpommern",
+      "officialURL": "https://www.geoportal-mv.de/portal/",
+      "serviceURL": "https://www.geodaten-mv.de/dienste/adv_dop",
+      "attribution": "© GeoBasis-DE/M-V <Jahr der letzten Datenlieferung>",
+      "license": "notNamedInTheServiceCapabilitiesSayEsGeltenKeineBedingungenF",
+      "coverage": "country.de.mecklenburg-western-pomerania",
+      "themes": ["portal", "elevation", "imagery", "cadastre"],
+      "formats": ["WMS", "WFS", "GeoTIFF", "Shapefile"],
+      "access": "portal",
+      "cost": "free",
+      "useStatus": {
+        "restricted": "Commercial use is not clearly allowed: Not named in the service; capabilities say 'Es gelten keine Bedingungen' (fees) plus an attribution duty"
+      }
+    },
+    "germany.geoportal-saarland": {
+      "name": "Geoportal Saarland",
+      "summary": "Saarland's geoportal, bringing together base geodata, cadastre, orthophotos and environmental layers from state agencies.",
+      "provider": "landesamt-fur-vermessung-geoinformation-und-landentwicklung",
+      "officialURL": "https://geoportal.saarland.de/",
+      "serviceURL": "https://geoportal.saarland.de/freewms/dop2025",
+      "attribution": "LVGL-Saarland (wording not confirmed)",
+      "license": "notNamedInTheServiceCapabilitiesFeesNoneAccessconstraintsNol",
+      "coverage": "country.de.saarland",
+      "themes": ["portal", "cadastre", "imagery", "environment"],
+      "formats": ["WMS", "WFS", "Viewer"],
+      "access": "portal",
+      "cost": "free",
+      "useStatus": {
+        "restricted": "Commercial use is not clearly allowed: Not named in the service (capabilities: Fees None, AccessConstraints noLimitations)"
+      }
+    },
+    "germany.lvermgeo-rlp": {
+      "name": "LVermGeo Rheinland-Pfalz",
+      "summary": "Rhineland-Palatinate's surveying agency, with terrain models, orthophotos, cadastre and topographic maps as services and downloads.",
+      "provider": "landesamt-fur-vermessung-und-geobasisinformation-rheinland-p",
+      "officialURL": "https://lvermgeo.rlp.de/",
+      "serviceURL": "https://geo4.service24.rlp.de/wms/rp_dop20.fcgi",
+      "attribution": "©GeoBasis-DE / LVermGeoRP (Jahr des Datenbezugs), dl-de/by-2-0, http://www.lvermgeo.rlp.de [Daten bearbeitet]",
+      "license": "datenlizenzDeutschlandNamensnennungVersion20DlDeBy20",
+      "coverage": "country.de.rhineland-palatinate",
+      "themes": ["elevation", "imagery", "cadastre", "boundaries"],
+      "formats": ["GeoTIFF", "LAS", "Shapefile", "WMS"],
+      "access": "portal",
+      "cost": "free"
+    },
+    "germany.offene-geodaten-sachsen": {
+      "name": "Offene Geodaten Sachsen",
+      "summary": "Saxony's open geodata: digital terrain models, LiDAR point clouds, orthophotos, building outlines, cadastral parcels and administrative boundaries for free download.",
+      "provider": "landesamt-fur-geobasisinformation-sachsen",
+      "officialURL": "https://www.geodaten.sachsen.de/",
+      "serviceURL": "https://geodienste.sachsen.de/wms_geosn_dop-rgb/guest",
+      "attribution": "Landesamt für Geobasisinformation Sachsen",
+      "license": "allgemeineNutzungsbedingungenDesGeosnCapabilitiesKostenfrei",
+      "coverage": "country.de.saxony",
+      "themes": ["elevation", "imagery", "cadastre", "boundaries"],
+      "formats": ["GeoTIFF", "LAS", "Shapefile", "WMS"],
+      "access": "download",
+      "cost": "free",
+      "useStatus": {
+        "restricted": "Commercial use is not clearly allowed: Allgemeine Nutzungsbedingungen des GeoSN (capabilities: 'kostenfrei')"
+      }
+    },
+    "germany.opengeodata-bayern": {
+      "name": "OpenData Bayern geodata",
+      "summary": "DGM1, 3D buildings, orthophotos and LiDAR point clouds for Bavaria.",
+      "provider": "landesamt-fur-digitalisierung-breitband-und-vermessung",
+      "officialURL": "https://geodaten.bayern.de/opengeodata/",
+      "serviceURL": "https://wmtsod1.bayernwolke.de/wmts/by_dop/smerc/{z}/{x}/{y}",
+      "attribution": "Bayerische Vermessungsverwaltung – www.geodaten.bayern.de (wording not confirmed here)",
+      "license": "ccBy40",
+      "coverage": "country.de.bavaria",
+      "themes": ["elevation", "imagery", "buildings"],
+      "formats": ["GeoTIFF", "LAZ", "CityGML"],
+      "access": "download",
+      "cost": "free"
+    },
+    "germany.opengeodata-brandenburg": {
+      "name": "OpenGeodata.Brandenburg",
+      "summary": "Direct download of Brandenburg's base geodata (and Berlin's for some products): DGM terrain models, LiDAR, orthophotos, ALKIS cadastre and 3D building models.",
+      "provider": "landesvermessung-und-geobasisinformation-brandenburg",
+      "officialURL": "https://data.geobasis-bb.de/",
+      "serviceURL": "https://isk.geobasis-bb.de/mapproxy/dop20c/service/wms",
+      "attribution": "© GeoBasis-DE/LGB, dl-de/by-2-0 (add '© Geoportal Berlin, dl-de/by-2-0' when Berlin data is shown)",
+      "license": "datenlizenzDeutschlandNamensnennungVersion20DlDeBy20",
+      "coverage": "country.de.brandenburg",
+      "themes": ["elevation", "imagery", "cadastre", "buildings"],
+      "formats": ["GeoTIFF", "LAZ", "Shapefile", "CityGML"],
+      "access": "download",
+      "cost": "free"
+    },
+    "germany.opengeodata-bw": {
+      "name": "OpenGeoData Baden-Württemberg",
+      "summary": "Open terrain models, orthophotos and cadastre data for Baden-Württemberg.",
+      "provider": "lgl-baden-wurttemberg",
+      "officialURL": "https://opengeodata.lgl-bw.de/",
+      "serviceURL": "https://owsproxy.lgl-bw.de/owsproxy/ows/WMS_LGL-BW_ATKIS_DOP_20_C",
+      "attribution": "LGL-BW (<Jahr des Datenbezugs>) Datenlizenz Deutschland - Namensnennung - Version 2.0, www.lgl-bw.de",
+      "license": "datenlizenzDeutschlandNamensnennungVersion20DlDeBy20",
+      "coverage": "country.de.baden-wurttemberg",
+      "themes": ["elevation", "imagery", "cadastre"],
+      "formats": ["GeoTIFF", "Shapefile"],
+      "access": "download",
+      "cost": "free"
+    },
+    "germany.opengeodata-niedersachsen": {
+      "name": "OpenGeoData Niedersachsen",
+      "summary": "DGM1, orthophotos, ALKIS and 3D buildings for Lower Saxony.",
+      "provider": "lgln",
+      "officialURL": "https://opengeodata.lgln.niedersachsen.de/",
+      "serviceURL": "https://opengeodata.lgln.niedersachsen.de/",
+      "attribution": "LGLN",
+      "license": "ccBy40",
+      "coverage": "country.de.lower-saxony",
+      "themes": ["elevation", "imagery", "cadastre", "buildings"],
+      "formats": ["GeoTIFF", "LAZ", "CityGML"],
+      "access": "download",
+      "cost": "free"
+    },
+    "germany.opengeodata-nrw": {
+      "name": "OpenGeodata.NRW",
+      "summary": "Open ALKIS cadastre, DOP orthophotos, DGM1 terrain, LiDAR and 3D buildings for North Rhine-Westphalia.",
+      "provider": "geobasis-nrw",
+      "officialURL": "https://www.opengeodata.nrw.de/produkte/",
+      "serviceURL": "https://www.wms.nrw.de/geobasis/wms_nw_dop",
+      "attribution": "None required (Geobasis NRW is the customary credit)",
+      "license": "datenlizenzDeutschlandZeroVersion20",
+      "coverage": "country.de.north-rhine-westphalia",
+      "themes": ["elevation", "imagery", "cadastre", "buildings"],
+      "formats": ["GeoTIFF", "LAZ", "CityGML", "Shapefile"],
+      "access": "download",
+      "cost": "free"
+    }
+  },
+  "layers": [
+    {
+      "id": "germany.geodaten-online-hessen",
+      "name": "Hesse, Germany: Geodaten online Hessen",
+      "summary": "DOP rgb (Hessen, 20 cm).",
+      "category": "historical",
+      "group": "nationalImagery",
+      "dataset": "germany.geodaten-online-hessen",
+      "source": {
+        "type": "wms",
+        "endpoint": "https://www.gds-srv.hessen.de/cgi-bin/lika-services/ogc-free-images.ows",
+        "layers": "he_dop_rgb",
+        "version": "1.3.0"
+      }
+    },
+    {
+      "id": "germany.geodatenportal-sachsen-anhalt",
+      "name": "Saxony-Anhalt, Germany: Geodatenportal Sachsen-Anhalt",
+      "summary": "DOP20 Sachsen-Anhalt.",
+      "category": "historical",
+      "group": "nationalImagery",
+      "dataset": "germany.geodatenportal-sachsen-anhalt",
+      "source": {
+        "type": "wms",
+        "endpoint": "https://www.geodatenportal.sachsen-anhalt.de/wss/service/ST_LVermGeo_DOP_WMS_OpenData/guest",
+        "layers": "lsa_lvermgeo_dop20_2",
+        "version": "1.3.0"
+      }
+    },
+    {
+      "id": "germany.geoportal-berlin",
+      "name": "Berlin, Germany: Geoportal Berlin",
+      "summary": "TrueDOP 2024 (Berlin, 20 cm).",
+      "category": "historical",
+      "group": "nationalImagery",
+      "dataset": "germany.geoportal-berlin",
+      "source": {
+        "type": "wms",
+        "endpoint": "https://gdi.berlin.de/services/wms/truedop_2024",
+        "layers": "truedop_2024",
+        "version": "1.3.0"
+      }
+    },
+    {
+      "id": "germany.geoportal-hamburg",
+      "name": "Hamburg, Germany: Geoportal Hamburg",
+      "summary": "DOP Zeitreihe belaubt (Hamburg, leaf-on), 2024.",
+      "category": "historical",
+      "group": "nationalImagery",
+      "dataset": "germany.geoportal-hamburg",
+      "source": {
+        "type": "wms",
+        "endpoint": "https://geodienste.hamburg.de/wms_dop_zeitreihe_belaubt",
+        "layers": "dop_zeitreihe_belaubt",
+        "version": "1.3.0"
+      }
+    },
+    {
+      "id": "germany.geoportal-mv",
+      "name": "Mecklenburg-Western Pomerania, Germany: GeoPortal.MV",
+      "summary": "DOP Mecklenburg-Vorpommern.",
+      "category": "historical",
+      "group": "nationalImagery",
+      "dataset": "germany.geoportal-mv",
+      "source": {
+        "type": "wms",
+        "endpoint": "https://www.geodaten-mv.de/dienste/adv_dop",
+        "layers": "mv_dop",
+        "version": "1.3.0"
+      }
+    },
+    {
+      "id": "germany.geoportal-saarland",
+      "name": "Saarland, Germany: Geoportal Saarland",
+      "summary": "SL DOP20 rgb (2025).",
+      "category": "historical",
+      "group": "nationalImagery",
+      "dataset": "germany.geoportal-saarland",
+      "source": {
+        "type": "wms",
+        "endpoint": "https://geoportal.saarland.de/freewms/dop2025",
+        "layers": "sl_dop20_rgb",
+        "version": "1.3.0"
+      }
+    },
+    {
+      "id": "germany.lvermgeo-rlp",
+      "name": "Rhineland-Palatinate, Germany: LVermGeo Rheinland-Pfalz",
+      "summary": "DOP20 Rheinland-Pfalz.",
+      "category": "historical",
+      "group": "nationalImagery",
+      "dataset": "germany.lvermgeo-rlp",
+      "source": {
+        "type": "wms",
+        "endpoint": "https://geo4.service24.rlp.de/wms/rp_dop20.fcgi",
+        "layers": "rp_dop20",
+        "version": "1.3.0"
+      }
+    },
+    {
+      "id": "germany.offene-geodaten-sachsen",
+      "name": "Saxony, Germany: Offene Geodaten Sachsen",
+      "summary": "DOP 20 cm RGB (Sachsen).",
+      "category": "historical",
+      "group": "nationalImagery",
+      "dataset": "germany.offene-geodaten-sachsen",
+      "source": {
+        "type": "wms",
+        "endpoint": "https://geodienste.sachsen.de/wms_geosn_dop-rgb/guest",
+        "layers": "sn_dop_020",
+        "version": "1.3.0"
+      }
+    },
+    {
+      "id": "germany.opengeodata-bayern",
+      "name": "Bavaria, Germany: OpenData Bayern geodata",
+      "summary": "DOP Bayern (by_dop).",
+      "category": "historical",
+      "group": "nationalImagery",
+      "dataset": "germany.opengeodata-bayern",
+      "source": {"type": "wmts", "urlTemplate": "https://wmtsod1.bayernwolke.de/wmts/by_dop/smerc/{z}/{x}/{y}"}
+    },
+    {
+      "id": "germany.opengeodata-brandenburg",
+      "name": "Brandenburg, Germany: OpenGeodata.Brandenburg",
+      "summary": "DOP20 colour, Brandenburg with Berlin.",
+      "category": "historical",
+      "group": "nationalImagery",
+      "dataset": "germany.opengeodata-brandenburg",
+      "source": {
+        "type": "wms",
+        "endpoint": "https://isk.geobasis-bb.de/mapproxy/dop20c/service/wms",
+        "layers": "bebb_dop20c",
+        "version": "1.3.0"
+      }
+    },
+    {
+      "id": "germany.opengeodata-bw",
+      "name": "Baden-Württemberg, Germany: OpenGeoData Baden-Württemberg",
+      "summary": "ATKIS DOP 20 cm RGB (Baden-Württemberg).",
+      "category": "historical",
+      "group": "nationalImagery",
+      "dataset": "germany.opengeodata-bw",
+      "source": {
+        "type": "wms",
+        "endpoint": "https://owsproxy.lgl-bw.de/owsproxy/ows/WMS_LGL-BW_ATKIS_DOP_20_C",
+        "layers": "IMAGES_DOP_20_RGB",
+        "version": "1.3.0"
+      }
+    },
+    {
+      "id": "germany.opengeodata-nrw",
+      "name": "North Rhine-Westphalia, Germany: OpenGeodata.NRW",
+      "summary": "DOP Farbe (digital orthophoto, RGB), current (rolling flights, year not stated in capabilities).",
+      "category": "historical",
+      "group": "nationalImagery",
+      "dataset": "germany.opengeodata-nrw",
+      "source": {
+        "type": "wms",
+        "endpoint": "https://www.wms.nrw.de/geobasis/wms_nw_dop",
+        "layers": "nw_dop_rgb",
+        "version": "1.3.0"
+      }
+    }
+  ]
+}

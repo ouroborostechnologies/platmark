@@ -1,0 +1,19 @@
+{
+  "datasets": {
+    "peru.ign-peru": {
+      "name": "Instituto Geográfico Nacional (IGN Perú)",
+      "summary": "National mapping agency: 1:100,000 national topographic database, geodesy and orthoimagery.",
+      "provider": "instituto-geografico-nacional",
+      "officialURL": "https://www.gob.pe/ign",
+      "serviceURL": "https://www.gob.pe/ign",
+      "attribution": "Instituto Geográfico Nacional",
+      "license": "seePublisherTerms",
+      "coverage": "country.pe",
+      "themes": ["boundaries", "elevation", "transport"],
+      "formats": ["Shapefile", "WMS"],
+      "access": "portal",
+      "cost": "mixed",
+      "useStatus": {"restricted": "Terms not reviewed for use in a paid app: See publisher terms"}
+    }
+  }
+}

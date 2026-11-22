@@ -1,0 +1,33 @@
+{
+  "datasets": {
+    "guernsey.digimap-guernsey": {
+      "name": "States Corporate Digimap",
+      "summary": "Public web map of Guernsey: aerial photos, planning and environment layers.",
+      "provider": "digimap-states-of-guernsey",
+      "officialURL": "https://maps.digimap.gg/",
+      "serviceURL": "https://maps.digimap.gg/arcgis/rest/services/StatesOfGuernsey/GuernseyAerialPhotoOL2016_Dyn/MapServer",
+      "attribution": "(c) States of Guernsey",
+      "license": "noneStated",
+      "coverage": "country.gg",
+      "themes": ["boundaries", "imagery", "cadastre"],
+      "access": "viewer",
+      "cost": "mixed",
+      "useStatus": {"restricted": "Commercial use is not clearly allowed: Not stated (service copyright only)"}
+    }
+  },
+  "layers": [
+    {
+      "id": "guernsey.digimap-guernsey",
+      "name": "Guernsey: States Corporate Digimap",
+      "summary": "Guernsey aerial photography 2016.",
+      "category": "historical",
+      "group": "nationalImagery",
+      "dataset": "guernsey.digimap-guernsey",
+      "source": {
+        "type": "arcGISMapExport",
+        "serviceURL": "https://maps.digimap.gg/arcgis/rest/services/StatesOfGuernsey/GuernseyAerialPhotoOL2016_Dyn/MapServer",
+        "visibleLayers": "show:0"
+      }
+    }
+  ]
+}

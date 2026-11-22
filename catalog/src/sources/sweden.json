@@ -1,0 +1,32 @@
+{
+  "datasets": {
+    "sweden.geotorget": {
+      "name": "Geotorget",
+      "summary": "Lantmäteriet download service for elevation models, LiDAR, orthophotos and topographic data.",
+      "provider": "lantmateriet",
+      "officialURL": "https://geotorget.lantmateriet.se/",
+      "serviceURL": "https://geotorget.lantmateriet.se/",
+      "attribution": "Lantmäteriet",
+      "license": "ccBy40",
+      "coverage": "country.se",
+      "themes": ["portal", "elevation", "imagery"],
+      "formats": ["GeoTIFF", "LAZ", "GeoPackage"],
+      "access": "download",
+      "cost": "free"
+    },
+    "sweden.lantmateriet-open-data": {
+      "name": "Lantmäteriet open data",
+      "summary": "",
+      "provider": "lantmateriet",
+      "officialURL": "https://www.lantmateriet.se/sv/geodata/vara-produkter/avgiftsfria-produkter/oppna-data/",
+      "serviceURL": "https://www.lantmateriet.se/sv/geodata/vara-produkter/avgiftsfria-produkter/oppna-data/",
+      "attribution": "Lantmäteriet",
+      "license": "cc0",
+      "coverage": "country.se",
+      "themes": ["elevation", "imagery", "boundaries", "transport"],
+      "formats": ["GeoPackage", "GeoTIFF", "LAZ"],
+      "access": "download",
+      "cost": "free"
+    }
+  }
+}

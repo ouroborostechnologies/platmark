@@ -1,0 +1,18 @@
+{
+  "datasets": {
+    "jordan.rjgc": {
+      "name": "Royal Jordanian Geographic Centre",
+      "summary": "National mapping agency; topographic maps and aerial imagery are sold rather than open.",
+      "provider": "royal-jordanian-geographic-centre",
+      "officialURL": "https://www.rjgc.gov.jo/",
+      "serviceURL": "https://www.rjgc.gov.jo/",
+      "attribution": "Royal Jordanian Geographic Centre",
+      "license": "seePublisherTerms",
+      "coverage": "country.jo",
+      "themes": ["boundaries", "elevation", "imagery"],
+      "access": "portal",
+      "cost": "paid",
+      "useStatus": {"restricted": "Terms not reviewed for use in a paid app: See publisher terms"}
+    }
+  }
+}

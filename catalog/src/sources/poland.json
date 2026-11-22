@@ -1,0 +1,48 @@
+{
+  "datasets": {
+    "poland.geoportal-gov-pl": {
+      "name": "Geoportal.gov.pl",
+      "summary": "",
+      "provider": "gowny-urzad-geodezji-i-kartografii",
+      "officialURL": "https://www.geoportal.gov.pl/",
+      "serviceURL": "https://mapy.geoportal.gov.pl/wss/service/PZGIK/ORTO/WMTS/StandardResolution?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=ORTOFOTOMAPA&STYLE=default&FORMAT=image/jpeg&TILEMATRIXSET=EPSG:3857&TILEMATRIX=EPSG:3857:{z}&TILEROW={y}&TILECOL={x}",
+      "attribution": "Główny Urząd Geodezji i Kartografii (GUGiK), geoportal.gov.pl",
+      "license": "freeOfChargeAnyUseGugikOpenData",
+      "coverage": "country.pl",
+      "themes": ["boundaries", "elevation", "imagery", "cadastre"],
+      "formats": ["GeoTIFF", "GML", "LAZ", "WMS"],
+      "access": "download",
+      "cost": "free"
+    },
+    "poland.gugik-orthophoto": {
+      "name": "Orthophotomap (ORTO)",
+      "summary": "Nationwide aerial orthophotography at 5–25 cm resolution with yearly updates.",
+      "provider": "gowny-urzad-geodezji-i-kartografii",
+      "officialURL": "https://www.geoportal.gov.pl/pl/dane/ortofotomapa-orto/",
+      "serviceURL": "https://www.geoportal.gov.pl/pl/dane/ortofotomapa-orto/",
+      "attribution": "Główny Urząd Geodezji i Kartografii",
+      "license": "freeOfChargeSeePublisherTerms",
+      "coverage": "country.pl",
+      "themes": ["imagery"],
+      "formats": ["GeoTIFF", "WMS", "WMTS"],
+      "access": "download",
+      "cost": "free",
+      "useStatus": {"restricted": "Terms not reviewed for use in a paid app: Free of charge; see publisher terms"}
+    }
+  },
+  "layers": [
+    {
+      "id": "poland.geoportal-gov-pl",
+      "name": "Poland: Geoportal.gov.pl",
+      "summary": "Ortofotomapa (standard resolution, current mosaic), mixed, most recent per area.",
+      "category": "historical",
+      "group": "nationalImagery",
+      "dataset": "poland.geoportal-gov-pl",
+      "source": {
+        "type": "wmts",
+        "urlTemplate": "https://mapy.geoportal.gov.pl/wss/service/PZGIK/ORTO/WMTS/StandardResolution?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=ORTOFOTOMAPA&STYLE=default&FORMAT=image/jpeg&TILEMATRIXSET=EPSG:3857&TILEMATRIX=EPSG:3857:{z}&TILEROW={y}&TILECOL={x}",
+        "maximumLevel": 19
+      }
+    }
+  ]
+}
