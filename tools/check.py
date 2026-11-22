@@ -38,6 +38,11 @@ REQUIRED_BASE_MAPS = ("basemap.standard", "basemap.satellite", "basemap.hybrid")
 
 # A point in the conterminous US, for probing a source that covers the whole world.
 CONUS_POINT = (-98.58, 39.83)
+# Coverages whose rectangle's middle holds nothing to draw, and a point that does.
+PROBE_POINTS = {
+    "hawaii": (-155.5, 19.6),  # the middle is open ocean between the islands
+    "louisiana": (-90.7, 29.6),  # the newest Louisiana flights cover the coast only
+}
 # Where GitHub Pages publishes this repository. A file under it is probed from the checkout, so a pull
 # request adding one passes before Pages has deployed it.
 PAGES_ROOT = "https://ouroborostechnologies.github.io/platmark/"
@@ -634,17 +639,23 @@ def probe_targets(catalog, only=None):
         for index, member in enumerate(members):
             target = {"layer": layer_id, "member": None if len(members) == 1 else str(index),
                       "minimumZoom": layer.get("minimumZoom", 0), "maximumZoom": layer.get("maximumZoom", 22)}
+            if discovery.get("type") == "sheetIndex":
+                targets.append({**target, "skip": "drawn from the app's sheet index, not from the source"})
+                continue
             source, note = drawn_source(layer, member)
             if source is None:
                 targets.append({**target, "skip": "no source to probe"})
                 continue
-            coverage = coverage_rects(catalog, obj(datasets.get(member.get("dataset"))).get("coverage"))
+            coverage_key = obj(datasets.get(member.get("dataset"))).get("coverage")
+            coverage = coverage_rects(catalog, coverage_key)
+            point = PROBE_POINTS.get(coverage_key)
             if discovery.get("type") == "regional":
+                point = None
                 # A storm flight covers a strip, not the dataset's whole area; probe inside the strip.
                 for edition in discovery.get("editions", []):
                     if edition.get("source") == source:
                         coverage = [edition["extent"]]
-            targets.append({**target, "source": source, "coverage": coverage, "note": note})
+            targets.append({**target, "source": source, "coverage": coverage, "point": point, "note": note})
     return targets
 
 
@@ -655,15 +666,13 @@ def plan(target):
     z = max(low, min(10, high))
     if maximum_level is not None:
         z = min(z, maximum_level)
+    deepest = high if maximum_level is None else min(high, maximum_level)
     coverage = target["coverage"]
-    contains = lambda r, p: r[0] <= p[0] <= r[2] and r[1] <= p[1] <= r[3]
-    if coverage == "global" or not coverage or any(contains(rect, CONUS_POINT) for rect in coverage):
-        # Worldwide or nationwide: the middle of a rectangle running from Alaska to Maine is in
-        # Oregon, where a national service may hold nothing, so ask about the middle of the country.
-        lon, lat = CONUS_POINT
-    else:
-        min_lon, min_lat, max_lon, max_lat = coverage[0]
-        lon, lat = (min_lon + max_lon) / 2, (min_lat + max_lat) / 2
+    if coverage != "global" and coverage:
+        # A cache made for a small area may hold no tile wider than the area itself.
+        while z < deepest and 360 / 2 ** z > coverage[0][2] - coverage[0][0]:
+            z += 1
+    lon, lat = probe_point(target)
     x, y = tile_at(lon, lat, z)
     return tile_url(template, z, x, y), z
 
@@ -750,10 +759,14 @@ def probe_one(target, timeout, retries, gate):
 
 
 def probe_point(target):
-    """The place a point source is asked about: as `plan` chooses for tiles."""
+    """The place a source is asked about."""
+    if target["point"]:
+        return target["point"]
     coverage = target["coverage"]
     contains = lambda r, p: r[0] <= p[0] <= r[2] and r[1] <= p[1] <= r[3]
     if coverage == "global" or not coverage or any(contains(rect, CONUS_POINT) for rect in coverage):
+        # Worldwide or nationwide: the middle of a rectangle running from Alaska to Maine is in
+        # Oregon, where a national service may hold nothing, so ask about the middle of the country.
         return CONUS_POINT
     min_lon, min_lat, max_lon, max_lat = coverage[0]
     return (min_lon + max_lon) / 2, (min_lat + max_lat) / 2

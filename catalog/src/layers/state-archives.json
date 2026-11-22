@@ -165,7 +165,7 @@
     },
     "mi.imagery": {
       "name": "Michigan Imagery Solution",
-      "summary": "NAPP and NAIP over Michigan, and the state's own 2024 flight of the Lower Peninsula.",
+      "summary": "NAPP and NAIP over Michigan.",
       "provider": "mi-dtmb",
       "officialURL": "https://imagery.michigan.gov",
       "serviceURL": "https://imagery.michigan.gov/server/rest/services",
@@ -2307,7 +2307,7 @@
     {
       "id": "michigan.historical.aerial",
       "name": "Michigan Aerial Photos",
-      "summary": "Statewide aerial photography from 1998 to 2024.",
+      "summary": "Statewide aerial photography from 1998 to 2022.",
       "category": "historical",
       "group": "stateArchives",
       "dataset": "mi.imagery",
@@ -2425,16 +2425,6 @@
               "source": {
                 "type": "arcGISImageExport",
                 "serviceURL": "https://imagery.michigan.gov/server/rest/services/Michigan_NAIP_2022/ImageServer",
-                "imageFormat": "jpgpng"
-              }
-            },
-            {
-              "id": "2024-Michigan_imagery_2024",
-              "date": "2024",
-              "detail": "Part of the state only",
-              "source": {
-                "type": "arcGISImageExport",
-                "serviceURL": "https://imagery.michigan.gov/server/rest/services/Michigan_imagery_2024/ImageServer",
                 "imageFormat": "jpgpng"
               }
             }
