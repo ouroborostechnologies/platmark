@@ -23,7 +23,7 @@ Then open http://localhost:8000/. Reload the page to see edits.
 
 ## Layer catalog
 
-The app reads its map layers from `catalog/catalog-v1.json`, published as a release asset here. The app has the code that draws each kind of source; this repository says which layers exist and where their tiles come from.
+The app reads its map layers from `catalog-v1.sqlite`, an SQLite database built from `catalog/src/` and published as a release asset here. The app draws four kinds of source (raster, vector and DEM tiles from a URL template, and point features from a URL); this repository says which layers exist and where their tiles come from.
 
 ### Layout
 
@@ -33,8 +33,8 @@ catalog/
   src/providers.json …      shared tables: providers, licenses, coverages, groups
   src/layers/<area>.json    datasets and layers, grouped however reads best
   src/basemaps.json         the base maps
-  catalog-v1.json         assembled from src/; committed so a PR shows the effect of each edit
-  catalog-v1.schema.json  JSON Schema for the assembled file
+  catalog-v1.sqlite       built from src/ by `tools/catalog.py assemble`; not committed
+  catalog-v1.schema.json  JSON Schema for the catalog as assembled, before it is written to the database
   thumbnails/<stem>.png     one picture per layer; stem is the layer ID with "." replaced by "_"
 tools/
   catalog.py              format, assemble and verify src/
@@ -42,6 +42,12 @@ tools/
 ```
 
 A fragment can hold the tables (`providers`, `licenses`, `coverages`, `datasets`, keyed by ID) and the lists (`groups`, `layers`, `baseMaps`). Assembling merges the tables, refusing a key defined twice, and joins the lists in fragment order, which is the order the app shows them in.
+
+A fragment describes each source as the service it is: `xyzRaster`, `arcGISTiled`, `arcGISMapExport`, `arcGISImageExport`, `wms`, `wmts`, `vectorTiles`, `rasterDEM` or `geoJSON`. Assembling turns each into what the app draws (`raster`, `vector`, `dem` or `features`) and builds its tile URL template, so the published file holds the exact URLs the app requests and `tools/catalog.py` is the only place one is built.
+
+A dataset needs no layer. One can be listed with what it covers, so the app can show what exists for a place; it may also say what it is about (`themes`), the forms it comes in (`formats`), how its link gives the data (`access`) and what it costs (`cost`). Give one a layer when it has a tile or map service the app can draw.
+
+A layer names one publisher with `dataset` and `source`, or several with `members`, each a `dataset` and a `source` drawn bottom to top. The published file lists `members` either way.
 
 ### Making a change
 
@@ -54,14 +60,16 @@ A fragment can hold the tables (`providers`, `licenses`, `coverages`, `datasets`
 Rules worth knowing:
 
 - **Layer IDs are permanent.** Saved documents refer to layers by ID. To retire a layer, delete it; never give its ID to a different dataset.
-- **New kinds need an app release first.** A layer can only use a source, render or discovery `type` the app already knows. An older app skips a layer it can't read, so add the layer once an app that understands it has shipped.
+- **A new kind of service needs only the assembler.** If its tiles can be requested through a URL template, teach `tools/catalog.py` to build that template and every released app can draw it.
+- **New render and discovery kinds need an app release first.** A layer can only use a render or discovery `type` the app already knows. An older app skips a layer it can't read, so add the layer once an app that understands it has shipped.
 - `basemap.standard`, `basemap.satellite` and `basemap.hybrid` must always exist.
 
 ### Checks
 
 ```sh
 pip install jsonschema                 # only `rules` needs it
-python3 tools/catalog.py verify      # src/ is formatted and catalog-v1.json is up to date
+python3 tools/catalog.py verify      # src/ is formatted and assembles
+python3 tools/catalog.py assemble    # build catalog/catalog-v1.sqlite, which the checks below read
 python3 tools/check.py rules           # schema, unique IDs, every reference resolves, zoom and opacity ranges
 python3 tools/check.py revision        # against the latest release: revision increased, no layer ID reused
 python3 tools/check.py probe --only usgs.contours,gebco.depth   # fetch one real tile per source
@@ -80,7 +88,7 @@ git tag catalog-2026.11.08
 git push origin catalog-2026.11.08
 ```
 
-`.github/workflows/release-catalog.yml` runs `verify`, `rules` and `revision`, and publishes nothing if any fail. It then creates a release of that name with `catalog-v1.json`, its schema, and every `catalog/thumbnails/<stem>.png` attached as `thumb-<stem>.png` (release assets can't be in folders). Apps fetch `https://github.com/ouroborostechnologies/platmark/releases/latest/download/catalog-v1.json`, and a new catalog takes effect the next time the app launches.
+`.github/workflows/release-catalog.yml` runs `verify`, `rules` and `revision`, and publishes nothing if any fail. It then creates a release of that name with `catalog-v1.sqlite` and every `catalog/thumbnails/<stem>.png` attached as `thumb-<stem>.png` (release assets can't be in folders). Apps fetch `https://github.com/ouroborostechnologies/platmark/releases/latest/download/catalog-v1.sqlite`, and a new catalog takes effect the next time the app launches.
 
 A tag on a commit that isn't on `main` becomes a pre-release. `latest` skips pre-releases, so a branch's catalog never reaches users; debug builds can fetch it by tag from `releases/download/<tag>/…`.
 

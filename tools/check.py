@@ -1,16 +1,17 @@
 #!/usr/bin/env python3
 """Checks the assembled layer catalog before it ships, and probes its tile services.
 
-    python3 tools/check.py rules                       # schema + catalog rules on catalog/catalog-v1.json
+    python3 tools/check.py rules                       # schema + catalog rules on catalog/catalog-v1.sqlite
     python3 tools/check.py revision [--against P|URL]  # compare with the published catalog
     python3 tools/check.py probe [--only a,b] [--timeout s] [--json out.json] [--changed-since P|URL]
 
 `rules` needs `jsonschema` (pip install jsonschema); everything else is the standard library.
-Every command takes `--file` to check a catalog other than catalog/catalog-v1.json.
+Every command takes `--file` to check a catalog other than catalog/catalog-v1.sqlite, which
+`tools/catalog.py assemble` builds.
 
 The app's decoder is the authority on the format. This file describes the same format in Python so
-the public repository can check a catalog without the app's source; the tile URLs `probe`
-requests are built the way the app builds them.
+the public repository can check a catalog without the app's source. The tile URL templates are in
+the catalog itself, built by `tools/catalog.py assemble`; `probe` fills them the way the renderer does.
 """
 import argparse
 import concurrent.futures
@@ -18,7 +19,9 @@ import datetime
 import json
 import math
 import re
+import sqlite3
 import sys
+import tempfile
 import threading
 import time
 import urllib.error
@@ -27,14 +30,19 @@ import urllib.request
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-CATALOG = ROOT / "catalog" / "catalog-v1.json"
+CATALOG = ROOT / "catalog" / "catalog-v1.sqlite"
 SCHEMA = ROOT / "catalog" / "catalog-v1.schema.json"
-LATEST_URL = "https://github.com/ouroborostechnologies/platmark/releases/latest/download/catalog-v1.json"
+LATEST_URL = "https://github.com/ouroborostechnologies/platmark/releases/latest/download/catalog-v1.sqlite"
 USER_AGENT = "PlatmarkCatalogProbe/1"
 REQUIRED_BASE_MAPS = ("basemap.standard", "basemap.satellite", "basemap.hybrid")
 
 # A point in the conterminous US, for probing a source that covers the whole world.
 CONUS_POINT = (-98.58, 39.83)
+# Coverages whose rectangle's middle holds nothing to draw, and a point that does.
+PROBE_POINTS = {
+    "hawaii": (-155.5, 19.6),  # the middle is open ocean between the islands
+    "louisiana": (-90.7, 29.6),  # the newest Louisiana flights cover the coast only
+}
 # Where GitHub Pages publishes this repository. A file under it is probed from the checkout, so a pull
 # request adding one passes before Pages has deployed it.
 PAGES_ROOT = "https://ouroborostechnologies.github.io/platmark/"
@@ -43,30 +51,111 @@ PAGES_ROOT = "https://ouroborostechnologies.github.io/platmark/"
 KIND_ENUMS = {
     "source": "sourceKind", "render": "renderKind", "discovery": "discoveryKind", "style": "styleKind",
     "category": "category", "cadence": "cadence", "placement": "placement", "cachePolicy": "cachePolicy",
-    "wmsVersion": "wmsVersion", "demEncoding": "demEncoding",
+    "demEncoding": "demEncoding",
 }
 # Polymorphic values: the $defs entry that dispatches on "type" to one definition per kind.
 KIND_DISPATCH = {"source": "source", "render": "render", "discovery": "discovery", "style": "style"}
+# Discoveries whose source is a template the app fills in for each date, and the placeholder it fills.
+FILLED_BY_DISCOVERY = {"monthlyClock": "{date}", "wayback": "{release}"}
 
 
 # MARK: - Loading
 
 def load(path_or_url, missing_ok=False):
-    """The JSON at a path or URL. `None` for a URL that answers 404 when `missing_ok`."""
+    """The catalog (a `.sqlite` database) or JSON at a path or URL. `None` for a URL that answers 404
+    when `missing_ok`."""
     text = str(path_or_url)
+    is_database = text.endswith(".sqlite")
     if re.match(r"^https?://", text):
         request = urllib.request.Request(text, headers={"User-Agent": USER_AGENT})
         try:
             with urllib.request.urlopen(request, timeout=60) as response:
-                return json.loads(response.read().decode("utf-8"))
+                body = response.read()
         except urllib.error.HTTPError as error:
             if error.code == 404 and missing_ok:
                 return None
             raise SystemExit(f"{text}: HTTP {error.code}")
         except urllib.error.URLError as error:
             raise SystemExit(f"{text}: {error.reason}")
+        if not is_database:
+            return json.loads(body.decode("utf-8"))
+        with tempfile.TemporaryDirectory() as scratch:
+            downloaded = Path(scratch) / "catalog.sqlite"
+            downloaded.write_bytes(body)
+            return read_database(downloaded)
+    if is_database:
+        if not Path(text).exists():
+            raise SystemExit(f"{text} is missing; run tools/catalog.py assemble")
+        return read_database(text)
     with open(text, encoding="utf-8") as handle:
         return json.load(handle)
+
+
+def read_database(path):
+    """A published catalog as the tables and lists `tools/catalog.py` assembled it from, so the rules
+    and the probe read one shape whatever the file."""
+    db = sqlite3.connect(path)
+    db.row_factory = sqlite3.Row
+
+    def entry(row, fields, packed=()):
+        """The row's values under their catalog names, leaving out what the row leaves out."""
+        result = {name: row[column] for name, column in fields.items() if row[column] is not None}
+        result.update({name: json.loads(row[column]) for name, column in packed if row[column] is not None})
+        return result
+
+    def layer(row):
+        result = entry(row, {"id": "id", "name": "name", "summary": "summary", "category": "category",
+                             "group": "layer_group", "minimumZoom": "minimum_zoom", "maximumZoom": "maximum_zoom",
+                             "defaultOpacity": "default_opacity"}, (("render", "render"), ("time", "time")))
+        result["members"] = [entry(member, {"dataset": "dataset"}, (("source", "source"),)) for member in db.execute(
+            "SELECT dataset, source FROM layer_members WHERE layer = ? ORDER BY position", (row["id"],))]
+        return result
+
+    try:
+        schema_version, revision = db.execute("SELECT schema_version, catalog_revision FROM meta").fetchone()
+        catalog = {"schemaVersion": schema_version, "catalogRevision": revision}
+        catalog["providers"] = {row["id"]: entry(row, {"name": "name", "abbreviation": "abbreviation",
+                                                       "officialURL": "official_url", "summary": "summary"})
+                                for row in db.execute("SELECT * FROM providers ORDER BY id")}
+        catalog["licenses"] = {row["id"]: entry(row, {"name": "name", "url": "url"})
+                               for row in db.execute("SELECT * FROM licenses ORDER BY id")}
+        catalog["coverages"] = {row["id"]: {"label": row["label"], "rects": []}
+                                for row in db.execute("SELECT * FROM coverages ORDER BY id")}
+        for row in db.execute("SELECT coverage, rect FROM coverage_rects ORDER BY id"):
+            catalog["coverages"][row["coverage"]]["rects"].append(json.loads(row["rect"]))
+        catalog["datasets"] = {}
+        for row in db.execute("SELECT * FROM datasets ORDER BY id"):
+            dataset = entry(row, {"name": "name", "provider": "provider", "summary": "summary",
+                                  "officialURL": "official_url", "serviceURL": "service_url",
+                                  "attribution": "attribution", "license": "license", "coverage": "coverage",
+                                  "cachePolicy": "cache_policy", "useStatus": "use_status", "access": "access",
+                                  "cost": "cost"}, (("themes", "themes"), ("formats", "formats")))
+            dataset.setdefault("coverage", "global")
+            if row["use_status"] == "restricted":
+                dataset["useStatus"] = {"restricted": row["restricted_reason"]}
+            catalog["datasets"][row["id"]] = dataset
+        catalog["groups"] = [entry(row, {"id": "id", "title": "title", "systemImage": "system_image",
+                                         "explanation": "explanation"})
+                             for row in db.execute("SELECT * FROM groups ORDER BY position")]
+        catalog["layers"] = [layer(row) for row in db.execute(
+            "SELECT * FROM layers WHERE position IS NOT NULL ORDER BY position")]
+        catalog["baseMaps"] = []
+        for row in db.execute("SELECT * FROM base_maps ORDER BY position"):
+            base = entry(row, {"id": "id", "name": "name", "summary": "summary", "systemImage": "system_image",
+                               "placement": "placement"}, (("style", "style"),))
+            own = [layer(inner) for inner in db.execute(
+                "SELECT layers.* FROM base_map_layers JOIN layers ON layers.id = base_map_layers.layer "
+                "WHERE base_map = ? ORDER BY base_map_layers.position", (row["id"],))]
+            if own:
+                base["layers"] = own
+            base["datasets"] = [credit["dataset"] for credit in db.execute(
+                "SELECT dataset FROM base_map_datasets WHERE base_map = ? ORDER BY position", (row["id"],))]
+            catalog["baseMaps"].append(base)
+        return catalog
+    except (sqlite3.Error, TypeError) as error:
+        raise SystemExit(f"{path}: not a catalog database ({error})")
+    finally:
+        db.close()
 
 
 def obj(value):
@@ -103,26 +192,16 @@ def editions_of(discovery):
     return []
 
 
-def sources_in(source, where):
-    """(where, source) for a source and, recursively, every composite member's source."""
-    source = obj(source)
-    yield where, source
-    if source.get("type") == "composite":
-        for index, member in enumerate(seq(source.get("members"))):
-            yield from sources_in(obj(member).get("source"), f"{where}.members[{index}]")
+def members_of(layer):
+    """A layer's publishers: each names a dataset and, unless the layer's dates supply one, a source."""
+    return [obj(member) for member in seq(layer.get("members"))]
 
 
-def layer_sources(layer, where):
-    """Every source a layer can draw: its own, each listed date's, and a monthly series' template."""
-    if "source" in layer:
-        yield from sources_in(layer["source"], f"{where}.source")
-    discovery = discovery_of(layer)
-    field = "members" if discovery.get("type") == "serviceSet" else "editions"
-    for index, edition in enumerate(editions_of(discovery)):
-        if "source" in obj(edition):
-            yield from sources_in(edition["source"], f"{where}.time.discovery.{field}[{index}].source")
-    if discovery.get("type") == "monthlyClock" and "source" in discovery:
-        yield from sources_in(discovery["source"], f"{where}.time.discovery.source")
+def dataset_keys(layer):
+    """The datasets a layer draws from. A catalog published before layers listed members names one."""
+    if "members" in layer:
+        return [member.get("dataset") for member in members_of(layer)]
+    return [layer.get("dataset")]
 
 
 def date_key(raw):
@@ -131,18 +210,14 @@ def date_key(raw):
     return (parts + [1, 1])[:3]
 
 
-def coverage_rects(catalog, value):
-    """A coverage value's rectangles, `"global"`, or `None` when it names nothing."""
-    if value == "global":
+def coverage_rects(catalog, key):
+    """The rectangles of the coverage a dataset names, `"global"`, or `None` when it names nothing."""
+    if key == "global":
         return "global"
-    if isinstance(value, str):
-        entry = obj(catalog.get("coverages")).get(value)
-        if entry is None:
-            return None
-        return "global" if entry == "global" else seq(obj(entry).get("rects"))
-    if isinstance(value, dict):
-        return seq(value.get("rects"))
-    return None
+    entry = obj(catalog.get("coverages")).get(key) if isinstance(key, str) else None
+    if entry is None:
+        return None
+    return "global" if entry == "global" else seq(obj(entry).get("rects"))
 
 
 # MARK: - Schema
@@ -228,14 +303,12 @@ def check_rect(report, where, rect):
         report.error(f"{where}: {rect} is not [minLon, minLat, maxLon, maxLat] within -180…180, -90…90")
 
 
-def check_coverage(report, catalog, where, value, used):
-    if isinstance(value, str) and value != "global":
-        used["coverages"].add(value)
-        if value not in obj(catalog.get("coverages")):
-            report.error(f"{where}: no coverage \"{value}\"")
-    elif isinstance(value, dict):
-        for index, rect in enumerate(seq(value.get("rects"))):
-            check_rect(report, f"{where}.rects[{index}]", rect)
+def check_coverage(report, catalog, where, key, used):
+    if key == "global":
+        return
+    used["coverages"].add(key)
+    if key not in obj(catalog.get("coverages")):
+        report.error(f"{where}: no coverage \"{key}\"")
 
 
 def check_zooms(report, where, minimum, maximum):
@@ -249,10 +322,14 @@ def check_zooms(report, where, minimum, maximum):
 def check_layer(report, catalog, where, layer, used):
     datasets = obj(catalog.get("datasets"))
     groups = {obj(g).get("id") for g in seq(catalog.get("groups"))}
-    dataset = layer.get("dataset")
-    used["datasets"].add(dataset)
-    if dataset not in datasets:
-        report.error(f"{where}: no dataset \"{dataset}\"")
+    members = members_of(layer)
+    if not members:
+        report.error(f"{where}: a layer needs at least one member")
+    for index, member in enumerate(members):
+        dataset = member.get("dataset")
+        used["datasets"].add(dataset)
+        if dataset not in datasets:
+            report.error(f"{where}.members[{index}]: no dataset \"{dataset}\"")
     if "group" in layer:
         used["groups"].add(layer["group"])
         if layer["group"] not in groups:
@@ -262,26 +339,20 @@ def check_layer(report, catalog, where, layer, used):
     if isinstance(opacity, (int, float)) and not 0 <= opacity <= 1:
         report.error(f"{where}: defaultOpacity {opacity} is outside 0…1")
 
-    for at, source in layer_sources(layer, where):
-        if source.get("type") == "composite":
-            for index, member in enumerate(seq(source.get("members"))):
-                member = obj(member)
-                check_coverage(report, catalog, f"{at}.members[{index}].coverage", member.get("coverage"), used)
-                if not str(member.get("attribution", "")).strip():
-                    report.error(f"{at}.members[{index}]: no attribution")
-                check_zooms(report, f"{at}.members[{index}]", member.get("minimumZoom"), member.get("maximumZoom"))
-
+    unsourced = [index for index, member in enumerate(members) if "source" not in member]
     time_ = layer.get("time")
     if time_ is None:
-        if "source" not in layer:
-            report.error(f"{where}: an undated layer needs a source")
+        for index in unsourced:
+            report.error(f"{where}.members[{index}]: a member of an undated layer needs a source")
         return
     time_ = obj(time_)
+    if len(members) > 1:
+        report.error(f"{where}: a dated layer has exactly one member; this one has {len(members)}")
     discovery = discovery_of(layer)
     kind = discovery.get("type")
     listed = editions_of(discovery)
     derivable = kind == "monthlyClock" or (kind == "fixed" and listed)
-    if "source" not in layer and not derivable:
+    if unsourced and not derivable:
         report.error(f"{where}: a dated layer may leave out source only when its discovery is fixed (with dates) "
                      f"or monthlyClock; this one is {kind}")
     if "range" not in time_ and not derivable:
@@ -302,8 +373,9 @@ def check_layer(report, catalog, where, layer, used):
         seen.setdefault(edition_id, index)
         if kind == "regional":
             check_rect(report, f"{where}.time.discovery.editions[{index}].extent", obj(edition).get("extent"))
-    if kind == "monthlyClock" and "{date}" not in json.dumps(discovery.get("source")):
-        report.error(f"{where}: a monthlyClock source must contain {{date}}, or every month draws the same picture")
+    for token_kind, token in FILLED_BY_DISCOVERY.items():
+        if kind == token_kind and token not in str(obj(discovery.get("source")).get("urlTemplate")):
+            report.error(f"{where}: a {kind} source must contain {token}, or every date draws the same picture")
 
 
 def rules(catalog, schema):
@@ -329,12 +401,9 @@ def rules(catalog, schema):
         if provider not in providers:
             report.error(f"{where}: no provider \"{provider}\"")
         license_ = dataset.get("license")
-        if isinstance(license_, str):
-            used["licenses"].add(license_)
-            if license_ not in licenses:
-                report.error(f"{where}: no licence \"{license_}\"")
-        elif not str(obj(license_).get("name", "")).strip():
-            report.error(f"{where}: no licence")
+        used["licenses"].add(license_)
+        if license_ not in licenses:
+            report.error(f"{where}: no licence \"{license_}\"")
         if not str(dataset.get("attribution", "")).strip():
             report.error(f"{where}: no attribution")
         check_coverage(report, catalog, f"{where}.coverage", dataset.get("coverage"), used)
@@ -385,7 +454,10 @@ def rules(catalog, schema):
     for where, layer in every_layer(catalog):
         check_layer(report, catalog, where, layer, used)
 
+    # A dataset no layer draws is a source that is listed and not yet drawn, so it isn't reported.
     for table in used:
+        if table == "datasets":
+            continue
         defined = obj(catalog.get(table)) if table != "groups" else group_ids
         for key in sorted(set(defined) - used[table]):
             report.warn(f"{table}.{key} is not used by anything")
@@ -410,7 +482,7 @@ def command_rules(args):
 # MARK: - Revision
 
 def layer_fingerprints(catalog):
-    """For each layer ID: everything that decides what it draws, so a change to its dataset or a
+    """For each layer ID: everything that decides what it draws, so a change to a dataset or a
     coverage it names counts as a change to the layer. The first definition of an ID wins."""
     datasets = obj(catalog.get("datasets"))
     coverages = obj(catalog.get("coverages"))
@@ -419,17 +491,18 @@ def layer_fingerprints(catalog):
         layer_id = layer.get("id")
         if layer_id in result:
             continue
-        dataset = datasets.get(layer.get("dataset"))
-        text = json.dumps(layer, sort_keys=True) + json.dumps(dataset, sort_keys=True)
+        named = [datasets.get(key) for key in dataset_keys(layer)]
+        text = json.dumps(layer, sort_keys=True) + json.dumps(named, sort_keys=True)
         named = {key for key in re.findall(r'"coverage": "([^"]+)"', text) if key in coverages}
         result[layer_id] = text + json.dumps({k: coverages[k] for k in sorted(named)}, sort_keys=True)
     return result
 
 
-def layer_datasets(catalog):
+def first_definitions(catalog):
+    """Each layer by ID. A base map's layer may be listed in several base maps; the first one wins."""
     result = {}
     for _, layer in every_layer(catalog):
-        result.setdefault(layer.get("id"), layer.get("dataset"))
+        result.setdefault(layer.get("id"), layer)
     return result
 
 
@@ -460,14 +533,22 @@ def command_revision(args):
                         f"bump it in catalog/src/catalog.json and reassemble")
 
     old_datasets, new_datasets = obj(old.get("datasets")), obj(new.get("datasets"))
-    for layer_id, before in layer_datasets(old).items():
-        after = layer_datasets(new).get(layer_id)
-        if after is None or after == before:
+    new_layers = first_definitions(new)
+    for layer_id, old_layer in first_definitions(old).items():
+        if layer_id not in new_layers:
             continue
-        # A dataset key renamed with its entry unchanged is the same data; anything else is reuse.
-        if old_datasets.get(before) is not None and old_datasets.get(before) == new_datasets.get(after):
+        # Before layers listed members, a layer combining several services named one dataset that
+        # stood for all of its publishers, so there is nothing to compare its members with. This
+        # can go once a catalog with members has been released.
+        if obj(old_layer.get("source")).get("type") == "composite":
             continue
-        problems.append(f"layer id \"{layer_id}\" now points at dataset \"{after}\" instead of \"{before}\"; "
+        before, after = dataset_keys(old_layer), dataset_keys(new_layers[layer_id])
+        # Keeping any of its datasets makes it the same layer, and a dataset key renamed with its
+        # entry unchanged is the same data. Anything else is reuse.
+        entries = [old_datasets.get(key) for key in before if old_datasets.get(key) is not None]
+        if set(before) & set(after) or any(new_datasets.get(key) in entries for key in after):
+            continue
+        problems.append(f"layer id \"{layer_id}\" now draws from {after} instead of {before}; "
                         f"layer IDs are permanent, so give the new layer a new ID")
 
     added, removed, changed = compare(old, new)
@@ -484,85 +565,7 @@ def command_revision(args):
         raise SystemExit(1)
 
 
-# MARK: - Tile URLs (as the app builds them)
-
-def fill_token(source, token, value):
-    """The source with a placeholder filled in, wherever a template or query value can hold one."""
-    source = json.loads(json.dumps(source))
-    fill = lambda text: text.replace(token, value)
-    kind = source.get("type")
-    if kind in ("xyzRaster", "wmts", "vectorTiles", "rasterDEM"):
-        source["urlTemplate"] = fill(source["urlTemplate"])
-    elif kind == "arcGISTiled":
-        source["serviceURL"] = fill(source["serviceURL"])
-    elif kind in ("arcGISMapExport", "arcGISImageExport"):
-        source["serviceURL"] = fill(source["serviceURL"])
-        source["additionalQuery"] = {k: fill(v) for k, v in obj(source.get("additionalQuery")).items()}
-    elif kind == "wms":
-        source["endpoint"] = fill(source["endpoint"])
-        source["additionalQuery"] = {k: fill(v) for k, v in obj(source.get("additionalQuery")).items()}
-    elif kind == "composite":
-        for member in source["members"]:
-            member["source"] = fill_token(member["source"], token, value)
-    return source
-
-
-def escape(value):
-    """A query value as the app escapes it. A whole value in braces is left alone, so a placeholder
-    such as {bbox-epsg-3857} survives for the renderer to substitute."""
-    if value.startswith("{") and value.endswith("}"):
-        return value
-    return urllib.parse.quote(value, safe="!$'()*,-./:;@_~")
-
-
-def encoded_query(items):
-    return "&".join(f"{key}={escape(value)}" for key, value in items)
-
-
-def tile_template(source):
-    """(url template, maximum level) for a single, non-composite source."""
-    kind = source["type"]
-    if kind in ("xyzRaster", "wmts"):
-        return source["urlTemplate"], source.get("maximumLevel")
-    if kind in ("vectorTiles", "rasterDEM"):
-        return source["urlTemplate"], None
-    if kind == "arcGISTiled":
-        base = source["serviceURL"][:-1] if source["serviceURL"].endswith("/") else source["serviceURL"]
-        ext = source.get("fileExtension")
-        return f"{base}/tile/{{z}}/{{y}}/{{x}}" + (f".{ext}" if ext is not None else ""), source.get("maximumLevel")
-    if kind in ("arcGISMapExport", "arcGISImageExport"):
-        ratio = max(source.get("pixelRatio", 2), 1)
-        pixels = source.get("tileSize", 256) * ratio
-        items = [
-            ("bbox", "{bbox-epsg-3857}"), ("bboxSR", "3857"), ("imageSR", "3857"),
-            ("size", f"{pixels},{pixels}"), ("dpi", str(96 * ratio)),
-            ("format", source.get("imageFormat", "png32")),
-            ("transparent", "true" if source.get("transparent", True) else "false"), ("f", "image"),
-        ]
-        for key, name in (("visibleLayers", "layers"), ("mosaicRule", "mosaicRule"), ("renderingRule", "renderingRule")):
-            if key in source:
-                items.append((name, source[key]))
-        query = obj(source.get("additionalQuery"))
-        items += [(key, query[key]) for key in sorted(query)]
-        base = source["serviceURL"][:-1] if source["serviceURL"].endswith("/") else source["serviceURL"]
-        path = "export" if kind == "arcGISMapExport" else "exportImage"
-        return f"{base}/{path}?" + encoded_query(items), None
-    if kind == "wms":
-        pixels = source.get("tileSize", 256) * max(source.get("pixelRatio", 2), 1)
-        version = source["version"]
-        items = [
-            ("service", "WMS"), ("version", version), ("request", "GetMap"), ("layers", source["layers"]),
-            ("styles", source.get("styles", "")), ("srs" if version == "1.1.1" else "crs", "EPSG:3857"),
-            ("bbox", "{bbox-epsg-3857}"), ("width", str(pixels)), ("height", str(pixels)),
-            ("format", source.get("imageFormat", "image/png")),
-            ("transparent", "TRUE" if source.get("transparent", True) else "FALSE"),
-        ]
-        query = obj(source.get("additionalQuery"))
-        items += [(key, query[key]) for key in sorted(query)]
-        endpoint = source["endpoint"]
-        return endpoint + ("&" if "?" in endpoint else "?") + encoded_query(items), None
-    raise ValueError(f"no tile template for source type {kind}")
-
+# MARK: - Tile URLs (as the renderer fills them)
 
 def tile_at(lon, lat, z):
     n = 2 ** z
@@ -603,15 +606,16 @@ def month_ago_stamp(series):
     return f"{key}-{day:02d}"
 
 
-def drawn_source(layer):
-    """(source, note): what the app draws for a layer before a date is picked."""
+def drawn_source(layer, member):
+    """(source, note): what the app draws for one of a layer's members before a date is picked."""
     discovery = discovery_of(layer)
     kind = discovery.get("type")
-    if "source" in layer:
-        return layer["source"], None
+    if "source" in member:
+        return member["source"], None
     if kind == "monthlyClock":
         stamp = month_ago_stamp(discovery)
-        return fill_token(discovery["source"], "{date}", stamp), f"monthlyClock date {stamp}"
+        template = discovery["source"]["urlTemplate"].replace(FILLED_BY_DISCOVERY[kind], stamp)
+        return {**discovery["source"], "urlTemplate": template}, f"monthlyClock date {stamp}"
     if kind == "fixed" and discovery.get("editions"):
         newest = None
         for edition in discovery["editions"]:
@@ -622,7 +626,7 @@ def drawn_source(layer):
 
 
 def probe_targets(catalog, only=None):
-    """One probe per drawable source: each layer's drawn source, or each member of a composite."""
+    """One probe per drawable source: each member of each layer."""
     datasets = obj(catalog.get("datasets"))
     targets, seen = [], set()
     for _, layer in every_layer(catalog):
@@ -630,57 +634,45 @@ def probe_targets(catalog, only=None):
         if layer_id in seen or (only is not None and layer_id not in only):
             continue
         seen.add(layer_id)
-        dataset = obj(datasets.get(layer.get("dataset")))
-        base = {"layer": layer_id, "member": None, "minimumZoom": layer.get("minimumZoom", 0),
-                "maximumZoom": layer.get("maximumZoom", 22)}
-        if dataset.get("requiresBackendProxy"):
-            targets.append({**base, "skip": "dataset requires the backend proxy"})
-            continue
-        source, note = drawn_source(layer)
-        if source is None:
-            targets.append({**base, "skip": "no source to probe"})
-            continue
-        coverage = coverage_rects(catalog, dataset.get("coverage"))
+        members = members_of(layer)
         discovery = discovery_of(layer)
-        if discovery.get("type") == "regional":
-            # A storm flight covers a strip, not the dataset's whole area; probe inside the strip.
-            for edition in discovery.get("editions", []):
-                if edition.get("source") == source:
-                    coverage = [edition["extent"]]
-        flatten(targets, base, source, coverage, note, catalog, None)
+        for index, member in enumerate(members):
+            target = {"layer": layer_id, "member": None if len(members) == 1 else str(index),
+                      "minimumZoom": layer.get("minimumZoom", 0), "maximumZoom": layer.get("maximumZoom", 22)}
+            if discovery.get("type") == "sheetIndex":
+                targets.append({**target, "skip": "drawn from the app's sheet index, not from the source"})
+                continue
+            source, note = drawn_source(layer, member)
+            if source is None:
+                targets.append({**target, "skip": "no source to probe"})
+                continue
+            coverage_key = obj(datasets.get(member.get("dataset"))).get("coverage")
+            coverage = coverage_rects(catalog, coverage_key)
+            point = PROBE_POINTS.get(coverage_key)
+            if discovery.get("type") == "regional":
+                point = None
+                # A storm flight covers a strip, not the dataset's whole area; probe inside the strip.
+                for edition in discovery.get("editions", []):
+                    if edition.get("source") == source:
+                        coverage = [edition["extent"]]
+            targets.append({**target, "source": source, "coverage": coverage, "point": point, "note": note})
     return targets
-
-
-def flatten(targets, base, source, coverage, note, catalog, prefix):
-    if source.get("type") != "composite":
-        targets.append({**base, "source": source, "coverage": coverage, "note": note,
-                        "member": prefix})
-        return
-    for index, member in enumerate(source.get("members", [])):
-        label = str(index) if prefix is None else f"{prefix}.{index}"
-        nested = {**base,
-                  "minimumZoom": member.get("minimumZoom", base["minimumZoom"]),
-                  "maximumZoom": member.get("maximumZoom", base["maximumZoom"])}
-        flatten(targets, nested, member["source"], coverage_rects(catalog, member.get("coverage")), note,
-                catalog, label)
 
 
 def plan(target):
     """The URL to request for a target, and the zoom it's at."""
-    template, maximum_level = tile_template(target["source"])
+    template, maximum_level = target["source"]["urlTemplate"], target["source"].get("maximumLevel")
     low, high = math.ceil(target["minimumZoom"]), math.floor(target["maximumZoom"])
     z = max(low, min(10, high))
     if maximum_level is not None:
         z = min(z, maximum_level)
+    deepest = high if maximum_level is None else min(high, maximum_level)
     coverage = target["coverage"]
-    contains = lambda r, p: r[0] <= p[0] <= r[2] and r[1] <= p[1] <= r[3]
-    if coverage == "global" or not coverage or any(contains(rect, CONUS_POINT) for rect in coverage):
-        # Worldwide or nationwide: the middle of a rectangle running from Alaska to Maine is in
-        # Oregon, where a national service may hold nothing, so ask about the middle of the country.
-        lon, lat = CONUS_POINT
-    else:
-        min_lon, min_lat, max_lon, max_lat = coverage[0]
-        lon, lat = (min_lon + max_lon) / 2, (min_lat + max_lat) / 2
+    if coverage != "global" and coverage:
+        # A cache made for a small area may hold no tile wider than the area itself.
+        while z < deepest and 360 / 2 ** z > coverage[0][2] - coverage[0][0]:
+            z += 1
+    lon, lat = probe_point(target)
     x, y = tile_at(lon, lat, z)
     return tile_url(template, z, x, y), z
 
@@ -734,9 +726,9 @@ def probe_one(target, timeout, retries, gate):
     if "skip" in target:
         return {**result, "skipped": True, "note": target["skip"]}
     kind = target["source"]["type"]
-    if kind == "vectorTiles":
+    if kind == "vector":
         return {**result, "skipped": True, "note": "vector tiles are not probed"}
-    if kind == "geoJSON":
+    if kind == "features":
         return probe_points(target, result, timeout, retries, gate)
     try:
         result["url"], result["zoom"] = plan(target)
@@ -755,7 +747,7 @@ def probe_one(target, timeout, retries, gate):
         result["error"] = f"HTTP {status}"
     elif not body:
         result["error"] = "empty response"
-    elif media.startswith("image/") or (kind == "rasterDEM" and media in TILE_TYPES):
+    elif media.startswith("image/") or (kind == "dem" and media in TILE_TYPES):
         result["ok"] = True
     elif is_image_bytes(body):
         result["ok"] = True
@@ -767,17 +759,21 @@ def probe_one(target, timeout, retries, gate):
 
 
 def probe_point(target):
-    """The place a point source is asked about: as `plan` chooses for tiles."""
+    """The place a source is asked about."""
+    if target["point"]:
+        return target["point"]
     coverage = target["coverage"]
     contains = lambda r, p: r[0] <= p[0] <= r[2] and r[1] <= p[1] <= r[3]
     if coverage == "global" or not coverage or any(contains(rect, CONUS_POINT) for rect in coverage):
+        # Worldwide or nationwide: the middle of a rectangle running from Alaska to Maine is in
+        # Oregon, where a national service may hold nothing, so ask about the middle of the country.
         return CONUS_POINT
     min_lon, min_lat, max_lon, max_lat = coverage[0]
     return (min_lon + max_lon) / 2, (min_lat + max_lat) / 2
 
 
 def probe_points(target, result, timeout, retries, gate):
-    """Asks a geoJSON source about a degree-wide box at the probe point, and checks the answer is
+    """Asks a features source about a degree-wide box at the probe point, and checks the answer is
     the shape the app reads: a FeatureCollection, or a list of records at the mapped path."""
     source = target["source"]
     lon, lat = probe_point(target)
@@ -894,7 +890,7 @@ def main():
     probe_parser.set_defaults(run=command_probe)
 
     for sub in (rules_parser, revision_parser, probe_parser):
-        sub.add_argument("--file", default=str(CATALOG), help="the catalog to check (default catalog/catalog-v1.json)")
+        sub.add_argument("--file", default=str(CATALOG), help="the catalog to check (default catalog/catalog-v1.sqlite)")
     args = parser.parse_args()
     args.run(args)
 

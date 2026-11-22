@@ -23,6 +23,8 @@ jobs:
           python-version: "3.12"
       - name: Sources formatted and assembled
         run: python3 tools/catalog.py verify
+      - name: Build the catalog database
+        run: python3 tools/catalog.py assemble
       - name: Install jsonschema
         run: pip install jsonschema
       - name: Schema and rules
@@ -30,7 +32,7 @@ jobs:
       - name: Revision and layer IDs against the latest release
         run: python3 tools/check.py revision
       - name: Probe layers changed since the latest release
-        run: python3 tools/check.py probe --changed-since https://github.com/ouroborostechnologies/platmark/releases/latest/download/catalog-v1.json --json probe-results.json
+        run: python3 tools/check.py probe --changed-since https://github.com/ouroborostechnologies/platmark/releases/latest/download/catalog-v1.sqlite --json probe-results.json
       - name: Keep probe results
         if: always()
         uses: actions/upload-artifact@v4

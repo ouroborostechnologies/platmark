@@ -1,8 +1,10 @@
 // Shows the screenshot of whichever scene is across the middle of the window, fading it in over
-// the others so the screen never dims to black partway through, and enlarges it when tapped.
+// the others so the screen never dims to black partway through, names its place on the plate
+// below, and enlarges it when tapped.
 (() => {
   const screen = document.querySelector(".screen");
   const screens = new Map([...screen.querySelectorAll("img")].map((img) => [img.dataset.scene, img]));
+  const places = document.querySelectorAll(".plate p");
   let active = screen.querySelector(".is-shown");
   let topLayer = 0;
 
@@ -14,6 +16,7 @@
     const next = screens.get(scene);
     if (next === active) return;
     active = next;
+    for (const place of places) place.classList.toggle("is-shown", place.dataset.scene === scene);
     if (getComputedStyle(next).opacity === "0") next.style.zIndex = ++topLayer;
     for (const img of screens.values()) {
       if (layer(img) > layer(next)) img.classList.remove("is-shown");
