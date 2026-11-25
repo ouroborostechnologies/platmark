@@ -32,6 +32,7 @@ catalog/
   src/catalog.json        schemaVersion, catalogRevision, and the fragments to include, in order
   src/providers.json …      shared tables: providers, licenses, coverages, groups
   src/layers/<area>.json    datasets and layers, grouped however reads best
+  src/sources/<country>.json  satellite and aerial imagery sources that are listed but not drawn, by country
   src/basemaps.json         the base maps
   catalog-v1.sqlite       built from src/ by `tools/catalog.py assemble`; not committed
   catalog-v1.schema.json  JSON Schema for the catalog as assembled, before it is written to the database
@@ -45,7 +46,7 @@ A fragment can hold the tables (`providers`, `licenses`, `coverages`, `datasets`
 
 A fragment describes each source as the service it is: `xyzRaster`, `arcGISTiled`, `arcGISMapExport`, `arcGISImageExport`, `wms`, `wmts`, `vectorTiles`, `rasterDEM` or `geoJSON`. Assembling turns each into what the app draws (`raster`, `vector`, `dem` or `features`) and builds its tile URL template, so the published file holds the exact URLs the app requests and `tools/catalog.py` is the only place one is built.
 
-A dataset needs no layer. One can be listed with what it covers, so the app can show what exists for a place; it may also say what it is about (`themes`), the forms it comes in (`formats`), how its link gives the data (`access`) and what it costs (`cost`). Give one a layer when it has a tile or map service the app can draw.
+A dataset needs no layer. The files in `src/sources/` list satellite and aerial imagery sources worldwide with what they cover, so the app can show what exists for a place; each may also say what it is about (`themes`), the forms it comes in (`formats`), how its link gives the data (`access`) and what it costs (`cost`). Give one a layer when it has a tile or map service the app can draw.
 
 A layer names one publisher with `dataset` and `source`, or several with `members`, each a `dataset` and a `source` drawn bottom to top. The published file lists `members` either way.
 

@@ -1,0 +1,34 @@
+{
+  "datasets": {
+    "china.geospatial-data-cloud": {
+      "name": "Geospatial Data Cloud",
+      "summary": "Free Landsat, ASTER GDEM and SRTM mirrors; requires a (Chinese-language) registration.",
+      "provider": "chinese-academy-of-sciences",
+      "officialURL": "https://www.gscloud.cn/",
+      "serviceURL": "https://www.gscloud.cn/",
+      "attribution": "Chinese Academy of Sciences",
+      "license": "seePublisherTerms",
+      "coverage": "country.cn",
+      "themes": ["imagery", "elevation"],
+      "formats": ["GeoTIFF"],
+      "access": "download",
+      "cost": "free-registration",
+      "useStatus": {"restricted": "Terms not reviewed for use in a paid app: See publisher terms"}
+    },
+    "china.tianditu": {
+      "name": "Tianditu",
+      "summary": "National online map service (vector, imagery and terrain tiles); API key needed and the site often blocks requests from outside China.",
+      "provider": "ministry-of-natural-resources",
+      "officialURL": "https://www.tianditu.gov.cn/",
+      "serviceURL": "https://www.tianditu.gov.cn/",
+      "attribution": "Ministry of Natural Resources",
+      "license": "seePublisherTerms",
+      "coverage": "country.cn",
+      "themes": ["imagery", "boundaries"],
+      "formats": ["WMTS"],
+      "access": "api",
+      "cost": "free-registration",
+      "useStatus": {"restricted": "Terms not reviewed for use in a paid app: See publisher terms"}
+    }
+  }
+}

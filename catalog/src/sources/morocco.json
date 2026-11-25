@@ -1,0 +1,18 @@
+{
+  "datasets": {
+    "morocco.ancfcc-cartographie-thematique": {
+      "name": "ANCFCC thematic mapping",
+      "summary": "National mapping agency viewer for thematic and base maps; data orders go through ANCFCC.",
+      "provider": "agence-nationale-de-la-conservation-fonciere-du-cadastre-et",
+      "officialURL": "https://ancfcc.gov.ma/cartographieThematique/",
+      "serviceURL": "https://ancfcc.gov.ma/cartographieThematique/",
+      "attribution": "Agence Nationale de la Conservation Foncière, du Cadastre et de la Cartographie",
+      "license": "seePublisherTerms",
+      "coverage": "country.ma",
+      "themes": ["cadastre", "boundaries", "imagery"],
+      "access": "viewer",
+      "cost": "free",
+      "useStatus": {"restricted": "Terms not reviewed for use in a paid app: See publisher terms"}
+    }
+  }
+}

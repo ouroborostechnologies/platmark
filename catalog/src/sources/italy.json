@@ -1,0 +1,271 @@
+{
+  "datasets": {
+    "italy.geoportale-emilia-romagna": {
+      "name": "Geoportale Emilia-Romagna",
+      "summary": "Emilia-Romagna's geoportal: regional topographic database, terrain models, historical and current orthophotos, geology and soil maps.",
+      "provider": "regione-emilia-romagna",
+      "officialURL": "https://geoportale.regione.emilia-romagna.it/",
+      "serviceURL": "https://servizigis.regione.emilia-romagna.it/wms/agea2023_rgb",
+      "attribution": "AGEA / Regione Emilia-Romagna",
+      "license": "noneStated",
+      "coverage": "country.it.emilia-romagna",
+      "themes": ["portal", "elevation", "imagery", "geology"],
+      "formats": ["WMS", "WFS", "Shapefile", "GeoTIFF"],
+      "access": "portal",
+      "cost": "free",
+      "useStatus": {
+        "restricted": "Commercial use is not clearly allowed: Not stated in service metadata (Fees and AccessConstraints empty)"
+      }
+    },
+    "italy.geoportale-lazio": {
+      "name": "Geoportale Regione Lazio",
+      "summary": "Lazio's regional geoportal, with the regional technical map, orthophotos, land-use and landscape planning layers.",
+      "provider": "regione-lazio",
+      "officialURL": "https://geoportale.regione.lazio.it/",
+      "serviceURL": "https://geoportale.regione.lazio.it/geoserver/ows",
+      "attribution": "Regione Lazio (flight by CGR Parma)",
+      "license": "creativeCommonsGeonodeLicenceFieldCreativecommonsVariantNotS",
+      "coverage": "country.it.lazio",
+      "themes": ["portal", "imagery", "land-cover", "environment"],
+      "formats": ["WMS", "WFS", "Shapefile"],
+      "access": "portal",
+      "cost": "free",
+      "useStatus": {
+        "restricted": "Commercial use is not clearly allowed: Creative Commons (GeoNode licence field 'creativecommons', variant not stated); constraints 'nessun vincolo'"
+      }
+    },
+    "italy.geoportale-liguria": {
+      "name": "Geoportale Regione Liguria",
+      "summary": "Liguria's geoportal, with regional technical maps, terrain models, orthophotos and flood and landslide hazard layers from the regional catalogue.",
+      "provider": "regione-liguria",
+      "officialURL": "https://geoportal.regione.liguria.it/",
+      "serviceURL": "https://geoservizi.regione.liguria.it/geoserver/M2555/wms",
+      "attribution": "AGEA / Regione Liguria",
+      "license": "noneStated",
+      "coverage": "country.it.liguria",
+      "themes": ["portal", "elevation", "imagery", "hazards"],
+      "formats": ["WMS", "WFS", "Shapefile", "GeoTIFF"],
+      "access": "portal",
+      "cost": "free",
+      "useStatus": {
+        "restricted": "Commercial use is not clearly allowed: Not stated (WMS Fees NONE, AccessConstraints NONE)"
+      }
+    },
+    "italy.geoportale-nazionale": {
+      "name": "Geoportale Nazionale",
+      "summary": "",
+      "provider": "ministero-dell-ambiente-e-della-sicurezza-energetica",
+      "officialURL": "https://gn.mase.gov.it/",
+      "serviceURL": "https://wms.pcn.minambiente.it/ogc?map=/ms_ogc/WMS_v1.3/raster/ortofoto_colore_12.map",
+      "attribution": "Geoportale Nazionale - Ministero dell'Ambiente e della Sicurezza Energetica (imagery AGEA)",
+      "license": "notNamedWmsStatesFeesNessunaCondizioneApplicataAccessconstra",
+      "coverage": "country.it",
+      "themes": ["environment", "imagery"],
+      "formats": ["WMS"],
+      "access": "viewer",
+      "cost": "free",
+      "useStatus": {
+        "restricted": "Commercial use is not clearly allowed: Not named; WMS states Fees 'Nessuna condizione applicata', AccessConstraints 'Nessuno'"
+      }
+    },
+    "italy.geoportale-piemonte": {
+      "name": "Geoportale Piemonte",
+      "summary": "Piedmont's regional geoportal and infrastructure: regional technical maps (BDTRE), LiDAR-derived terrain models, orthophotos and land-use layers to view and download.",
+      "provider": "regione-piemonte",
+      "officialURL": "https://igr.piemonte.it/",
+      "serviceURL": "https://geomap.reteunitaria.piemonte.it/mapproxy/service",
+      "attribution": "Regione Piemonte",
+      "license": "noneStated",
+      "coverage": "country.it.piedmont",
+      "themes": ["portal", "elevation", "imagery", "cadastre"],
+      "formats": ["WMS", "WFS", "Shapefile", "GeoTIFF"],
+      "access": "portal",
+      "cost": "free",
+      "useStatus": {
+        "restricted": "Commercial use is not clearly allowed: Not stated in service (Fees None, AccessConstraints none); catalogue entry lists CC BY 4.0"
+      }
+    },
+    "italy.geoscopio-toscana": {
+      "name": "GEOscopio",
+      "summary": "Tuscany regional geodata: orthophotos, LiDAR, geology and cadastre.",
+      "provider": "regione-toscana",
+      "officialURL": "https://www.regione.toscana.it/-/geoscopio",
+      "serviceURL": "https://www502.regione.toscana.it/ows_ofc/com.rt.wms.RTmap/wms?map=owsofc",
+      "attribution": "Ortofoto 2022 copyright AGEA - licenza d'uso concessa a Regione Toscana con la convenzione del 11/07/2024",
+      "license": "ageaLicenceOfUseToRegioneToscanaConventionOf11072024",
+      "coverage": "country.it.tuscany",
+      "themes": ["portal"],
+      "formats": ["WMS"],
+      "access": "viewer",
+      "cost": "free",
+      "useStatus": {
+        "restricted": "The publisher's terms bar commercial use: AGEA licence of use to Regione Toscana (convention of 11/07/2024)"
+      }
+    },
+    "italy.irdat-fvg": {
+      "name": "IRDAT Friuli Venezia Giulia",
+      "summary": "The regional spatial data catalogue for Friuli Venezia Giulia, including LiDAR terrain models, orthophotos, technical maps and environmental layers.",
+      "provider": "regione-autonoma-friuli-venezia-giulia",
+      "officialURL": "https://irdat.regione.fvg.it/",
+      "serviceURL": "https://irdat-ortofoto.regione.fvg.it/geoserver/ortofoto/ows",
+      "attribution": "Regione Autonoma Friuli Venezia Giulia",
+      "license": "noneStated",
+      "coverage": "country.it.friuli-venezia-giulia",
+      "themes": ["portal", "elevation", "imagery", "environment"],
+      "formats": ["WMS", "WFS", "Shapefile", "GeoTIFF", "LAS"],
+      "access": "portal",
+      "cost": "free",
+      "useStatus": {
+        "restricted": "Commercial use is not clearly allowed: Not stated (WMS Fees NONE, AccessConstraints NONE)"
+      }
+    },
+    "italy.rsdi-basilicata": {
+      "name": "RSDI Basilicata",
+      "summary": "Basilicata's regional spatial data infrastructure: topographic database, terrain models, orthophotos and planning layers.",
+      "provider": "regione-basilicata",
+      "officialURL": "https://rsdi.regione.basilicata.it/",
+      "serviceURL": "https://rsdi.regione.basilicata.it/rbgeoserver2016/ows",
+      "attribution": "AGEA / Regione Basilicata",
+      "license": "noneStated",
+      "coverage": "country.it.basilicata",
+      "themes": ["portal", "elevation", "imagery", "cadastre"],
+      "formats": ["WMS", "WFS", "Shapefile", "GeoTIFF"],
+      "access": "portal",
+      "cost": "free",
+      "useStatus": {
+        "restricted": "Commercial use is not clearly allowed: Not stated (WMS Fees NONE, AccessConstraints NONE)"
+      }
+    },
+    "italy.sardegna-geoportale": {
+      "name": "Sardegna Geoportale",
+      "summary": "Sardinia's geoportal: terrain models, orthophotos, land use, the regional landscape plan and cadastral layers, with download services.",
+      "provider": "regione-autonoma-della-sardegna",
+      "officialURL": "https://www.sardegnageoportale.it/",
+      "serviceURL": "https://webgis.regione.sardegna.it/geoserverraster/ows",
+      "attribution": "Regione Autonoma della Sardegna (imagery MASAF / AGEA)",
+      "license": "noneStated",
+      "coverage": "country.it.sardinia",
+      "themes": ["portal", "elevation", "imagery", "land-cover"],
+      "formats": ["WMS", "WFS", "Shapefile", "GeoTIFF"],
+      "access": "portal",
+      "cost": "free",
+      "useStatus": {
+        "restricted": "Commercial use is not clearly allowed: Not stated (WMS Fees NONE, AccessConstraints NONE)"
+      }
+    }
+  },
+  "layers": [
+    {
+      "id": "italy.geoportale-emilia-romagna",
+      "name": "Emilia-Romagna, Italy: Geoportale Emilia-Romagna",
+      "summary": "Ortofoto AGEA 2023 RGB.",
+      "category": "historical",
+      "group": "nationalImagery",
+      "dataset": "italy.geoportale-emilia-romagna",
+      "source": {
+        "type": "wms",
+        "endpoint": "https://servizigis.regione.emilia-romagna.it/wms/agea2023_rgb",
+        "layers": "Agea2023_RGB",
+        "version": "1.3.0"
+      }
+    },
+    {
+      "id": "italy.geoportale-lazio",
+      "name": "Lazio, Italy: Geoportale Regione Lazio",
+      "summary": "Ortofoto CGR 2002/03, 2002-2003.",
+      "category": "historical",
+      "group": "nationalImagery",
+      "dataset": "italy.geoportale-lazio",
+      "source": {
+        "type": "wms",
+        "endpoint": "https://geoportale.regione.lazio.it/geoserver/ows",
+        "layers": "geonode:2002_2003_CGR_25833_COG",
+        "version": "1.3.0"
+      }
+    },
+    {
+      "id": "italy.geoportale-liguria",
+      "name": "Liguria, Italy: Geoportale Regione Liguria",
+      "summary": "Ortofoto a colori 2022 (1:5000).",
+      "category": "historical",
+      "group": "nationalImagery",
+      "dataset": "italy.geoportale-liguria",
+      "source": {
+        "type": "wms",
+        "endpoint": "https://geoservizi.regione.liguria.it/geoserver/M2555/wms",
+        "layers": "L10401",
+        "version": "1.3.0"
+      }
+    },
+    {
+      "id": "italy.geoportale-piemonte",
+      "name": "Piedmont, Italy: Geoportale Piemonte",
+      "summary": "Ortofoto 2010 Regione Piemonte.",
+      "category": "historical",
+      "group": "nationalImagery",
+      "dataset": "italy.geoportale-piemonte",
+      "source": {
+        "type": "wms",
+        "endpoint": "https://geomap.reteunitaria.piemonte.it/mapproxy/service",
+        "layers": "rp_ortofoto_2010",
+        "version": "1.3.0"
+      }
+    },
+    {
+      "id": "italy.geoscopio-toscana",
+      "name": "Tuscany, Italy: GEOscopio",
+      "summary": "OFC 2022 20 cm RGB (AGEA).",
+      "category": "historical",
+      "group": "nationalImagery",
+      "dataset": "italy.geoscopio-toscana",
+      "source": {
+        "type": "wms",
+        "endpoint": "https://www502.regione.toscana.it/ows_ofc/com.rt.wms.RTmap/wms?map=owsofc",
+        "layers": "rt_ofc.5k22.32bit",
+        "version": "1.3.0"
+      }
+    },
+    {
+      "id": "italy.irdat-fvg",
+      "name": "Friuli Venezia Giulia, Italy: IRDAT Friuli Venezia Giulia",
+      "summary": "TrueOrtofoto FVG 2017-2020.",
+      "category": "historical",
+      "group": "nationalImagery",
+      "dataset": "italy.irdat-fvg",
+      "source": {
+        "type": "wms",
+        "endpoint": "https://irdat-ortofoto.regione.fvg.it/geoserver/ortofoto/ows",
+        "layers": "trueorto_FVG_1720",
+        "version": "1.3.0"
+      }
+    },
+    {
+      "id": "italy.rsdi-basilicata",
+      "name": "Basilicata, Italy: RSDI Basilicata",
+      "summary": "Ortofoto AGEA 2020.",
+      "category": "historical",
+      "group": "nationalImagery",
+      "dataset": "italy.rsdi-basilicata",
+      "source": {
+        "type": "wms",
+        "endpoint": "https://rsdi.regione.basilicata.it/rbgeoserver2016/ows",
+        "layers": "ortofoto_2020:agea_ortofoto_2020",
+        "version": "1.3.0"
+      }
+    },
+    {
+      "id": "italy.sardegna-geoportale",
+      "name": "Sardinia, Italy: Sardegna Geoportale",
+      "summary": "Mosaico ortofoto 2022.",
+      "category": "historical",
+      "group": "nationalImagery",
+      "dataset": "italy.sardegna-geoportale",
+      "source": {
+        "type": "wms",
+        "endpoint": "https://webgis.regione.sardegna.it/geoserverraster/ows",
+        "layers": "raster:Mosaico_ortofoto_2022",
+        "version": "1.3.0"
+      }
+    }
+  ]
+}

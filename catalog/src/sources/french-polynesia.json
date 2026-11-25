@@ -1,0 +1,35 @@
+{
+  "datasets": {
+    "french-polynesia.tefenua": {
+      "name": "Te Fenua",
+      "summary": "Official geoportal of French Polynesia with imagery, cadastre and planning layers.",
+      "provider": "gouvernement-de-la-polynesie-francaise",
+      "officialURL": "https://www.tefenua.gov.pf/",
+      "serviceURL": "https://www.tefenua.gov.pf/api/wmts?SERVICE=WMTS&VERSION=1.0.0&REQUEST=GetTile&LAYER=TEFENUA:IMAGE_PUBLIQUE&STYLE=&TILEMATRIXSET=EPSG:900913&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}&FORMAT=image/png8",
+      "attribution": "Gouvernement de la Polynésie française",
+      "license": "notFoundCapabilitiesFeesNoneAccessconstraintsNone",
+      "coverage": "country.pf",
+      "themes": ["portal", "imagery", "cadastre", "boundaries"],
+      "formats": ["WMS"],
+      "access": "viewer",
+      "cost": "free",
+      "useStatus": {
+        "restricted": "Commercial use is not clearly allowed: Not found (capabilities: Fees none, AccessConstraints none)"
+      }
+    }
+  },
+  "layers": [
+    {
+      "id": "french-polynesia.tefenua",
+      "name": "French Polynesia: Te Fenua",
+      "summary": "Images satellites (Te Fenua).",
+      "category": "historical",
+      "group": "nationalImagery",
+      "dataset": "french-polynesia.tefenua",
+      "source": {
+        "type": "wmts",
+        "urlTemplate": "https://www.tefenua.gov.pf/api/wmts?SERVICE=WMTS&VERSION=1.0.0&REQUEST=GetTile&LAYER=TEFENUA:IMAGE_PUBLIQUE&STYLE=&TILEMATRIXSET=EPSG:900913&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}&FORMAT=image/png8"
+      }
+    }
+  ]
+}

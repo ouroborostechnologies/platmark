@@ -1,0 +1,34 @@
+{
+  "datasets": {
+    "new-caledonia.georep-nc": {
+      "name": "Géorep",
+      "summary": "New Caledonia’s spatial data portal with orthophotos, cadastre, DEM and a download catalogue.",
+      "provider": "gouvernement-de-la-nouvelle-caledonie-dtsi",
+      "officialURL": "https://georep.nc/",
+      "serviceURL": "https://carto.gouv.nc/public/rest/services/fond_imagerie/MapServer",
+      "attribution": "Gouvernement de la Nouvelle-Calédonie",
+      "license": "georepMentionsLegales",
+      "coverage": "country.nc",
+      "themes": ["portal", "imagery", "cadastre", "boundaries", "elevation"],
+      "formats": ["WMS", "Shapefile"],
+      "access": "portal",
+      "cost": "free",
+      "useStatus": {"restricted": "The publisher's terms bar commercial use: Georep mentions légales"}
+    }
+  },
+  "layers": [
+    {
+      "id": "new-caledonia.georep-nc",
+      "name": "New Caledonia: Géorep",
+      "summary": "Fond imagerie (aerial photos and Sentinel satellite mosaic).",
+      "category": "historical",
+      "group": "nationalImagery",
+      "dataset": "new-caledonia.georep-nc",
+      "source": {
+        "type": "arcGISMapExport",
+        "serviceURL": "https://carto.gouv.nc/public/rest/services/fond_imagerie/MapServer",
+        "visibleLayers": "show:0"
+      }
+    }
+  ]
+}

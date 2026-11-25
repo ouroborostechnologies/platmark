@@ -1,0 +1,47 @@
+{
+  "datasets": {
+    "austria.basemap-at": {
+      "name": "basemap.at",
+      "summary": "",
+      "provider": "austrian-federal-states",
+      "officialURL": "https://basemap.at/",
+      "serviceURL": "https://mapsneu.wien.gv.at/basemap/bmaporthofoto30cm/normal/google3857/{z}/{y}/{x}.jpeg",
+      "attribution": "Datenquelle: basemap.at",
+      "license": "ccBy40",
+      "coverage": "country.at",
+      "themes": ["imagery", "transport"],
+      "formats": ["WMTS"],
+      "access": "api",
+      "cost": "free"
+    },
+    "austria.geoland-at": {
+      "name": "geoland.at",
+      "summary": "Joint geodata portal of the nine provinces: orthophotos and terrain models.",
+      "provider": "austrian-federal-provinces",
+      "officialURL": "https://www.geoland.at/",
+      "serviceURL": "https://www.geoland.at/",
+      "attribution": "Austrian federal provinces",
+      "license": "ccBy40",
+      "coverage": "country.at",
+      "themes": ["imagery", "elevation", "portal"],
+      "formats": ["WMTS", "GeoTIFF"],
+      "access": "portal",
+      "cost": "free"
+    }
+  },
+  "layers": [
+    {
+      "id": "austria.basemap-at",
+      "name": "Austria: basemap.at",
+      "summary": "basemap.at Orthofoto (30 cm), rolling, most recent per province.",
+      "category": "historical",
+      "group": "nationalImagery",
+      "dataset": "austria.basemap-at",
+      "source": {
+        "type": "wmts",
+        "urlTemplate": "https://mapsneu.wien.gv.at/basemap/bmaporthofoto30cm/normal/google3857/{z}/{y}/{x}.jpeg",
+        "maximumLevel": 20
+      }
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "datasets": {
+    "israel.govmap": {
+      "name": "GovMap",
+      "summary": "National map viewer with parcels (gush/helka), orthophotos and many government layers.",
+      "provider": "survey-of-israel",
+      "officialURL": "https://www.govmap.gov.il/",
+      "serviceURL": "https://www.govmap.gov.il/",
+      "attribution": "Survey of Israel",
+      "license": "seePublisherTerms",
+      "coverage": "country.il",
+      "themes": ["cadastre", "imagery"],
+      "access": "viewer",
+      "cost": "free",
+      "useStatus": {"restricted": "Terms not reviewed for use in a paid app: See publisher terms"}
+    }
+  }
+}

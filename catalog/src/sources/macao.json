@@ -1,0 +1,18 @@
+{
+  "datasets": {
+    "macao.macao-gis": {
+      "name": "Macao Geographic Information System",
+      "summary": "Official web map of Macao with base maps, aerial imagery and address search.",
+      "provider": "cartography-and-cadastre-bureau-dscc",
+      "officialURL": "https://www.gis.gov.mo/",
+      "serviceURL": "https://www.gis.gov.mo/",
+      "attribution": "Cartography and Cadastre Bureau (DSCC)",
+      "license": "seePublisherTerms",
+      "coverage": "country.mo",
+      "themes": ["boundaries", "imagery", "cadastre"],
+      "access": "viewer",
+      "cost": "free",
+      "useStatus": {"restricted": "Terms not reviewed for use in a paid app: See publisher terms"}
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "datasets": {
+    "ecuador.geoportal-igm-ecuador": {
+      "name": "Geoportal IGM Ecuador",
+      "summary": "National basemap cartography at 1:50,000 and 1:5,000 and orthoimagery from the national mapping agency.",
+      "provider": "instituto-geografico-militar",
+      "officialURL": "https://www.geoportaligm.gob.ec/portal/",
+      "serviceURL": "https://www.geoportaligm.gob.ec/portal/",
+      "attribution": "Instituto Geográfico Militar",
+      "license": "seePublisherTerms",
+      "coverage": "country.ec",
+      "themes": ["boundaries", "elevation", "transport", "hydrology"],
+      "formats": ["Shapefile", "WMS"],
+      "access": "download",
+      "cost": "free",
+      "useStatus": {"restricted": "Terms not reviewed for use in a paid app: See publisher terms"}
+    }
+  }
+}

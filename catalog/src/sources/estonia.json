@@ -1,0 +1,47 @@
+{
+  "datasets": {
+    "estonia.estonian-geoportal": {
+      "name": "Estonian geoportal",
+      "summary": "",
+      "provider": "maa-ja-ruumiamet",
+      "officialURL": "https://geoportaal.maaamet.ee/",
+      "serviceURL": "https://tiles.maaamet.ee/tm/wmts/1.0.0/foto/default/GMC/{z}/{y}/{x}.jpg",
+      "attribution": "Orthophoto <date>, Republic of Estonia Land and Spatial Development Board",
+      "license": "republicOfEstoniaLandAndSpatialDevelopmentBoardOpendataLicen",
+      "coverage": "country.ee",
+      "themes": ["elevation", "imagery", "boundaries", "cadastre"],
+      "formats": ["GeoTIFF", "Shapefile", "LAZ"],
+      "access": "download",
+      "cost": "free"
+    },
+    "estonia.maaamet-orthophotos": {
+      "name": "Orthophotos",
+      "summary": "Nationwide orthophotos at 20–40 cm with annual coverage of part of the country.",
+      "provider": "estonian-land-and-spatial-development-board",
+      "officialURL": "https://geoportaal.maaamet.ee/eng/Spatial-Data/Orthophotos-p309.html",
+      "serviceURL": "https://geoportaal.maaamet.ee/eng/Spatial-Data/Orthophotos-p309.html",
+      "attribution": "Estonian Land and Spatial Development Board",
+      "license": "openDataLicenceOfTheLandAndSpatialDevelopmentBoard",
+      "coverage": "country.ee",
+      "themes": ["imagery"],
+      "formats": ["GeoTIFF", "WMS"],
+      "access": "download",
+      "cost": "free"
+    }
+  },
+  "layers": [
+    {
+      "id": "estonia.estonian-geoportal",
+      "name": "Estonia: Estonian geoportal",
+      "summary": "Ortofoto (latest national mosaic).",
+      "category": "historical",
+      "group": "nationalImagery",
+      "dataset": "estonia.estonian-geoportal",
+      "source": {
+        "type": "wmts",
+        "urlTemplate": "https://tiles.maaamet.ee/tm/wmts/1.0.0/foto/default/GMC/{z}/{y}/{x}.jpg",
+        "maximumLevel": 18
+      }
+    }
+  ]
+}

@@ -1,0 +1,160 @@
+{
+  "datasets": {
+    "australia.actmapi": {
+      "name": "ACTmapi",
+      "summary": "ACT spatial viewer; underlying data is published on the ACT open data portal.",
+      "provider": "act-government",
+      "officialURL": "https://www.actmapi.act.gov.au/",
+      "serviceURL": "https://tiles.arcgis.com/tiles/E5n4f1VY84i0xSjy/arcgis/rest/services/ACT_Aerial_Imagery_Current_3857/MapServer",
+      "attribution": "Australian Capital Territory and Aerometrex",
+      "license": "ccBy40",
+      "coverage": "country.au.australian-capital-territory",
+      "themes": ["cadastre", "imagery", "environment"],
+      "formats": ["WMS"],
+      "access": "viewer",
+      "cost": "free"
+    },
+    "australia.digital-earth-australia": {
+      "name": "Digital Earth Australia (DEA Knowledge Hub)",
+      "summary": "Analysis-ready Landsat and Sentinel-2 archives and derived products (water, land cover, coastlines) via Open Data Cube and AWS.",
+      "provider": "geoscience-australia",
+      "officialURL": "https://knowledge.dea.ga.gov.au/",
+      "serviceURL": "https://ows.dea.ga.gov.au/",
+      "attribution": "© Commonwealth of Australia (Geoscience Australia), Digital Earth Australia",
+      "license": "ccBy40",
+      "coverage": "country.au",
+      "themes": ["imagery", "land-cover", "hydrology"],
+      "formats": ["COG", "STAC"],
+      "access": "api",
+      "cost": "free"
+    },
+    "australia.geoscience-australia-data-catalogue": {
+      "name": "Geoscience Australia data catalogue",
+      "summary": "",
+      "provider": "geoscience-australia",
+      "officialURL": "https://ecat.ga.gov.au/",
+      "serviceURL": "https://ecat.ga.gov.au/",
+      "attribution": "Geoscience Australia",
+      "license": "ccBy40",
+      "coverage": "country.au",
+      "themes": ["geology", "elevation", "imagery"],
+      "access": "portal",
+      "cost": "free"
+    },
+    "australia.nsw-spatial-collaboration-portal": {
+      "name": "NSW Spatial Collaboration Portal",
+      "summary": "NSW foundation spatial data (cadastre, imagery, addresses, topography) as services and downloads.",
+      "provider": "nsw-spatial-services",
+      "officialURL": "https://portal.spatial.nsw.gov.au/",
+      "serviceURL": "https://maps.six.nsw.gov.au/arcgis/rest/services/public/NSW_Imagery/MapServer",
+      "attribution": "© Department of Customer Service 2020",
+      "license": "ccBy40",
+      "coverage": "country.au.new-south-wales",
+      "themes": ["cadastre", "imagery", "boundaries", "transport"],
+      "formats": ["WMS", "API", "Shapefile"],
+      "access": "portal",
+      "cost": "free",
+      "useStatus": {"restricted": "Commercial use is not clearly allowed: CC BY 4.0"}
+    },
+    "australia.queensland-globe": {
+      "name": "Queensland Globe",
+      "summary": "Queensland's free online map of property boundaries, current and historical imagery, flood and bushfire layers and elevation, with tools to export selections.",
+      "provider": "queensland-government",
+      "officialURL": "https://qldglobe.information.qld.gov.au/",
+      "serviceURL": "https://spatial-img.information.qld.gov.au/arcgis/rest/services/Basemaps/LatestStateProgram_AllUsers/ImageServer",
+      "attribution": "Includes material © State of Queensland (Department of Natural Resources and Mines, Manufacturing and Regional and Rural Development); © Planet Labs Netherlands B.V. reproduced under licence from Planet and Geoplex, all rights reserved, 2026.",
+      "license": "noneStated",
+      "coverage": "country.au.queensland",
+      "themes": ["cadastre", "imagery", "elevation", "hazards"],
+      "formats": ["Viewer", "KML"],
+      "access": "viewer",
+      "cost": "free",
+      "useStatus": {"restricted": "Commercial use is not clearly allowed: Not stated in service (copyright notice only)"}
+    },
+    "australia.thelist-tasmania": {
+      "name": "theLIST",
+      "summary": "Tasmania’s Land Information System; open data downloads via the LISTdata portal.",
+      "provider": "land-tasmania",
+      "officialURL": "https://www.thelist.tas.gov.au/",
+      "serviceURL": "https://services.thelist.tas.gov.au/arcgis/rest/services/Basemaps/Orthophoto/MapServer",
+      "attribution": "© State of Tasmania",
+      "license": "ccByNcNd30AuListWebServicesTermsAndConditions",
+      "coverage": "country.au.tasmania",
+      "themes": ["cadastre", "imagery", "elevation", "boundaries"],
+      "formats": ["WMS", "Shapefile"],
+      "access": "viewer",
+      "cost": "mixed",
+      "useStatus": {
+        "restricted": "The publisher's terms bar commercial use: CC BY-NC-ND 3.0 AU; LIST Web Services Terms and Conditions"
+      }
+    }
+  },
+  "layers": [
+    {
+      "id": "australia.actmapi",
+      "name": "Australian Capital Territory, Australia: ACTmapi",
+      "summary": "ACT Aerial Imagery Current, 2025-12 (full) with 2026-03 (urban).",
+      "category": "historical",
+      "group": "nationalImagery",
+      "dataset": "australia.actmapi",
+      "source": {
+        "type": "arcGISTiled",
+        "serviceURL": "https://tiles.arcgis.com/tiles/E5n4f1VY84i0xSjy/arcgis/rest/services/ACT_Aerial_Imagery_Current_3857/MapServer",
+        "maximumLevel": 21
+      }
+    },
+    {
+      "id": "australia.digital-earth-australia",
+      "name": "Australia: Digital Earth Australia (DEA Knowledge Hub)",
+      "summary": "DEA GeoMAD annual geomedian (Landsat 8 & 9), true colour, 2013-2025 (default 2025).",
+      "category": "historical",
+      "group": "nationalImagery",
+      "dataset": "australia.digital-earth-australia",
+      "source": {
+        "type": "wms",
+        "endpoint": "https://ows.dea.ga.gov.au/",
+        "layers": "ga_ls8cls9c_gm_cyear_3",
+        "version": "1.3.0"
+      }
+    },
+    {
+      "id": "australia.nsw-spatial-collaboration-portal",
+      "name": "New South Wales, Australia: NSW Spatial Collaboration Portal",
+      "summary": "NSW Imagery (most recent, mixed resolution), mixed, most recent per area.",
+      "category": "historical",
+      "group": "nationalImagery",
+      "dataset": "australia.nsw-spatial-collaboration-portal",
+      "source": {
+        "type": "arcGISTiled",
+        "serviceURL": "https://maps.six.nsw.gov.au/arcgis/rest/services/public/NSW_Imagery/MapServer",
+        "maximumLevel": 23
+      }
+    },
+    {
+      "id": "australia.queensland-globe",
+      "name": "Queensland, Australia: Queensland Globe",
+      "summary": "Latest State Program imagery (public), mixed; aerial 3+ years old, Planet 2017 mosaic elsewhere.",
+      "category": "historical",
+      "group": "nationalImagery",
+      "dataset": "australia.queensland-globe",
+      "source": {
+        "type": "arcGISTiled",
+        "serviceURL": "https://spatial-img.information.qld.gov.au/arcgis/rest/services/Basemaps/LatestStateProgram_AllUsers/ImageServer",
+        "maximumLevel": 20
+      }
+    },
+    {
+      "id": "australia.thelist-tasmania",
+      "name": "Tasmania, Australia: theLIST",
+      "summary": "Tasmania State Orthophoto compilation, mixed, latest per area.",
+      "category": "historical",
+      "group": "nationalImagery",
+      "dataset": "australia.thelist-tasmania",
+      "source": {
+        "type": "arcGISTiled",
+        "serviceURL": "https://services.thelist.tas.gov.au/arcgis/rest/services/Basemaps/Orthophoto/MapServer",
+        "maximumLevel": 19
+      }
+    }
+  ]
+}

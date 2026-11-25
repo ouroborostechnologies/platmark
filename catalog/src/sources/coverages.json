@@ -1,0 +1,229 @@
+{
+  "coverages": {
+    "country.ad": {"label": "Andorra", "rects": [[1.4, 42.42, 1.77, 42.65]]},
+    "country.al": {"label": "Albania", "rects": [[19.27, 39.63, 21.04, 42.66]]},
+    "country.aq": {"label": "Antarctica", "rects": [[-180, -90, 180, -60.51]]},
+    "country.ar": {"label": "Argentina", "rects": [[-73.58, -55.06, -53.66, -21.78]]},
+    "country.at": {"label": "Austria", "rects": [[9.52, 46.37, 17.15, 49.01]]},
+    "country.au": {
+      "label": "Australia",
+      "rects": [
+        [96.82, -12.2, 96.93, -12.12],
+        [105.58, -10.57, 105.72, -10.43],
+        [112.91, -43.65, 154.4, -9.24],
+        [158.83, -54.76, 158.97, -54.46],
+        [159.04, -31.6, 159.11, -31.51]
+      ]
+    },
+    "country.au.australian-capital-territory": {"label": "Australian Capital Territory, Australia", "rects": [[148.76, -35.92, 149.41, -35.13]]},
+    "country.au.new-south-wales": {"label": "New South Wales, Australia", "rects": [[141.0, -37.52, 153.64, -28.14]]},
+    "country.au.queensland": {"label": "Queensland, Australia", "rects": [[138.0, -29.18, 153.55, -9.24]]},
+    "country.au.tasmania": {"label": "Tasmania, Australia", "rects": [[143.83, -43.65, 148.49, -39.57]]},
+    "country.ax": {"label": "Åland Islands", "rects": [[19.51, 59.9, 21.1, 60.49]]},
+    "country.ba": {"label": "Bosnia and Herzegovina", "rects": [[15.71, 42.55, 19.62, 45.29]]},
+    "country.ba.federation-of-bosnia-and-herzegovina": {
+      "label": "Federation of Bosnia and Herzegovina, Bosnia and Herzegovina",
+      "rects": [[17.73, 43.9, 18.77, 44.73]]
+    },
+    "country.be.flanders": {"label": "Flanders, Belgium", "rects": [[2.52, 50.68, 5.92, 51.5]]},
+    "country.be.wallonia": {"label": "Wallonia, Belgium", "rects": [[2.84, 49.49, 6.38, 50.82]]},
+    "country.bl": {"label": "Saint Barthélemy", "rects": [[-62.87, 17.88, -62.79, 17.93]]},
+    "country.bm": {"label": "Bermuda", "rects": [[-64.89, 32.24, -64.64, 32.39]]},
+    "country.br": {
+      "label": "Brazil",
+      "rects": [
+        [-74.02, -33.75, -34.79, 5.27],
+        [-32.47, -3.89, -32.38, -3.83],
+        [-29.43, 0.83, -29.34, 0.9],
+        [-29.35, -20.59, -28.87, -20.51]
+      ]
+    },
+    "country.ca": {"label": "Canada", "rects": [[-141.01, 41.66, -52.61, 83.12]]},
+    "country.ca.northwest-territories": {"label": "Northwest Territories, Canada", "rects": [[-136.45, 60.0, -101.98, 78.77]]},
+    "country.ca.nova-scotia": {"label": "Nova Scotia, Canada", "rects": [[-66.33, 43.42, -59.68, 47.04]]},
+    "country.ca.saskatchewan": {"label": "Saskatchewan, Canada", "rects": [[-110.0, 48.99, -101.36, 60.01]]},
+    "country.ch": {"label": "Switzerland", "rects": [[5.95, 45.82, 10.47, 47.81]]},
+    "country.cn": {"label": "China", "rects": [[73.6, 15.77, 134.78, 53.57]]},
+    "country.co": {"label": "Colombia", "rects": [[-81.73, -4.24, -66.87, 13.58]]},
+    "country.cr": {"label": "Costa Rica", "rects": [[-87.12, 5.51, -87.06, 5.56], [-85.95, 8.03, -82.56, 11.21]]},
+    "country.cy": {"label": "Cyprus", "rects": [[32.27, 34.62, 34.1, 35.19]]},
+    "country.cz": {"label": "Czechia", "rects": [[12.07, 48.55, 18.84, 51.05]]},
+    "country.de.baden-wurttemberg": {"label": "Baden-Württemberg, Germany", "rects": [[7.51, 47.53, 10.5, 49.8]]},
+    "country.de.bavaria": {"label": "Bavaria, Germany", "rects": [[8.97, 47.27, 13.82, 50.57]]},
+    "country.de.berlin": {"label": "Berlin, Germany", "rects": [[13.09, 52.34, 13.76, 52.67]]},
+    "country.de.brandenburg": {"label": "Brandenburg, Germany", "rects": [[11.27, 51.34, 14.77, 53.55]]},
+    "country.de.hamburg": {"label": "Hamburg, Germany", "rects": [[9.74, 53.4, 10.33, 53.73]]},
+    "country.de.hesse": {"label": "Hesse, Germany", "rects": [[7.77, 49.39, 10.24, 51.66]]},
+    "country.de.lower-saxony": {"label": "Lower Saxony, Germany", "rects": [[6.65, 51.29, 11.59, 53.9]]},
+    "country.de.mecklenburg-western-pomerania": {"label": "Mecklenburg-Western Pomerania, Germany", "rects": [[10.6, 53.1, 14.4, 54.69]]},
+    "country.de.north-rhine-westphalia": {"label": "North Rhine-Westphalia, Germany", "rects": [[5.85, 50.32, 9.47, 52.53]]},
+    "country.de.rhineland-palatinate": {"label": "Rhineland-Palatinate, Germany", "rects": [[6.09, 48.95, 8.51, 50.94]]},
+    "country.de.saarland": {"label": "Saarland, Germany", "rects": [[6.34, 49.1, 7.4, 49.63]]},
+    "country.de.saxony": {"label": "Saxony, Germany", "rects": [[11.89, 50.16, 15.03, 51.68]]},
+    "country.de.saxony-anhalt": {"label": "Saxony-Anhalt, Germany", "rects": [[10.56, 50.92, 13.24, 53.06]]},
+    "country.dk": {"label": "Denmark", "rects": [[8.09, 54.56, 12.68, 57.76], [14.68, 54.99, 15.16, 55.31]]},
+    "country.do": {"label": "Dominican Republic", "rects": [[-72.01, 17.54, -68.32, 19.94]]},
+    "country.ec": {"label": "Ecuador", "rects": [[-92.02, -1.41, -89.25, 1.67], [-81.02, -5.02, -75.22, 1.44]]},
+    "country.ee": {"label": "Estonia", "rects": [[21.83, 57.51, 28.19, 59.68]]},
+    "country.es": {"label": "Spain", "rects": [[-18.17, 27.64, -13.41, 29.29], [-9.3, 35.17, 4.34, 43.8]]},
+    "country.es.andalusia": {"label": "Andalusia, Spain", "rects": [[-7.53, 36.0, -1.64, 38.73]]},
+    "country.es.balearic-islands": {"label": "Balearic Islands, Spain", "rects": [[1.21, 38.63, 4.34, 40.08]]},
+    "country.es.basque-country": {"label": "Basque Country, Spain", "rects": [[-3.45, 42.49, -1.74, 43.46]]},
+    "country.es.canary-islands": {"label": "Canary Islands, Spain", "rects": [[-18.17, 27.64, -13.41, 29.29]]},
+    "country.es.cantabria": {"label": "Cantabria, Spain", "rects": [[-4.84, 42.76, -3.14, 43.52]]},
+    "country.es.castile-and-leon": {"label": "Castile and León, Spain", "rects": [[-7.08, 40.08, -1.78, 43.24]]},
+    "country.es.catalonia": {"label": "Catalonia, Spain", "rects": [[0.16, 40.52, 3.32, 42.85]]},
+    "country.es.community-of-madrid": {"label": "Community of Madrid, Spain", "rects": [[-4.58, 39.89, -3.06, 41.17]]},
+    "country.es.galicia": {"label": "Galicia, Spain", "rects": [[-9.3, 41.8, -6.73, 43.8]]},
+    "country.es.navarre": {"label": "Navarre, Spain", "rects": [[-2.5, 41.9, -0.74, 43.31]]},
+    "country.es.valencian-community": {"label": "Valencian Community, Spain", "rects": [[-1.52, 37.84, 0.53, 40.78]]},
+    "country.fi": {"label": "Finland", "rects": [[20.62, 59.81, 31.57, 70.08]]},
+    "country.fo": {"label": "Faroe Islands", "rects": [[-7.65, 61.39, -6.27, 62.4]]},
+    "country.fr": {
+      "label": "France",
+      "rects": [
+        [-109.24, 10.28, -109.21, 10.32],
+        [-61.8, 14.4, -60.81, 16.52],
+        [-54.62, 2.11, -51.64, 5.75],
+        [-5.14, 41.36, 9.56, 51.09],
+        [45.04, -12.99, 45.3, -12.64],
+        [55.22, -21.38, 55.86, -20.86]
+      ]
+    },
+    "country.fr.brittany": {"label": "Brittany, France", "rects": [[-3.74, 47.29, -2.05, 48.21]]},
+    "country.fr.grand-est": {"label": "Grand Est, France", "rects": [[3.38, 47.41, 8.21, 50.17]]},
+    "country.fr.hauts-de-france": {"label": "Hauts-de-France, France", "rects": [[1.37, 48.84, 4.26, 51.09]]},
+    "country.gb": {"label": "United Kingdom", "rects": [[-13.7, 57.59, -13.68, 57.6], [-8.63, 49.9, 1.78, 60.85]]},
+    "country.ge": {"label": "Georgia", "rects": [[39.98, 41.04, 46.7, 43.58]]},
+    "country.gg": {"label": "Guernsey", "rects": [[-2.68, 49.41, -2.17, 49.74]]},
+    "country.gl": {"label": "Greenland", "rects": [[-73.06, 59.79, -11.37, 83.64]]},
+    "country.gr": {"label": "Greece", "rects": [[19.62, 34.81, 28.24, 41.76]]},
+    "country.hk": {"label": "Hong Kong", "rects": [[113.83, 22.17, 114.41, 22.57]]},
+    "country.hr": {"label": "Croatia", "rects": [[13.5, 42.41, 19.41, 46.55]]},
+    "country.hu": {"label": "Hungary", "rects": [[16.09, 45.74, 22.88, 48.57]]},
+    "country.id": {"label": "Indonesia", "rects": [[95.01, -10.93, 140.98, 5.92]]},
+    "country.ie": {"label": "Ireland", "rects": [[-10.48, 51.44, -5.99, 55.39]]},
+    "country.il": {"label": "Israel", "rects": [[34.24, 29.48, 35.89, 33.41]]},
+    "country.im.isle-of-man": {"label": "Isle of Man, Isle of Man", "rects": [[-4.84, 54.04, -4.31, 54.42]]},
+    "country.in": {"label": "India", "rects": [[68.14, 6.74, 97.37, 35.5]]},
+    "country.it": {"label": "Italy", "rects": [[6.6, 35.48, 18.52, 47.09]]},
+    "country.it.basilicata": {"label": "Basilicata, Italy", "rects": [[15.34, 39.9, 16.87, 41.14]]},
+    "country.it.emilia-romagna": {"label": "Emilia-Romagna, Italy", "rects": [[9.2, 43.74, 12.76, 45.14]]},
+    "country.it.friuli-venezia-giulia": {"label": "Friuli Venezia Giulia, Italy", "rects": [[12.5, 45.65, 13.71, 46.65]]},
+    "country.it.lazio": {"label": "Lazio, Italy", "rects": [[11.45, 40.78, 14.02, 42.86]]},
+    "country.it.liguria": {"label": "Liguria, Italy", "rects": [[8.56, 44.21, 9.58, 44.69]]},
+    "country.it.piedmont": {"label": "Piedmont, Italy", "rects": [[7.84, 45.76, 8.74, 46.46]]},
+    "country.it.sardinia": {"label": "Sardinia, Italy", "rects": [[8.13, 38.86, 9.83, 41.27]]},
+    "country.it.tuscany": {"label": "Tuscany, Italy", "rects": [[10.7, 42.31, 11.81, 43.2]]},
+    "country.jo": {"label": "Jordan", "rects": [[34.94, 29.18, 39.3, 33.38]]},
+    "country.jp": {"label": "Japan", "rects": [[122.93, 24.21, 145.83, 45.53], [153.94, 24.28, 153.99, 24.32]]},
+    "country.kr": {"label": "South Korea", "rects": [[124.61, 33.19, 131.87, 38.63]]},
+    "country.ky": {"label": "Cayman Islands", "rects": [[-81.42, 19.26, -79.72, 19.76]]},
+    "country.li": {"label": "Liechtenstein", "rects": [[9.47, 47.05, 9.62, 47.27]]},
+    "country.lt": {"label": "Lithuania", "rects": [[20.92, 53.88, 26.81, 56.45]]},
+    "country.lu": {"label": "Luxembourg", "rects": [[5.71, 49.44, 6.51, 50.18]]},
+    "country.lv": {"label": "Latvia", "rects": [[20.96, 55.66, 28.22, 58.08]]},
+    "country.ma": {"label": "Morocco", "rects": [[-17.02, 21.41, -1.03, 35.93]]},
+    "country.md": {"label": "Moldova", "rects": [[26.61, 45.46, 30.14, 48.49]]},
+    "country.mo": {"label": "Macao", "rects": [[113.51, 22.1, 113.59, 22.23]]},
+    "country.nc": {"label": "New Caledonia", "rects": [[163.61, -22.68, 168.15, -19.62], [171.33, -22.35, 171.35, -22.34]]},
+    "country.nl": {
+      "label": "Netherlands",
+      "rects": [[-68.42, 12.02, -68.19, 12.32], [-63.26, 17.46, -62.94, 17.65], [3.34, 50.74, 7.2, 53.56]]
+    },
+    "country.no": {
+      "label": "Norway",
+      "rects": [
+        [-9.12, 70.8, -7.93, 71.19],
+        [3.34, -54.47, 3.49, -54.38],
+        [4.64, 57.99, 31.08, 71.17],
+        [10.48, 74.34, 33.65, 80.78]
+      ]
+    },
+    "country.nz": {
+      "label": "New Zealand",
+      "rects": [
+        [-177.96, -29.3, -177.84, -29.22],
+        [-176.86, -44.35, -176.11, -43.7],
+        [-172.51, -9.37, -171.18, -8.54],
+        [165.88, -52.61, 178.85, -34.14]
+      ]
+    },
+    "country.pe": {"label": "Peru", "rects": [[-81.34, -18.34, -68.68, -0.02]]},
+    "country.pf": {
+      "label": "French Polynesia",
+      "rects": [
+        [-154.54, -23.88, -134.94, -14.16],
+        [-144.35, -27.65, -144.28, -27.55],
+        [-140.73, -10.56, -138.62, -7.95]
+      ]
+    },
+    "country.ph": {"label": "Philippines", "rects": [[116.95, 4.65, 126.62, 21.13]]},
+    "country.pl": {"label": "Poland", "rects": [[14.12, 48.99, 24.15, 54.84]]},
+    "country.ps": {"label": "Palestine", "rects": [[34.2, 31.21, 35.58, 32.55]]},
+    "country.pt": {
+      "label": "Portugal",
+      "rects": [
+        [-31.29, 39.35, -31.08, 39.73],
+        [-28.85, 36.93, -25.01, 39.11],
+        [-17.26, 32.49, -16.27, 33.12],
+        [-16.03, 30.02, -15.85, 30.16],
+        [-9.5, 36.96, -6.2, 42.16]
+      ]
+    },
+    "country.ro": {"label": "Romania", "rects": [[20.24, 43.65, 29.7, 48.28]]},
+    "country.sc": {"label": "Seychelles", "rects": [[46.2, -9.76, 47.52, -9.32], [52.74, -7.2, 56.29, -3.79]]},
+    "country.se": {"label": "Sweden", "rects": [[11.1, 55.34, 24.17, 69.04]]},
+    "country.si": {"label": "Slovenia", "rects": [[13.36, 45.42, 16.52, 46.87]]},
+    "country.th": {"label": "Thailand", "rects": [[97.35, 5.62, 105.66, 20.45]]},
+    "country.tr": {"label": "Türkiye", "rects": [[25.66, 35.81, 44.81, 42.1]]},
+    "country.tw": {"label": "Taiwan", "rects": [[118.27, 21.9, 122.01, 25.29]]},
+    "country.us": {
+      "label": "United States",
+      "rects": [
+        [-179.15, 51.21, -129.98, 71.42],
+        [-178.31, 28.38, -178.28, 28.41],
+        [-173.97, 18.9, -154.81, 26.08],
+        [-124.74, 24.54, -66.97, 49.37],
+        [172.47, 51.35, 179.79, 53.02]
+      ]
+    },
+    "country.us.alaska": {
+      "label": "Alaska, United States",
+      "rects": [[-179.15, 51.21, -129.98, 71.42], [172.47, 51.35, 179.79, 53.02]]
+    },
+    "country.us.iowa": {"label": "Iowa, United States", "rects": [[-96.64, 40.37, -90.14, 43.51]]},
+    "country.us.massachusetts": {"label": "Massachusetts, United States", "rects": [[-73.51, 41.23, -69.92, 42.89]]},
+    "country.us.new-jersey": {"label": "New Jersey, United States", "rects": [[-75.56, 38.92, -73.9, 41.36]]},
+    "country.us.north-carolina": {"label": "North Carolina, United States", "rects": [[-84.33, 33.84, -75.45, 36.61]]},
+    "country.us.pennsylvania": {"label": "Pennsylvania, United States", "rects": [[-80.53, 39.72, -74.69, 42.54]]},
+    "country.us.utah": {"label": "Utah, United States", "rects": [[-114.05, 36.99, -109.04, 42.01]]},
+    "country.us.virginia": {"label": "Virginia, United States", "rects": [[-83.67, 36.53, -75.24, 39.46]]},
+    "country.uy": {"label": "Uruguay", "rects": [[-58.44, -34.98, -53.11, -30.09]]},
+    "country.xk": {"label": "Kosovo", "rects": [[20.02, 41.84, 21.78, 43.27]]},
+    "country.za": {"label": "South Africa", "rects": [[16.46, -34.83, 32.9, -22.12], [37.57, -46.97, 37.98, -46.59]]},
+    "region.africa": {"label": "Africa", "rects": [[-26, -35, 60, 38]]},
+    "region.global-52n-to-52s": {"label": "Global (52°N to 52°S)", "rects": [[-180, -52, 180, 52]]},
+    "regional.digimap-ci": {"label": "Channel Islands", "rects": [[-2.68, 49.17, -2.0, 49.74]]},
+    "regional.digital-earth-africa-maps": {"label": "Africa", "rects": [[-17.54, -34.83, 51.42, 37.35], [37.57, -46.97, 37.98, -46.59]]},
+    "regional.karugeo": {"label": "Saint Barthélemy, Saint Martin", "rects": [[-63.15, 17.88, -62.79, 18.13]]},
+    "regional.noaa-digital-coast-data-access-viewer": {
+      "label": "American Samoa, Guam, Northern Mariana Islands",
+      "rects": [[-171.09, -11.07, -171.07, -11.05], [-170.84, -14.54, -168.16, -14.16], [144.62, 13.24, 145.87, 20.56]]
+    },
+    "regional.noaa-digital-coast-data-access-viewer-2": {"label": "Puerto Rico, United States Virgin Islands", "rects": [[-67.94, 17.68, -64.55, 18.53]]},
+    "regional.usgs-national-map-downloader": {
+      "label": "4 countries",
+      "rects": [
+        [-179.15, 51.21, -129.97, 71.42],
+        [-178.31, 28.38, -178.28, 28.41],
+        [-173.97, 18.89, -154.81, 26.08],
+        [-171.09, -11.07, -171.07, -11.05],
+        [-170.84, -14.54, -168.16, -14.16],
+        [-124.74, 24.54, -66.97, 49.37],
+        [144.62, 13.24, 145.87, 20.56],
+        [172.47, 51.35, 179.79, 53.02]
+      ]
+    }
+  }
+}

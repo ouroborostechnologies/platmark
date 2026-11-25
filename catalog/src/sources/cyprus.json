@@ -1,0 +1,32 @@
+{
+  "datasets": {
+    "cyprus.dls-portal": {
+      "name": "DLS Portal",
+      "summary": "Department of Lands and Surveys INSPIRE geoportal with cadastral, orthophoto and topographic WMS/WFS services.",
+      "provider": "department-of-lands-and-surveys",
+      "officialURL": "https://portal.dls.moi.gov.cy/",
+      "serviceURL": "https://eservices.dls.moi.gov.cy/arcgis/rest/services/BASEMAPS/Orthoimagery_2019_WebMercator/MapServer",
+      "attribution": "Department of Lands and Surveys, Cyprus",
+      "license": "noneStated",
+      "coverage": "country.cy",
+      "themes": ["cadastre", "imagery"],
+      "access": "portal",
+      "cost": "free",
+      "useStatus": {"restricted": "Commercial use is not clearly allowed: Not stated on the service (licenseInfo empty)"}
+    }
+  },
+  "layers": [
+    {
+      "id": "cyprus.dls-portal",
+      "name": "Cyprus: DLS Portal",
+      "summary": "Orthoimagery 2019.",
+      "category": "historical",
+      "group": "nationalImagery",
+      "dataset": "cyprus.dls-portal",
+      "source": {
+        "type": "arcGISTiled",
+        "serviceURL": "https://eservices.dls.moi.gov.cy/arcgis/rest/services/BASEMAPS/Orthoimagery_2019_WebMercator/MapServer"
+      }
+    }
+  ]
+}

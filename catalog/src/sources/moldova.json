@@ -1,0 +1,37 @@
+{
+  "datasets": {
+    "moldova.geoportal-md": {
+      "name": "Moldova national geoportal (GEODATA)",
+      "summary": "Moldova's national spatial data infrastructure geoportal: cadastral plan, land cover, elevation models, roads, forests and geology, with view services linked to the EU INSPIRE Geoportal.",
+      "provider": "agency-for-geodesy-cartography-and-cadastre",
+      "officialURL": "https://geodata.gov.md/",
+      "serviceURL": "https://geodata.gov.md/geoserver/ows",
+      "attribution": "Agenția Geodezie, Cartografie și Cadastru (geodata.gov.md)",
+      "license": "noneStated",
+      "coverage": "country.md",
+      "themes": ["portal", "imagery", "cadastre", "boundaries"],
+      "formats": ["WMS"],
+      "access": "viewer",
+      "cost": "free",
+      "useStatus": {
+        "restricted": "Commercial use is not clearly allowed: Not stated (WMS AccessConstraints: NONE, Fees: NONE)"
+      }
+    }
+  },
+  "layers": [
+    {
+      "id": "moldova.geoportal-md",
+      "name": "Moldova: Moldova national geoportal (GEODATA)",
+      "summary": "Ortofoto (R. Moldova), 2016-2021.",
+      "category": "historical",
+      "group": "nationalImagery",
+      "dataset": "moldova.geoportal-md",
+      "source": {
+        "type": "wms",
+        "endpoint": "https://geodata.gov.md/geoserver/ows",
+        "layers": "orthophoto:Ortofoto",
+        "version": "1.3.0"
+      }
+    }
+  ]
+}

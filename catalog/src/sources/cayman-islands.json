@@ -1,0 +1,19 @@
+{
+  "datasets": {
+    "cayman-islands.cayman-land-info": {
+      "name": "Cayman Land Info",
+      "summary": "Official land registry map viewer with parcels and imagery; data products are sold.",
+      "provider": "lands-and-survey-department-cayman-islands-government",
+      "officialURL": "https://www.caymanlandinfo.ky/",
+      "serviceURL": "https://www.caymanlandinfo.ky/",
+      "attribution": "Lands and Survey Department, Cayman Islands Government",
+      "license": "freeWithRegistrationSeeTerms",
+      "coverage": "country.ky",
+      "themes": ["cadastre", "imagery", "elevation"],
+      "formats": ["Shapefile", "GeoTIFF"],
+      "access": "viewer",
+      "cost": "mixed",
+      "useStatus": {"restricted": "Terms not reviewed for use in a paid app: Free with registration; see terms"}
+    }
+  }
+}

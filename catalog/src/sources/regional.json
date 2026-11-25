@@ -1,0 +1,104 @@
+{
+  "datasets": {
+    "regional.digimap-ci": {
+      "name": "Digimap Channel Islands",
+      "summary": "Mapping agency for Guernsey and Jersey; topographic and aerial mapping (mostly commercial).",
+      "provider": "digimap-ltd",
+      "officialURL": "https://digimapci.com/",
+      "serviceURL": "https://tiles.arcgis.com/tiles/ICNdZmCzUU02e5fT/arcgis/rest/services/2022_Ortho/MapServer",
+      "attribution": "Digimap Ltd",
+      "license": "digimapWebsiteTermsOfUse",
+      "coverage": "regional.digimap-ci",
+      "themes": ["boundaries", "imagery", "buildings"],
+      "formats": ["Shapefile", "DWG"],
+      "access": "portal",
+      "cost": "mixed",
+      "useStatus": {"restricted": "The publisher's terms bar commercial use: Digimap website terms of use"}
+    },
+    "regional.digital-earth-africa-maps": {
+      "name": "Digital Earth Africa Map",
+      "summary": "Viewer for analysis-ready Landsat and Sentinel imagery and derived products such as water observations, cropland extent and coastlines; data are also open on AWS.",
+      "provider": "digital-earth-africa",
+      "officialURL": "https://maps.digitalearth.africa/",
+      "serviceURL": "https://maps.digitalearth.africa/",
+      "attribution": "Digital Earth Africa",
+      "license": "ccBy40",
+      "coverage": "regional.digital-earth-africa-maps",
+      "themes": ["imagery", "land-cover", "hydrology"],
+      "formats": ["GeoTIFF", "WMS"],
+      "access": "viewer",
+      "cost": "free"
+    },
+    "regional.karugeo": {
+      "name": "Karugéo",
+      "summary": "Regional geodata platform for Guadeloupe and the northern islands, with orthophotos and environmental layers.",
+      "provider": "deal-guadeloupe-partners",
+      "officialURL": "https://www.karugeo.fr/",
+      "serviceURL": "https://www.karugeo.fr/",
+      "attribution": "DEAL Guadeloupe / partners",
+      "license": "seePublisherTerms",
+      "coverage": "regional.karugeo",
+      "themes": ["portal", "imagery", "environment"],
+      "formats": ["WMS", "Shapefile"],
+      "access": "portal",
+      "cost": "free",
+      "useStatus": {"restricted": "Terms not reviewed for use in a paid app: See publisher terms"}
+    },
+    "regional.noaa-digital-coast-data-access-viewer": {
+      "name": "Data Access Viewer (Digital Coast)",
+      "summary": "Custom downloads of coastal LiDAR, topobathy DEMs, imagery and C-CAP land cover.",
+      "provider": "noaa-office-for-coastal-management",
+      "officialURL": "https://coast.noaa.gov/dataviewer/",
+      "serviceURL": "https://coast.noaa.gov/dataviewer/",
+      "attribution": "NOAA Office for Coastal Management",
+      "license": "publicDomainUsGov",
+      "coverage": "regional.noaa-digital-coast-data-access-viewer",
+      "themes": ["elevation", "imagery", "land-cover"],
+      "formats": ["LAZ", "GeoTIFF"],
+      "access": "download",
+      "cost": "free"
+    },
+    "regional.noaa-digital-coast-data-access-viewer-2": {
+      "name": "NOAA Data Access Viewer",
+      "summary": "Custom downloads of lidar, coastal DEMs, C-CAP land cover and imagery covering Puerto Rico.",
+      "provider": "noaa-office-for-coastal-management",
+      "officialURL": "https://coast.noaa.gov/dataviewer/",
+      "serviceURL": "https://coast.noaa.gov/arcgis/rest/services/Imagery/3Band_RGB_8Bit_Imagery/ImageServer",
+      "attribution": "NOAA Office for Coastal Management",
+      "license": "publicDomainUsGovernmentWork",
+      "coverage": "regional.noaa-digital-coast-data-access-viewer-2",
+      "themes": ["elevation", "land-cover", "imagery"],
+      "formats": ["LAZ", "GeoTIFF"],
+      "access": "download",
+      "cost": "free"
+    },
+    "regional.usgs-national-map-downloader": {
+      "name": "The National Map Downloader",
+      "summary": "3DEP elevation and LiDAR, hydrography and other USGS layers by area of interest.",
+      "provider": "us-geological-survey",
+      "officialURL": "https://apps.nationalmap.gov/downloader/",
+      "serviceURL": "https://apps.nationalmap.gov/downloader/",
+      "attribution": "US Geological Survey",
+      "license": "publicDomainUsGov",
+      "coverage": "regional.usgs-national-map-downloader",
+      "themes": ["elevation", "hydrology", "imagery"],
+      "formats": ["GeoTIFF", "LAZ", "Shapefile"],
+      "access": "download",
+      "cost": "free"
+    }
+  },
+  "layers": [
+    {
+      "id": "regional.noaa-digital-coast-data-access-viewer-2",
+      "name": "Puerto Rico, United States Virgin Islands: NOAA Data Access Viewer",
+      "summary": "NOAA coastal RGB aerial imagery mosaic (8-bit), various.",
+      "category": "historical",
+      "group": "nationalImagery",
+      "dataset": "regional.noaa-digital-coast-data-access-viewer-2",
+      "source": {
+        "type": "arcGISImageExport",
+        "serviceURL": "https://coast.noaa.gov/arcgis/rest/services/Imagery/3Band_RGB_8Bit_Imagery/ImageServer"
+      }
+    }
+  ]
+}
