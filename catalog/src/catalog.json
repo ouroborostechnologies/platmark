@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "catalogRevision": 2026111902,
+  "catalogRevision": 2026112601,
   "include": [
     "providers.json",
     "licenses.json",
@@ -15,7 +15,6 @@
     "layers/macrostrat-geology.json",
     "layers/usgs-geology.json",
     "layers/pbdb-fossils.json",
-    "layers/meteorites.json",
     "layers/usgs-boundaries.json",
     "layers/census-boundaries.json",
     "layers/census-tracts-history.json",
