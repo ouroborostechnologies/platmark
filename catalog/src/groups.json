@@ -5,12 +5,6 @@
       "title": "State-specific aerial photos",
       "explanation": "Deeper history than the nationwide archive, but only within one state each.",
       "systemImage": "building.columns"
-    },
-    {
-      "id": "nationalImagery",
-      "title": "Aerial imagery by country",
-      "explanation": "Each country's or region's own aerial and satellite photographs, where it publishes them openly.",
-      "systemImage": "globe.europe.africa"
     }
   ]
 }
