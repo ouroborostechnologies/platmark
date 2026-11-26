@@ -1,0 +1,33 @@
+{
+  "datasets": {
+    "netherlands.pdok": {
+      "name": "PDOK",
+      "summary": "Dutch national geo-data platform (BAG, BRT, BGT, aerial photos).",
+      "provider": "kadaster-pdok",
+      "officialURL": "https://www.pdok.nl/",
+      "serviceURL": "https://service.pdok.nl/hwh/luchtfotorgb/wmts/v1_0/Actueel_orthoHR/EPSG:3857/{z}/{x}/{y}.jpeg",
+      "attribution": "Beeldmateriaal Nederland / PDOK",
+      "license": "ccBy40",
+      "coverage": "country.nl",
+      "themes": ["boundaries", "cadastre", "imagery", "elevation", "transport"],
+      "formats": ["GeoPackage", "WMS", "WFS", "OGC API"],
+      "access": "api",
+      "cost": "free"
+    }
+  },
+  "layers": [
+    {
+      "id": "netherlands.pdok",
+      "name": "Netherlands: PDOK",
+      "summary": "Luchtfoto Actueel Ortho 8cm RGB, 2025-2026.",
+      "category": "historical",
+      "group": "nationalImagery",
+      "dataset": "netherlands.pdok",
+      "source": {
+        "type": "wmts",
+        "urlTemplate": "https://service.pdok.nl/hwh/luchtfotorgb/wmts/v1_0/Actueel_orthoHR/EPSG:3857/{z}/{x}/{y}.jpeg",
+        "maximumLevel": 21
+      }
+    }
+  ]
+}

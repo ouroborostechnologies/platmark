@@ -1,0 +1,32 @@
+{
+  "datasets": {
+    "finland.mml-file-service": {
+      "name": "NLS file service for open data",
+      "summary": "Download of all NLS open datasets: LiDAR, elevation models, orthophotos and topographic database.",
+      "provider": "national-land-survey-of-finland",
+      "officialURL": "https://asiointi.maanmittauslaitos.fi/karttapaikka/tiedostopalvelu",
+      "serviceURL": "https://asiointi.maanmittauslaitos.fi/karttapaikka/tiedostopalvelu",
+      "attribution": "National Land Survey of Finland",
+      "license": "ccBy40",
+      "coverage": "country.fi",
+      "themes": ["elevation", "imagery", "transport"],
+      "formats": ["GeoTIFF", "LAZ", "GeoPackage"],
+      "access": "download",
+      "cost": "free"
+    },
+    "finland.national-land-survey-of-finland": {
+      "name": "National Land Survey of Finland",
+      "summary": "",
+      "provider": "maanmittauslaitos",
+      "officialURL": "https://www.maanmittauslaitos.fi/en",
+      "serviceURL": "https://www.maanmittauslaitos.fi/en",
+      "attribution": "Maanmittauslaitos",
+      "license": "ccBy40",
+      "coverage": "country.fi",
+      "themes": ["elevation", "imagery", "boundaries", "transport"],
+      "formats": ["GeoPackage", "GeoTIFF", "LAZ"],
+      "access": "download",
+      "cost": "mixed"
+    }
+  }
+}

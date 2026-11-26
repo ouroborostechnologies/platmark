@@ -1,0 +1,19 @@
+{
+  "datasets": {
+    "bermuda.department-of-planning": {
+      "name": "Department of Planning",
+      "summary": "Planning Map Viewer with parcels, Bermuda Plan zoning and aerial imagery; layers are exposed as ArcGIS map services.",
+      "provider": "government-of-bermuda",
+      "officialURL": "https://planning.gov.bm/",
+      "serviceURL": "https://planning.gov.bm/",
+      "attribution": "Government of Bermuda",
+      "license": "seePublisherTerms",
+      "coverage": "country.bm",
+      "themes": ["cadastre", "land-cover"],
+      "formats": ["ArcGIS REST"],
+      "access": "viewer",
+      "cost": "free",
+      "useStatus": {"restricted": "Terms not reviewed for use in a paid app: See publisher terms"}
+    }
+  }
+}

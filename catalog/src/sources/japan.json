@@ -1,0 +1,47 @@
+{
+  "datasets": {
+    "japan.gsi-maps": {
+      "name": "GSI Maps",
+      "summary": "Official web map of Japan with topographic maps, aerial photos, hazard layers and elevation tiles.",
+      "provider": "geospatial-information-authority-of-japan",
+      "officialURL": "https://maps.gsi.go.jp/",
+      "serviceURL": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/{z}/{x}/{y}.jpg",
+      "attribution": "国土地理院 (Geospatial Information Authority of Japan), with a link to https://maps.gsi.go.jp/development/ichiran.html",
+      "license": "gsiContentTermsOfUseCompatibleWithCcBy40",
+      "coverage": "country.jp",
+      "themes": ["elevation", "imagery", "boundaries"],
+      "formats": ["XYZ tiles"],
+      "access": "viewer",
+      "cost": "free"
+    },
+    "japan.gsi-tiles": {
+      "name": "GSI tiles list",
+      "summary": "Catalogue of GSI XYZ tile layers, including standard maps, seamless orthophotos and DEM elevation tiles.",
+      "provider": "geospatial-information-authority-of-japan",
+      "officialURL": "https://maps.gsi.go.jp/development/ichiran.html",
+      "serviceURL": "https://maps.gsi.go.jp/development/ichiran.html",
+      "attribution": "Geospatial Information Authority of Japan",
+      "license": "gsiContentTermsCcBy40Compatible",
+      "coverage": "country.jp",
+      "themes": ["elevation", "imagery", "boundaries"],
+      "formats": ["XYZ tiles", "PNG", "TXT"],
+      "access": "api",
+      "cost": "free"
+    }
+  },
+  "layers": [
+    {
+      "id": "japan.gsi-maps",
+      "name": "Japan: GSI Maps",
+      "summary": "Seamless aerial photo (latest nationwide mosaic), various (latest available per area).",
+      "category": "historical",
+      "group": "nationalImagery",
+      "dataset": "japan.gsi-maps",
+      "source": {
+        "type": "xyzRaster",
+        "urlTemplate": "https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/{z}/{x}/{y}.jpg",
+        "maximumLevel": 18
+      }
+    }
+  ]
+}

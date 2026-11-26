@@ -1,0 +1,19 @@
+{
+  "datasets": {
+    "aland-islands.kartor-ax": {
+      "name": "Åland map service",
+      "summary": "Official map viewer with topographic maps, orthophotos and property boundaries.",
+      "provider": "government-of-aland",
+      "officialURL": "https://www.kartor.ax/",
+      "serviceURL": "https://www.kartor.ax/",
+      "attribution": "Government of Åland",
+      "license": "seePublisherTerms",
+      "coverage": "country.ax",
+      "themes": ["boundaries", "imagery", "cadastre"],
+      "formats": ["WMS"],
+      "access": "viewer",
+      "cost": "free",
+      "useStatus": {"restricted": "Terms not reviewed for use in a paid app: See publisher terms"}
+    }
+  }
+}

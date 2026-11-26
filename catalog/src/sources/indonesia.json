@@ -1,0 +1,19 @@
+{
+  "datasets": {
+    "indonesia.ina-geoportal": {
+      "name": "Ina-Geoportal",
+      "summary": "One Map Policy geoportal of the Geospatial Information Agency (BIG): RBI base maps, boundaries and thematic layers; free registration for downloads.",
+      "provider": "badan-informasi-geospasial",
+      "officialURL": "https://tanahair.indonesia.go.id/",
+      "serviceURL": "https://tanahair.indonesia.go.id/",
+      "attribution": "Badan Informasi Geospasial",
+      "license": "seePublisherTerms",
+      "coverage": "country.id",
+      "themes": ["boundaries", "elevation", "imagery"],
+      "formats": ["Shapefile", "GeoTIFF"],
+      "access": "download",
+      "cost": "free-registration",
+      "useStatus": {"restricted": "Terms not reviewed for use in a paid app: See publisher terms"}
+    }
+  }
+}

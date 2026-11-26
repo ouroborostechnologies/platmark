@@ -1,0 +1,33 @@
+{
+  "datasets": {
+    "georgia.maps-gov-ge": {
+      "name": "NAPR geoportal (maps.gov.ge)",
+      "summary": "Public map portal with cadastral parcels, orthophotos and addresses; WMS services available.",
+      "provider": "national-agency-of-public-registry",
+      "officialURL": "https://maps.gov.ge/map/portal",
+      "serviceURL": "https://nt0.napr.gov.ge/NGCache?x={x}&y={y}&z={z}&l=ORTHO_GEORGIA_4",
+      "attribution": "National Agency of Public Registry",
+      "license": "notFound",
+      "coverage": "country.ge",
+      "themes": ["cadastre", "imagery", "boundaries"],
+      "formats": ["WMS"],
+      "access": "viewer",
+      "cost": "free",
+      "useStatus": {"restricted": "Commercial use is not clearly allowed: Not found"}
+    }
+  },
+  "layers": [
+    {
+      "id": "georgia.maps-gov-ge",
+      "name": "Georgia: NAPR geoportal (maps.gov.ge)",
+      "summary": "NAPR orthophoto (ORTHO_GEORGIA_4).",
+      "category": "historical",
+      "group": "nationalImagery",
+      "dataset": "georgia.maps-gov-ge",
+      "source": {
+        "type": "xyzRaster",
+        "urlTemplate": "https://nt0.napr.gov.ge/NGCache?x={x}&y={y}&z={z}&l=ORTHO_GEORGIA_4"
+      }
+    }
+  ]
+}
